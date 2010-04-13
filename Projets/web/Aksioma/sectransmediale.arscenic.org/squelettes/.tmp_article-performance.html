@@ -1,0 +1,438 @@
+	<BOUCLE_article_principal(ARTICLES) {id_article}>
+	<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+	<head>
+	<title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|attribut_html)" />]
+	<link rel="alternate" type="application/rss+xml" 
+		title="<:titre_page_mots_tous:>" 
+	href="[(#URL_PAGE{backend})]<BOUCLE_URLMOT(MOTS){id_article}>&amp;id_mot[]=#ID_MOT</BOUCLE_URLMOT>" />
+	<link rel="alternate" type="application/rss+xml" 
+		title="<:icone_auteurs:>" 
+	href="[(#URL_PAGE{backend})]<BOUCLE_URLAUTEURS(AUTEURS){id_article}>&amp;id_auteur[]=#ID_AUTEUR</BOUCLE_URLAUTEURS>" />
+	<INCLURE{fond=inc-head}>
+	<script src="#URL_PAGE{geomap.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+	function PlayIt(anObj){
+		anObj.Play();
+	}
+	
+      var map;
+      function load(){
+	  	if (GBrowserIsCompatible()) {
+	  		map = new GMap2(document.getElementById("map"));
+			map.setCenter(new GLatLng(52.51402710160183, 13.378525972366333), 2);
+			map.disableDragging();
+			map.disableDoubleClickZoom();
+			map.setMapType(G_SATELLITE_MAP);
+			map.enableContinuousZoom();
+	
+			points = [];
+			zooms = [];
+			time = [];
+			titles = [];
+			toverlays = [];
+			
+			if (map.isLoaded()){
+				counter = 0;
+				cur_time=0;
+				intro();
+			}
+		}
+	}
+			
+	function intro(){
+		GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,6,'&'})]", function(data, responseCode) {
+			var xml = GXml.parse(data);
+			var markers = xml.documentElement.getElementsByTagName("marker");
+			for (var i = 0; i < markers.length; i++) {
+				var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),parseFloat(markers[i].getAttribute("lng")));
+				points.push(point);
+				var zoom = parseFloat(markers[i].getAttribute("zoom"));
+				zooms.push(zoom);
+				var title = markers[i].getAttribute("titre");
+				titles.push(title);
+				time.push(markers[i].getAttribute("time"));
+			}
+		});
+		pan_stop = setInterval(function(){
+			zoomintro()
+		}, 1000);
+	}
+
+  	function zoomintro(){
+  		//jQuery('#coords').prepend(""+counter+" time:"+time[counter]+" cur_time"+cur_time+"<br>");
+	
+		if (cur_time == time[counter]) {
+			jQuery('#info-title').html(titles[counter]);
+			map.setCenter(points[counter]);
+			if (map.getZoom() != zooms[counter]) {
+				map.setZoom(zooms[counter]);
+			}
+			counter++;
+		}
+		
+		cur_time++;
+		if (counter == points.length) {
+				window.clearInterval(pan_stop);
+				delete points;
+				delete zooms;
+				delete toverlays;
+				delete titles;
+				toverlays_janez1 = [];
+				toverlays_janez2 = [];
+				toverlays_janez3 = [];
+				points_janez1 = [];
+				time_janez1 = [];
+				points_janez2 = [];
+				time_janez2 = [];
+				points_janez3 = [];
+				time_janez3 = [];
+				prev_point_janez2 = new GPoint(0, 0);
+				curr_point_janez2 = new GPoint(0, 0);
+				prev_point_janez3 = new GPoint(0, 0);
+				curr_point_janez3 = new GPoint(0, 0);
+				prev_point = new GPoint(0, 0);
+				curr_point = new GPoint(0, 0);
+				counter_janez1 = 1;
+				counter_janez2 = 1;
+				counter_janez3 = 1;
+				cur_time_janez1 = 1;
+				cur_time_janez2 = 1;
+				cur_time_janez3 = 1;
+				markers_janez1 = [];
+				markers_janez2 = [];
+				markers_janez3 = [];
+				
+				var janez1stop;
+				var janez2stop;
+				var janez3stop;
+				
+				
+				setTimeout('go()',5000)
+			}
+	}
+	function go(){
+			jQuery('#videos-stream').toggle('7000', function(){
+				GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,5,'&'})]", function(data, responseCode){
+					var xml = GXml.parse(data);
+					var markers = xml.documentElement.getElementsByTagName("marker");
+					for (var i = 0; i < markers.length; i++) {
+						var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")), parseFloat(markers[i].getAttribute("lng")));
+						points_janez1.push(point);
+						time_janez1.push(markers[i].getAttribute("time"));
+					}
+					pan_to_janez1 = setInterval(function(){
+						drawRoute_janez1()
+					}, 1000);
+					setTimeout('jQuery("#video1").toggle("3000")', 1000);
+				});
+				
+				GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,7,'&'})]", function(data, responseCode){
+					var xml = GXml.parse(data);
+					var markers = xml.documentElement.getElementsByTagName("marker");
+					for (var i = 0; i < markers.length; i++) {
+						var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")), parseFloat(markers[i].getAttribute("lng")));
+						points_janez2.push(point);
+						time_janez2.push(markers[i].getAttribute("time"));
+					}
+					pan_to_janez2 = setInterval(function(){
+						drawRoute_janez2()
+					}, 1000);
+					setTimeout('jQuery("#video2").toggle("3000")', 1000);
+				});
+				
+				GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,8,'&'})]", function(data, responseCode){
+					var xml = GXml.parse(data);
+					var markers = xml.documentElement.getElementsByTagName("marker");
+					for (var i = 0; i < markers.length; i++) {
+						var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")), parseFloat(markers[i].getAttribute("lng")));
+						points_janez3.push(point);
+						time_janez3.push(markers[i].getAttribute("time"));
+					}
+					pan_to_janez3 = setInterval(function(){
+						drawRoute_janez3()
+					}, 1000);
+					setTimeout('jQuery("#video3").toggle("3000")', 1000);
+				});
+			});
+			jQuery("#contenu-performance").fadeIn('5000');
+		}
+						
+	function drawRoute_janez1(){
+		var customIcon = new GIcon(G_DEFAULT_ICON);
+		customIcon.shadow = "";
+		customIcon.image = '#URL_SITE_SPIP/#CHEMIN{images/green_point_anim.gif}';
+		customIcon.iconAnchor = new GPoint(3, 3); 
+		customIcon.iconSize = new GSize(5,5);
+		markerOptions = { icon:customIcon };
+	
+		//	jQuery('#coords').prepend(""+counter_janez1+" time:"+time_janez1[counter_janez1]+" cur_time"+cur_time_janez1+"<br>");
+		if (counter_janez1 == points_janez1.length || counter_janez1 == ''){
+			window.clearInterval(pan_to_janez1);
+			delete counter_janez1;
+			delete point_janez1;
+			delete time_janez1;
+			janez1stop = 'y';
+		}
+		if (cur_time_janez1 == time_janez1[counter_janez1]){
+			curr_point = points_janez1[counter_janez1];
+			prev_point = points_janez1[counter_janez1-1];
+			counter_janez1++;
+			capture_overlay_flag = 'n';
+		}
+		else {
+			var capture_overlay_flag = 'y';
+			var cur_tgap = time_janez1[counter_janez1]-cur_time_janez1;
+			var tgap = time_janez1[counter_janez1]-time_janez1[counter_janez1-1];
+			var xgap = points_janez1[counter_janez1].x - points_janez1[counter_janez1-1].x;
+			var ygap = points_janez1[counter_janez1].y - points_janez1[counter_janez1-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point = new GPoint(points_janez1[counter_janez1].x - (((xgap)/(tgap)) * cur_tgap), points_janez1[counter_janez1].y - (((ygap)/(tgap)) * cur_tgap));
+		} 
+		
+		if (prev_point.x != 0){
+			for (i=1; i<markers_janez1.length; i++){
+				map.removeOverlay(markers_janez1[i]);
+				markers_janez1.shift();
+			}
+			var marker = new GMarker(curr_point,markerOptions);
+			map.addOverlay(marker);
+			markers_janez1.push(marker);
+			var toverlay_janez1 = new GPolyline([prev_point, curr_point], '#ffffff', 3, .8);
+			map.addOverlay(toverlay_janez1);
+			jQuery('#janez1_lat').html(curr_point.x);
+			jQuery('#janez1_lng').html(curr_point.y);
+
+			if (capture_overlay_flag == 'y'){ toverlays_janez1.push(toverlay_janez1); }
+		}
+		
+		prev_point = curr_point;
+		
+		if (capture_overlay_flag == 'n'){
+			for (i=0; i<toverlays_janez1.length; i++){
+				map.removeOverlay(toverlays_janez1[i]);
+			}
+			delete toverlays_janez1;
+			toverlays_janez1 = [];
+		}
+		cur_time_janez1++;
+	}
+
+	function drawRoute_janez2(){
+		var customIcon2 = new GIcon(G_DEFAULT_ICON);
+		customIcon2.shadow = "";
+		customIcon2.image = '#URL_SITE_SPIP/#CHEMIN{images/green_point_anim.gif}';
+		customIcon2.iconAnchor = new GPoint(3, 3); 
+		customIcon2.iconSize = new GSize(5,5);
+		markerOptions2 = { icon:customIcon2 };
+		
+	//	jQuery('#coords').prepend(""+counter_janez2+" time:"+time_janez2[counter_janez2]+" cur_time"+cur_time_janez2+"<br>");
+		if (cur_time_janez2 == time_janez2[counter_janez2]){
+			curr_point_janez2 = points_janez2[counter_janez2];
+			prev_point_janez2 = points_janez2[counter_janez2-1];
+			counter_janez2++;
+			capture_overlay_flag_janez2 = 'n';
+		}
+		else {
+			var capture_overlay_flag_janez2 = 'y';
+			var cur_tgap_janez2 = time_janez2[counter_janez2]-cur_time_janez2;
+			var tgap_janez2 = time_janez2[counter_janez2]-time_janez2[counter_janez2-1];
+			var xgap_janez2 = points_janez2[counter_janez2].x - points_janez2[counter_janez2-1].x;
+			var ygap_janez2 = points_janez2[counter_janez2].y - points_janez2[counter_janez2-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point_janez2 = new GPoint(points_janez2[counter_janez2].x - (((xgap_janez2)/(tgap_janez2)) * cur_tgap_janez2), points_janez2[counter_janez2].y - (((ygap_janez2)/(tgap_janez2)) * cur_tgap_janez2));
+		}
+		
+		if (prev_point_janez2.x != 0){
+			for (i=1; i<markers_janez2.length; i++){
+				map.removeOverlay(markers_janez2[i]);
+				markers_janez2.shift();
+			}
+			var marker_janez2 = new GMarker(curr_point_janez2,markerOptions2);
+			map.addOverlay(marker_janez2);
+			markers_janez2.push(marker_janez2);
+			
+			var toverlay_janez2 = new GPolyline([prev_point_janez2, curr_point_janez2], '#ff0000', 3, .8);
+			map.addOverlay(toverlay_janez2);
+
+			if (capture_overlay_flag_janez2 == 'y'){ toverlays_janez2.push(toverlay_janez2); }
+			jQuery('#janez2_lat').html(curr_point_janez2.x);
+			jQuery('#janez2_lng').html(curr_point_janez2.y);
+		}
+
+		prev_point_janez2 = curr_point_janez2;
+
+		if (capture_overlay_flag_janez2 == 'n'){
+			for (i=0; i<toverlays_janez2.length; i++){
+				map.removeOverlay(toverlays_janez2[i]);
+			}
+			delete toverlays_janez2;
+			toverlays_janez2 = [];
+		}
+		cur_time_janez2++;
+		if (counter_janez2 == points_janez2.length){
+			window.clearInterval(pan_to_janez2);
+			delete counter_janez2;
+			delete point_janez2;
+			delete time_janez2;
+			janez2stop = 'y';
+			verifystop = 
+				setInterval(function(){
+					endsignature()
+				}, 1000);
+		}
+	}
+
+	function drawRoute_janez3(){
+		var customIcon3 = new GIcon(G_DEFAULT_ICON);
+		customIcon3.shadow = "";
+		customIcon3.image = '#URL_SITE_SPIP/#CHEMIN{images/green_point_anim.gif}';
+		customIcon3.iconAnchor = new GPoint(3, 3); 
+		customIcon3.iconSize = new GSize(5,5);
+		markerOptions3 = { icon:customIcon3 };
+		
+	//	jQuery('#coords').prepend(""+counter_janez3+" time:"+time_janez3[counter_janez3]+" cur_time"+cur_time_janez3+"<br>");
+		if (cur_time_janez3 == time_janez3[counter_janez3]){
+			curr_point_janez3 = points_janez3[counter_janez3];
+			prev_point_janez3 = points_janez3[counter_janez3-1];
+			counter_janez3++;
+			capture_overlay_flag_janez3 = 'n';
+			jQuery('#janez3_lng').html(curr_point_janez3 .x);
+			jQuery('#janez3_lat').html(curr_point_janez3 .y);
+		}
+		else {
+			var capture_overlay_flag_janez3 = 'y';
+			var cur_tgap_janez3 = time_janez3[counter_janez3]-cur_time_janez3;
+			var tgap_janez3 = time_janez3[counter_janez3]-time_janez3[counter_janez3-1];
+			var xgap_janez3 = points_janez3[counter_janez3].x - points_janez3[counter_janez3-1].x;
+			var ygap_janez3 = points_janez3[counter_janez3].y - points_janez3[counter_janez3-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point_janez3 = new GPoint(points_janez3[counter_janez3].x - (((xgap_janez3)/(tgap_janez3)) * cur_tgap_janez3), points_janez3[counter_janez3].y - (((ygap_janez3)/(tgap_janez3)) * cur_tgap_janez3));
+			jQuery('#janez3_lng').html(curr_point_janez3 .x);
+			jQuery('#janez3_lat').html(curr_point_janez3 .y);
+		}
+		
+		if (prev_point_janez3.x != 0){
+			for (i=1; i<markers_janez3.length; i++){
+				map.removeOverlay(markers_janez3[i]);
+				markers_janez3.shift();
+			}
+				
+			var marker_janez3 = new GMarker(curr_point_janez3,markerOptions3);
+			map.addOverlay(marker_janez3);
+			markers_janez3.push(marker_janez3);
+			
+			var toverlay_janez3 = new GPolyline([prev_point_janez3, curr_point_janez3], '#0000ff', 3, .8);
+			map.addOverlay(toverlay_janez3);
+			
+			if (capture_overlay_flag_janez3 == 'y'){ toverlays_janez3.push(toverlay_janez3); }
+		}
+		
+		prev_point_janez3 = curr_point_janez3;
+		
+		if (capture_overlay_flag_janez3 == 'n'){
+			for (i=0; i<toverlays_janez3.length; i++){
+				map.removeOverlay(toverlays_janez3[i]);
+			}
+			delete toverlays_janez3;
+			toverlays_janez3 = [];
+		}
+		
+		cur_time_janez3++;
+		
+		if (counter_janez3 == points_janez3.length){
+			window.clearInterval(pan_to_janez3);
+			delete counter_janez3;
+			delete point_janez3;
+			delete time_janez3;
+			janez3stop = 'y';
+		}
+	}
+	
+	function changesig1(){
+		jQuery('#video1 .video').html('<img src="#CHEMIN{images/jj1_sig_160.jpg}" alt="" \/>');
+	}
+	function changesig2(){
+		jQuery('#video2 .video').html('<img src="#CHEMIN{images/jj2_sig_160.jpg}" alt="" \/>');
+	}
+	function changesig3(){
+		jQuery('#video3 .video').html('<img src="#CHEMIN{images/jj3_sig_160.jpg}" alt="" \/>');
+	}
+	function appearderrida(){
+		jQuery('#content_derrida').fadeIn('slow');
+	}
+	function endsignature(){
+		if ((janez1stop = 'y') && (janez2stop = 'y') && (janez3stop = 'y')){
+			clearInterval(verifystop);
+			setTimeout('changesig1()',5000);
+			setTimeout('changesig2()',7000);
+			setTimeout('changesig3()',9000);
+			setTimeout('appearderrida()',11000);
+		}
+	}
+
+	$(document).ready(function() {
+		load();
+	});
+	//]]>
+ </script>
+</head>
+	
+<body class="page_article" onunload="GUnload()">
+
+	<div id="mapcontent">
+		<div id="map">
+		</div>
+		<div id="content_derrida">
+		#TEXTE
+		</div>
+	</div>
+
+	<div class="hentry" id="contenu-performance">
+		<h3 style="color:#fff;">Janez Jansa</h3>
+		<div style='font-size:9px'>
+			<:latitude:> : <span class="lat" id="janez1_lat"></span><br />
+			<:longitude:> : <span class="lng" id="janez1_lng"></span>
+		</div>
+		<h3 style="color:#ff0000;">Janez Jansa</h3>
+		<div style='font-size:9px'>
+			<:latitude:> : <span class="lat" id="janez2_lat"></span><br />
+			<:longitude:> : <span class="lng" id="janez2_lng"></span>
+		</div>
+		<h3 style="color:#0000ff;">Janez Jansa</h3>
+		<div style='font-size:9px'>
+			<:latitude:> : <span class="lat" id="janez3_lat"></span><br />
+			<:longitude:> : <span class="lng" id="janez3_lng"></span>
+		</div>
+	</div>
+	
+	<div id="info-title">
+	</div>
+	
+	<div id="videos-stream">
+		<div id="videos" style="height:450px;position:absolute;top:50%;margin-top:-225px;">
+		<div id="video1">
+			<div class="video"  style="background-color:#ffffff;">
+				[(#MODELE{quicktime}{src=#URL_DOCUMENT{16}}{width=160}{height=120}{id_js=janez1}{bgcolor=ffffff}{autoplay=false}{controller=false})]
+			</div>
+			<h3>Janez Jansa</h3>
+		</div>
+		<div id="video2">
+			<div class="video" style="background-color:#ff0000;">
+				[(#MODELE{quicktime}{src=#URL_DOCUMENT{16}}{width=160}{height=120}{id_js=janez2}{bgcolor=0000ff}{autoplay=false}{controller=false})]
+			</div>
+			<h3>Janez Jansa</h3>
+		</div>
+		<div id="video3">
+			<div class="video" style="background-color:#0000ff;">
+				[(#MODELE{quicktime}{src=#URL_DOCUMENT{18}}{width=160}{height=120}{id_js=janez3}{bgcolor=0000ff}{autoplay=true}{controller=false})]
+			</div>
+			<h3>Janez Jansa</h3>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
+</BOUCLE_article_principal>

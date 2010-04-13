@@ -1,0 +1,265 @@
+body {
+	background: #000 url(images/reakt5/bg-main.gif);
+	margin: 0em;
+	text-align: center;
+	font-size: 11px;
+	color: #fff;
+}
+
+img { margin: 0; padding: 0; border: none; }
+h1 { margin: 0; padding: 0; font-size: 1em; font-weight: normal; }
+
+#page {
+	width: 822px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#lecteurs{
+	width:100%;
+	height:260px;
+	position:relative;
+}
+#controles{
+	width:60px;
+	text-align:center;
+	float: left;
+}
+
+#map-conteneur{
+	width: 100%;
+	position:relative;
+	clear:both;
+}
+
+#map{
+	height:258px;
+	width:100%;
+	color:#000;
+	z-index:14;
+}
+
+#map-nav{
+	background: #000 url(images/reakt5/bg-main.gif);
+	width:400px;
+	padding:5px 0;
+	height:230px;
+	z-index:1;
+	float:right;
+}
+
+#map-nav ul{
+	list-style-type:none;margin:0;padding:0;
+}
+
+#map-nav ul li{
+	display:block;
+	padding:1px 5px;
+}
+
+#map-nav ul li.on{
+	background-color:#d40000;
+	padding:2px 5px;
+	
+}
+#conteneur { width: 100%; }
+
+#conteneur #contenu {
+	width: 822px;
+	float:left;
+}
+
+#conteneur #navigation {
+	float: right;
+	width: 250px;
+}
+
+#contenu .contre-encart {
+	float: left;
+	width: 21em;
+}
+
+#contenu .encart {
+	float: right;
+	width: 20%;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+#pied img { vertical-align: bottom; }
+
+.nettoyeur { clear: both; margin: 0; padding: 0; border: none; height: 0; line-height: 1px; font-size: 1px; }
+
+.invisible { position: absolute; top: -3000em; height: 1%; }
+
+body, #navigation, .encart, .formulaire_spip {
+	font-family: Lucida Grande, 'Trebuchet MS', Tahoma, Arial, sans-serif; }
+
+.cache{display:none;margin:0 0 0 10%;}
+
+.cache a{
+	background-color: #ef2929;
+}
+
+.cartouche { margin: 20px 0; }
+
+.cartouche .titre {
+	font-size: 2.2em;
+	color:#cc0000;
+	font-variant: small-caps;
+}
+
+fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
+
+fieldset.previsu { padding: 1em; }
+
+.formulaire_login_forum .forml { width: 12em; }
+.formulaire_login_forum .spip_logos { float: right; padding-left: 10px; }
+
+ul.choix_mots { float: left; width: 47%; margin: 0; padding: 0; list-style: none; } 
+ul.choix_mots label { display: inline; }
+
+	
+a { text-decoration: none; color: #666; }
+a:hover { color:#FF0000; }
+
+.caractencadre-spip{color:#a40000;}
+
+ul{
+	list-style-type:square;
+}
+
+.cache{display:none;}
+
+#texte-reakt{
+	margin: 0pt -225px;
+	position: absolute;
+	z-index: 1;
+	width: 450px;
+	left: 500px; 
+	top: 150px;
+	display:none;
+}
+
+#texte-content{
+	border: 1px solid #D40000;
+	background: #000;
+	top : 10px;
+	right:10px;
+	left:25px;
+	padding:10px;
+	z-index:2;
+	position:absolute;
+}
+
+.closelink{
+	position:absolute;
+	top:0;
+	right:0;
+	z-index:10;
+}
+
+#conteneur-media{
+	background : #000;
+	padding:0px 0px 0px 0px;
+	position:relative;
+	height:520px;
+	overflow:hidden;
+	margin-top:30px;
+}
+
+#chargement{
+	background-color:#000;
+	position:absolute;
+	top:0;
+	left:0;
+	width:822px;
+	height:520px;
+	color:#000;
+	z-index:20;
+	margin:0px 0 0 0px;
+	color:#fff;
+}
+
+#chargement div{
+	text-align:center;
+	font-weight:bold;
+	margin-top:150px;
+	font-size:2em;
+	z-index:3;
+	position:relative;
+}
+
+#reakt{
+	width: 200px;
+	display:block;
+	height:35px;
+}
+
+#reakt_contents{
+	color:#fff;
+	border: 1px solid  #d40000;
+	padding:10px;
+	margin:-18px 0 0 0;
+	background: #000;
+	opacity:.8;
+}
+
+#reakt_beak{
+	width: 80px;
+	height: 20px;
+	background: url('images/reakt_beak.png') top left no-repeat transparent;
+	margin:0 0 0 -45px;
+	opacity:.8;
+}
+
+* html #reakt_beak{
+	background-image:none;
+}
+
+#reakt_tl, #reakt_tr, #reakt_bl, #reakt_br,
+#reakt_t,#reakt_l,#reakt_r,#reakt_b{
+	height: 0px;
+	width: 0px;
+}
+
+#reakt_close{
+	background:transparent url(images/close.png) no-repeat scroll left top;
+	cursor:pointer;
+	height:28px;
+	width:28px;
+	margin:-30px -14px 0pt 35px;
+}
+
+* html #reakt_close{
+	background-image:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/close.png', sizingMethod='crop');
+}
+
+#marker_content{
+	width:280px;
+}
+
+#ps{
+	width:40%;
+	float:left;
+}
+.ps p{
+	padding:2px 0;
+	margin:0 0 10px 0;
+}
+
+.ps a{
+	color:#fff;
+	font-weight:bold;
+}
+
+#psdroite{
+	width:40%;
+	float:right;
+}
+
+#psdroite p{
+	text-align:right;
+}

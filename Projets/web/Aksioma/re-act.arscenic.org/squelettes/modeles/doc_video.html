@@ -1,0 +1,161 @@
+<BOUCLE_doc (DOCUMENTS) {id_document}>
+<div>	
+[(#REM) Les variables nécessaires]
+[(#SET{bgcolor,[(#ENV{bgcolor}|sinon{000000})]})]
+[(#SET{largeur,[(#ENV{largeur}|sinon{[(#LARGEUR|>{0}|?{#LARGEUR,'250'})]})]})]
+[(#SET{hauteur,[(#ENV{hauteur}|sinon{[(#HAUTEUR|>{0}|?{#HAUTEUR,'250'})]})]})]
+
+	<script type="text/javascript">
+        	var myListener#ENV{id_player} = new Object();
+        	
+		/**
+		 * Initialisation
+		 */
+		myListener#ENV{id_player}.onInit = function(){
+			getFlashObject#ENV{id_player}().SetVariable("method:setUrl", "[(#FICHIER|url_absolue)]");
+			getFlashObject#ENV{id_player}().SetVariable("method:loadMovieOnTop", "[(#LOGO_DOCUMENT||extraire_attribut{src}|url_absolue)]|1||");
+		};
+        	/**
+        	 * onClick event on the video
+        	 */
+        	myListener#ENV{id_player}.onClick = function()
+		{
+        		var total = document.getElementById("info_click#ENV{id_player}").innerHTML;
+        		document.getElementById("info_click#ENV{id_player}").innerHTML = Number(total)+1;
+        	};
+        	/**
+        	 * onKeyUp event on the video
+        	 */
+        	myListener#ENV{id_player}.onKeyUp = function(pKey){
+//        		document.getElementById("info_key#ENV{id_player}").innerHTML = pKey;
+        	};
+        	/**
+        	 * onComplete event
+        	 */
+//        	myListener#ENV{id_player}.onFinished = function(){
+ //       		alert("finished");
+//        	};
+        	/**
+        	 * Update
+        	 */
+        	myListener#ENV{id_player}.onUpdate = function()
+		{
+        		//document.getElementById("info_playing#ENV{id_player}").innerHTML = this.isPlaying;
+//            	document.getElementById("info_url#ENV{id_player}").innerHTML = this.url;
+ //           	document.getElementById("info_volume#ENV{id_player}").innerHTML = this.volume;
+ //           	document.getElementById("info_position#ENV{id_player}").innerHTML = this.position;
+ //           	document.getElementById("info_duration#ENV{id_player}").innerHTML = this.duration;
+ //           	document.getElementById("info_buffer#ENV{id_player}").innerHTML = this.bufferLength + "/" + this.bufferTime;
+ //           	document.getElementById("info_bytes#ENV{id_player}").innerHTML = this.bytesLoaded + "/" + this.bytesTotal + " (" + this.bytesPercent + "%)";
+           	document.getElementById("val#ENV{id_player}").innerHTML = this.bytesPercent;
+			
+//            	var isPlaying = (this.isPlaying == "true");
+  //         		document.getElementById("playerplay#ENV{id_player}").style.display = (isPlaying)?"none":"block";
+//           		document.getElementById("playerpause#ENV{id_player}").style.display = (isPlaying)?"block":"none";
+           		
+ //          		var timelineWidth = 160;
+//            	var sliderWidth = 40;
+//            	var sliderPositionMin = 40;
+//            	var sliderPositionMax = sliderPositionMin + timelineWidth - sliderWidth;
+//            	var sliderPosition = sliderPositionMin + Math.round((timelineWidth - sliderWidth) * this.position / this.duration);
+            	
+ //           	if (sliderPosition < sliderPositionMin) {
+//            		sliderPosition = sliderPositionMin;
+//            	}
+ //           	if (sliderPosition > sliderPositionMax) {
+ //           		sliderPosition = sliderPositionMax;
+//            	}	
+//            	document.getElementById("playerslider#ENV{id_player}").style.left = sliderPosition+"px";
+        	};
+        	
+        	function getFlashObject#ENV{id_player}()
+		{
+        		return document.getElementById("myFlash#ENV{id_player}");
+        	}
+            function play#ENV{id_player}()
+		{
+            	if ((myListener#ENV{id_player}.position == 0) && (myListener#ENV{id_player}.url == undefined)) {
+	                getFlashObject#ENV{id_player}().SetVariable("method:setUrl", "http://download.neolao.com/videos/KyodaiNoGilga.flv");
+                }
+                getFlashObject#ENV{id_player}().SetVariable("method:play", "");
+            }
+            function pause#ENV{id_player}()
+		{
+                getFlashObject#ENV{id_player}().SetVariable("method:pause", "");	
+            }
+            function stop#ENV{id_player}()
+		{
+                getFlashObject#ENV{id_player}().SetVariable("method:stop", "");
+            }
+            function setWidth#ENV{id_player}()
+		{
+            	var width = document.getElementById("inputWidth#ENV{id_player}").value;
+            	getFlashObject#ENV{id_player}().width = width+"px";
+            }
+            function setHeight#ENV{id_player}()
+		{
+            	var height = document.getElementById("inputHeight#ENV{id_player}").value;
+            	getFlashObject#ENV{id_player}().height = height+"px";
+            }
+            function setPosition#ENV{id_player}()
+            {
+            	var position = document.getElementById("inputPosition#ENV{id_player}").value;
+            	getFlashObject#ENV{id_player}().SetVariable("method:setPosition", position);
+            }
+            function setVolume#ENV{id_player}()
+            {
+            	var volume = document.getElementById("inputVolume#ENV{id_player}").value;
+            	getFlashObject#ENV{id_player}().SetVariable("method:setVolume", volume);
+            }
+            function loadImage#ENV{id_player}()
+            {
+            	var url = document.getElementById("inputImage#ENV{id_player}").value;
+            	var depth = document.getElementById("inputImageDepth#ENV{id_player}").value;
+            	var verticalAlign = document.getElementById("inputImageVertical#ENV{id_player}").value;
+            	var horizontalAlign = document.getElementById("inputImageHorizontal#ENV{id_player}").value;
+            	
+            	getFlashObject#ENV{id_player}().SetVariable("method:loadMovieOnTop", url+"|"+depth+"|"+verticalAlign+"|"+horizontalAlign);
+            }
+            function unloadImage#ENV{id_player}(depth)
+            {
+            	getFlashObject#ENV{id_player}().SetVariable("method:unloadMovieOnTop", depth);
+            }
+        </script>
+<object id="myFlash#ENV{id_player}" type="application/x-shockwave-flash" data="#CHEMIN{flash/player_flv_js.swf}" width="#LARGEUR" height="#HAUTEUR">
+	<param name="movie" value="#CHEMIN{flash/player_flv_js.swf}" />
+	<param name="AllowScriptAccess" value="always" />
+	<param name="FlashVars" value="listener=myListener#ENV{id_player}&amp;interval=500&amp;useHandCursor=0&amp;bgcolor=#GET{bgcolor}&amp;buffer=9" />
+	<p>Texte alternatif</p>
+</object>
+<div class="showhide">[+]</div>
+<div id="player#ENV{id_player}" class="cache">
+		<div id="playerplay#ENV{id_player}" class="button play"><a href="javascript:play#ENV{id_player}()" >PLAY</a></div>
+		<div id="playerpause#ENV{id_player}" class="button pause"><a href="javascript:pause#ENV{id_player}()">PAUSE</a></div>
+		<div id="playerstop#ENV{id_player}" class="button stop"><a href="javascript:stop#ENV{id_player}()">STOP</a></div>
+		<div class="timeline"><a id="playerslider#ENV{id_player}" href="#slider">SLIDER</a></div>
+	<h2>Exemples javascript</h2>
+	<form action="#SELF">
+	<ul>
+		<li>Modifier la largeur: <input id="inputWidth#ENV{id_player}" type="text" value="200" size="3"/> <input type="button" value="Modifier" onclick="setWidth#ENV{id_player}()"/></li>
+		<li>Modifier la hauteur: <input id="inputHeight#ENV{id_player}" type="text" value="200" size="3"/> <input type="button" value="Modifier" onclick="setHeight#ENV{id_player}()"/></li>
+		<li>Modifier la position: <input id="inputPosition#ENV{id_player}" type="text" value="10000" size="6"/> <input type="button" value="Modifier" onclick="setPosition#ENV{id_player}()"/></li>
+		<li>Modifier le volume: <input id="inputVolume#ENV{id_player}" type="text" value="100" size="3"/> <input type="button" value="Modifier" onclick="setVolume#ENV{id_player}()"/></li>
+		<li>Charger une image <input id="inputImage#ENV{id_player}" type="text" value="logo.jpg" size="10"/> à la profondeur <input id="inputImageDepth#ENV{id_player}" type="text" value="1" size="1"/>, alignement vertical <input id="inputImageVertical#ENV{id_player}" type="text" value="" size="2"/>, alignement horizontal <input id="inputImageHorizontal#ENV{id_player}" type="text" value="" size="2"/> <input type="button" value="Charger" onclick="loadImage#ENV{id_player}()"/></li>
+		<li>Décharger une image à la profondeur <input id="inputUnloadDepth#ENV{id_player}" type="text" value="1" size="1"/> <input type="button" value="Décharger" onclick="unloadImage#ENV{id_player}()"/></li>
+	</ul>
+	</form>
+	<h2>Informations</h2>
+	<ul>
+		<li>url : <span id="info_url#ENV{id_player}">undefined</span></li>
+		<li>chargement : <span id="info_bytes#ENV{id_player}">undefined</span></li>
+		<li>isPlaying : <span id="info_playing#ENV{id_player}">undefined</span></li>
+		<li>position : <span id="info_position#ENV{id_player}">undefined</span></li>
+		<li>duration : <span id="info_duration#ENV{id_player}">undefined</span></li>
+		<li>tampon : <span id="info_buffer#ENV{id_player}">undefined</span></li>
+		<li>volume : <span id="info_volume#ENV{id_player}">undefined</span></li>
+		<li>click : <span id="info_click#ENV{id_player}">0</span></li>
+		<li>key up : <span id="info_key#ENV{id_player}">undefined</span></li>
+	</ul>
+</div>
+</div>
+</BOUCLE_doc>

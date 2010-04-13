@@ -1,0 +1,14 @@
+#CACHE{0}
+[(#HTTP_HEADER{Content-type: text/xml[; charset=(#CHARSET)]})]
+<?php echo '<' ?>?xml version="1.0"[ encoding="(#CHARSET)"]?>
+<B_donnees>
+<markers>
+<BOUCLE_donnees(FORMS_DONNEES){id_article}>
+<marker 
+<BOUCLE_champs(FORMS_CHAMPS){id_form}{par rang}>
+[(#LESVALEURS**|supprimer_numero)]
+</BOUCLE_champs>
+></marker>
+</BOUCLE_donnees>
+</markers>
+</B_donnees>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" dir="#LANG_DIR" lang="#LANG" xml:lang="#LANG">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+<body class="page_sommaire">
+<div id="page">
+	<div id="conteneur">
+			<div class="liste-installations" style="width:750px;margin:10px auto;">
+				<div class="instalation" style="background-color:#000;border:2px solid #666;">
+					<BOUCLE_article_react(ARTICLES) {id_rubrique=3}{origine_traduction}>
+					<BOUCLE_trad_reakt(ARTICLES){traduction}{lang}>
+					<div class="logo-installation" style="margin:10px;float:left;width:200px">
+						<a href="#URL_ARTICLE{1}">[(#LOGO_ARTICLE_RUBRIQUE||image_reduire{200,0})]</a>
+						<B_evt_reakt>
+						<div id="agenda">
+							<h4><:presented_in:></h4>
+							<ul>
+							<BOUCLE_evt_reakt(EVENEMENTS){id_article=#_article_react:ID_ARTICLE}>
+								<li><strong>#TITRE : </strong>[(#LIEU|supprimer_tags)]<br />
+									[(#DATE_DEBUT|affdate{Y-m-d})] / [(#DATE_FIN|affdate{Y-m-d})]
+								</li>
+							</BOUCLE_evt_reakt>
+							</ul>
+							</div>
+						</B_evt_reakt>
+					</div>
+					<div class="contenu-installation" style="margin:10px; float:left;width:500px">
+					<INCLURE{fond=inc-menu_langue}{env}>
+					[<div class="surtitre">(#SURTITRE|propre)</div>]
+					<h2 class="#EDIT{titre}">#TITRE</h2>
+					[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
+					[<div class="#EDIT{texte} texte introduction">(#TEXTE)</div>]
+					</div>
+					<br class="nettoyeur" />&nbsp;
+				</div>
+				</BOUCLE_trad_reakt>
+				</B_trad_reakt>
+				<div class="logo-installation" style="margin:10px;float:left;width:200px">
+						<a href="#URL_ARTICLE{1}">[(#LOGO_ARTICLE_RUBRIQUE||image_reduire{200,0})]</a>
+						<B_evt>
+						<div id="agenda">
+							<h4><:presented_in:></h4>
+							<ul>
+							<BOUCLE_evt(EVENEMENTS){id_article}>
+								<li><strong>#TITRE : </strong>[(#LIEU|supprimer_tags)]<br />
+									[(#DATE_DEBUT|affdate{Y-m-d})] / [(#DATE_FIN|affdate{Y-m-d})]
+								</li>
+							</BOUCLE_evt>
+							</ul>
+							</div>
+						</B_evt>
+					</div>
+					<div class="contenu-installation" style="margin:10px; float:left;width:500px">
+					<INCLURE{fond=inc-menu_langue}{env}>
+					[<div class="surtitre">(#SURTITRE|propre)</div>]
+					<h2 class="#EDIT{titre}">#TITRE</h2>
+					[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
+					[<div class="#EDIT{texte} texte introduction">(#TEXTE)</div>]
+					</div>
+					<br class="nettoyeur" />
+				</div>
+				<//B_trad_reakt>
+				</BOUCLE_article_react>
+			</div>
+		<br class="nettoyeur" />
+	</div>
+	<INCLURE{fond=inc-pied}>
+</div>
+</body>
+</html>

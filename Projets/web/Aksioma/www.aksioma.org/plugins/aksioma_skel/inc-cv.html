@@ -1,0 +1,25 @@
+#CACHE{0}
+
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+	<div class="legende #EDIT{texte}">
+		#TEXTE
+	</div>
+	<div class="year-links">
+	<BOUCLE_articles(ARTICLES){id_rubrique}{par date}{inverse}{' l '}>
+		<a href="[(#URL_RUBRIQUE|parametre_url{id_article,#ID_ARTICLE})]" class="ajax">#TITRE</a>
+	</BOUCLE_articles>
+	</div>
+</BOUCLE_rubrique>
+
+<BOUCLE_article_cv(ARTICLES){id_article}>
+	<div class="#EDIT{texte} texte">
+	#TEXTE
+	</div>
+</BOUCLE_article_cv>
+</B_article_cv>
+	<BOUCLE_article_cv_defaut(ARTICLES){id_rubrique}{par date}{inverse}{0,1}>
+	<div class="#EDIT{texte} texte">
+		#TEXTE
+	</div>
+	</BOUCLE_article_cv_defaut>
+<//B_article_cv>

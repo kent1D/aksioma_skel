@@ -1,0 +1,36 @@
+<BOUCLE_article_top_right(ARTICLES){id_mot=2}>
+	<div id="topright-text">
+	<span class="#EDIT{logo}">
+	#LOGO_ARTICLE
+	</span>
+	<div class="#EDIT{titre}">
+		<span class="#EDIT{titre}"><a href="#URL_ARTICLE"><strong>[(#TITRE)]</strong></a></span>
+		<strong>[(#SOUSTITRE|propre)]</strong>
+	</div>
+	
+	<div class="#EDIT{texte}">
+	#TEXTE
+	</div>
+	</div>
+</BOUCLE_article_top_right>
+
+<BOUCLE_selected_projects(MOTS){id_mot=1}>
+<h4 class="#EDIT{titre}">#TITRE</h4>
+<B_focus_projects>
+<div class="list">
+<ul>
+<BOUCLE_focus_projects(ARTICLES){id_mot}{par num titre, titre}>
+	<li>
+		<div>
+			<a href="#URL_ARTICLE" title="#TITRE">
+			<span class="#EDIT{logo}">[(#LOGO_ARTICLE||inserer_attribut{width,78}|inserer_attribut{height,62})]</span>
+			<br />[(#TITRE|supprimer_numero)] &#91;#LANG&#93;</a>[(#MODELE{article_traductions_simple}{id_article})]
+			[(#SOUSTITRE|propre)]
+		</div>
+	</li>
+		
+</BOUCLE_focus_projects>
+</ul>
+</div>
+</B_focus_projects>
+</BOUCLE_selected_projects>

@@ -1,0 +1,311 @@
+body {
+	background: #000 url(images/reakt5/bg-main.gif);
+	margin: 1.5em;
+	text-align: center;
+	font-size: 11px;
+	color: #fff;
+}
+
+img { margin: 0; padding: 0; border: none; }
+h1, h2, h3, h4, { margin: 0; padding: 0; font-size: 1em; font-weight: normal; }
+
+#page {
+	width: 1000px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#lecteurs{
+	width:100%;
+	height:260px;
+	position:relative;
+}
+#controles{
+	width:60px;
+	text-align:center;
+	float: left;
+}
+
+#map{
+	width:100%;
+	height:350px;
+	margin-top:44px;
+	clear:both;
+
+}
+
+#conteneur { width: 100%; }
+
+#conteneur #contenu {
+	width: 740px;
+	float:left;
+}
+
+#conteneur #navigation {
+	float: right;
+	width: 250px;
+}
+
+#contenu .contre-encart {
+	float: left;
+	width: 21em;
+}
+
+#contenu .encart {
+	float: right;
+	width: 20%;
+	margin: 0;
+	margin-bottom: 1em;
+}
+
+.nettoyeur { clear: both; margin: 0; padding: 0; border: none; height: 1px; line-height: 1px; font-size: 1px; }
+
+.invisible { position: absolute; top: -3000em; height: 1%; }
+
+body, #navigation, .encart, .formulaire_spip {
+	font-family: Lucida Grande, 'Trebuchet MS', Tahoma, Arial, sans-serif; }
+
+.rubriques, .breves, .syndic, .forums, .divers {
+	min-width: 10em;
+	border: 1px solid #CCC;
+	margin-bottom: 1em;
+}
+
+.menu-titre {
+	padding: 0.2em 0.4em;
+	border-bottom: 1px dotted #CCC;
+	text-align: center;
+	font-weight: bold;
+}
+
+#navigation p, .encart p { margin: 0; padding: 0.2em 0.7em; text-align: left;  }
+#navigation ul, .encart ul { margin: 0; padding: 0.2em 0; text-align: left; list-style: none; }
+#navigation li, .encart li { margin: 0; padding: 0;}
+
+#navigation li a{
+	border:1px solid #ccc;
+	color:#fff;
+	background-color:#a40000;
+	display: block;
+	padding:5px;
+	margin:2px 0;
+}
+
+#navigation li a.on{
+	background-color:#cc0000;
+}
+
+#navigation li a:hover{
+	background-color:#cc0000;
+	text-decoration: none;
+}
+
+.cache{display:none;margin:0 0 0 10%;}
+
+.cache a{
+	background-color: #ef2929;
+}
+
+.cartouche { margin: 1.5em; }
+
+.cartouche .titre {
+	font-size: 2.2em;
+	color:#cc0000;
+	font-variant: small-caps;
+}
+#contenu .surtitre, #contenu .soustitre {  }
+
+.cartouche .spip_logos {
+	float: right;
+	margin-left: 16px;
+	margin-bottom: 16px; }
+
+.cartouche p { margin: 0; padding: 0; clear: left; }
+.cartouche small {  }
+
+.cartouche .traductions {  }
+.cartouche .traductions * { display: inline; }
+.cartouche .traductions li { padding-left: 1em; }
+
+.chapo {
+	margin-bottom: 1.5em;
+	font-weight: bold;
+	line-height: 1.4em; }
+
+.lien {
+	background: #EEE;
+	margin: 1em;
+	margin-bottom: 1.5em;
+	padding: 0.82em;
+	border: 1px solid #CCC;
+	font-weight: bold; }
+
+.ps, .notes {
+	margin-top: 1.4em;
+	padding-top: 2px;
+	border-top: 1px solid #666; }
+.ps {  }
+.notes { clear: both; }
+.ps h2, .notes h2 { font-weight: bold; }
+
+.liste-installations{
+	
+}
+.liste-articles ul { margin: 0; padding: 0; list-style: none; }
+.liste-articles li { margin-bottom: 1em; clear: both; }
+
+.liste-articles li .titre {
+	font-weight: bold; }
+
+.liste-articles li .spip_logos {
+	float: right;
+	margin-left: 16px;
+	margin-bottom: 16px;
+	clear: right; }
+
+.liste-articles li p { margin: 0; padding: 0; }
+
+.liste-articles li .enclosures {
+	float: right;
+	text-align: right;
+	max-width: 60%;
+	margin: 0; }
+
+.liste-articles li small {
+	display: block;
+}
+
+.liste-articles li .introduction {
+	margin-top: 5px;
+	margin-bottom: 2em;
+	border: 1px solid #CCC;
+	padding: 0.9em;
+	line-height: 1.4em; }
+
+.pagination {  }
+
+.formulaire_spip { text-align: left;  }
+.formulaire_spip p { margin: 0.5em 0; padding: 0; }
+
+.formulaire_spip fieldset {}
+.formulaire_spip legend {}
+
+.formulaire_spip label {}
+.formulaire_spip .forml { width: 99%; font-family: inherit; font-size: inherit; }
+
+.spip_bouton { text-align: right; }
+.spip_bouton input { float: right; }
+
+.reponse_formulaire { font-weight: bold; color: #e86519; }
+fieldset.reponse_formulaire { border-color: #e86519; font-weight: normal; }
+
+fieldset.previsu { padding: 1em; }
+
+.formulaire_login_forum .forml { width: 12em; }
+.formulaire_login_forum .spip_logos { float: right; padding-left: 10px; }
+
+ul.choix_mots { float: left; width: 47%; margin: 0; padding: 0; list-style: none; } 
+ul.choix_mots label { display: inline; }
+
+	
+a { color: #ccc; }
+a:hover { color:#FF0000; }
+
+.caractencadre-spip{color:#a40000;}
+
+ul{
+	list-style-type:square;
+}
+
+.cache{display:none;}
+
+#texte-reakt{
+	margin: 0pt -225px;
+	position: absolute;
+	z-index: 1;
+	width: 450px;
+	left: 500px; 
+	top: 150px;
+	display:none;
+}
+
+#texte-content{
+	border: 1px solid #D40000;
+	background: #000;
+	top : 10px;
+	right:10px;
+	left:25px;
+	padding:10px;
+	z-index:2;
+	position:absolute;
+}
+
+.closelink{
+	position:absolute;
+	top:0;
+	right:0;
+	z-index:10;
+}
+
+#conteneur-media{
+	background : transparent url(images/reakt5/overlay_map.png) no-repeat;
+	padding:58px 76px 75px 64px;
+	position:relative;
+}
+
+#chargement{
+	background-color:#fff;
+	position:absolute;
+	top:0;
+	left:0;
+	width:860px;
+	height:614px;
+	color:#000;
+	opacity:.9;
+	z-index:5;
+	margin:59px 0 0 64px;
+}
+
+#chargement div{
+	text-align:center;
+	font-weight:bold;
+	margin-top:200px;
+	font-size:2em;
+	z-index:3;
+	position:relative;
+}
+
+.contenu-installation h2{
+	font-variant:small-caps;
+	font-size:2em;
+	color:#d40000;
+	margin:1em 0;
+}
+
+strong{
+	color:#d40000;
+}
+
+#agenda{
+	margin:5px;
+}
+
+#agenda ul{
+	padding: 0;
+	list-style-type:none;
+}
+#agenda ul li{
+	margin: 0;
+	padding: 0;
+}
+
+.spip_documents { text-align: center; line-height: normal; }
+.spip_documents p { margin: 0.10em; padding: 0; }
+.spip_documents_center { display: block; clear: both; width: 100%; margin: 1em auto; }
+.spip_documents_left { float: left; margin-right: 15px; margin-bottom: 5px; }
+.spip_documents_right { float: right; margin-left: 15px; margin-bottom: 5px; }
+
+#langue{
+	text-align:right;
+}

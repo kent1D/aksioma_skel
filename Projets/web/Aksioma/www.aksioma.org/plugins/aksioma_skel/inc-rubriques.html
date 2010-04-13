@@ -1,0 +1,47 @@
+[(#REM)
+	Barre de navigation, ouverte sur la hierarchie courante
+
+	On fait un plan, et, quand on avance vers une rubrique,
+	on l'affiche si son parent est expose ou est la racine du site. ]
+
+#FORMULAIRE_RECHERCHE
+<br class="nettoyeur" />
+
+<h2>
+	<span class="floatleft">
+		<a href="javascript:history.go(-1)" title="<:back:>"><img src="#CHEMIN{images/back.gif}" /></a>
+	</span>
+	<a href="#URL_SITE_SPIP" title="<:gohome:>"><img src="#CHEMIN{images/ic_home.gif}" /></a><:home:>
+</h2>
+
+<B_rubriques>
+<div class="menu rubriques">
+	<ul>
+	<BOUCLE_rubriques(RUBRIQUES) {racine} {id_rubrique !=12}{par num titre, titre}{tout}>
+		<li>
+			<a href="#URL_RUBRIQUE"[ class="(#EXPOSE)"]>[(#TITRE|supprimer_numero|couper{80})]</a>
+		</li>
+	</BOUCLE_rubriques>
+
+	</ul>
+</div>
+</B_rubriques>
+
+<B_focus>
+<BOUCLE_mot_focus(MOTS){id_mot=3}>
+	<h2>#TITRE</h2>
+</BOUCLE_mot_focus>
+<div class="focus">
+	<ul>
+	<BOUCLE_focus(ARTICLES) {id_mot=3} {par num titre, titre}>
+		<li>
+			#LOGO_ARTICLE
+			<h5 class="#EDIT{titre}"><a href="#URL_ARTICLE" title="">[(#TITRE|supprimer_numero)]</a></h5>
+			[(#SOUSTITRE|propre)]
+			[(#CHAPO*|strncmp{=,1}|<{1}|?{' ',''})[<div class="#EDIT{texte} introduction entry-content">(#TEXTE)</div>]]
+			[(#CHAPO*|strncmp{=,1}|<{1}||?{'',' '})[<div class="#EDIT{chapo} introduction entry-content">(#CHAPO)</div>]]
+		</li>
+	</BOUCLE_focus>
+	</ul>
+</div>
+</B_focus>

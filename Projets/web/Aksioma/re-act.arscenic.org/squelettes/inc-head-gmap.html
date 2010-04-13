@@ -1,0 +1,109 @@
+<BOUCLE_article(ARTICLES){id_article}>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAGPlcQ7atcyePhUZ-JlUAKBT9HmqnVnp9RaR0WTIOMSxT_llh_xRZ7LPebxNKsTZbdO6CQE_Y3wHfOA" type="text/javascript"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+		map.addControl(new GSmallMapControl());
+		map.addControl(new GMapTypeControl());
+		
+        map.setCenter(new GLatLng(19.311143,-11.953125), 2);
+		var bounds = map.getBounds();
+		var southWest = bounds.getSouthWest();
+		var northEast = bounds.getNorthEast();
+		var lngSpan = northEast.lng() - southWest.lng();
+		var latSpan = northEast.lat() - southWest.lat();
+		points = [];
+		time = [];
+		toverlays = [];
+		infos = [];
+		
+		/*GEvent.addListener(map, "click", function(marker, point) {
+			points.push(point);
+			map.addOverlay(new GPolyline(points));
+		});
+		*/
+		GDownloadUrl("[(#URL_PAGE{inc-markers}|parametre_url{id_article,#ID_ARTICLE,'&'})]", function(data, responseCode) {
+			var xml = GXml.parse(data);
+			var markers = xml.documentElement.getElementsByTagName("marker");
+			for (var i = 0; i < markers.length-1; i++) {
+				var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),
+                            parseFloat(markers[i].getAttribute("lng")));
+				points.push(point);
+				time.push(markers[i].getAttribute("t"));
+				
+				//map.addOverlay(new GMarker(point, {title:i}));
+			}
+//			map.addOverlay(new GPolyline(points))
+		});
+		emap = map;
+		counter = 1;
+      }
+    }
+    
+    function func(){}
+	function animateZoom(){
+		emap.setZoom(emap.getZoom()+2);
+		if (emap.getZoom() == 14){ 
+			window.clearInterval(pan_stop_id); 
+			stop_id = setInterval('drawRoute()', 1000);
+		}
+		//document.getElementById('coords').innerHTML+="<br>zoom:"+emap.getZoom();
+	}
+	
+	function intro(){
+		cur_time=0;
+		window.setTimeout(function() {
+				emap.setCenter(new GLatLng(48.869436,2.271284),2);
+				pan_stop_id = setInterval('animateZoom()', 2500);
+			}, 1500);
+	}
+	
+	prev_point = new GPoint(0,0);
+	curr_point = new GPoint(0,0);
+	
+	function drawRoute(){
+	    
+		//document.getElementById('coords').innerHTML+=counter+" time:"+time[counter]+" cur_time"+cur_time+"<br>";
+		if (cur_time == time[counter]){
+			curr_point = points[counter];
+			prev_point = points[counter-1];
+			
+			counter++;
+			capture_overlay_flag = 'n';
+		}
+		else {
+			var capture_overlay_flag = 'y';
+		    var cur_tgap = time[counter]-cur_time;
+			var tgap = time[counter]-time[counter-1];
+			var xgap = points[counter].x - points[counter-1].x;
+			var ygap = points[counter].y - points[counter-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point = new GPoint(points[counter].x - (((xgap)/(tgap)) * cur_tgap), points[counter].y - (((ygap)/(tgap)) * cur_tgap));
+		}
+		
+		if (prev_point.x != 0){
+			var toverlay = new GPolyline([prev_point, curr_point], '#FF0000', 7, .8);
+			emap.addOverlay(toverlay);
+			emap.panTo(new GLatLng(curr_point.y,curr_point.x));
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+emap.getZoom()+" "+curr_point.x+", "+curr_point.y;
+			if (capture_overlay_flag == 'y'){ toverlays.push(toverlay); }
+		}
+		
+		prev_point = curr_point;
+		
+		if (capture_overlay_flag == 'n'){
+			for (i=0; i<toverlays.length; i++){
+				emap.removeOverlay(toverlays[i]);
+			}
+			delete toverlays;
+			toverlays = [];
+		}
+		cur_time++;
+		if (counter == points.length){window.clearInterval(stop_id);}	
+	}
+    //]]>
+</script>
+</BOUCLE_article>

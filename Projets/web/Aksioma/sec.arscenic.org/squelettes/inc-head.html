@@ -1,0 +1,22 @@
+[(#REM)
+	Head standard de toutes les pages ; les elements specifiques
+	(title, description) figurent dans le squelette article.html
+]
+[(#REM) Preciser le charset ]
+<meta http-equiv="Content-Type" content="text/html; charset=#CHARSET" />
+
+[(#REM) Fierement fabrique avec SPIP ]
+<meta name="generator" content="SPIP[ (#SPIP_VERSION)]" />
+
+[(#REM) Lien vers l'icone destinee a la barre de bookmarks ]
+[<link rel="shortcut icon" href="(#CHEMIN{favicon.ico})" />]
+
+[(#REM) Feuille de style CSS pour l'affichage du site a l'ecran ]
+[<link rel="stylesheet" href="(#CHEMIN{habillage.css}|direction_css)" type="text/css" media="projection, screen, tv" />]
+
+<link rel="icon" type="image/png" href="#CHEMIN{favicon.png}" />
+
+[(#REM) Balise permettant aux plugins d'inserer des appels javascript ou css ;
+	C'est ici que SPIP va inserer l'appel de la librairie jQuery
+]
+#INSERT_HEAD

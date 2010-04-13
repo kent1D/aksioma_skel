@@ -1,0 +1,30 @@
+#HTTP_HEADER{Content-Type:text/html}
+<BOUCLE_tous(ARTICLES){id_rubrique=4}{pagination 1}>
+	<div id="title" style="margin-top:-30px;margin-left:10px;">
+	<BOUCLE_doc1(DOCUMENTS){id_article}{0,1}>
+		#TITRE
+	</BOUCLE_doc1>
+</div>
+	<div class="#EDIT{texte}">
+	#TEXTE
+	</div>
+
+<script type="text/javascript">
+	<BOUCLE_docs(DOCUMENTS){id_article}{1,2}>
+	function bis#ID_DOCUMENT(){
+		jQuery('#content img').attr({ src: "#FICHIER"})
+		jQuery('#content #title').html('#TITRE');
+	}
+	</BOUCLE_docs>
+jQuery(document).ready(function(){
+	setTimeout('bis20()',10000);
+	setTimeout('bis21()',20000);
+})
+</script>
+
+</BOUCLE_tous>
+<div id="pagination">
+#PAGINATION{precedent_suivant}
+</div>
+</B_tous>
+<//B_tous>

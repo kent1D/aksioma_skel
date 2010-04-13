@@ -1,0 +1,343 @@
+	<BOUCLE_article_principal(ARTICLES) {id_article}>
+	<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+	<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+	<head>
+	<title>[(#TITRE|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>
+	[<meta name="description" content="(#INTRODUCTION|couper{150}|attribut_html)" />]
+	<link rel="alternate" type="application/rss+xml" 
+		title="<:titre_page_mots_tous:>" 
+	href="[(#URL_PAGE{backend})]<BOUCLE_URLMOT(MOTS){id_article}>&amp;id_mot[]=#ID_MOT</BOUCLE_URLMOT>" />
+	<link rel="alternate" type="application/rss+xml" 
+		title="<:icone_auteurs:>" 
+	href="[(#URL_PAGE{backend})]<BOUCLE_URLAUTEURS(AUTEURS){id_article}>&amp;id_auteur[]=#ID_AUTEUR</BOUCLE_URLAUTEURS>" />
+	<INCLURE{fond=inc-head}>
+	<script src="#URL_PAGE{geomap.js}" type="text/javascript"></script>
+	<script type="text/javascript">
+	//<![CDATA[
+      var map;
+      function load(){
+	  	if (GBrowserIsCompatible()) {
+	  		map = new GMap2(document.getElementById("map"));
+			map.setCenter(new GLatLng(52.51402710160183, 13.378525972366333), 3);
+			map.disableDragging();
+			map.disableDoubleClickZoom();
+			map.setMapType(G_SATELLITE_MAP);
+			map.enableContinuousZoom();
+	
+			points = [];
+			zooms = [];
+			time = [];
+			titles = [];
+			toverlays = [];
+			
+			if (map.isLoaded()){
+				counter = 1;
+				cur_time=1;
+				intro();
+			}
+		}
+	}
+			
+	function intro(){
+		GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,6,'&'})]", function(data, responseCode) {
+			var xml = GXml.parse(data);
+			var markers = xml.documentElement.getElementsByTagName("marker");
+			for (var i = 0; i < markers.length; i++) {
+				var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),parseFloat(markers[i].getAttribute("lng")));
+				points.push(point);
+				var zoom = parseFloat(markers[i].getAttribute("zoom"));
+				zooms.push(zoom);
+				var title = markers[i].getAttribute("titre");
+				titles.push(title);
+				time.push(markers[i].getAttribute("time"));
+			}
+		});
+		pan_stop = setInterval(function(){
+			zoomintro()
+		}, 1000);
+	}
+
+  	function zoomintro(){
+  		document.getElementById('coords').innerHTML+=counter+" time:"+time[counter]+" cur_time"+cur_time+"<br>";
+	
+		if (cur_time == time[counter]) {
+			jQuery('#info-title').html(titles[counter]);
+			map.setCenter(points[counter]);
+			if (map.getZoom() != zooms[counter]) {
+				map.setZoom(zooms[counter]);
+			}
+			counter++;
+		}
+		
+		cur_time++;
+		if (counter == points.length) {
+			window.clearInterval(pan_stop);
+			delete points;
+			delete zooms;
+			delete toverlays;
+			delete titles;
+			toverlays_janez1 = [];
+			toverlays_janez2 = [];
+			toverlays_janez3 = [];
+			points_janez1 = [];
+			time_janez1 = [];
+			points_janez2 = [];
+			time_janez2 = [];
+			points_janez3 = [];
+			time_janez3 = [];
+			prev_point_janez2 = new GPoint(0,0);
+			curr_point_janez2 = new GPoint(0,0);
+			prev_point_janez3 = new GPoint(0,0);
+			curr_point_janez3 = new GPoint(0,0);
+			prev_point = new GPoint(0,0);
+			curr_point = new GPoint(0,0);
+			counter_janez1 = 1;
+			counter_janez2 = 1;
+			counter_janez3 = 1;
+			cur_time_janez1=1;
+			cur_time_janez2=1;
+			cur_time_janez3=1;
+			
+			GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,5,'&'})]", function(data, responseCode) {
+				var xml = GXml.parse(data);
+				var markers = xml.documentElement.getElementsByTagName("marker");
+				for (var i = 0; i < markers.length; i++) {
+					var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")), parseFloat(markers[i].getAttribute("lng")));
+					points_janez1.push(point);
+					time_janez1.push(markers[i].getAttribute("time"));
+				}
+			});
+			
+			GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,7,'&'})]", function(data, responseCode) {
+				var xml = GXml.parse(data);
+				var markers = xml.documentElement.getElementsByTagName("marker");
+				for (var i = 0; i < markers.length; i++) {
+					var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),parseFloat(markers[i].getAttribute("lng")));
+					points_janez2.push(point);
+					time_janez2.push(markers[i].getAttribute("time"));
+				}
+			});
+			
+			GDownloadUrl("[(#URL_PAGE{markers}|parametre_url{id_form,8,'&'})]", function(data, responseCode) {
+				var xml = GXml.parse(data);
+				var markers = xml.documentElement.getElementsByTagName("marker");
+				for (var i = 0; i < markers.length; i++) {
+					var point = new GLatLng(parseFloat(markers[i].getAttribute("lat")),parseFloat(markers[i].getAttribute("lng")));
+					points_janez3.push(point);
+					time_janez3.push(markers[i].getAttribute("time"));
+				}
+			});
+			
+			
+			pan_to_janez1 = setTimeout(function(){
+				  	setInterval(function(){
+				  		drawRoute_janez1()
+				  	}, 1000)
+				  },5000);
+
+		}
+	}
+			
+	function drawRoute_janez1(){
+		jQuery('#coords').append(""+counter_janez1+" time:"+time_janez1[counter_janez1]+" cur_time"+cur_time_janez1+"<br>");
+		if (cur_time_janez1 == time_janez1[counter_janez1]){
+			curr_point = points_janez1[counter_janez1];
+			prev_point = points_janez1[counter_janez1-1];
+			counter_janez1++;
+			capture_overlay_flag = 'n';
+			jQuery('#janez1_lat').html(points_janez1[counter_janez1].x);
+			jQuery('#janez1_lng').html(points_janez1[counter_janez1].y);
+		}
+		else {
+			var capture_overlay_flag = 'y';
+			var cur_tgap = time_janez1[counter_janez1]-cur_time_janez1;
+			var tgap = time_janez1[counter_janez1]-time_janez1[counter_janez1-1];
+			var xgap = points_janez1[counter_janez1].x - points_janez1[counter_janez1-1].x;
+			var ygap = points_janez1[counter_janez1].y - points_janez1[counter_janez1-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point = new GPoint(points_janez1[counter_janez1].x - (((xgap)/(tgap)) * cur_tgap), points_janez1[counter_janez1].y - (((ygap)/(tgap)) * cur_tgap));
+			jQuery('#janez1_lng').html(curr_point .x);
+			jQuery('#janez1_lat').html(curr_point .y);
+		} 
+		
+		if (prev_point.x != 0){
+			var toverlay_janez1 = new GPolyline([prev_point, curr_point], '#ffffff', 5, .8);
+			map.addOverlay(toverlay_janez1);
+			//map.panTo(new GLatLng(curr_point.y,curr_point.x));
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+emap.getZoom()+" "+curr_point.x+", "+curr_point.y;
+			if (capture_overlay_flag == 'y'){ toverlays_janez1.push(toverlay_janez1); }
+		}
+		
+		prev_point = curr_point;
+		
+		if (capture_overlay_flag == 'n'){
+			for (i=0; i<toverlays_janez1.length; i++){
+				map.removeOverlay(toverlays_janez1[i]);
+			}
+			delete toverlays_janez1;
+			toverlays_janez1 = [];
+		}
+		cur_time_janez1++;
+		jQuery('#janez1_lat').html(points_janez1[counter_janez1].x);
+		jQuery('#janez1_lng').html(points_janez1[counter_janez1].y);
+		if (time_janez1[counter_janez1]==""){
+			alert('test');
+			window.clearInterval(pan_to_janez1);
+		}
+
+	}
+
+	function drawRoute_janez2(){
+		jQuery('#coords').append(""+counter_janez2+" time:"+time_janez2[counter_janez2]+" cur_time"+cur_time_janez2+"<br>");
+		if (cur_time_janez2 == time_janez2[counter_janez2]){
+			curr_point_janez2 = points_janez2[counter_janez2];
+			prev_point_janez2 = points_janez2[counter_janez2-1];
+			delete points_janez2[counter_janez2-1]
+			counter_janez2++;
+			capture_overlay_flag_janez2 = 'n';
+			jQuery('#janez2_lng').html(curr_point_janez2 .x);
+			jQuery('#janez2_lat').html(curr_point_janez2 .y);
+		}
+		else {
+			var capture_overlay_flag_janez2 = 'y';
+			var cur_tgap_janez2 = time_janez2[counter_janez2]-cur_time_janez2;
+			var tgap_janez2 = time_janez2[counter_janez2]-time_janez2[counter_janez2-1];
+			var xgap_janez2 = points_janez2[counter_janez2].x - points_janez2[counter_janez2-1].x;
+			var ygap_janez2 = points_janez2[counter_janez2].y - points_janez2[counter_janez2-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point_janez2 = new GPoint(points_janez2[counter_janez2].x - (((xgap_janez2)/(tgap_janez2)) * cur_tgap_janez2), points_janez2[counter_janez2].y - (((ygap_janez2)/(tgap_janez2)) * cur_tgap_janez2));
+			jQuery('#janez2_lng').html(curr_point_janez2 .x);
+			jQuery('#janez2_lat').html(curr_point_janez2 .y);
+		}
+		
+		if (prev_point_janez2.x != 0){
+			var toverlay_janez2 = new GPolyline([prev_point_janez2, curr_point_janez2], '#ff0000', 5, .8);
+			map.addOverlay(toverlay_janez2);
+			//map.panTo(new GLatLng(curr_point.y,curr_point.x));
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+emap.getZoom()+" "+curr_point.x+", "+curr_point.y;
+			if (capture_overlay_flag_janez2 == 'y'){ toverlays_janez2.push(toverlay_janez2); }
+		}
+
+		prev_point_janez2 = curr_point_janez2;
+
+		if (capture_overlay_flag_janez2 == 'n'){
+			for (i=0; i<toverlays_janez2.length; i++){
+				map.removeOverlay(toverlays_janez2[i]);
+			}
+			delete toverlays_janez2;
+			toverlays_janez2 = [];
+		}
+		cur_time_janez2++;
+		if (counter_janez2 == points_janez2.length){
+			window.clearInterval(pan_to_janez2);
+		}
+	}
+
+	function drawRoute_janez3(){
+		jQuery('#coords').append(""+counter_janez3+" time:"+time_janez3[counter_janez3]+" cur_time"+cur_time_janez3+"<br>");
+		if (cur_time_janez3 == time_janez3[counter_janez3]){
+			curr_point_janez3 = points_janez3[counter_janez3];
+			prev_point_janez3 = points_janez3[counter_janez3-1];
+			delete points_janez3[counter_janez3-1]
+			counter_janez3++;
+			capture_overlay_flag_janez3 = 'n';
+			jQuery('#janez3_lng').html(curr_point_janez3 .x);
+			jQuery('#janez3_lat').html(curr_point_janez3 .y);
+		}
+		else {
+			var capture_overlay_flag_janez3 = 'y';
+			var cur_tgap_janez3 = time_janez3[counter_janez3]-cur_time_janez3;
+			var tgap_janez3 = time_janez3[counter_janez3]-time_janez3[counter_janez3-1];
+			var xgap_janez3 = points_janez3[counter_janez3].x - points_janez3[counter_janez3-1].x;
+			var ygap_janez3 = points_janez3[counter_janez3].y - points_janez3[counter_janez3-1].y;
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+xgap+" tgap:"+tgap+" ygap:"+ygap+ " cur_tgap:"+cur_tgap;
+			curr_point_janez3 = new GPoint(points_janez3[counter_janez3].x - (((xgap_janez3)/(tgap_janez3)) * cur_tgap_janez3), points_janez3[counter_janez3].y - (((ygap_janez3)/(tgap_janez3)) * cur_tgap_janez3));
+			jQuery('#janez3_lng').html(curr_point_janez3 .x);
+			jQuery('#janez3_lat').html(curr_point_janez3 .y);
+		}
+		
+		if (prev_point_janez3.x != 0){
+			var toverlay_janez3 = new GPolyline([prev_point_janez3, curr_point_janez3], '#0000ff', 5, .8);
+			map.addOverlay(toverlay_janez3);
+			//map.panTo(new GLatLng(curr_point.y,curr_point.x));
+			//document.getElementById('coords').innerHTML+="<br>xgap:"+emap.getZoom()+" "+curr_point.x+", "+curr_point.y;
+			if (capture_overlay_flag_janez3 == 'y'){ toverlays_janez3.push(toverlay_janez3); }
+		}
+		
+		prev_point_janez3 = curr_point_janez3;
+		
+		if (capture_overlay_flag_janez3 == 'n'){
+			for (i=0; i<toverlays_janez3.length; i++){
+				map.removeOverlay(toverlays_janez3[i]);
+			}
+			delete toverlays_janez3;
+			toverlays_janez3 = [];
+		}
+		cur_time_janez3++;
+		if (counter_janez3 == points_janez3.length){
+			window.clearInterval(pan_to_janez3);
+		}
+	}
+	
+	$(document).ready(function() {
+		load();
+	});
+	//]]>
+ </script>
+	</head>
+	
+	<body class="page_article" onunload="GUnload()">
+	<div id="page">
+	
+		[(#REM) Entete de la page + titre du site ]
+		<INCLURE{fond=inc-entete}>
+	
+		<div id="videos-stream">
+			<div id="video1">
+				<h3>Janez Jansa</h3>
+				<div class="video"  style="background-color:#ffffff;">
+					[(#MODELE{quicktime}{src=http://www.arscenic.org:554/JJ.mp4}{width=160}{height=130}{bgcolor=ffffff}{autoplay=false}{controller=false})]
+				</div>
+				<:latitude:> : <span class="lat" id="janez#ENV{id_jansa}_lat"></span><br />
+				<:longitude:> : <span class="lng" id="janez#ENV{id_jansa}_lng"></span>
+			</div>
+			<div id="video2">
+				<h3>Janez Jansa</h3>
+				<div class="video" style="background-color:#0000ff;">
+					[(#MODELE{quicktime}{src=http://www.arscenic.org:554/JJ.mp4}{width=160}{height=130}{bgcolor=0000ff}{autoplay=false}{controller=false})]
+				</div>
+				<:latitude:> : <span class="lat" id="janez#ENV{id_jansa}_lat"></span><br />
+				<:longitude:> : <span class="lng" id="janez#ENV{id_jansa}_lng"></span>
+			</div>
+			<div id="video3">
+				<h3>Janez Jansa</h3>
+				<div class="video" style="background-color:#ff0000;">
+					[(#MODELE{quicktime}{src=http://www.arscenic.org:554/JJ.mp4}{width=160}{height=130}{bgcolor=ff0000}{autoplay=false}{controller=false})]
+				</div>
+				<:latitude:> : <span class="lat" id="janez#ENV{id_jansa}_lat"></span><br />
+				<:longitude:> : <span class="lng" id="janez#ENV{id_jansa}_lng"></span>
+			</div>
+		</div>
+		
+	    <div class="hfeed" id="conteneur-performance">
+	    	<div id="info-title"></div>
+			<div id="map">
+
+			</div>
+
+			<div class="hentry" id="contenu-performance">
+				<div id="coords">
+					
+				</div>
+		    	<div style="margin:5px">
+			    	<h1 class="#EDIT{titre} entry-title">#TITRE</h1>
+					[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{500,0})</div>]
+					[<div class="#EDIT{texte} texte entry-content">(#TEXTE|image_reduire{500,0})</div>]
+				</div>
+			</div>	
+		</div><!--#conteneur-->
+	
+	</div><!--#page-->
+	</body>
+	</html>
+	</BOUCLE_article_principal>

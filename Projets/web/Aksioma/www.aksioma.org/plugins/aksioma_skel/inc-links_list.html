@@ -1,0 +1,28 @@
+[(#REM) Sites de la rubrique ]
+        <B_sites>
+        <div class="liste">
+            <ul>
+                <BOUCLE_sites(SITES) {id_rubrique} {par num nom_site,nom_site}>
+                <li>
+                	<div style="float:left;margin:5px;width:83px" class="#EDIT{logo}">
+            	    	<a href="#URL_SITE">
+           	      	#LOGO_SITE
+				</a>
+                	</div>
+			<div style="float:left;width:360px">
+				<h5 class="#EDIT{nom_site}"><a href="#URL_SITE">[(#NOM_SITE|supprimer_numero)]</a></h5>
+				<div class="#EDIT{descriptif}">[(#DESCRIPTIF)]</div>
+			</div>
+			<br class="nettoyeur" />
+                    <B_syndic>
+                    <ul>
+                        <BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+                        <li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
+                        </BOUCLE_syndic>
+                    </ul>
+                    </B_syndic>
+                </li>
+                </BOUCLE_sites>
+            </ul>
+        </div>
+        </B_sites>

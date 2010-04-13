@@ -1,0 +1,115 @@
+#CACHE{0}
+<!-- icone=qt_logo-24.png -->
+
+[(#SET{logo, <img src='#DOSSIER_SQUELETTE/../qt_logo.png' width='92' height='92' alt='Quicktime' style="float:#LANG_RIGHT;" /> })]
+
+<!-- descriptif= [(#GET{logo})] <:quicktime:description_quicktime:> -->
+
+<!-- titre=Spip Quicktime plugin -->
+<!-- nom=Spip Quicktime-->
+ 
+<form method="post" action="#SELF"><p>[(#ENV{_cfg_}|form_hidden)]</p>
+
+<fieldset>
+	<legend><:quicktime:general:></legend>
+	
+	<h4><:quicktime:spatial:></h4>
+	<p>
+	<label for="width"><a href="#width" title="<:quicktime:width:> - <:quicktime:desc_width:>"><:quicktime:width:></a></label>
+	<input type="text" name="width" class="forml" style="width:5em;display:inline" id="width" value="[(#ENV{width}|?{#ENV{width},'320'})]" /> <i>px</i>
+	</p>
+	
+	<p>
+	<label for="height"><a href="#height" title="<:quicktime:height:> - <:quicktime:desc_height:>"><:quicktime:height:></a></label>
+	<input type="text" name="height" class="forml" style="width:5em;display:inline" id="height" value="[(#ENV{height}|?{#ENV{height},'240'})]" /> <i>px</i>	
+	</p>
+	
+	<p>
+	<label for="fullscreen"><a href="#fullscreen" title="<:quicktime:fullscreen:> - <:quicktime:desc_fullscreen:>"><:quicktime:fullscreen:></a></label>
+	<input type="checkbox" name="fullscreen" [checked="(#ENV{fullscreen}?{checked})"] id="fullscreen"  />
+
+	<label for="hidden"><a href="#hidden" title="<:quicktime:hidden:> - <:quicktime:desc_hidden:>"><:quicktime:hidden:></a></label>
+	<input type="checkbox" name="hidden" [checked="(#ENV{hidden}?{checked})"] id="hidden"  />
+
+	<label for="cache"><a href="#cache" title="<:quicktime:cache:> - <:quicktime:desc_cache:>"><:quicktime:cache:></a></label>
+	<input type="checkbox" name="cache" [checked="(#ENV{cache}?{checked})"] id="cache"  />
+	</p>
+
+	<p>	
+	<label for="scale"><a href="#scale" title="<:quicktime:scale:> - <:quicktime:desc_scale:>"><:quicktime:scale:></a></label>
+	<input type="checkbox" name="scale" [checked="(#ENV{scale}?{checked})"] id="scale"  />
+
+	<label for="scaletype"><:quicktime:scaletype:></label>
+	<select name="scaletype" id="scaletype" class="fondl">
+		<option value="">--</option>
+		<option value="tofit"[(#ENV*{scaletype}|=={tofit}|?{selected,''})]><:quicktime:tofit:></option>
+		<option value="aspect"[(#ENV*{scaletype}|=={aspect}|?{selected,''})]><:quicktime:aspect:></option>
+		<option value="0.5"[(#ENV*{scaletype}|=={0.5}|?{selected,''})]><:quicktime:05:></option>
+		<option value="0.75"[(#ENV*{scaletype}|=={0.75}|?{selected,''})]><:quicktime:075:></option>
+		<option value="0.95"[(#ENV*{scaletype}|=={0.95}|?{selected,''})]><:quicktime:095:></option>
+		<option value="1"[(#ENV*{scaletype}|=={1}|?{selected,''})]><:quicktime:1:></option>
+		<option value="1.5"[(#ENV*{scaletype}|=={1.5}|?{selected,''})]><:quicktime:15:></option>
+		<option value="1.75"[(#ENV*{scaletype}|=={1.75}|?{selected,''})]><:quicktime:175:></option>
+		<option value="2"[(#ENV*{scaletype}|=={2}|?{selected,''})]><:quicktime:2:></option>
+	</select>
+	</p>
+		
+	<p>
+	<span class="picker" style="float:right;padding:3px;">&nbsp;</span>
+	<label for="bgcolor"><a href="#bgcolor" title="<:quicktime:bgcolor:> - <:quicktime:desc_bgcolor:>"><:quicktime:bgcolor:></a></label>
+	<input type="text" name="bgcolor" class="colorwell" style="width:100px;display:inline" id="bgcolor" value="[(#ENV*{bgcolor}|sinon{#000000})]" maxlength="7" />
+	</p>
+
+	<h4><:quicktime:controls:></h4>
+	
+	<p>
+	<label for="controller"><a href="#controller" title="<:quicktime:controller:> - <:quicktime:desc_controller:>"><:quicktime:controller:></a></label>
+	<input type="checkbox" name="controller" [checked="(#ENV{controller}?{checked})"] id="controller"  />
+	</p>
+	
+	<p>
+	<label for="autoplay"><a href="#autoplay" title="<:quicktime:autoplay:> - <:quicktime:desc_autoplay:>"><:quicktime:autoplay:></a></label>
+	<input type="checkbox" name="autoplay" [checked="(#ENV{autoplay}?{checked})"] id="autoplay"  />
+	</p>
+	
+	<p>
+	<label for="playeveryframe"><a href="#playeveryframe" title="<:quicktime:playeveryframe:> - <:quicktime:desc_playeveryframe:>"><:quicktime:playeveryframe:></a></label>
+	<input type="checkbox" name="playeveryframe" [checked="(#ENV{playeveryframe}?{checked})"] id="playeveryframe"  />
+	</p>
+	
+	<p>
+	<label for="kioskmode"><a href="#kioskmode" title="<:quicktime:kioskmode:> - <:quicktime:desc_kioskmode:>"><:quicktime:kioskmode:></a></label>
+	<input type="checkbox" name="kioskmode" [checked="(#ENV{kioskmode}?{checked})"] id="kioskmode"  />
+	</p>
+	
+	<p>
+	<label for="dontflattenwhensaving"><a href="#dontflattenwhensaving" title="<:quicktime:dontflattenwhensaving:> - <:quicktime:desc_dontflattenwhensaving:>"><:quicktime:dontflattenwhensaving:></a></label>
+	<input type="checkbox" name="dontflattenwhensaving" [checked="(#ENV{dontflattenwhensaving}?{checked})"] id="dontflattenwhensaving"  />
+	</p>
+	
+	<p>
+	<label for="loop"><a href="#loop" title="<:quicktime:loop:> - <:quicktime:desc_loop:>"><:quicktime:loop:></a></label>
+	<input type="checkbox" name="loop" [checked="(#ENV{loop}?{checked})"] id="loop"  />
+	<select name="loop" id="loop" class="fondl">
+		<option value="false"[ (#ENV*{loop}|=={false}|?{selected,''})]>FALSE</option>
+		<option value="true"[(#ENV*{loop}|=={true}|?{selected,''})]>TRUE</option>
+		<option value="palindrome"[(#ENV*{loop}|=={palindrome}|?{selected,''})]>PALINDROME</option>
+	</select>
+	</p>
+	
+	<p>
+	<label for="showlogo"><a href="#showlogo" title="<:quicktime:showlogo:> - <:quicktime:desc_showlogo:>"><:quicktime:showlogo:></a></label>
+	<input type="checkbox" name="showlogo" [checked="(#ENV{showlogo}?{checked})"] id="showlogo"  />
+	</p>
+	
+	<p>
+	<label for="volume"><a href="#volume" title="<:quicktime:volume:> - <:quicktime:desc_volume:>"><:quicktime:volume:></a></label>
+	<input type="checkbox" name="volume" [checked="(#ENV{volume}?{checked})"] id="volume"  />
+	</p>
+	
+</fieldset>
+	<p>
+		<input type="submit" class="fondo" name="_cfg_ok" value="<:quicktime:OK:>" />
+		<input type="reset" class="fondo" value="<:quicktime:Reset:>" />
+	</p>
+</form>

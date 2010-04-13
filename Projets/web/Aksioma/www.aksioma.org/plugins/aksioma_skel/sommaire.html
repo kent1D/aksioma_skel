@@ -1,0 +1,80 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_sommaire">
+<div id="wrapper">
+	<div id="nav-left">
+		<INCLURE{fond=inc-rubriques}>
+	</div>
+<div id="page">
+
+	[(#REM) Contenu principal : derniers articles publies ]
+	<div class="hfeed" id="conteneur">
+	
+	[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+	<div id="contenu">
+		
+		<div class="cartouche invisible">
+			<h1 class="invisible">#NOM_SITE_SPIP</h1>
+		</div>
+		
+		[<div class="chapo">(#DESCRIPTIF_SITE_SPIP)</div>]
+		
+		[(#REM) Derniers articles ]
+		<B_articles_recents>
+		<div class="menu articles">
+			<ul>
+				<BOUCLE_articles_recents(ARTICLES) {id_rubrique=17}{par num titre,titre}>
+				<li class="hentry">
+					[(#LOGO_ARTICLE|#URL_ARTICLE)]
+					<div class="surtitre #EDIT{surtitre}">#SURTITRE</div>
+					<h3 class="entry-title #EDIT{titre}"><a href="#URL_ARTICLE" rel="bookmark">[(#TITRE|supprimer_numero)]</a></h3>
+					<div class="soustitre #EDIT{soustitre}">#SOUSTITRE</div>
+					[<div class="#EDIT{texte} introduction entry-content">(#TEXTE)</div>]
+				</li>
+				</BOUCLE_articles_recents>
+			</ul>
+		</div>
+		</B_articles_recents>
+		<BOUCLE_rubriques(RUBRIQUES){id_parent=17}>
+			<B_articles_rubrique>
+				<h2>[(#TITRE|supprimer_numero)]</h2>
+				<div class="menu articles">
+					<ul>
+						<BOUCLE_articles_rubrique(ARTICLES) {id_rubrique}{par num titre,titre}>
+						<li class="hentry">
+							[(#LOGO_ARTICLE|#URL_ARTICLE)]
+							<div class="surtitre #EDIT{surtitre}">#SURTITRE</div>
+							[(#GRAND_TOTAL|>{1}|?{' '})<h3 class="entry-title #EDIT{titre}"><a href="#URL_ARTICLE" rel="bookmark">[(#TITRE|supprimer_numero)]</a></h3>]
+							<div class="soustitre #EDIT{soustitre}">#SOUSTITRE</div>
+							[<div class="#EDIT{texte} introduction entry-content">(#TEXTE)</div>]
+						</li>
+						</BOUCLE_articles_rubrique>
+					</ul>
+				</div>
+			</B_articles_rubrique>
+		</BOUCLE_rubriques>
+		
+	</div>
+	</div>
+	
+	[(#REM) Menu de navigation laterale ]
+	<div id="navigation">
+		[(#REM) Menu de navigation par rubriques ]
+		<INCLURE{fond=nav-right}>
+	</div>
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}{skel=#SQUELETTE}>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<BOUCLE_article_principal(RUBRIQUES) {id_rubrique=10}>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#TITRE|supprimer_numero|textebrut) - ][(#NOM_SITE_SPIP|textebrut)]</title>[
+<meta name="description" content="(#INTRODUCTION|couper{150}|attribut_html)" />
+]<B_URLMOT>
+<link rel="alternate" type="application/rss+xml" title="<:titre_page_mots_tous:>" href="#URL_PAGE{backend}<BOUCLE_URLMOT(MOTS){id_article}>&amp;id_mot[]=#ID_MOT</BOUCLE_URLMOT>" />
+</B_URLMOT><B_URLAUTEURS>
+<link rel="alternate" type="application/rss+xml" title="<:icone_auteurs:>" href="#URL_PAGE{backend}<BOUCLE_URLAUTEURS(AUTEURS){id_article}>&amp;id_auteur[]=#ID_AUTEUR</BOUCLE_URLAUTEURS>" />
+</B_URLAUTEURS><INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_article">
+<div id="wrapper">
+	<div id="nav-left">
+		<INCLURE{fond=inc-rubriques}>
+	</div>
+<div id="page">
+
+	[(#REM) Contenu principal : contenu de l'article ]
+    <div class="hfeed" id="conteneur">
+    		[(#REM) Entete de la page + titre du site ]
+	<INCLURE{fond=inc-entete}>
+    <div class="hentry" id="contenu">
+    	
+	<img src="#CHEMIN{images/banner_1.gif}" alt="banner" />
+
+	<div class="cartouche">
+		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
+		<h1 class="#EDIT{titre}">&nbsp;&raquo;&nbsp;[(#TITRE|SUPPRIMER_NUMERO)]</h1>
+	</div>
+	<INCLURE{fond=inc-cv}{id_rubrique}{env}{ajax}>
+	</div>
+	</div>
+
+    [(#REM) Menu de navigation laterale ]
+    <div id="navigation">
+        [(#REM) Menu de navigation par rubriques ]
+        <INCLURE{fond=nav-right}{id_rubrique}>
+    </div>
+
+	[(#REM) Pied de page ]
+	<INCLURE{fond=inc-pied}>
+</div>
+</div>
+</body>
+</html>
+</BOUCLE_article_principal>

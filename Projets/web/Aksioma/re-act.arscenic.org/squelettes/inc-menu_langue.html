@@ -1,0 +1,5 @@
+<div id="langue">
+	[(#ENV{lang}|=={en}|?{[<img src="(#CHEMIN{images/lang/en_on.png})" alt="EN" />],[<a href="(#URL_ACTION{'converser'}|parametre_url{var_lang,'en'}|parametre_url{redirect,#SELF})"><img src="#CHEMIN{images/lang/en.png}" alt="EN" /></a>]})]
+	[(#ENV{lang}|=={fr}|?{[<img src="(#CHEMIN{images/lang/fr_on.png})" alt="FR" />],[<a href="(#URL_ACTION{'converser'}|parametre_url{var_lang,'fr'}|parametre_url{redirect,#SELF})"><img src="#CHEMIN{images/lang/fr.png}" alt="FR" /></a>]})]
+	[(#ENV{lang}|=={sl}|?{[<img src="(#CHEMIN{images/lang/sl_on.png})" alt="SL" />],[<a href="(#URL_ACTION{'converser'}|parametre_url{var_lang,'sl'}|parametre_url{redirect,#SELF})"><img src="#CHEMIN{images/lang/sl.png}" alt="SL" /></a>]})]
+</div>

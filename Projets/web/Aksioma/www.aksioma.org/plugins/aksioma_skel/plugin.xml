@@ -1,0 +1,35 @@
+<plugin>
+	<nom>
+	<multi>
+	[fr] Squelette Aksioma
+	[en] Aksioma skeleton
+	</multi>
+	</nom>
+	<auteur>
+	kent1
+	&#169; 2008 - GNU/GPL
+	</auteur>
+	<version>
+	0.1
+	</version>
+	<etat>
+	stable
+	</etat>
+	<description>
+	<multi>
+	[fr] Squelette pour le site [Aksioma.org->http://www.aksioma.org]
+	[en] Skeleton for the website [Aksioma.org->http://www.aksioma.org]
+	</multi>
+	</description>
+	<lien>http://svn.aires-de-confluxence.info/trac.cgi/wiki/aksioma</lien>
+	<prefix>
+	aksioma
+	</prefix>
+	<options>
+		aksioma_options.php
+	</options>
+	<icon>
+	images/crayon.png
+	</icon>
+	<chemin dir='' />
+</plugin>

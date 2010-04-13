@@ -1,0 +1,21 @@
+#HTTP_HEADER{Content-Type:text/html}
+
+<BOUCLE_tous(ARTICLES){id_rubrique=4}{pagination 1}>
+	<div class="#EDIT{texte}">
+	#TEXTE
+	</div>
+
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setTimeout('jQuery("#image2").fadeIn()',3000);
+	setTimeout('jQuery("#image3").fadeIn()',6000);
+	setTimeout('jQuery("#texte").fadeIn()',9000);
+})
+</script>
+
+</BOUCLE_tous>
+<div id="pagination">
+#PAGINATION{precedent_suivant}
+</div>
+</B_tous>
+<//B_tous>

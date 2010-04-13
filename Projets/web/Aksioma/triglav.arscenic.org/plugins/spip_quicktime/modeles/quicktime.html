@@ -1,0 +1,43 @@
+[(#REM) Recuperation des valeurs soit passees en parametres soit dans cfg soit par defaut]
+
+[(#SET{src,#ENV{src}})]
+[(#SET{width,#ENV{width,#CONFIG{quicktime/width}|sinon{320}}})]
+[(#SET{height,#ENV{height,#CONFIG{quicktime/height}|sinon{240}}})]
+[(#SET{controller,#ENV{controller,#CONFIG{quicktime/controller}|sinon{true}}})]
+[(#SET{bgcolor,#ENV{bgcolor,#CONFIG{quicktime/bgcolor}|sinon{000000}}})]
+[(#SET{autoplay,#ENV{autoplay,#CONFIG{quicktime/autoplay}|sinon{false}}})]
+[(#SET{cache,#ENV{cache,#CONFIG{quicktime/cache}|sinon{false}}})]
+[(#SET{enablejavascript,#ENV{enablejavascript}})]
+[(#SET{target,#ENV{target}})]
+[(#SET{href,#ENV{href}})]
+[(#SET{autohref,#ENV{autohref}})]
+[(#SET{loop,#ENV{loop}})]
+
+<object classid="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" codebase="http://www.apple.com/qtactivex/qtplugin.cab" width="#GET{width}" height="#GET{height}">
+	<param name="src" value="#GET{src}" />
+	<param name="controller" value="#GET{controller}" />
+	<param name="autoplay" value="#GET{autoplay}" />
+	<param name="bgcolor" value="#GET{bgcolor}" />
+	[<param name="href" value="(#GET{href})" />]
+	[<param name="autohref" value="(#GET{autohref})" />]
+	[<param name="loop" value="(#GET{loop})" />]
+	<param name="cache" value="true" />
+	<param name="EnableJavaScript" value="#GET{enablejavascript}" />
+	<param name="id" value="#ENV{id_js}" />
+	<param name="SHOWLOGO" value="false" />
+	<embed src='#GET{src}' 
+		autoplay="#GET{autoplay}" 
+		width="#GET{width}" 
+		height="#GET{height}"
+		bgcolor="#GET{bgcolor}"
+		controller="#GET{controller}"
+		[href="(#GET{href})"]
+		[autohref="(#GET{autohref})"]
+		[target="(#GET{target})"]
+		[loop="(#GET{loop})"]
+		[EnableJavaScript="(#GET{enablejavascript})"]
+		[id="(#ENV{id_js})"]
+		[name="(#ENV{id_js})"]
+		cache = "true"
+	/>
+</object>

@@ -1,0 +1,76 @@
+#CACHE{3600}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_sommaire">
+<div id="page">
+	<div style="width:1px;height:1px;position:absolute;top:0;left:0">
+	[(#MODELE{quicktime}{src=#CHEMIN{sons/sec_short_clock_loop.mp3}}{width=1}{height=1}{id_js=intro_sound}{bgcolor=ffffff}{autoplay=true}{loop=true}{controller=false})]
+	</div>
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique=4}>
+<div id="content">
+<BOUCLE_tous(ARTICLES){id_rubrique}{pagination 1}>
+	#TEXTE
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	setTimeout('jQuery("#image1").fadeIn()',1000);
+	setTimeout('jQuery("#image2").fadeIn()',4000);
+	setTimeout('jQuery("#image3").fadeIn()',6000);
+	setTimeout('jQuery("#texte").fadeIn()',8000);
+})
+</script>
+</BOUCLE_tous>
+<div id="pagination">
+#PAGINATION{precedent_suivant}
+</div>
+</B_tous>
+<//B_tous>
+
+<script type="text/javascript">
+	//<![CDATA[
+	function gotonext(){
+		var href = $('#pagination a.next').attr('href');
+		if(href){
+			jQuery('#content').fadeTo("slow",0,function(){
+				var r = href.match(/[?&;]debut_tous=([0-9]+)/);
+				r = r ? r[1] : 0;
+
+				if (r === '2'){
+					jQuery('#content').load('#URL_PAGE{content_sommaire2}&debut_tous='+r, function(){
+						jQuery('#content').fadeTo("slow",1.0,function(){
+							setTimeout('gotonext()',30000);
+						});
+					});
+				}			
+				else{
+				jQuery('#content').load('#URL_PAGE{content_sommaire}&debut_tous='+r, function(){
+					jQuery('#content').fadeTo("slow",1.0,function(){
+						setTimeout('gotonext()',10000);
+					}
+					);}
+				);
+				}
+			});
+		}
+		else{
+			window.location = "#URL_ARTICLE{2}";
+		}
+	}
+
+	$(document).ready(function(){
+		setTimeout('gotonext()',21000);
+	});
+	//]]>
+</script>
+<INCLURE{fond=inc-pied}>
+</div>
+</BOUCLE_rubrique>
+
+</div>
+</body>
+</html>

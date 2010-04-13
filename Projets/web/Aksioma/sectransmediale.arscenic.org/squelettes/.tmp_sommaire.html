@@ -1,0 +1,47 @@
+[(#REM)
+	Un cache plus court, pour la boucle syndic_articles
+]#CACHE{3600}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="#LANG" lang="#LANG" dir="#LANG_DIR">
+<head>
+<title>[(#NOM_SITE_SPIP|textebrut)]</title>
+[<meta name="description" content="(#DESCRIPTIF_SITE_SPIP|couper{150}|textebrut)" />]
+<INCLURE{fond=inc-head}>
+</head>
+
+<body class="page_sommaire">
+<div id="page">
+
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique=4}>
+<div id="content">
+<BOUCLE_tous(ARTICLES){id_rubrique}{pagination 1}>
+	#TITRE
+	#TEXTE
+</BOUCLE_tous>
+<div id="pagination">
+#PAGINATION{precedent_suivant}
+</div>
+</B_tous>
+<//B_tous>
+	<script type="text/javascript">
+
+	function gotonext(){
+		var href = $('#pagination a.next').attr('href');
+		var r = href.match(/[?&;]debut_tous=([0-9]+)/);
+		r = r ? r[1] : 0;
+		jQuery('#content').load('#URL_PAGE{content_sommaire}&debut_tous='+r);
+		setTimeout('gotonext()',5000);
+	}
+	
+	$(document).ready(function(){
+		setTimeout('gotonext()',5000);
+	});
+
+</script>
+</div>
+</BOUCLE_rubrique>
+
+</div>
+</div><!--#page-->
+</body>
+</html>

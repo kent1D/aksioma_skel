@@ -1,0 +1,27 @@
+[(#REM) Sites de la rubrique ]
+<B_articles>
+<div class="liste liste-articles">
+	<ul>
+	    <BOUCLE_articles(ARTICLES) {id_rubrique} {origine_traduction}{par num titre,titre}>
+	    <li>
+	          	<div class="logoleft #EDIT{logo}">
+			    	<a href="#URL_ARTICLE" title="[(#TITRE|supprimer_numero|attribut_html)]">
+					[(#LOGO_ARTICLE_SURVOL|extraire_attribut{src}|?{[(#LOGO_ARTICLE_SURVOL||image_reduire{78,0})],[(#LOGO_ARTICLE||image_reduire{78,0})]})]
+				</a>
+	          	</div>
+			<div class="texteright">
+				<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">[(#TITRE|supprimer_numero)] &#91;#LANG&#93;</a> [(#MODELE{article_traductions_simple}{id_article})]</h3>
+				[<div class="#EDIT{soustitre}">(#SOUSTITRE|propre)</div>]
+				[(#CHAPO*|strncmp{=,1}|<{1}|?{' ',''})
+					[(#CHAPO|?{' ',''})[<div class="#EDIT{texte} introduction entry-content">(#TEXTE)</div>]]
+				]
+				[(#CHAPO*|strncmp{=,1}|<{1}|?{'',' '})
+					[<div class="#EDIT{chapo} introduction entry-content">(#CHAPO)</div>]
+				]
+			</div>
+			<br class="nettoyeur" />
+	    </li>
+	    </BOUCLE_articles>
+	</ul>
+</div>
+</B_articles>
