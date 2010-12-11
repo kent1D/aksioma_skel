@@ -1,0 +1,22 @@
+[(#REM)
+
+  Squelette Presentation d'un article dans une liste
+  (c) 2009 Zpip
+  Distribue sous licence GPL
+
+]
+<BOUCLE_articles(ARTICLES) {id_article} {statut?}>
+<li class="item hentry">
+	<div class="logo">
+	[(#LOGO_ARTICLE_RUBRIQUE||image_reduire{183,0})]
+	</div>
+	<div class="entry">
+		<h3 class="h3 entry-title">
+			[(#SURTITRE)<br />]
+			<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
+			[<br />(#SOUSTITRE)]
+		</h3>
+		[<div class="#EDIT{intro} introduction entry-content">(#INTRODUCTION)</div>]
+	</div>
+</li>
+</BOUCLE_articles>

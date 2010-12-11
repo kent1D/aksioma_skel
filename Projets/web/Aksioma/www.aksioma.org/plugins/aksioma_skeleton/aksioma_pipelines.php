@@ -8,9 +8,11 @@
  * @return array $plugins
  */
 function aksioma_jquery_plugins($plugins){
-	$plugins[] = "javascript/jquery.equalheight.js";
-	$plugins[] = "javascript/aksioma_base.js";
-	$plugins[] = "javascript/aksioma_menu.js";
+	if(!test_espace_prive()){
+		$plugins[] = "javascript/jquery.equalheight.js";
+		$plugins[] = "javascript/aksioma_base.js";
+		$plugins[] = "javascript/aksioma_menu.js";
+	}
 
 	return $plugins;
 }
