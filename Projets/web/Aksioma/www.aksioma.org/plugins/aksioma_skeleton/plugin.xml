@@ -28,4 +28,5 @@
 	<categorie>squelette</categorie>
 	<necessite id='SPIP' version='[2.1.2;]' />
 	<necessite id='Z' version='[2.0.0-dev;]' />
+	<necessite id='saisies' version='[1.8.11;]' />
 </plugin>

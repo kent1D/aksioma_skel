@@ -1,0 +1,24 @@
+<!-- autoriser=configurer -->
+<!-- refus=<:cfg:refus_configuration_administrateur:> -->
+<!-- nom=aksioma -->
+
+<div class="formulaire_spip formulaire_cfg formulaire_#FORM">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+	<form method="post" action="#ENV{action}">
+		<div>
+			#ACTION_FORMULAIRE{#ENV{action}}
+			<ul>
+				[(#SAISIE{secteur,contenu_colonne_3,
+					label=<:aksioma:label_contenu_colonne_3:>,
+					multiple=oui,
+					recursif=oui})] 
+				
+			</ul>
+			<p class="boutons">
+				<input type="submit" name="_cfg_ok" value="<:bouton_enregistrer:>" class="submit" />
+			</p>
+		</div>
+	</form>
+</div>

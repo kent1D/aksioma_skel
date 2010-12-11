@@ -2,7 +2,7 @@
 
 <div class="contenu-principal">
 	<div class="cartouche">
-		[(#LOGO_RUBRIQUE||image_reduire{200,200})]
+		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 	</div>
 
