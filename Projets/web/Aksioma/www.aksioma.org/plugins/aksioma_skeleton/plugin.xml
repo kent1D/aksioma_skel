@@ -1,30 +1,31 @@
 <plugin>
 	<nom>
-	<multi>
-	[fr] Squelette Aksioma
-	[en] Aksioma skeleton
-	</multi>
+		<multi>
+			[fr] Squelette Aksioma
+			[en] Aksioma skeleton
+		</multi>
 	</nom>
 	<auteur>kent1 (kent1@arscenic.info)</auteur>
 	<licence>&#169; 2010 - GNU/GPL</licence>
-	<version>0.1</version>
+	<version>0.1.1</version>
+	<icon>images/aksioma-58.png</icon>
 	<etat>stable</etat>
 	<description>
-	<multi>
-	[fr] Squelette pour le site [Aksioma.org->http://www.aksioma.org]
-	[en] Skeleton for the website [Aksioma.org->http://www.aksioma.org]
-	</multi>
+		<multi>
+			[fr] Squelette pour le site [Aksioma.org->http://www.aksioma.org]
+			[en] Skeleton for the website [Aksioma.org->http://www.aksioma.org]
+		</multi>
 	</description>
-	<lien>http://svn.aires-de-confluxence.info/trac.cgi/wiki/aksioma</lien>
-	<prefix>
-	aksioma
-	</prefix>
+	<lien>http://svn.aires-de-confluxence.info/trac/</lien>
+	<prefix>aksioma</prefix>
 	<options>
 		aksioma_options.php
 	</options>
-	<icon>
-	images/crayon.png
-	</icon>
+	<pipeline>
+		<nom>jquery_plugins</nom>
+		<inclure>aksioma_pipelines.php</inclure>
+	</pipeline>
 	<categorie>squelette</categorie>
-	
+	<necessite id='SPIP' version='[2.1.2;]' />
+	<necessite id='Z' version='[2.0.0-dev;]' />
 </plugin>

@@ -1,0 +1,17 @@
+<div class="contenu-principal">
+	<div class="cartouche invisible">
+		<h1 class="h1 invisible">#NOM_SITE_SPIP</h1>
+	</div>
+</div>
+
+<B_articles>
+<div class="liste articles sommaire">
+	#ANCRE_PAGINATION
+	<ul class="liste-items">
+		<BOUCLE_articles(ARTICLES) {!par date} {pagination 5}>
+		#INCLURE{fond=inclure/article-resume,id_article}
+		</BOUCLE_articles>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles>
