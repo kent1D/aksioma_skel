@@ -8,6 +8,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'cfg_titre' => 'Aksioma setup',
 
 	// L
+	'label_contenu_colonne_1' => 'Sections in the first column',
 	'label_contenu_colonne_3' => 'Sections in the third column',
 	
 );

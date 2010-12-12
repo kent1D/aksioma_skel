@@ -7,8 +7,8 @@
 ]
 <BOUCLE_articles(ARTICLES) {id_article} {statut?}>
 <li class="item hentry">
-	<div class="logo">
-	[(#LOGO_ARTICLE_RUBRIQUE||image_reduire{183,0})]
+	<div class="logo #EDIT{logo} resize-183">
+	[(#LOGO_ARTICLE_RUBRIQUE|image_reduire{183,0})]
 	</div>
 	<div class="entry">
 		<h3 class="h3 entry-title">
@@ -16,7 +16,7 @@
 			<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
 			[<br />(#SOUSTITRE)]
 		</h3>
-		[<div class="#EDIT{intro} introduction entry-content">(#INTRODUCTION)</div>]
+		[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
 	</div>
 </li>
 </BOUCLE_articles>

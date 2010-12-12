@@ -1,0 +1,18 @@
+<div class="extra-left">
+<BOUCLE_colonne3(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_3,#ARRAY}}{tout}>
+<B_articles_rubcolonne3>
+	<h3 class="#_colonne3:EDIT{titre}">#_colonne3:TITRE</h3>
+	<ul class="liste">
+	<BOUCLE_articles_rubcolonne3(ARTICLES){branche}{par num titre,titre}{tout}>
+	<li>
+		<div class="logo #EDIT{logo} resize-78"> 
+		[(#LOGO_ARTICLE|image_reduire{78,0})]
+		</div>
+		<p class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></p>
+		<p class="#EDIT{soustitre}">#SOUSTITRE</p>
+	</li>
+	</BOUCLE_articles_rubcolonne3>
+	</ul>
+</B_articles_rubcolonne3>
+</BOUCLE_colonne3>
+</div>

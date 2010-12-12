@@ -1,6 +1,7 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 
 <div class="contenu-principal">
+	#MENU_LANG
 	<div class="cartouche">
 		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
@@ -22,25 +23,20 @@
 </B_articles>
 	[(#REM) Si aucun article, affiche un plan de la rubrique ]
 	<B_sous_rubriques>
-	<div class="menu rubriques">
-		<ul class="menu-liste">
-			<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
-			<li class="menu-entree">
-				<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
-
-				[(#REM) Une boucle recursive pour le mini plan]
-				<B_miniplan>
-				<ul class="menu-liste">
-					<BOUCLE_miniplan(RUBRIQUES) {id_parent} {par num titre, titre}>
-					<li class="menu-entree">
-						<a href="#URL_RUBRIQUE">[(#TITRE)]</a>
-						<BOUCLE_m2(BOUCLE_miniplan)></BOUCLE_m2>
-					</li>
-					</BOUCLE_miniplan>
-				</ul>
-				</B_miniplan>
-
-			</li>
+	<div class="rubriques">
+		<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+			<h2 class="#EDIT{titre}">#TITRE</h2>
+			<B_articles_ssrub>
+				<div class="liste articles">
+					#ANCRE_PAGINATION
+					<ul class="liste-items">
+						<BOUCLE_articles_ssrub(ARTICLES){id_rubrique} {!par date} {pagination 5}>
+						#INCLURE{fond=inclure/article-resume,id_article}
+						</BOUCLE_articles_ssrub>
+					</ul>
+					[<p class="pagination">(#PAGINATION)</p>]
+				</div>
+			</B_articles_ssrub>
 			</BOUCLE_sous_rubriques>
 		</ul>
 		</div>
@@ -76,7 +72,7 @@
 						<ul>
 							<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
 							<li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
-							</BOUCLE_syndic>
+							</BOUCLE_syndic	>
 						</ul>
 						</B_syndic>
 				</li>

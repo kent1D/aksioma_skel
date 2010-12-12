@@ -1,0 +1,22 @@
+<div class="navigation_extra">
+<BOUCLE_colonne1(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_1,#ARRAY}}{tout}>
+<B_articles_rubcolonne1>
+	<h2 class="#_colonne1:EDIT{titre}">#_colonne1:TITRE</h2>
+	<ul class="liste">
+	<BOUCLE_articles_rubcolonne1(ARTICLES){branche}{par num titre,titre}{tout}>
+	<li>
+		<div>
+			<div class="logo #EDIT{logo} resize-78"> 
+			[(#LOGO_ARTICLE|image_reduire{183,0})]
+			</div>
+			<p class="#EDIT{surtitre}">#SURTITRE</p>
+			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h3>
+			<p class="#EDIT{soustitre}">#SOUSTITRE</p>
+			[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
+		</div>
+	</li>
+	</BOUCLE_articles_rubcolonne1>
+	</ul>
+</B_articles_rubcolonne1>
+</BOUCLE_colonne1>
+</div>

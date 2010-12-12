@@ -10,6 +10,10 @@
 		<div>
 			#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
+				[(#SAISIE{secteur,contenu_colonne_1,
+					label=<:aksioma:label_contenu_colonne_1:>,
+					multiple=oui,
+					recursif=oui})]
 				[(#SAISIE{secteur,contenu_colonne_3,
 					label=<:aksioma:label_contenu_colonne_3:>,
 					multiple=oui,
