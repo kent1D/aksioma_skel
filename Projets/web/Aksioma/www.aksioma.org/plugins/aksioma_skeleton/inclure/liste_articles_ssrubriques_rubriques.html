@@ -1,0 +1,24 @@
+<B_sous_rubriques>
+<div class="rubriques">
+	<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+		<h2 class="#EDIT{titre}">#TITRE</h2>
+		<B_articles_orig>
+			<div class="liste articles">
+				#ANCRE_PAGINATION
+				<ul class="liste-items">
+					<BOUCLE_articles_orig(ARTICLES){origine_traduction} {id_rubrique}{!par date} {pagination #ENV{pagination,10}}{id_rubrique > 0}>
+					<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+					#INCLURE{fond=inclure/article-resume,id_article}
+					</BOUCLE_trad_lang>
+					</B_trad_lang>
+					#INCLURE{fond=inclure/article-resume,id_article}
+					<//B_trad_lang>
+					</BOUCLE_articles_orig>
+				</ul>
+				[<p class="pagination">(#PAGINATION)</p>]
+			</div>
+		</B_articles_orig>
+		</BOUCLE_sous_rubriques>
+	</ul>
+	</div>
+</B_sous_rubriques>

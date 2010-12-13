@@ -1,0 +1,16 @@
+<B_articles_orig>
+<div class="liste articles">
+	#ANCRE_PAGINATION
+	<ul class="liste-items">
+		<BOUCLE_articles_orig(ARTICLES){!par date}{origine_traduction}{id_rubrique > 0}{id_rubrique?}{pagination #ENV{pagination,10}}>
+		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+		#INCLURE{fond=inclure/article-resume,id_article}
+		</BOUCLE_trad_lang>
+		</B_trad_lang>
+		#INCLURE{fond=inclure/article-resume,id_article}
+		<//B_trad_lang>
+		</BOUCLE_articles_orig>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_articles_orig>
