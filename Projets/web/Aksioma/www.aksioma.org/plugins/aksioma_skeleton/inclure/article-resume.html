@@ -8,7 +8,7 @@
 <BOUCLE_articles(ARTICLES) {id_article} {statut?}>
 <li class="item hentry">
 	<div class="logo #EDIT{logo} resize-183">
-	[(#LOGO_ARTICLE_RUBRIQUE|image_reduire{183,0})]
+		[(#LOGO_ARTICLE_NORMAL|sinon{#ENV**{logo_original}}|sinon{#LOGO_RUBRIQUE}|image_reduire{183,0})]
 	</div>
 	<div class="entry">
 		<h3 class="h3 entry-title">
