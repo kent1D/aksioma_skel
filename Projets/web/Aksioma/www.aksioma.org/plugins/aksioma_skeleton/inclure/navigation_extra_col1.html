@@ -3,16 +3,28 @@
 <B_articles_rubcolonne1>
 	<h2 class="#_colonne1:EDIT{titre}">#_colonne1:TITRE</h2>
 	<ul class="liste">
-	<BOUCLE_articles_rubcolonne1(ARTICLES){branche}{par num titre,titre}{tout}>
+	<BOUCLE_articles_rubcolonne1(ARTICLES){origine_traduction}{branche}{par num titre,titre}{tout}>
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{183,0})]})]
 	<li>
 		<div>
-			<div class="logo #EDIT{logo} resize-78"> 
+		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+			<div class="logo #EDIT{logo} resize-183"> 
+			[(#LOGO_ARTICLE|image_reduire{183,0}|sinon{#GET{logo_origine}})]
+			</div>
+			<p class="#EDIT{surtitre}">#SURTITRE</p>
+			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h3>
+			<p class="#EDIT{soustitre}">#SOUSTITRE</p>
+			[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
+		</BOUCLE_trad_lang>
+		</B_trad_lang>
+			<div class="logo #EDIT{logo} resize-183"> 
 			[(#LOGO_ARTICLE|image_reduire{183,0})]
 			</div>
 			<p class="#EDIT{surtitre}">#SURTITRE</p>
 			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h3>
 			<p class="#EDIT{soustitre}">#SOUSTITRE</p>
 			[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
+		<//B_trad_lang>
 		</div>
 	</li>
 	</BOUCLE_articles_rubcolonne1>

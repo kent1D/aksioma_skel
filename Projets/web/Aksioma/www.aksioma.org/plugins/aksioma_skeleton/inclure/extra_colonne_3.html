@@ -3,13 +3,23 @@
 <B_articles_rubcolonne3>
 	<h3 class="#_colonne3:EDIT{titre}">#_colonne3:TITRE</h3>
 	<ul class="liste">
-	<BOUCLE_articles_rubcolonne3(ARTICLES){branche}{par num titre,titre}{tout}>
+	<BOUCLE_articles_rubcolonne3(ARTICLES){origine_traduction}{branche}{par num titre,titre}{tout}>
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{78,0})]})]
 	<li>
+		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+		<div class="logo #EDIT{logo} resize-78"> 
+		[(#LOGO_ARTICLE|image_reduire{78,0}|sinon{#GET{logo_origine}})]
+		</div>
+		<p class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></p>
+		<p class="#EDIT{soustitre}">#SOUSTITRE</p>
+		</BOUCLE_trad_lang>
+		</B_trad_lang>
 		<div class="logo #EDIT{logo} resize-78"> 
 		[(#LOGO_ARTICLE|image_reduire{78,0})]
 		</div>
 		<p class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></p>
 		<p class="#EDIT{soustitre}">#SOUSTITRE</p>
+		<//B_trad_lang>
 	</li>
 	</BOUCLE_articles_rubcolonne3>
 	</ul>
