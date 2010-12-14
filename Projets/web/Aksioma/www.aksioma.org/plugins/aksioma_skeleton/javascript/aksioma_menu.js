@@ -10,7 +10,7 @@
 		/*
 		 * Menu depliant de navigation
 		 */
-		$('#navigation .menu-liste li:not(.ouverte) ul').hide();
+		$('#navigation .menu-liste li:not(.on) ul').hide();
 		function menu_aksioma() {
 			$('#navigation .menu-liste li a').not('.do').addClass('do').hover(function(){
 				var me=$(this);
