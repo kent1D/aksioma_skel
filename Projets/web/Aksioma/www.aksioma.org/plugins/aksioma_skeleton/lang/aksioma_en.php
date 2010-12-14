@@ -16,6 +16,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_contenu_colonne_4' => 'Sections in the fourth column',
 
 	// T
+	'titre_medias' => 'MEDIAS',
 	'titre_publications' => 'PUBLICATIONS',
 
 	

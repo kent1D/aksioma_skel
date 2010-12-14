@@ -1,4 +1,19 @@
 <div class="extra-right">
+<B_colonne4_media>
+<h3>[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
+<BOUCLE_colonne4_media(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_medias,#ARRAY}}{tout}>
+<B_articles_rubcolonne4_media>
+	<div>
+	<BOUCLE_articles_rubcolonne4_media(ARTICLES){origine_traduction}{branche}{par hasard}{0,1}>
+	<BOUCLE_videos(DOCUMENTS){id_article}{extension=dist_vimeo}{0,1}>
+	#MODELE{video,id_document=#ID_DOCUMENT}
+	</BOUCLE_videos>
+	</BOUCLE_articles_rubcolonne4_media>
+	</div>
+</B_articles_rubcolonne4_media>
+</BOUCLE_colonne4_media>
+</B_colonne4_media>
+
 <B_colonne4>
 <h3>[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>})]</h3>
 <BOUCLE_colonne4(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_4,#ARRAY}}{tout}>
