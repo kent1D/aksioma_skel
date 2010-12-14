@@ -13,6 +13,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_contenu_colonne_1' => 'Sections in the first column',
 	'label_contenu_colonne_3' => 'Sections in the third column',
+	'label_contenu_colonne_4' => 'Sections in the fourth column',
+
+	// T
+	'titre_publications' => 'PUBLICATIONS',
+
 	
 );
 

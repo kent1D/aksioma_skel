@@ -12,6 +12,7 @@ function aksioma_jquery_plugins($plugins){
 		$plugins[] = "javascript/jquery.equalheight.js";
 		$plugins[] = "javascript/aksioma_base.js";
 		$plugins[] = "javascript/aksioma_menu.js";
+		$plugins[] = "javascript/carouFredSel-2.5.5/jquery.carouFredSel-2.5.5.js";
 	}
 
 	return $plugins;
