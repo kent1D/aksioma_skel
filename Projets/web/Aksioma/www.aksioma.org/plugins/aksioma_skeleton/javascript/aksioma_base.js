@@ -8,9 +8,10 @@ $(function() {
 		$(this).after(text)
 		$(this).carouFredSel({
 			items: 1,
-			width: 373,
+			width: 276,
 			prev: "#prev"+i,
 			next: "#next"+i
 		});
-	})
+	});
+	$('a.spip_out').attr('target','_blank');
 });

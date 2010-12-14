@@ -1,6 +1,6 @@
 <div class="extra-right">
 <B_colonne4_media>
-<h3>[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
+<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
 <BOUCLE_colonne4_media(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_medias,#ARRAY}}{tout}>
 <B_articles_rubcolonne4_media>
 	<div>
@@ -15,7 +15,7 @@
 </B_colonne4_media>
 
 <B_colonne4>
-<h3>[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>})]</h3>
+<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>})]</h3>
 <BOUCLE_colonne4(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_4,#ARRAY}}{tout}>
 <B_articles_rubcolonne4>
 	<h4 class="#_colonne4:EDIT{titre}">#_colonne4:TITRE</h4>
