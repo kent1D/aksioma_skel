@@ -1,5 +1,10 @@
 <div class="accueil">
-	[<a rel="start home" href="#URL_SITE_SPIP/" title="<:accueil_site:>">(#LOGO_SITE_SPIP|image_reduire{300,100})</a>]
+	#SET{docs,#ARRAY}
+	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>854}>
+	#SET{docs,#GET{docs}|push{#ID_DOCUMENT}}
+	</BOUCLE_documents_larges>
+	[(#SET{docs,[(#GET{docs}|implode{'|'})]})]
+	#MODELE{sjcycle_top,docs=#GET{docs},width=854,height=100,timeout=15000}
 	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
 </div>
 <div class="accueil_bis">

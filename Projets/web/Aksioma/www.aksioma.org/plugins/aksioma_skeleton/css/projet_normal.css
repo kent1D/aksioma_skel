@@ -1,0 +1,50 @@
+#page #conteneur{
+	width:751px;
+	margin:10px auto 10px auto;
+}
+
+#page #conteneur #contenu{
+	width:468px;
+}
+
+body div#conteneur #navigation{
+	width:70px;
+	padding-top:20px
+}
+
+body #conteneur .cartouche .spip_logos{
+	float:right;
+	margin: 0 0 10px 10px;
+}
+
+body h3.spip{
+	border:none;
+}
+
+#page hr.spip{
+	margin:.5em 0;
+}
+
+#page div#conteneur #extra{
+	width:183px;
+}
+
+.headline{
+	overflow:hidden;
+	font-size:.9em;
+}
+
+#page #menu_lang a:hover{
+	color:transparent;
+}
+
+body #extra h3{
+	background:transparent;
+	padding:4px 0;
+	font-size:.9em;
+}
+
+body #extra h2{
+	padding-left:24px;
+	background:#999 url(../images/fle_droite.png) no-repeat 2px center;
+}

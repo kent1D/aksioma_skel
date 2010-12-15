@@ -1,13 +1,22 @@
+#CACHE{0}
 <div class="extra-right">
+#INCLURE{fond=inclure/menu,env,identifiant=social}
 <B_colonne4_media>
 <h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
 <BOUCLE_colonne4_media(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_medias,#ARRAY}}{tout}>
 <B_articles_rubcolonne4_media>
 	<div>
-	<BOUCLE_articles_rubcolonne4_media(ARTICLES){origine_traduction}{branche}{par hasard}{0,1}>
-	<BOUCLE_videos(DOCUMENTS){id_article}{extension=dist_vimeo}{0,1}>
+	<BOUCLE_articles_rubcolonne4_media(ARTICLES){branche}{par hasard}{0,1}>
+	<BOUCLE_videos(DOCUMENTS){id_article}{par hasard}{extension IN dist_vimeo,dist_youtu}{0,1}>
 	#MODELE{video,id_document=#ID_DOCUMENT}
 	</BOUCLE_videos>
+	<BOUCLE_images(DOCUMENTS){id_article}{extension IN jpg,png,gif}{0,1}>
+	</BOUCLE_images>
+	[(#MODELE{sjcycle,id=#ID_ARTICLE,background=transparent})]
+	</B_images>
+	<BOUCLE_autre_article(BOUCLE_articles_rubcolonne4_media)></BOUCLE_autre_article>
+	<//B_images>
+	<//B_videos>
 	</BOUCLE_articles_rubcolonne4_media>
 	</div>
 </B_articles_rubcolonne4_media>

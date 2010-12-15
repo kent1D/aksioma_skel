@@ -1,0 +1,111 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+<BOUCLE_article_defaut(ARTICLES){id_article=#ID_ARTICLE_ACCUEIL}>
+#SET{logo_defaut,#LOGO_ARTICLE}
+<BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+<div class="contenu-principal">
+	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
+	<div class="cartouche">
+		[(#LOGO_ARTICLE|sinon{#GET{logo_defaut}}|image_reduire{190,0})]
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+	</div>
+
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{468,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{468,0})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps">
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+	</div>]
+	
+	[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+</div>
+</BOUCLE_traduc_lang>
+</B_traduc_lang>
+<div class="contenu-principal">
+	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
+	<div class="cartouche">
+		[(#LOGO_ARTICLE|image_reduire{190,0})]
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+	</div>
+
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{468,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{468,0})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps">
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+	</div>]
+	
+	[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+</div>
+<//B_traduc_lang>
+</BOUCLE_article_defaut>
+</B_article_defaut>
+<div class="contenu-principal">
+	#MENU_LANG
+	<div class="cartouche">
+		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
+		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+	</div>
+
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+</div>
+
+<INCLURE{fond=inclure/liste_articles_rubriques,env,ajax}>
+
+<INCLURE{fond=inclure/liste_articles_ssrubriques_rubriques,env,ajax}>
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_rubrique})]	
+
+[(#REM) Breves du secteur ]
+<B_breves>
+<div class="liste breves">
+		#ANCRE_PAGINATION
+		<h2 class="h2"><:breves:></h2>
+		<ul class="liste-items">
+				<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
+				<li class="item">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)</abbr><span class="sep"> &ndash; </span>]<a href="#URL_BREVE">#TITRE</a></li>
+				</BOUCLE_breves>
+		</ul>
+		[<p class="pagination">(#PAGINATION)</p>]
+</div>
+</B_breves>
+
+[(#REM) Sites de la rubrique ]
+<B_sites>
+<div class="liste sites">
+		<h2 class="h2"><:sur_web:></h2>
+		<ul class="liste-items">
+				<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
+				<li class="item">
+					<a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">#NOM_SITE</a>
+						<B_syndic>
+						<ul>
+							<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
+							<li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
+							</BOUCLE_syndic>
+						</ul>
+						</B_syndic>
+				</li>
+				</BOUCLE_sites>
+		</ul>
+</div>
+</B_sites>
+
+[(#REM) Proposer un site ]
+#FORMULAIRE_SITE
+
+[<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
+<//B_article_defaut>
+</BOUCLE_contenu_rubrique>

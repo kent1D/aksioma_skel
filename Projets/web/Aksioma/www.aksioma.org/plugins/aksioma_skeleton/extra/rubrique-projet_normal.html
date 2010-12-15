@@ -1,0 +1,21 @@
+#MENU_LANG
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+<BOUCLE_article_defaut(ARTICLES){id_rubrique}{id_article=#ID_ARTICLE_ACCUEIL}>
+<B_events>
+<h2>Related event</h2>
+<ul class="liste liste-items evenements">
+<BOUCLE_events(EVENEMENTS){id_article}{!par date_debut}>
+<li class="item">
+	#MODELE{evenement_vevent,lien=non}
+</li>
+</BOUCLE_events>
+</ul>
+</B_events>
+<BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+[(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
+</BOUCLE_traduc_lang>
+</B_traduc_lang>
+[(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
+<//B_traduc_lang>
+</BOUCLE_article_defaut>
+</BOUCLE_rubrique>

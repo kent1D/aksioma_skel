@@ -1,6 +1,10 @@
+[(#ENV{composition}|?{#SET{compo,#ENV{composition}},#SET{compo,xxx}})]
 <div id="page">
 	<div id="entete">
-		<INCLURE{fond=inclure/entete,env}>
+		[(#CHEMIN{inclure/entete_#GET{composition}}|oui)
+		<INCLURE{fond=inclure/entete_#GET{composition},env}>]
+		[(#CHEMIN{inclure/entete_#GET{composition}}|non)
+		<INCLURE{fond=inclure/entete,env}>]
 	</div>
 	<div id="nav">
 		<INCLURE{fond=inclure/barre-nav,env}>
@@ -16,7 +20,7 @@
 		</div>
 		
 		<div id="extra">
-			<INCLURE{fond=extra/dist,env}>
+			<INCLURE{fond=extra/#ENV{type},env}>
 		</div>
 	</div>
 

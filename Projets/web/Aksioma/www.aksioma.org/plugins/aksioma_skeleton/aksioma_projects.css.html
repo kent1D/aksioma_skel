@@ -1,0 +1,58 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Note: l'entete "Vary:" sert a repousser l'entete par
+	defaut "Vary: Cookie,Accept-Encoding", qui est (un peu)
+	genant en cas de "rotation du cookie de session" apres
+	un changement d'IP (effet de clignotement).
+
+	ATTENTION: il faut absolument le charset sinon Firefox croit que
+	c'est du text/html !
+	<style>
+]
+#CACHE{0,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
+#HTTP_HEADER{Vary: Accept-Encoding}
+[@import url((#CHEMIN{css/projet_normal.css}));]
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+#SET{background-color,#BACKGROUND_COLOR}
+#SET{text-color,#TEXT_COLOR}
+#SET{link-color,#LINK_COLOR}
+#SET{link-color_hover,#LINK_HOVER_COLOR}
+#SET{bold_color,#BOLD_COLOR}
+#SET{background-image,#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}|match{rubon0}|?{'',#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}}}
+</BOUCLE_rubrique>
+
+html > body{
+	[background-color:(#GET{background-color});][
+	background-image:url((#GET{background-image}));
+	][
+	color:(#GET{text-color});]
+}
+
+body div#conteneur, body div#conteneur > div,body div#conteneur #contenu > *, body div#conteneur .notes{
+	background-color:#GET{background-color};
+}
+
+#page #entete,#page #pied{
+	display:none;
+}
+
+#page a{
+	color:#GET{link-color};
+}
+
+#page a:hover{
+	color:#GET{link-color_hover};
+}
+
+body #conteneur h1, body #conteneur h2, body h3,body .surtitre,body .soustitre{
+	color:#GET{bold_color};
+	background-color:transparent;
+	border:none;
+}
+
+body strong{
+	color:#GET{bold_color};
+}
