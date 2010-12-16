@@ -10,6 +10,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// E
 	'evenement_voir' => 'See',
 
+	// I
+	'info_back' => 'BACK',
+	'info_home' => 'HOME',
+
 	// L
 	'label_contenu_colonne_1' => 'Sections in the first column',
 	'label_contenu_colonne_3' => 'Sections in the third column',
@@ -26,7 +30,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'titre_medias' => 'MEDIAS',
+	'titre_press_corner' => 'PRESS CORNER',
 	'titre_publications' => 'PUBLICATIONS',
+	'titre_related_events' => 'RELATED EVENTS',
 	
 );
 

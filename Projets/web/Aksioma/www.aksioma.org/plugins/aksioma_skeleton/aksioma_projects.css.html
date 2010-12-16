@@ -22,6 +22,7 @@
 #SET{link-color_hover,#LINK_HOVER_COLOR}
 #SET{bold_color,#BOLD_COLOR}
 #SET{background-image,#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}|match{rubon0}|?{'',#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}}}
+#SET{title_color,#TITLE_COLOR|sinon{#GET{bold_color}}}
 </BOUCLE_rubrique>
 
 html > body{
@@ -48,7 +49,7 @@ body div#conteneur, body div#conteneur > div,body div#conteneur #contenu > *, bo
 }
 
 body #conteneur h1, body #conteneur h2, body h3,body .surtitre,body .soustitre{
-	color:#GET{bold_color};
+	color:#GET{title_color};
 	background-color:transparent;
 	border:none;
 }

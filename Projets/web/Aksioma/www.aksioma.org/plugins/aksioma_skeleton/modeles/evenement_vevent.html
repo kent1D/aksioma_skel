@@ -5,7 +5,7 @@
 [(#INSCRIPTION|?{' ',''})<p class="inscrits">#NB_INSCRITS[/(#PLACES) ]<:agenda:inscrits:></p>]
 [<p class="date">(#DATE_DEBUT|agenda_affdate_debut_fin{#DATE_FIN,#HORAIRE,'hcal'})</p>]
 [<div class="description  #EDIT{descriptif}">(#DESCRIPTIF)</div>]
-[<p class="lieu"><span class="location #EDIT{lieu}">(#LIEU)</span>[<br /><span class="adresse #EDIT{adresse}">(#ADRESSE|PtoBR)</span>]</p>]
+[<p class="lieu"><span class="location #EDIT{lieu}">(#LIEU|PtoBR)</span>[<br /><span class="adresse #EDIT{adresse}">(#ADRESSE|PtoBR)</span>]</p>]
 <B_mots><p class='category'><BOUCLE_mots(MOTS){id_evenement}{par num titre,titre}{', '}>#TITRE</BOUCLE_mots></p></B_mots>
 <BOUCLE_article_event(ARTICLES){id_article=#ID_ARTICLE}>[(#ENV{lien}|!={non}|oui)<p class="url"><:aksioma:evenement_voir:> <a href="#URL_ARTICLE" class="spip_in">#TITRE</a></p>]</BOUCLE_article_event>
 </div>
