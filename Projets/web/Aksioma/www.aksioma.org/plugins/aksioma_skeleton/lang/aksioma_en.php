@@ -13,6 +13,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// I
 	'info_back' => 'BACK',
 	'info_home' => 'HOME',
+	'info_more' => 'MORE',
 
 	// L
 	'label_contenu_colonne_1' => 'Sections in the first column',

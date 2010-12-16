@@ -25,8 +25,16 @@ body h3.spip{
 	margin:.5em 0;
 }
 
-#page div#conteneur #extra{
+#page div#conteneur #extra .extra_3{
 	width:183px;
+	float: left;
+	margin-left: 10px;
+}
+
+#page div#conteneur #extra .extra_4{
+	float: left;
+	margin-left: 10px;
+	width: 485px
 }
 
 .headline{
@@ -47,4 +55,8 @@ body #extra h3{
 body #extra h2{
 	padding-left:24px;
 	background:#999 url(../images/fle_droite.png) no-repeat 2px center;
+}
+
+.extra_3 p{
+	font-size:.8em;
 }

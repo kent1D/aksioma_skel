@@ -3,6 +3,7 @@
 <div class="documents documents_portfolio">
 	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{vu=non}>[
 	<h2>#TITRE</h2>
+	<div class="#EDIT{vignette}">
 	<a href="(#URL_DOCUMENT)"
 		 type="#MIME_TYPE"
 		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
@@ -10,10 +11,9 @@
 		|image_reduire{0,100}
 		|inserer_attribut{class,spip_logos}
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
-	]</BOUCLE_documents_portfolio>
+	]</div></BOUCLE_documents_portfolio>
 </div>
 </B_documents_portfolio>
-
 
 [(#REM)
 	Liste des autres documents joints
@@ -21,12 +21,15 @@
 <B_documents_joints>
 	<div class="liste documents documents_joints">
 	<ul class="liste-items">
-		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>[
+		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>
 		<li class="item">
-			<strong><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></strong>
+			[(#ENV{id_article}|non)[<h2 class="#EDIT{titre}"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></h2>]]
+			[(#ENV{id_article}|oui)[<strong class="#EDIT{titre}" style="display:block"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></strong>]]
 			[<a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">(#LOGO_DOCUMENT**|match{IMG}|?{[(#LOGO_DOCUMENT|image_reduire{183,0})],''})</a>]
+			<div class="#EDIT{descriptif}">
 			#DESCRIPTIF
-		]</li>
+			</div>
+		</li>
 		</BOUCLE_documents_joints>
 	</ul>
 	</div>

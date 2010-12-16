@@ -1,5 +1,8 @@
-#MENU_LANG
+<BOUCLE_articles_nb(ARTICLES){id_rubrique}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+[(#GET{2_colonnes}|=={oui}|oui)
+<div class="extra_3">
+]#MENU_LANG
 <BOUCLE_article_defaut(ARTICLES){id_rubrique}{id_article=#ID_ARTICLE_ACCUEIL}>
 <B_events>
 <h2><:aksioma:titre_related_events:></h2>
@@ -11,6 +14,9 @@
 </BOUCLE_events>
 </ul>
 </B_events>
+<BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN pdf}>
+[(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique})]
+</BOUCLE_documents>
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 [<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
 </BOUCLE_traduc_lang>
@@ -18,4 +24,24 @@
 [<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
 <//B_traduc_lang>
 </BOUCLE_article_defaut>
+[(#GET{2_colonnes}|=={oui}|oui)
+</div>
+<div class="extra_4">
+]
+<BOUCLE_articles_rubriques(ARTICLES){origine_traduction}{id_rubrique}{id_article != #ID_ARTICLE_ACCUEIL}{0,1}>
+<BOUCLE_article_rubriques_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+<h2>#TITRE</h2>
+<div class="texte">
+	[(#TEXTE|image_reduire{485,0})]
+</div>
+</BOUCLE_article_rubriques_lang>
+</B_article_rubriques_lang>
+<h2>#TITRE</h2>
+<div class="texte">
+	[(#TEXTE|image_reduire{485,0})]
+</div>
+<//B_article_rubriques_lang>
+</BOUCLE_articles_rubriques>
+[(#GET{2_colonnes}|=={oui}|oui)
+</div>]
 </BOUCLE_rubrique>

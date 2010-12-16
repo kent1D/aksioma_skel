@@ -23,6 +23,8 @@
 #SET{bold_color,#BOLD_COLOR}
 #SET{background-image,#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}|match{rubon0}|?{'',#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}}}
 #SET{title_color,#TITLE_COLOR|sinon{#GET{bold_color}}}
+<BOUCLE_articles(ARTICLES){id_rubrique}> </BOUCLE_articles>
+#SET{nb_articles,#GRAND_TOTAL}</B_articles>
 </BOUCLE_rubrique>
 
 html > body{
@@ -36,6 +38,13 @@ body div#conteneur, body div#conteneur > div,body div#conteneur #contenu > *, bo
 	background-color:#GET{background-color};
 }
 
+#page #conteneur{
+	[(#GET{nb_articles}|>{1}|oui)width:1250px;]	
+}
+[(#GET{nb_articles}|>{1}|oui)
+body div#conteneur #extra{
+	width:690px;
+}]
 #page #entete,#page #pied{
 	display:none;
 }

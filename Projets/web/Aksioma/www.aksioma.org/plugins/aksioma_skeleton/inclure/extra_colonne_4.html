@@ -35,14 +35,38 @@
 	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{78,0})]})]
 	<li>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">
-		[(#LOGO_ARTICLE|image_reduire{78,0}|sinon{#GET{logo_origine}})]
-		</a>
+			<BOUCLE_docpdf(DOCUMENTS){id_article}{extension=pdf}{0,1}>
+				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
+				[(#LOGO_DOCUMENT|image_reduire{78,0}|sinon{#GET{logo_origine}})]
+				</a>
+				<div class="exergue_pdf">
+					<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">
+						[<:aksioma:info_more:>]
+					</a>
+				</div>
+			</BOUCLE_docpdf>
+			</B_docpdf>
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+				[(#LOGO_ARTICLE|image_reduire{78,0})]
+			</a>
+			<//B_docpdf>
 		</BOUCLE_trad_lang>
 		</B_trad_lang>
-		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
-			[(#LOGO_ARTICLE|image_reduire{78,0})]
-		</a>
+			<BOUCLE_docpdf_orig(DOCUMENTS){id_article}{extension=pdf}{0,1}>
+				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
+				[(#LOGO_DOCUMENT|image_reduire{78,0}|sinon{#GET{logo_origine}})]
+				</a>
+				<div class="exergue_pdf">
+					<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">
+						[<:aksioma:info_more:>]
+					</a>
+				</div>
+			</BOUCLE_docpdf_orig>
+			</B_docpdf_orig>
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+				[(#LOGO_ARTICLE|image_reduire{78,0})]
+			</a>
+			<//B_docpdf_orig>
 		<//B_trad_lang>
 	</li>
 	</BOUCLE_articles_rubcolonne4>
