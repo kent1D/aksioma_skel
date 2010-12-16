@@ -15,13 +15,18 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_contenu_colonne_3' => 'Sections in the third column',
 	'label_contenu_colonne_4' => 'Sections in the fourth column',
 	'label_contenu_colonne_medias' => 'Root section of the media content',
+	'label_rubrique_projet' => 'Projects section',
+	'label_text_color' => 'Color of the text',
+	'label_background_color' => 'Background color',
+	'label_link_color' => 'Color of the links',
+	'label_link_hover_color' => 'Color of the links (hovering)',
+	'label_bold_color' => 'Bold color',
 	'label_titre_contenu_colonne_4' => 'Title of the content in the fourth column',
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
 
 	// T
 	'titre_medias' => 'MEDIAS',
 	'titre_publications' => 'PUBLICATIONS',
-
 	
 );
 

@@ -5,7 +5,7 @@
 <h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
 <BOUCLE_colonne4_media(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_medias,#ARRAY}}{tout}>
 <B_articles_rubcolonne4_media>
-	<div>
+	<div class="exergue_media">
 	<BOUCLE_articles_rubcolonne4_media(ARTICLES){branche}{par hasard}{0,1}>
 	<BOUCLE_videos(DOCUMENTS){id_article}{par hasard}{extension IN dist_vimeo,dist_youtu}{0,1}>
 	#MODELE{video,id_document=#ID_DOCUMENT}
@@ -17,6 +17,7 @@
 	<BOUCLE_autre_article(BOUCLE_articles_rubcolonne4_media)></BOUCLE_autre_article>
 	<//B_images>
 	<//B_videos>
+	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE">#TITRE</a></p>
 	</BOUCLE_articles_rubcolonne4_media>
 	</div>
 </B_articles_rubcolonne4_media>
@@ -30,22 +31,18 @@
 	<h4 class="#_colonne4:EDIT{titre}">#_colonne4:TITRE</h4>
 	<div class="menu">
 	<ul class="liste">
-	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{branche}{par num titre,titre}{tout}>
+	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{branche}{!par num titre}{par titre}{tout}>
 	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{78,0})]})]
 	<li>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-
 		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">
 		[(#LOGO_ARTICLE|image_reduire{78,0}|sinon{#GET{logo_origine}})]
 		</a>
-
 		</BOUCLE_trad_lang>
 		</B_trad_lang>
-
-			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
-				[(#LOGO_ARTICLE|image_reduire{78,0})]
-			</a>
-
+		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+			[(#LOGO_ARTICLE|image_reduire{78,0})]
+		</a>
 		<//B_trad_lang>
 	</li>
 	</BOUCLE_articles_rubcolonne4>

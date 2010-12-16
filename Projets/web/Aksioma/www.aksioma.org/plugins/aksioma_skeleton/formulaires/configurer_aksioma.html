@@ -10,6 +10,8 @@
 		<div>
 			#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
+				[(#SAISIE{secteur,rubrique_projets,
+					label=<:aksioma:label_rubrique_projet:>})]
 				[(#SAISIE{secteur,contenu_colonne_1,
 					label=<:aksioma:label_contenu_colonne_1:>,
 					multiple=oui,

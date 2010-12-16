@@ -4,7 +4,7 @@
 	#SET{docs,#GET{docs}|push{#ID_DOCUMENT}}
 	</BOUCLE_documents_larges>
 	[(#SET{docs,[(#GET{docs}|implode{'|'})]})]
-	#MODELE{sjcycle_top,docs=#GET{docs},width=854,height=100,timeout=15000}
+	#MODELE{sjcycle_top,docs=#GET{docs},width=854,height=100,timeout=15000,redirection=#URL_SITE_SPIP}
 	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
 </div>
 <div class="accueil_bis">

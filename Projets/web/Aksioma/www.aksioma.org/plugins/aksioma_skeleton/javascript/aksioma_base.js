@@ -1,5 +1,4 @@
 $(function() {
-	//$('ul#basic_config').carouFredSel();
 	var i = 0;
 	$('.extra-right ul.liste').each(function(){
 		i++;
@@ -7,7 +6,8 @@ $(function() {
 		text += '<a id="next'+i+'" class="next" href="#">&gt;</a>';
 		$(this).after(text)
 		$(this).carouFredSel({
-			items: 1,
+			auto:false,
+			items: 3,
 			width: 276,
 			prev: "#prev"+i,
 			next: "#next"+i

@@ -71,12 +71,16 @@
                                     margin:[(#GET{img_bordure})]px;">
          ]
          [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|oui)
+		    #SET{box,ok}
             <a href="[(#URL_DOCUMENT)]" type="#MIME_TYPE"
                                          class="#GET{cssbox}"
                                          rel="#GET{cssbox}"
                                          [(#CONFIG{sjcycle/tooltip}|=={on}|non) title="[(#TITRE|supprimer_numero|attribut_html)]"]
                                          style="display:block;padding:0px;margin:0px;">
          ]
+		 [(#ENV{redirection}|et{#GET{box}|!={ok}}|oui)
+		 	<a href="#ENV{redirection}" style="display:block;padding:0px;margin:0px;">
+		 ]
          [(#GET{img_background}|=={'transparent'}|oui)
             [(#FICHIER|image_passe_partout{#GET{img_width},
                                       #GET{img_height}}
@@ -102,7 +106,7 @@
                       |inserer_attribut{alt,[(#TITRE|supprimer_numero|attribut_html)]}
                       |inserer_attribut{style,"display:block;"})]
          ]
-         [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|oui)
+         [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|ou{#ENV{redirection}}|oui)
          	</a>
          ]
          [(#CONFIG{sjcycle/tooltip}|=={on}|oui)
