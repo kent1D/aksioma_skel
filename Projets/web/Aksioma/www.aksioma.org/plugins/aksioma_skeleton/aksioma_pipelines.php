@@ -81,4 +81,32 @@ function aksioma_compositions_selectionner($composition,$type,$defaut="",$ext="h
 	// rien mais ca fera une erreur dans le squelette si appele en filtre
 	return '';
 }
+
+/**
+ * Insertion dans le pipeline post_insertion (SPIP)
+ * Si on est dans la rubrique des projets :
+ * -* On assimile directement la bonne composition
+ * -* On ajoute automatiquement un article
+ * -* On met cet article comme article d'accueil
+ * -* On met la redirection vers la rubrique sur l'article
+ */
+
+function aksioma_post_insertion($flux){
+	$config = lire_config('aksioma',array());
+	if(($flux['args']['table'] == 'spip_rubriques') && ($flux['data']['id_parent'] == $config['rubrique_projets'])){
+		if($config['composition_projet']){
+			include_spip('action/editer_article');
+			include_spip('action/editer_rubrique');
+			$id_article = insert_article($flux['args']['id_objet']);
+			$err = articles_set($id_article,array('titre' => _request('titre',_T('item_nouvel_article')),'chapo'=>'=rub'.$flux['args']['id_objet']));
+			if(trim(_request('texte')) == ''){
+				$texte_rubrique = $config['texte_defaut_projet'];
+			}else{
+				$texte_rubrique = _request('texte');
+			}
+			revisions_rubriques($flux['args']['id_objet'], array('id_article_accueil' => $id_article,'composition' => $config['composition_projet'],'texte' => $texte_rubrique));
+		}
+	}
+	return $flux;
+}
 ?>

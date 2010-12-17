@@ -1,5 +1,5 @@
 #page #conteneur{
-	width:751px;
+	width:800px;
 	margin:10px auto 10px auto;
 }
 
@@ -24,7 +24,9 @@ body h3.spip{
 #page hr.spip{
 	margin:.5em 0;
 }
-
+#page div#conteneur #extra{
+	width:auto;
+}
 #page div#conteneur #extra .extra_3{
 	width:183px;
 	float: left;

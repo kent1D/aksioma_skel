@@ -12,6 +12,12 @@
 			<ul>
 				[(#SAISIE{secteur,rubrique_projets,
 					label=<:aksioma:label_rubrique_projet:>})]
+				[(#SAISIE{composition,composition_projet,
+					label=<:aksioma:label_composition_projet:>,
+					type=rubrique})]
+				[(#SAISIE{textarea, texte_defaut_projet,
+					label=<:aksioma:label_texte_defaut_projet:>,
+					class=multilang})]
 				[(#SAISIE{secteur,contenu_colonne_1,
 					label=<:aksioma:label_contenu_colonne_1:>,
 					multiple=oui,

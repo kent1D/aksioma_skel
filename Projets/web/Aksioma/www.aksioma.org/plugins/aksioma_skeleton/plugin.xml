@@ -29,6 +29,10 @@
 		<nom>styliser</nom>
 		<inclure>aksioma_pipelines.php</inclure>
 	</pipeline>
+	<pipeline>
+		<nom>post_insertion</nom>
+		<inclure>aksioma_pipelines.php</inclure>
+	</pipeline>
 	<categorie>squelette</categorie>
 	<necessite id='SPIP' version='[2.1.2;]' />
 	<necessite id='Z' version='[2.0.0-dev;]' />
