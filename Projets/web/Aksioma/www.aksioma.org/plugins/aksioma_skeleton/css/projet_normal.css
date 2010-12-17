@@ -1,3 +1,7 @@
+body div#page{
+	width:100%;
+}
+
 #page #conteneur{
 	width:800px;
 	margin:10px auto 10px auto;

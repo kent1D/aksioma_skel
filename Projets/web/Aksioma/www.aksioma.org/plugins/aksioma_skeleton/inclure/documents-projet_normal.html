@@ -21,7 +21,7 @@
 <B_documents_joints>
 	<div class="liste documents documents_joints">
 	<ul class="liste-items">
-		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png} {vu=non}{par num titre, date}>
+		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png,dist_vimeo,dist_youtu} {vu=non}{par num titre, date}>
 		<li class="item">
 			[(#ENV{id_article}|non)[<h2 class="#EDIT{titre}"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></h2>]]
 			[(#ENV{id_article}|oui)[<strong class="#EDIT{titre}" style="display:block"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></strong>]]

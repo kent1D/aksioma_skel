@@ -1,8 +1,10 @@
-<BOUCLE_articles_nb(ARTICLES){id_rubrique}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
+<BOUCLE_articles_nb(ARTICLES){id_rubrique}{origine_traduction}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
+</B_articles_nb>
+<BOUCLE_video_nb(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>#SET{2_colonnes,oui}</BOUCLE_video_nb>
+<//B_articles_nb>
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
-[(#GET{2_colonnes}|=={oui}|oui)
 <div class="extra_3">
-]#MENU_LANG
+#MENU_LANG
 <BOUCLE_article_defaut(ARTICLES){id_rubrique}{id_article=#ID_ARTICLE_ACCUEIL}>
 <B_events>
 <h2><:aksioma:titre_related_events:></h2>
@@ -24,10 +26,13 @@
 [<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
 <//B_traduc_lang>
 </BOUCLE_article_defaut>
-[(#GET{2_colonnes}|=={oui}|oui)
 </div>
+[(#GET{2_colonnes}|=={oui}|oui)
 <div class="extra_4">
 ]
+<BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>
+#MODELE{video,id_document=#ID_DOCUMENT,largeur=486,hauteur=364}
+</BOUCLE_video>
 <BOUCLE_articles_rubriques(ARTICLES){origine_traduction}{id_rubrique}{id_article != #ID_ARTICLE_ACCUEIL}{0,1}>
 <BOUCLE_article_rubriques_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 <h2>#TITRE</h2>
