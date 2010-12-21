@@ -40,7 +40,8 @@ body h3.spip{
 #page div#conteneur #extra .extra_4{
 	float: left;
 	margin-left: 10px;
-	width: 485px
+	padding: 0px 10px 10px;
+	width: 465px;
 }
 
 .headline{
@@ -65,4 +66,28 @@ body #extra h2{
 
 .extra_3 p{
 	font-size:.8em;
+}
+.documents_portfolio {
+	overflow:auto;
+	margin:10px 0;
+}
+.documents_portfolio > div{
+	float:left;
+	margin:4px;
+	position:relative;
+}
+
+.documents_portfolio > div .crayon-icones{
+	position:absolute;
+	top:0;
+	right:0;
+	float:none;
+	left:auto;
+}
+
+.document_portfolio{
+	text-align:center;
+}
+.document_portfolio img{
+	margin:10px auto;
 }

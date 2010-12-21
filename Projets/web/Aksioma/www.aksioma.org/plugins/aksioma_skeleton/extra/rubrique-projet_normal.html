@@ -1,29 +1,23 @@
-<BOUCLE_articles_nb(ARTICLES){id_rubrique}{origine_traduction}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
+<BOUCLE_articles_nb(ARTICLES){origine_traduction}{enfants}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
 </B_articles_nb>
 <BOUCLE_video_nb(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>#SET{2_colonnes,oui}</BOUCLE_video_nb>
+</B_video_nb>
+<BOUCLE_portfolio_nb(DOCUMENTS){id_rubrique}{mode=document}{extension IN jpg,png,gif}{0,1}>#SET{2_colonnes,oui}</BOUCLE_portfolio_nb>
+<//B_video_nb>
 <//B_articles_nb>
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
 <div class="extra_3">
 #MENU_LANG
-<BOUCLE_article_defaut(ARTICLES){id_rubrique}{id_article=#ID_ARTICLE_ACCUEIL}>
-<B_events>
-<h2><:aksioma:titre_related_events:></h2>
-<ul class="liste liste-items evenements">
-<BOUCLE_events(EVENEMENTS){id_article}{!par date_debut}>
-<li class="item">
-	#MODELE{evenement_vevent,lien=non}
-</li>
-</BOUCLE_events>
-</ul>
-</B_events>
+<BOUCLE_article_defaut(ARTICLES){enfants}{id_article=#ID_ARTICLE_ACCUEIL}>
+[(#INCLURE{fond=inclure/evenements-projet_normal,id_article,ajax})]
 <BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN pdf}>
 [(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique})]
 </BOUCLE_documents>
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-[<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
+[<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article,id_document,ajax})]
 </BOUCLE_traduc_lang>
 </B_traduc_lang>
-[<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article})]
+[<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article,id_document,ajax})]
 <//B_traduc_lang>
 </BOUCLE_article_defaut>
 </div>
@@ -33,20 +27,29 @@
 <BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>
 #MODELE{video,id_document=#ID_DOCUMENT,largeur=486,hauteur=364}
 </BOUCLE_video>
-<BOUCLE_articles_rubriques(ARTICLES){origine_traduction}{id_rubrique}{id_article != #ID_ARTICLE_ACCUEIL}{0,1}>
+<BOUCLE_articles_rubriques(ARTICLES){origine_traduction}{enfants}{id_article != #ID_ARTICLE_ACCUEIL}{0,1}>
 <BOUCLE_article_rubriques_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 <h2>#TITRE</h2>
-<div class="texte">
-	[(#TEXTE|image_reduire{485,0})]
-</div>
+[<div class="texte #EDIT{texte}">
+	(#TEXTE|image_reduire{485,0})
+</div>]
+[<div class="notes surlignable">
+	<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+	(#NOTES)
+</div>]
 </BOUCLE_article_rubriques_lang>
 </B_article_rubriques_lang>
 <h2>#TITRE</h2>
 <div class="texte">
 	[(#TEXTE|image_reduire{485,0})]
 </div>
+[<div class="notes surlignable">
+	<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+	(#NOTES)
+</div>]
 <//B_article_rubriques_lang>
 </BOUCLE_articles_rubriques>
+[<h2><:aksioma:titre_portfolio:></h2>(#INCLURE{fond=inclure/documents-portfolio_projet_normal,id_rubrique,id_document,ajax})]
 [(#GET{2_colonnes}|=={oui}|oui)
 </div>]
 </BOUCLE_rubrique>

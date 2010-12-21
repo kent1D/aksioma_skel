@@ -16,18 +16,23 @@
 #HTTP_HEADER{Vary: Accept-Encoding}
 [@import url((#CHEMIN{css/projet_normal.css}));]
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
-#SET{background-color,#BACKGROUND_COLOR}
-#SET{text-color,#TEXT_COLOR}
-#SET{link-color,#LINK_COLOR}
-#SET{link-color_hover,#LINK_HOVER_COLOR}
-#SET{bold_color,#BOLD_COLOR}
+#SET{background-color,#BACKGROUND_COLOR|sinon{#000000}}
+#SET{text-color,#TEXT_COLOR|sinon{#cccccc}}
+#SET{link-color,#LINK_COLOR|sinon{red}}
+#SET{link-color_hover,#LINK_HOVER_COLOR|sinon{red}}
+#SET{bold_color,#BOLD_COLOR|sinon{#ffffff}}
 #SET{background-image,#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}|match{rubon0}|?{'',#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}}}
 #SET{title_color,#TITLE_COLOR|sinon{#GET{bold_color}}}
-<BOUCLE_articles(ARTICLES){id_rubrique}{origine_traduction}{1,3}> </BOUCLE_articles>
+<BOUCLE_articles(ARTICLES){enfants}{origine_traduction}{1,3}> </BOUCLE_articles>
 #SET{nb_articles,#GRAND_TOTAL}</B_articles>
 <BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>
 #SET{video,oui}
 </BOUCLE_video>
+</B_video>
+<BOUCLE_portfolio(DOCUMENTS){id_rubrique}{mode=document}{extension IN jpg,png}{0,1}>
+#SET{video,oui}
+</BOUCLE_portfolio>
+<//B_video>
 <//B_articles>
 </BOUCLE_rubrique>
 

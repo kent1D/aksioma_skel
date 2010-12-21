@@ -1,0 +1,12 @@
+<B_events>
+#ANCRE_PAGINATION
+<h2><:aksioma:titre_related_events:></h2>
+<ul class="liste liste-items evenements">
+<BOUCLE_events(EVENEMENTS){id_article}{!par date_debut}{pagination 2}>
+<li class="item">
+	#MODELE{evenement_vevent,lien=non}
+</li>
+</BOUCLE_events>
+</ul>
+[<p class="pagination">(#PAGINATION)</p>]
+</B_events>

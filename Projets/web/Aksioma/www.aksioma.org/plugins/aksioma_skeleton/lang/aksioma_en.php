@@ -33,6 +33,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// T
 	'titre_medias' => 'MEDIAS',
+	'titre_portfolio' => 'PORTFOLIO',
 	'titre_press_corner' => 'PRESS CORNER',
 	'titre_publications' => 'PUBLICATIONS',
 	'titre_related_events' => 'RELATED EVENTS',
