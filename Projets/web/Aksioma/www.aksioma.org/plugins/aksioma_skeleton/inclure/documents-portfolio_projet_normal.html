@@ -1,18 +1,20 @@
 [(#REM) Portfolio : album d'images ]
 <B_documents_portfolio>
-<div class="documents documents_portfolio">
+<div class="documents documents_portfolio menu">
+	<ul class="liste">
 	<BOUCLE_documents_portfolio(DOCUMENTS) {id_article?}{id_rubrique?} {mode=document}{extension IN png,jpg,gif} {par num titre, date}{vu=non}>
-	<div class="#EDIT{vignette}">
+	<li class="#EDIT{vignette}">
 	[<a href="(#SELF|parametre_url{id_document,#ID_DOCUMENT})"
 		 type="#MIME_TYPE"
-		 rel="documents_portfolio[-a(#ID_ARTICLE)][-r(#ID_RUBRIQUE)]"
-		
+		 class="ajax"
 	[ title="(#TITRE|attribut_html|couper{80})"]>[(#FICHIER
 		|image_passe_partout{85,85}
 		|image_recadre{85,85}
 		|inserer_attribut{class,spip_logos}
 		|inserer_attribut{alt,[(#TITRE|attribut_html|couper{80})]})]</a>
-	]</div></BOUCLE_documents_portfolio>
+	]</li>
+	</BOUCLE_documents_portfolio>
+	</ul>
 </div>
 </B_documents_portfolio>
 <B_doc_env>

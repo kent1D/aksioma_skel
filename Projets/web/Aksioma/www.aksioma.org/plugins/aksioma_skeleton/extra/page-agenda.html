@@ -1,13 +1,23 @@
 <div class="extra-left">
+	#MENU_LANG
+	<B_annees>
+	<div>
+	<BOUCLE_annees(EVENEMENTS){!par date_debut}{fusion_par_annee date_debut}>
+		<h3>[(#DATE_DEBUT|affdate{Y})]</h3>
+		#SET{date_debut, #DATE_DEBUT|affdate{Y-01-01}}
+		#SET{date_fin, #DATE_DEBUT|affdate{Y-12-31 23:59:59}}
 	<B_mois>
 	<ul class="menu-liste">
-	<BOUCLE_mois(EVENEMENTS){!par date_debut}{evenement_a_venir #ENV{date}|agenda_moisdecal{-6,'Y-m-d H:i:00'}}{id_article?}{id_rubrique?}{id_mot?}{id_evenement_source?}{fusion_par_mois date_debut}>
+	<BOUCLE_mois(EVENEMENTS){!par date_debut}{date_debut >= #GET{date_debut}}{date_fin < #GET{date_fin}}{fusion_par_mois date_debut}>
 	<li class="menu-entree">
-		[(#SELF|parametre_url{date_debut,#DATE_DEBUT|affdate{Y-m-01}}|lien_ou_expose{#DATE_DEBUT|affdate_mois_annee{},#ENV{date_debut,''}|=={#DATE_DEBUT|affdate{Y-m-01}}})]
+		[(#SELF|parametre_url{date_debut,#DATE_DEBUT|affdate{Y-m-01}}|lien_ou_expose{#DATE_DEBUT|affdate_mois_annee{},#ENV{date_debut,#ENV{date}|affdate{Y-m-01}}|=={#DATE_DEBUT|affdate{Y-m-01}}})]
 	</li>
 	</BOUCLE_mois>
 	</ul>
 	</B_mois>
+	</BOUCLE_annees>
+	</div>
+	</B_annees>
 </div>
 
 <INCLURE{fond=inclure/extra_colonne_4,env}>
