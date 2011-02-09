@@ -67,23 +67,27 @@ body #extra h2{
 .extra_3 p{
 	font-size:.8em;
 }
-.documents_portfolio {
+.documents_portfolio,.articles_lies ul {
 	overflow:auto;
 	margin:10px 0;
 }
-.documents_portfolio  li{
+.documents_portfolio li,.articles_lies li{
 	list-style-type:none;
 	padding:0;
 	float:left;
 	margin:4px;
 	position:relative;
+	font-size:.85em;
 }
 
-.documents_portfolio  li:hover{
-	margin:0px;
-	border:4px solid #ccc;
+.documents_portfolio  li:hover,.articles_lies li:hover,.articles_lies li.on{
+	margin:1px;
+	border:3px solid #ccc;
 }
 
+.documents_portfolio li a,.articles_lies li a{
+	display:block;
+}
 .documents_portfolio li .crayon-icones{
 	position:absolute;
 	top:0;
@@ -92,6 +96,10 @@ body #extra h2{
 	left:auto;
 }
 
+.articles_lies li{
+	width:143px;
+	padding:2px;
+}
 .documents_portfolio .caroufredsel_wrapper li{
 	width:85px;
 	height:85px;

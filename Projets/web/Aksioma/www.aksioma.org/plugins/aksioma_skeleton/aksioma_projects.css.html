@@ -16,6 +16,7 @@
 #HTTP_HEADER{Vary: Accept-Encoding}
 [@import url((#CHEMIN{css/projet_normal.css}));]
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+#SET{body_color,#BODY_COLOR|sinon{#000000}}
 #SET{background-color,#BACKGROUND_COLOR|sinon{#000000}}
 #SET{text-color,#TEXT_COLOR|sinon{#cccccc}}
 #SET{link-color,#LINK_COLOR|sinon{red}}
@@ -37,7 +38,7 @@
 </BOUCLE_rubrique>
 
 html > body{
-	[background-color:(#GET{background-color});][
+	[background-color:(#GET{body_color});][
 	background-image:url((#GET{background-image}));
 	][
 	color:(#GET{text-color});]

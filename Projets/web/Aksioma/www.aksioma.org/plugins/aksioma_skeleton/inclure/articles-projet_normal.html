@@ -1,0 +1,118 @@
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+<B_articles_rubriques>
+[(#GRAND_TOTAL|>{1}|oui)
+<ul>]
+<BOUCLE_articles_rubriques(ARTICLES){origine_traduction}{par num titre,date}{enfants}{id_article != #ID_ARTICLE_ACCUEIL}>
+<BOUCLE_article_rubriques_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+[(#_articles_rubriques:GRAND_TOTAL|>{1}|oui)
+#SET{expose,''}
+[(#EXPOSE|=={on}|oui)
+	#SET{expose,on}
+]
+[(#ENV{id_article}|non)
+	#SET{expose,#_articles_rubriques:COMPTEUR_BOUCLE|=={1}|?{on,''}}
+]
+<li[ class="(#GET{expose})"]>
+	[(#GET{expose}|=={on}|non)<a href="[(#SELF|parametre_url{id_article,#ID_ARTICLE})]" class="ajax">]
+	[(#LOGO_ARTICLE|image_reduire{145,0})]<br />
+	#TITRE
+	[(#GET{expose}|=={on}|non)</a>]
+</li>
+]
+[(#_articles_rubriques:GRAND_TOTAL|=={1}|oui)
+	<h2>#TITRE</h2>
+	[<div class="texte #EDIT{texte}">
+		(#TEXTE|image_reduire{485,0})
+	</div>]
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+]
+</BOUCLE_article_rubriques_lang>
+</B_article_rubriques_lang>
+[(#GRAND_TOTAL|>{1}|oui)
+#SET{expose,''}
+[(#EXPOSE|=={on}|oui)
+	#SET{expose,on}
+]
+[(#ENV{id_article}|non)
+	#SET{expose,#_articles_rubriques:COMPTEUR_BOUCLE|=={1}|?{on,''}}
+]
+<li[ class="(#GET{expose})"]>
+	[(#GET{expose}|=={on}|non)<a href="[(#SELF|parametre_url{id_article,#ID_ARTICLE})]" class="ajax">]
+	[(#LOGO_ARTICLE|image_reduire{145,0})]<br />
+	#TITRE
+	[(#GET{expose}|=={on}|non)</a>]
+</li>
+]
+[(#GRAND_TOTAL|=={1}|oui)
+	<h2>#TITRE</h2>
+	<div class="texte #EDIT{texte}">
+		[(#TEXTE|image_reduire{485,0})]
+	</div>
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+]
+<//B_article_rubriques_lang>
+</BOUCLE_articles_rubriques>
+[(#GRAND_TOTAL|>{1}|oui)
+</ul>]
+<BOUCLE_article_env(ARTICLES){id_article}>
+<BOUCLE_article_lang_env(ARTICLES){traduction}{lang=#ENV{lang}}>
+<div>
+	<h2>#TITRE</h2>
+	<div class="texte #EDIT{texte}">
+		[(#TEXTE|image_reduire{485,0})]
+	</div>
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+</div>
+</BOUCLE_article_lang_env>
+</B_article_lang_env>
+<div>
+	<h2>#TITRE</h2>
+	<div class="texte #EDIT{texte}">
+		[(#TEXTE|image_reduire{485,0})]
+	</div>
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+</div>
+<//B_article_lang_env>
+</BOUCLE_article_env>
+</B_article_env>
+<BOUCLE_article_rubrique_un(ARTICLES){origine_traduction}{par num titre,date}{enfants}{id_article != #ID_ARTICLE_ACCUEIL}{0,1}>
+<BOUCLE_article_rubrique_un_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+<div>
+	<h2>#TITRE</h2>
+	<div class="texte #EDIT{texte}">
+		[(#TEXTE|image_reduire{485,0})]
+	</div>
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+</div>
+</BOUCLE_article_rubrique_un_lang>
+</B_article_rubrique_un_lang>
+<div>
+	<h2>#TITRE</h2>
+	<div class="texte #EDIT{texte}">
+		[(#TEXTE|image_reduire{485,0})]
+	</div>
+	[<div class="notes surlignable">
+		<h2 class="h2 pas_surlignable"><:info_notes:></h2>
+		(#NOTES)
+	</div>]
+</div>
+<//B_article_rubrique_un_lang>
+</BOUCLE_article_rubrique_un>
+<//B_article_env>
+</B_articles_rubriques>
+</BOUCLE_rubrique>
