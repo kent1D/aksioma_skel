@@ -14,6 +14,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_back' => 'BACK',
 	'info_home' => 'HOME',
 	'info_more' => 'MORE',
+	'info_sites' => 'MORE',
 
 	// L
 	'label_composition_projet' => 'Default composition for a project',
@@ -22,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_contenu_colonne_4' => 'Sections in the fourth column',
 	'label_contenu_colonne_medias' => 'Root section of the media content',
 	'label_rubrique_projet' => 'Projects section',
+	'label_rubrique_project_space' => 'Project Space section',
 	'label_text_color' => 'Color of the text',
 	'label_background_color' => 'Background color',
 	'label_link_color' => 'Color of the links',

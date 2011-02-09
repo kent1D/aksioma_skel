@@ -3,7 +3,7 @@
 	#ANCRE_PAGINATION
 	<h2 class="h2"><:derniers_articles:></h2>
 	<ul class="liste-items">
-		<BOUCLE_articles_orig(ARTICLES){origine_traduction} {id_secteur !IN #CONFIG{aksioma/rubrique_projets}}{!par date} {pagination #ENV{pagination,10}}{id_rubrique > 0}>
+		<BOUCLE_articles_orig(ARTICLES){origine_traduction} {id_secteur !IN #CONFIG{aksioma/rubrique_projets},#CONFIG{aksioma/rubrique_project_space}}{!par date} {pagination #ENV{pagination,10}}{id_rubrique > 0}>
 		#SET{logo_orig,#LOGO_ARTICLE}
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 		#INCLURE{fond=inclure/article-resume,id_article,logo_original=#GET{logo_orig}}
