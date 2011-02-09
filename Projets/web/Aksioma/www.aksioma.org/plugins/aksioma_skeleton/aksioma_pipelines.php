@@ -32,13 +32,11 @@ function aksioma_styliser($flux){
 		  AND $type = $regs[3]
 		  AND in_array($type,compositions_types())){
 			$serveur = $flux['args']['connect'];
-			spip_log('on compose','test');
 			$ext = $flux['args']['ext'];
 			$table = table_objet($type);
 			$table_sql = table_objet_sql($type);
 			$_id_table = id_table_objet($type);
 
-			spip_log($regs,'test');
 			$trouver_table = charger_fonction('trouver_table', 'base');
 			$desc = $trouver_table($table,$serveur);
 			if (

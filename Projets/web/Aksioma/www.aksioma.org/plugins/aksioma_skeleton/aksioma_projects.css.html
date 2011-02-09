@@ -37,42 +37,42 @@
 <//B_articles>
 </BOUCLE_rubrique>
 
-html > body{
+html > body.rubrique_projet_normal{
 	[background-color:(#GET{body_color});][
 	background-image:url((#GET{background-image}));
 	][
 	color:(#GET{text-color});]
 }
 
-body div#conteneur, body div#conteneur > div,body div#conteneur #contenu > *, body div#conteneur .notes{
+body.rubrique_projet_normal div#conteneur, body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
 	background-color:#GET{background-color};
 }
 
-#page #conteneur{
+body.rubrique_projet_normal #page #conteneur{
 	[(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)width:1250px;]	
 }
 [(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)
-body div#conteneur #extra{
+body.rubrique_projet_normal div#conteneur #extra{
 	width:690px;
 }]
-#page #entete,#page #pied{
+body.rubrique_projet_normal #page #entete,body.rubrique_projet_normal #page #pied{
 	display:none;
 }
 
-#page a{
+body.rubrique_projet_normal #page a{
 	color:#GET{link-color};
 }
 
-#page a:hover{
+body.rubrique_projet_normal #page a:hover{
 	color:#GET{link-color_hover};
 }
 
-body #conteneur h1, body #conteneur h2, body h3,body .surtitre,body .soustitre{
+body.rubrique_projet_normal body #conteneur h1, body.rubrique_projet_normal #conteneur h2, body.rubrique_projet_normal h3,body.rubrique_projet_normal .surtitre,body.rubrique_projet_normal .soustitre{
 	color:#GET{title_color};
 	background-color:transparent;
 	border:none;
 }
 
-body strong{
+body.rubrique_projet_normal strong{
 	color:#GET{bold_color};
 }

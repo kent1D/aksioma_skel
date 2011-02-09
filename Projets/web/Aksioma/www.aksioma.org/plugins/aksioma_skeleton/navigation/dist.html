@@ -9,4 +9,7 @@
 
 #CALENDRIER_MINI{#ENV{date},'date',#URL_PAGE{agenda-zpip}}
 
+<BOUCLE_listes(ABOMAILMANS?){0,1}/>
+<p><a href="#URL_PAGE{abomailman}" class="abo_liste"><:aksioma:lien_abonnement_listes:></a></p>
+<//B_listes>
 #INCLURE{fond=inclure/navigation_extra_col1,env}

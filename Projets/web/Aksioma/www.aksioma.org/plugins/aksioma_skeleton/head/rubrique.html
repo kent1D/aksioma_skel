@@ -4,7 +4,7 @@
 [<link rel="canonical" href="(#URL_RUBRIQUE|url_absolue)" />]
 [(#REM) Lien vers le flux RSS de la rubrique ]
 <link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
-[(#COMPOSITION|oui)
+[(#COMPOSITION|=={projet_normal}|oui)
 [<link rel="stylesheet" href="(#URL_PAGE{aksioma_projects.css}|parametre_url{id_rubrique,#ID_RUBRIQUE})" type="text/css" media="projection, screen, tv" />]
 ]
 </BOUCLE_rubrique_head>

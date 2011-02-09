@@ -32,8 +32,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_texte_defaut_projet' => 'Default text of a project section',
 	'label_titre_contenu_colonne_4' => 'Title of the content in the fourth column',
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
+	'lien_abonnement_listes' => 'newsletter [Sign up]',
 
 	// T
+	'titre_last_events' => 'Recent events',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',
 	'titre_press_corner' => 'PRESS CORNER',

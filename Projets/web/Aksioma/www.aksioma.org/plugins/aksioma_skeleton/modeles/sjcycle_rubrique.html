@@ -1,4 +1,10 @@
-[(#SET{id_diapo,   	  [(#ENV{id_diapo, #ENV{id}})]})]
+[(#REM)  L'appel depuis un article se fait par < sjcycleXX >, alors id_sjcycle=XX
+	ou par un modele  CROCHET(# MODELE{sjcycle}{id_sjcycle=XX})CROCHET , alors id_article=XX
+	(A noter que CROCHET(# MODELE{sjcycle}{id=XX})CROCHET ne fonctionne pas si le modele se trouve
+   dans une boucle, id prenant l'id de l'objet de la boucle. Donc on evite cette ecriture)
+]
+[(#SET{id_objet,       [(#ENV{id_sjcycle,     0})]})]
+[(#SET{id_diapo,   	  [(#ENV{id_diapo,       #VAL{id_}|uniqid})]})]
 [(#SET{img_width,      [(#ENV{width,     		 #CONFIG{sjcycle/img_width}})]})]
 [(#SET{img_height,     [(#ENV{height,    		 #CONFIG{sjcycle/img_height}})]})]
 [(#SET{img_position,   [(#ENV{position,  		 #CONFIG{sjcycle/img_position}})]})]
@@ -6,7 +12,7 @@
 [(#SET{div_background, [(#ENV{border_color,   #CONFIG{sjcycle/div_background}})]})]
 [(#SET{div_margin,     [(#ENV{div_margin,   	 #CONFIG{sjcycle/div_margin}})]})]
 [(#SET{img_bordure,    [(#ENV{border_width,   #CONFIG{sjcycle/img_bordure}})]})]
-
+[(#SET{legende,        [(#ENV{legende,        0})]})]
 [(#REM) largeur div = largeur image + 2*bordure ]
 [(#SET{div_width,  #GET{img_bordure}|mult{2}|plus{#GET{img_width}} })]
 [(#SET{div_height, #GET{img_bordure}|mult{2}|plus{#GET{img_height}} })]
@@ -40,26 +46,27 @@
 			$("a.#GET{cssbox}").mediabox(box_settings);
 		]
 		$("#dsjcycle_#GET{id_diapo}").cycle({
-			 fx:			"#ENV{fx,#CONFIG{sjcycle/fx}}",
-			 timeout:	"#ENV{timeout,#CONFIG{sjcycle/timeout}}",
-			 speed:		"#ENV{speed,#CONFIG{sjcycle/speed}}",
+			 fx:			"#CONFIG{sjcycle/fx}",
+			 timeout:	"#CONFIG{sjcycle/timeout}",
+			 speed:		"#CONFIG{sjcycle/speed}",
 			 sync:		"#CONFIG{sjcycle/sync}",
 			 pause:		"#CONFIG{sjcycle/pause}",
+			 random:		"#CONFIG{sjcycle/random}",
 			 cleartype: 1
-			 [,(#ENV{opt}|html_entity_decode)]
+			 [,(#ENV{opt}|replace{';',','}html_entity_decode)]
 			 });
 	});
 
-
 	</script>
 	[(#REM) diaporama documents images conteneur jquery cycle ]
-
-	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_#GET{id_diapo}" style='[float:(#ENV{align}|match{left|right});margin:[(#GET{div_margin})]px;][width:(#GET{div_width})px;][height:(#GET{div_height}|>{0}|oui)px;][background:(#GET{div_background})]'>
+	[(#SET{style,[float:(#ENV{align}|match{left|right});margin:[(#GET{div_margin})]px;][width:(#GET{div_width})px;][height:(#GET{div_height})px;][background:(#GET{div_background})]})]
+   
+	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_#GET{id_diapo}" style='#GET{style}'>
 
 	[(#REM) Solution de denisb pour eviter de dupliquer le code Cf http://article.gmane.org/gmane.comp.web.spip.zone/18622 ]
 
-	<BOUCLE_img(DOCUMENTS){extension==jpg|png|gif}{id_document==^((#ENV{docs}|replace{',',|}|sinon{.*}))$}{par hasard}>
-   
+	<BOUCLE_img(DOCUMENTS){extension==jpg|png|gif}{id_document==^((#ENV{docs}|replace{',',|}|sinon{.*}))$}{par num titre, date}{doublons}>
+   	<div>
    		[(#REM) Les effets de type turnLeft ne fonctionnent pas si ce div est en place. En attendant de corriger
          rajout dans la doc de l'incompatibilité entre infobulles et ces effets. Du coup la bordure autour de l'image
          ne se met pas en place non plus ]
@@ -71,16 +78,12 @@
                                     margin:[(#GET{img_bordure})]px;">
          ]
          [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|oui)
-		    #SET{box,ok}
             <a href="[(#URL_DOCUMENT)]" type="#MIME_TYPE"
                                          class="#GET{cssbox}"
                                          rel="#GET{cssbox}"
                                          [(#CONFIG{sjcycle/tooltip}|=={on}|non) title="[(#TITRE|supprimer_numero|attribut_html)]"]
                                          style="display:block;padding:0px;margin:0px;">
          ]
-		 [(#ENV{redirection}|et{#GET{box}|!={ok}}|oui)
-		 	<a href="#ENV{redirection}" style="display:block;padding:0px;margin:0px;">
-		 ]
          [(#GET{img_background}|=={'transparent'}|oui)
             [(#FICHIER|image_passe_partout{#GET{img_width},
                                       #GET{img_height}}
@@ -89,8 +92,6 @@
                                       #GET{img_height},
                                       #GET{img_position},
                                       #GET{img_background}}
-						|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center}
-						|image_masque{[(#CHEMIN{images/logo_aksioma_right.png})],mode=normal,right=10px,vertical-align=center}
                       |inserer_attribut{alt,[(#TITRE|supprimer_numero|attribut_html)]}
                       |inserer_attribut{style,"display:block;"})]
          ]
@@ -101,12 +102,10 @@
                                       #GET{img_height},
                                       #GET{img_position},
                                       #GET{img_background}}
-					  |image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=5px,vertical-align=center}
-					  |image_masque{[(#CHEMIN{images/logo_aksioma_right.png})],mode=normal,right=5px,vertical-align=center}
                       |inserer_attribut{alt,[(#TITRE|supprimer_numero|attribut_html)]}
                       |inserer_attribut{style,"display:block;"})]
          ]
-         [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|ou{#ENV{redirection}}|oui)
+         [(#CONFIG{sjcycle/fancy}|=={on}|ou{#CONFIG{sjcycle/mediabox}|=={on}}|oui)
          	</a>
          ]
          [(#CONFIG{sjcycle/tooltip}|=={on}|oui)
@@ -119,6 +118,22 @@
             </div>
          </div> <!-- .infobulle -->
          ]
+         [(#GET{legende}|oui|et{#GET{legende}|=={1}|oui})
+            [(#REM) La legende est cree a partir du titre de chaque image ]
+            [<div class="sjcycle_legende">(#TITRE)</div>]
+         ]
+		</div>
 	</BOUCLE_img>
 	</div><!-- sjcycle-->
+
+   [(#GET{legende}|oui|et{#GET{legende}|=={modele}|oui})
+         [(#REM) La legende est cree a partir du modele sjcycle_legende ]
+         [<div class="sjcycle_legende"  style='#GET{style}'>(#MODELE{sjcycle_legende}{id_article=#GET{id_objet}})</div>]
+   ]
+
+   [(#GET{legende}|oui|et{#GET{legende}|=={1}|non}|et{#GET{legende}|=={modele}|non})
+         [(#REM) La legende est cree a partir du texte fourni ]
+         [<div class="sjcycle_legende"  style='#GET{style}'>(#GET{legende})</div>]
+   ]
+
 </B_img>

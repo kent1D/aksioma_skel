@@ -35,6 +35,24 @@ $(function() {
 				next: "#next"+j
 			});
 		});
+		var k = 0;
+		$('.rubrique_brochures #contenu ul.liste').each(function(){
+			k++;
+			if($(this).parent().is('.caroufredsel_wrapper')){
+				$(this).unwrap();
+			}
+			var text = '<a id="prev'+k+'" class="prev" href="#">&lt;</a>';
+			text += '<a id="next'+k+'" class="next" href="#">&gt;</a>';
+			$(this).after(text);
+			carousel_port = $(this).carouFredSel({
+				auto:false,
+				items: 5,
+				width: 940,
+				height:400,
+				prev: "#prev"+k,
+				next: "#next"+k
+			});
+		});
 	}
 	carousel();
 	onAjaxLoad(carousel);

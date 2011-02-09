@@ -2,58 +2,41 @@
 
 <div class="contenu-principal">
 	#MENU_LANG
+	#SET{level,null}
 	<div class="cartouche">
 		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
-		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
+		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE} / </B_ariane>&nbsp;>> <//B_ariane>[(#TITRE|strtolower|ucfirst)]</h1>
 	</div>
-
+	
 	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+	<BOUCLE_si_level(CONDITION){si #GET{level}|=={null}|oui}>
+	<BOUCLE_art_rub(ARTICLES){id_rubrique}{0,1}> </BOUCLE_art_rub>
+	</B_art_rub>
+		#SET{docs,#ARRAY}
+		<BOUCLE_art_branche(ARTICLES){branche}>
+		<BOUCLE_documents_larges(DOCUMENTS){id_article}{extension IN jpg,png}{largeur>=468}{par hasard}{0,2}>
+		#SET{docs,#GET{docs}|push{#ID_DOCUMENT}}
+		</BOUCLE_documents_larges>
+		</BOUCLE_art_branche>
+		[(#SET{docs,[(#GET{docs}|implode{'|'})]})]
+		#MODELE{sjcycle_top,id=1,docs=#GET{docs},width=468,timeout=5000}
+		<B_ss_rubriques>
+			<ul class="liste liste_rubriques">
+		<BOUCLE_ss_rubriques(RUBRIQUES){id_parent}>
+			<li><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)] >></a></li>
+		</BOUCLE_ss_rubriques>
+			</ul>
+		</B_ss_rubriques>
+	<//B_art_rub>
+	</BOUCLE_si_level>
 </div>
 
 <INCLURE{fond=inclure/liste_articles_rubriques,env,ajax}>
 
+<BOUCLE_si_level2(CONDITION){si #GET{level}|=={null}|non}>
 <INCLURE{fond=inclure/liste_articles_ssrubriques_rubriques,env,ajax}>
+</BOUCLE_si_level2>
 
-[(#REM) Gestion du portfolio et des documents ]
-[(#INCLURE{fond=inclure/documents}{id_rubrique})]	
-
-[(#REM) Breves du secteur ]
-<B_breves>
-<div class="liste breves">
-		#ANCRE_PAGINATION
-		<h2 class="h2"><:breves:></h2>
-		<ul class="liste-items">
-				<BOUCLE_breves(BREVES) {id_rubrique} {par date}{inverse} {pagination 5}>
-				<li class="item">[<abbr class="published" title="[(#DATE|date_iso)]">(#DATE|affdate_jourcourt)</abbr><span class="sep"> &ndash; </span>]<a href="#URL_BREVE">#TITRE</a></li>
-				</BOUCLE_breves>
-		</ul>
-		[<p class="pagination">(#PAGINATION)</p>]
-</div>
-</B_breves>
-
-[(#REM) Sites de la rubrique ]
-<B_sites>
-<div class="liste sites">
-		<h2 class="h2"><:sur_web:></h2>
-		<ul class="liste-items">
-				<BOUCLE_sites(SITES) {id_rubrique} {par nom_site}>
-				<li class="item">
-					<a href="[(#ID_SYNDIC|generer_url_entite{site,'','',#CONNECT})]">#NOM_SITE</a>
-						<B_syndic>
-						<ul>
-							<BOUCLE_syndic(SYNDIC_ARTICLES) {id_syndic} {age<180} {par date}{inverse} {0,3}>
-							<li><a href="#URL_ARTICLE" class="spip_out">#TITRE</a></li>
-							</BOUCLE_syndic>
-						</ul>
-						</B_syndic>
-				</li>
-				</BOUCLE_sites>
-		</ul>
-</div>
-</B_sites>
-
-[(#REM) Proposer un site ]
-#FORMULAIRE_SITE
 
 [<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 </BOUCLE_contenu_rubrique>

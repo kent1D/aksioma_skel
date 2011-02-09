@@ -1,7 +1,7 @@
 <B_articles_orig>
 <div class="liste articles sommaire">
 	#ANCRE_PAGINATION
-	<h2 class="h2"><:derniers_articles:></h2>
+	<h2 class="h2"><:aksioma:titre_last_events:></h2>
 	<ul class="liste-items">
 		<BOUCLE_articles_orig(ARTICLES){origine_traduction} {id_secteur !IN #CONFIG{aksioma/rubrique_projets},#CONFIG{aksioma/rubrique_project_space}}{!par date} {pagination #ENV{pagination,10}}{id_rubrique > 0}>
 		#SET{logo_orig,#LOGO_ARTICLE}

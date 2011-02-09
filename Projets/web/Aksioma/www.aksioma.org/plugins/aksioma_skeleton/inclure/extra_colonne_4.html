@@ -12,7 +12,7 @@
 	</BOUCLE_videos>
 	<BOUCLE_images(DOCUMENTS){id_article}{extension IN jpg,png,gif}{0,1}>
 	</BOUCLE_images>
-	[(#MODELE{sjcycle,id=#ID_ARTICLE,background=transparent})]
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent})]
 	</B_images>
 	<BOUCLE_autre_article(BOUCLE_articles_rubcolonne4_media)></BOUCLE_autre_article>
 	<//B_images>
@@ -56,11 +56,6 @@
 				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
 				[(#LOGO_DOCUMENT|image_reduire{78,0}|sinon{#GET{logo_origine}})]
 				</a>
-				<div class="exergue_pdf">
-					<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]">
-						[<:aksioma:info_more:>]
-					</a>
-				</div>
 			</BOUCLE_docpdf_orig>
 			</B_docpdf_orig>
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
