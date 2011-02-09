@@ -1,4 +1,8 @@
 <div class="extra-left">
+<BOUCLE_project_space(RUBRIQUES){id_rubrique=30}>
+<a href="#URL_RUBRIQUE">[(#LOGO_RUBRIQUE|image_reduire{183,0}|sinon{#TITRE})]</a>
+<br /><br />
+</BOUCLE_project_space>
 <BOUCLE_colonne3(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_3,#ARRAY}}{tout}>
 <B_articles_rubcolonne3>
 	<h3 class="#_colonne3:EDIT{titre}">#_colonne3:TITRE</h3>
