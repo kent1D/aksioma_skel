@@ -1,0 +1,24 @@
+<BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
+<div class="contenu-principal contenu-brochures">
+	<div class="cartouche">
+		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>> <//B_ariane>[(#TITRE|strtolower|ucfirst)]</h1>
+	</div>
+	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+	[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
+	<B_articles_rubbrochures_rub>
+		<div class="rubriques">
+		<BOUCLE_articles_rubbrochures_rub(ARTICLES){origine_traduction}{id_rubrique}{par num titre,titre}{tout}>
+		[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]})]
+			<BOUCLE_trad_lang_rub(ARTICLES){traduction}{lang=#ENV{lang}}>
+				<h2 class="#EDIT{titre}">>> [(#TITRE|strtolower|ucfirst)]</h2>
+				[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+			</BOUCLE_trad_lang_rub>
+			</B_trad_lang_rub>
+				<h2 class="#EDIT{titre}">>> [(#TITRE|strtolower|ucfirst)]</h2>
+				[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+			<//B_trad_lang_rub>
+		</BOUCLE_articles_rubbrochures_rub>
+		</div>
+	</B_articles_rubbrochures_rub>
+</div>
+</BOUCLE_contenu_rubrique>

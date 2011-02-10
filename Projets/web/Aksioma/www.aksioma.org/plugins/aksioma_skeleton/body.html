@@ -17,14 +17,13 @@
 			
 		<div id="contenu">
 			<INCLURE{fond=contenu/#ENV{type},env}>
+			<div id="pied">
+				<INCLURE{fond=inclure/pied,env}>
+			</div>
 		</div>
 		
 		<div id="extra">
 			<INCLURE{fond=extra/#ENV{type},env}>
 		</div>
-	</div>
-
-	<div id="pied">
-		<INCLURE{fond=inclure/pied,env}>
 	</div>
 </div>

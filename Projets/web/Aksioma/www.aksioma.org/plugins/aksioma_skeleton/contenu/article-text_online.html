@@ -1,0 +1,52 @@
+<BOUCLE_contenu_article(ARTICLES){id_article}>
+<div class="contenu-principal">
+	<div class="links_home">
+	<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></:aksioma:info_back:></a>
+	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
+	</div>
+	#MENU_LANG
+	<div class="cartouche">
+		[(#LOGO_ARTICLE|image_reduire{78,0})]
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="h1 #EDIT{titre}">&nbsp;>> [(#TITRE|strtolower|ucfirst)]</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE|propre|PtoBR)</p>]
+		[(#REM) Inclure le modele des liens de traductions ]
+		#MODELE{article_traductions}
+	</div>
+
+	<div class="surlignable">
+		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{370,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{370,0})</div>]
+	</div>
+
+	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
+
+	[<div class="ps">
+		<h2 class="h2"><:info_ps:></h2>
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+	</div>]
+
+[(#REM) Gestion du portfolio et des documents ]
+[(#INCLURE{fond=inclure/documents}{id_article})]
+
+</div>
+
+<div class="extra-right">
+	#INCLURE{fond=inclure/menu,env,identifiant=social}
+	<B_auteur>
+	<div class="info_auteurs surlignable">
+	<h3 class="pas_surlignable">[(#GRAND_TOTAL|singulier_ou_pluriel{<:aksioma:titre_about_auteur:>,<:aksioma:titre_about_auteurs:>}|strtoupper)]</h3>
+	<BOUCLE_auteur(AUTEURS){id_article}>
+	<div class="info_auteur">
+		[<p class="#EDIT{nom}"><strong>(#NOM)</strong></p>]
+		[<div class="#EDIT{bio}">(#BIO)</div>]
+		[<p><:aksioma:info_site_auteur:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{#URL_SITE})]</a></p>]
+	</div>
+	</BOUCLE_auteur>
+	</div>
+	</B_auteur>
+	[<div class="notes surlignable">
+	<h3 class="pas_surlignable"><:info_notes|strtoupper:></h3>
+	(#NOTES)</div>]
+</div>
+</BOUCLE_contenu_article>

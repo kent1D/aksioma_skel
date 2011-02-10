@@ -14,6 +14,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_back' => 'BACK',
 	'info_home' => 'HOME',
 	'info_more' => 'MORE',
+	'info_site_auteur' => 'Website',
 	'info_sites' => 'MORE',
 
 	// L
@@ -35,6 +36,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
 
 	// T
+	'titre_about_auteur' => 'About the author',
+	'titre_about_auteurs' => 'About the authors',
 	'titre_last_events' => 'Recent events',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',

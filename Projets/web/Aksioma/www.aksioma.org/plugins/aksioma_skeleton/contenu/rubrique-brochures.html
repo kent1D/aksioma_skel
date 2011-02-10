@@ -2,7 +2,7 @@
 <div class="contenu-principal contenu-brochures">
 	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
 	<div class="cartouche">
-		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE} / </B_ariane>&nbsp;>> <//B_ariane>[(#TITRE|strtolower|ucfirst)]</h1>
+		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>> <//B_ariane>[(#TITRE|strtolower|ucfirst)]</h1>
 	</div>
 
 <BOUCLE_colonne4(RUBRIQUES){id_parent}{tout}>
