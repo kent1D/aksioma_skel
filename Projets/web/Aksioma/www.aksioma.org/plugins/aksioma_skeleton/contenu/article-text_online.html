@@ -76,5 +76,20 @@
 	[<div class="notes surlignable">
 	<h3 class="pas_surlignable"><:info_notes|strtoupper:></h3>
 	(#NOTES)</div>]
+	
+	<B_les_articles_lies>
+	<div class="articles_lies">
+	<h3><:aksioma:titre_articles_lies|strtoupper:></h3>
+	#ANCRE_PAGINATION
+	<ul class="spip">
+	<BOUCLE_les_articles_lies(ARTICLES_LIES?){id_article}{par rang}{pagination 5}>
+		<li>
+		<a href="[(#URL_ARTICLE{#ID_ARTICLE_LIE})]">#INFO_TITRE{article,#ID_ARTICLE_LIE}</a>
+		</li>
+	</BOUCLE_les_articles_lies>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+	</div>
+	</B_les_articles_lies>
 </div>
 </BOUCLE_contenu_article>

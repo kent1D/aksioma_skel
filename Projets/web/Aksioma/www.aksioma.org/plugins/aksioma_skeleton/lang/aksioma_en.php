@@ -41,6 +41,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_about_auteur' => 'About the author',
 	'titre_about_auteurs' => 'About the authors',
 	'titre_articles_auteur' => 'Other articles from this author',
+	'titre_articles_lies' => 'Related articles',
 	'titre_last_events' => 'Recent events',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',
