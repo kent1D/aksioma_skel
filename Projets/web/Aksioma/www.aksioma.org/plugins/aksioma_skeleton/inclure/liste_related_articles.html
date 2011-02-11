@@ -1,0 +1,30 @@
+#SET{art_lies,#ARRAY}
+<B_les_articles_lies>
+	<BOUCLE_les_articles_lies(ARTICLES_LIES?){id_article}{par rang}>
+	<BOUCLE_articles_orig(ARTICLES){id_article=#ID_ARTICLE_LIE}{origine_traduction}{doublons originaux}>
+	#SET{art_lies,#GET{art_lies}|push{#ID_ARTICLE}}
+	</BOUCLE_articles_orig>
+	</BOUCLE_les_articles_lies>
+</B_les_articles_lies>
+
+<B_articles_montres>
+	<div class="articles_lies">
+	<h3><:aksioma:titre_articles_lies|strtoupper:></h3>
+	#ANCRE_PAGINATION
+	<ul class="spip">
+		<BOUCLE_articles_montres(ARTICLES){id_article IN #GET{art_lies}}{pagination 5}>
+			<BOUCLE_articles_montres_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+			<li>
+			<a href="[(#URL_ARTICLE)]">#TITRE</a>
+			</li>
+			</BOUCLE_articles_montres_lang>
+			</B_articles_montres_lang>
+			<li>
+			<a href="[(#URL_ARTICLE)]">#TITRE</a>
+			</li>
+			<//B_articles_montres_lang>
+		</BOUCLE_articles_montres>
+	</ul>
+	[<p class="pagination">(#PAGINATION)</p>]
+	</div>
+</B_articles_montres>
