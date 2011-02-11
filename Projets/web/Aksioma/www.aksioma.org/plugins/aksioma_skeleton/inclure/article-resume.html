@@ -8,14 +8,17 @@
 <BOUCLE_articles(ARTICLES) {id_article} {statut?}>
 <li class="item hentry">
 	<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
+		[(#ENV{force_logo_orig}|non)
 		[(#LOGO_ARTICLE_NORMAL|sinon{#ENV**{logo_original}}|sinon{#LOGO_RUBRIQUE}|image_reduire{#ENV{width_logo,183},0})]
+		]
+		[(#ENV{force_logo_orig}|oui)
+		[(#ENV**{logo_original}|image_reduire{#ENV{width_logo,183},0})]
+		]
 	</div>
 	<div class="entry">
-		<h3 class="h3 entry-title">
-			[(#SURTITRE|typo)<br />]
-			<a href="#URL_ARTICLE" rel="bookmark">#TITRE</a>
-			[<br />(#SOUSTITRE|propre|PtoBR)]
-		</h3>
+		[<span class="#EDIT{surtitre}">(#SURTITRE|propre|PtoBR)</span><br />]
+		<h3 class="h3 entry-title #EDIT{titre}"><a href="#URL_ARTICLE" rel="bookmark">#TITRE</a></h3>
+		[<br /><span class="#EDIT{soustitre}">(#SOUSTITRE|propre|PtoBR)</span>]
 		[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
 	</div>
 </li>

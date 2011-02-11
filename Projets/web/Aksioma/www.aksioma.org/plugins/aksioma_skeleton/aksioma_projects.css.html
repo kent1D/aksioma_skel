@@ -45,7 +45,8 @@ html > body.rubrique_projet_normal{
 }
 
 body.rubrique_projet_normal div#conteneur, body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
-	background-color:#GET{background-color};
+	background:#GET{background-color};
+	padding-top:0;
 }
 
 body.rubrique_projet_normal #page #conteneur{
@@ -73,6 +74,11 @@ body.rubrique_projet_normal body #conteneur h1, body.rubrique_projet_normal #con
 	border:none;
 }
 
-body.rubrique_projet_normal strong{
+body.rubrique_projet_normal strong,body.rubrique_projet_normal #conteneur h1, body.rubrique_projet_normal #conteneur h1 a{
 	color:#GET{bold_color};
+	background-color:transparent;
 }
+
+body.rubrique_projet_normal .pagination strong.on, body.rubrique_projet_normal .pagination a{background:transparent;border:none;}
+
+body.rubrique_projet_normal #page #menu_lang a{color:transparent;}

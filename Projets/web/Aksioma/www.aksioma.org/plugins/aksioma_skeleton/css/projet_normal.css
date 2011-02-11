@@ -115,3 +115,7 @@ body #extra h2{
 .document_portfolio img{
 	margin:10px auto;
 }
+
+body .ps{
+	clear:both;
+}

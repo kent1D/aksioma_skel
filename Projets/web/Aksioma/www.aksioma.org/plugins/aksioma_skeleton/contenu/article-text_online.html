@@ -1,22 +1,31 @@
 <BOUCLE_contenu_article(ARTICLES){id_article}>
 <div class="contenu-principal">
 	<div class="links_home">
-	<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></:aksioma:info_back:></a>
-	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
+		<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></:aksioma:info_back:></a>
+		<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
 	</div>
+	<B_ariane><p id="hierarchie"><BOUCLE_ariane(HIERARCHIE){id_article}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;&gt;&gt; </span><a href="#URL_RUBRIQUE">[(#TITRE|couper{80})]</a></BOUCLE_ariane></p></B_ariane>
 	#MENU_LANG
+	<div class="subcartouche">
 	<div class="cartouche">
-		[(#LOGO_ARTICLE|image_reduire{78,0})]
 		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
-		<h1 class="h1 #EDIT{titre}">&nbsp;>> [(#TITRE|strtolower|ucfirst)]</h1>
+		<h1 class="h1 #EDIT{titre}">[(#TITRE|strtolower|ucfirst)]</h1>
 		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE|propre|PtoBR)</p>]
 		[(#REM) Inclure le modele des liens de traductions ]
 		#MODELE{article_traductions}
 	</div>
-
+	<div class="#EDIT{chapo} chapo">
+		[(#LOGO_ARTICLE|image_reduire{78,0})]
+		[(#CHAPO|image_reduire{370,0})]
+	</div>
+	[(#ID_LICENCE|>{0}|oui)
+	<div class="licence #EDIT{id_licence}">
+		#MODELE{licence,id_article=#ID_ARTICLE,largeur_logo=78,desc_licence=oui}
+	</div>
+	]
+	</div>
 	<div class="surlignable">
-		[<div class="#EDIT{chapo} chapo">(#CHAPO|image_reduire{370,0})</div>]
-		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{370,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{814,0})</div>]
 	</div>
 
 	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
@@ -30,7 +39,9 @@
 [(#INCLURE{fond=inclure/documents}{id_article})]
 
 </div>
-
+<BOUCLE_article_orig(ARTICLES){id_article}{origine_traduction}>
+#SET{article_orig,#ID_ARTICLE}
+</BOUCLE_article_orig>
 <div class="extra-right">
 	#INCLURE{fond=inclure/menu,env,identifiant=social}
 	<B_auteur>
@@ -42,6 +53,23 @@
 		[<div class="#EDIT{bio}">(#BIO)</div>]
 		[<p><:aksioma:info_site_auteur:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{#URL_SITE})]</a></p>]
 	</div>
+	<B_articles_auteur>
+		<div class="info_auteur_articles">
+		<h3><:aksioma:titre_articles_auteur|strtoupper:></h3>
+		#ANCRE_PAGINATION
+		<ul class="spip">
+		<BOUCLE_articles_auteur(ARTICLES){id_auteur}{origine_traduction}{id_article != #GET{article_orig}}{!par date}{pagination 3}>
+		<BOUCLE_articles_auteur_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		</BOUCLE_articles_auteur_lang>
+		</B_articles_auteur_lang>
+		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		<//B_articles_auteur_lang>
+		</BOUCLE_articles_auteur>
+		</ul>
+		[<p class="pagination">(#PAGINATION)</p>]
+		</div>
+	</B_articles_auteur>
 	</BOUCLE_auteur>
 	</div>
 	</B_auteur>

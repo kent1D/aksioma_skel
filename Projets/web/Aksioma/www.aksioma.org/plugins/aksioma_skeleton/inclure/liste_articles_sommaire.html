@@ -1,18 +1,21 @@
-<B_articles_orig>
 <div class="liste articles sommaire">
+	<B_events>
 	#ANCRE_PAGINATION
 	<h2 class="h2"><:aksioma:titre_last_events:></h2>
 	<ul class="liste-items">
-		<BOUCLE_articles_orig(ARTICLES){origine_traduction} {id_secteur !IN #CONFIG{aksioma/rubrique_projets},#CONFIG{aksioma/rubrique_project_space}}{!par date} {pagination #ENV{pagination,10}}{id_rubrique > 0}>
-		#SET{logo_orig,#LOGO_ARTICLE}
+	<BOUCLE_events(EVENEMENTS){!par date_debut}{fusion evenements.id_article}{date_debut < #ENV{date}} {pagination #ENV{pagination,10}}>
+		#SET{logo_orig,#LOGO_EVENEMENT}
+		<BOUCLE_articles_orig(ARTICLES){id_article}{origine_traduction} {id_secteur !IN #CONFIG{aksioma/rubrique_project_space}}{!par date}{doublons}>
+		#SET{logo_orig,#GET{logo_orig,#LOGO_ARTICLE}}
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-		#INCLURE{fond=inclure/article-resume,id_article,logo_original=#GET{logo_orig}}
+		#INCLURE{fond=inclure/article-resume,id_article,logo_original=#GET{logo_orig},force_logo_orig=oui}
 		</BOUCLE_trad_lang>
 		</B_trad_lang>
 		#INCLURE{fond=inclure/article-resume,id_article}
 		<//B_trad_lang>
 		</BOUCLE_articles_orig>
+	</BOUCLE_events>
 	</ul>
 	[<p class="pagination">(#PAGINATION)</p>]
+	</B_events>
 </div>
-</B_articles_orig>

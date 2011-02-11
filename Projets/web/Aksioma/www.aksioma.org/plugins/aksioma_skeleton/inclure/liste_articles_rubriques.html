@@ -2,7 +2,7 @@
 <div class="liste articles">
 	#ANCRE_PAGINATION
 	<ul class="liste-items">
-		<BOUCLE_articles_orig(ARTICLES){!par date}{origine_traduction}{id_rubrique > 0}{id_rubrique?}{pagination #ENV{pagination,10}}>
+		<BOUCLE_articles_orig(ARTICLES){origine_traduction}{id_rubrique > 0}{enfants?}{!par date}{pagination #ENV{pagination,10}}>
 		#SET{logo_orig,#LOGO_ARTICLE}
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 		#INCLURE{fond=inclure/article-resume,id_article,logo_original=#GET{logo_orig},width_logo=78}
