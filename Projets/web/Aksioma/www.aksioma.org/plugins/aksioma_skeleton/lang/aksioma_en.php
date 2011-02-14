@@ -19,6 +19,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_background_color' => 'Background color of the content area',
+	'label_banner_luhan' => 'Article for the images of the Mac Luhan banner',
 	'label_body_color' => 'Background color of the page',
 	'label_bold_color' => 'Bold color',
 	'label_composition_projet' => 'Default composition for a project',

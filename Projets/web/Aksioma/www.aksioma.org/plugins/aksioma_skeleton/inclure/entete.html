@@ -7,4 +7,10 @@
 	#MODELE{sjcycle_top,docs=#GET{docs},width=854,height=100,timeout=15000,redirection=#URL_SITE_SPIP}
 	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
 </div>
-<div class="accueil_bis"> </div>
+<div class="accueil_bis">
+#SET{docs_luhan,#ARRAY}
+<BOUCLE_documents_luhan(DOCUMENTS){extension IN jpg,png}{id_article=#CONFIG{aksioma/banner_luhan}}>
+#SET{docs_luhan,#GET{docs_luhan}|push{#ID_DOCUMENT}}
+</BOUCLE_documents_luhan>
+[(#SET{docs_luhan,[(#GET{docs_luhan}|implode{'|'})]})]
+#MODELE{sjcycle_top,docs=#GET{docs_luhan},width=396,height=100,timeout=15000,no_logo=oui,redirection=#URL_ARTICLE{#CONFIG{aksioma/banner_luhan}}}</div>
