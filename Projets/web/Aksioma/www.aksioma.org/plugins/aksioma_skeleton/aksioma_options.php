@@ -3,4 +3,5 @@
 	$debut_date_publication = 0;
 	$table_des_traitements['TITRE'][]= 'typo(supprimer_numero(%s))';
 	$table_des_traitements['SOUSTITRE'][]= 'typo(%s)';
+	$quota_cache = 100;
 ?>

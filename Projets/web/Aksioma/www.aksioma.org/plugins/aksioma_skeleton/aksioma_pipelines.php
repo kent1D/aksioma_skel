@@ -57,7 +57,6 @@ function aksioma_styliser($flux){
 function aksioma_compositions_selectionner($composition,$type,$defaut="",$ext="html",$fullpath = false, $vide="composition-vide",$rep=false){
 	if ($type=='syndic') $type='site'; //grml
 	$fond = ($rep ? $rep.'/' : compositions_chemin()) . $type;
-	spip_log($fond,'test');
 	// regarder si compositions/article-xxx est disponible
 	if (strlen($composition)
 		AND $f = find_in_path("$fond-$composition.$ext"))

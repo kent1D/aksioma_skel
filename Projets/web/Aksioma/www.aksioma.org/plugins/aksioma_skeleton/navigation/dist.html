@@ -1,13 +1,13 @@
 #FORMULAIRE_RECHERCHE
 
 <div class="links_home">
-	<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></:aksioma:info_back:></a>
+	<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></a>
 	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
 </div>
 [(#REM) Menu de navigation par rubriques ]
 #INCLURE{fond=inclure/menu,env,identifiant=main}
 
-#CALENDRIER_MINI{#ENV{date},'date',#URL_PAGE{agenda-zpip}}
+#CALENDRIER_MINI{#ENV{date},'date_debut',#URL_PAGE{agenda-zpip}}
 
 <BOUCLE_listes(ABOMAILMANS?){0,1}/>
 <p><a href="#URL_PAGE{abomailman}" class="abo_liste"><:aksioma:lien_abonnement_listes:></a></p>

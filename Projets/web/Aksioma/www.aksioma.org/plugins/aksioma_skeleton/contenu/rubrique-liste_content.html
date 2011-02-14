@@ -10,12 +10,16 @@
 		<BOUCLE_articles_rubbrochures_rub(ARTICLES){origine_traduction}{id_rubrique}{par num titre,titre}{tout}>
 		[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]})]
 			<BOUCLE_trad_lang_rub(ARTICLES){traduction}{lang=#ENV{lang}}>
-				<h2 class="#EDIT{titre}">>> [(#TITRE|strtolower|ucfirst)]</h2>
-				[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+				<h2 class="#EDIT{titre}">>> [(#TITRE)]</h2>
+				[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
+				[<div class="#EDIT{texte} chapo">(#CHAPO|image_reduire{468,0})</div>]
+				[<div class="#EDIT{texte} chapo">(#TEXTE|image_reduire{468,0})</div>]
 			</BOUCLE_trad_lang_rub>
 			</B_trad_lang_rub>
-				<h2 class="#EDIT{titre}">>> [(#TITRE|strtolower|ucfirst)]</h2>
-				[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+				<h2 class="#EDIT{titre}">>> [(#TITRE)]</h2>
+				[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
+				[<div class="#EDIT{texte} chapo">(#CHAPO|image_reduire{468,0})</div>]
+				[<div class="#EDIT{texte} chapo">(#TEXTE|image_reduire{468,0})</div>]
 			<//B_trad_lang_rub>
 		</BOUCLE_articles_rubbrochures_rub>
 		</div>

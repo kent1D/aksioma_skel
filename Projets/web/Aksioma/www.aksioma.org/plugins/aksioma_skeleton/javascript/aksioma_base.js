@@ -53,6 +53,24 @@ $(function() {
 				next: "#next"+k
 			});
 		});
+		var l = 0;
+		$('.page_rubrique #contenu ul.liste_images').each(function(){
+			l++;
+			if($(this).parent().is('.caroufredsel_wrapper')){
+				$(this).unwrap();
+			}
+			var text = '<a id="prev'+l+'" class="prev" href="#">&lt;</a>';
+			text += '<a id="next'+l+'" class="next" href="#">&gt;</a>';
+			$(this).after(text);
+			carousel_port = $(this).carouFredSel({
+				auto:false,
+				items: 1,
+				width: 468,
+				height:300,
+				prev: "#prev"+l,
+				next: "#next"+l
+			});
+		});
 	}
 	carousel();
 	onAjaxLoad(carousel);

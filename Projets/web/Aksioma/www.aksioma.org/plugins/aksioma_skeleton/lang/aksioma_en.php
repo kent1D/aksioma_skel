@@ -36,12 +36,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_titre_contenu_colonne_4' => 'Title of the content in the fourth column',
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
+	'lien_today' => 'Today',
 
 	// T
 	'titre_about_auteur' => 'About the author',
 	'titre_about_auteurs' => 'About the authors',
 	'titre_articles_auteur' => 'Other articles from this author',
 	'titre_articles_lies' => 'Related articles',
+	'titre_events_ongoing' => 'Ongoing events',
+	'titre_events_next' => 'Upcoming events',
 	'titre_last_events' => 'Recent events',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',

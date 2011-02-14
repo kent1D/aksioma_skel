@@ -119,3 +119,7 @@ body #extra h2{
 body .ps{
 	clear:both;
 }
+
+#extra .vevent{
+	border:none;
+}
