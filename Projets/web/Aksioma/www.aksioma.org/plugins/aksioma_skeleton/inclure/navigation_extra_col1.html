@@ -8,7 +8,7 @@
 	<li>
 		<div>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-			<div class="logo #EDIT{logo} resize-183"> 
+			<div class="logo #EDIT{logo} resize-183">#LANG
 			[(#LOGO_ARTICLE|image_reduire{183,0}|sinon{#GET{logo_origine}})]
 			</div>
 			<p class="#EDIT{surtitre}">#SURTITRE</p>

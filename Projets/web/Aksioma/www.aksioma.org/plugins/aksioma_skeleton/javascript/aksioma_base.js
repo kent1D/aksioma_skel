@@ -74,7 +74,16 @@ $(function() {
 			});
 		}
 	}
+	var project_same_height = function(){
+		$('.rubrique_projet_normal #navigation,.rubrique_projet_normal #contenu').equalHeights();
+	}
+	$(document).ready(function() {
+		$('a[rel="external"],a.spip_out').click(function(){
+			$(this).attr('target','_blank');
+		});
+	});
 	carousel();
+	project_same_height();
 	onAjaxLoad(carousel);
-	$('a.spip_out').attr('target','_blank');
+	onAjaxLoad(project_same_height);
 });

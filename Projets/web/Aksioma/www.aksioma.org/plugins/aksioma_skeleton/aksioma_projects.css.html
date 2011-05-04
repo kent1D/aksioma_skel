@@ -44,13 +44,13 @@ html > body.rubrique_projet_normal{
 	color:(#GET{text-color,#cccccc});]
 }
 
-body.rubrique_projet_normal div#conteneur, body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
+body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
 	background:#GET{background-color,#000000};
 	padding-top:0;
 }
 
 [body.rubrique_projet_normal #page #conteneur{
-	(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)width:1250px;	
+	(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)width:1230px;	
 }]
 [(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)
 body.rubrique_projet_normal div#conteneur #extra{
@@ -82,3 +82,11 @@ body.rubrique_projet_normal strong,body.rubrique_projet_normal #conteneur h1, bo
 body.rubrique_projet_normal .pagination strong.on, body.rubrique_projet_normal .pagination a{background:transparent;border:none;}
 
 body.rubrique_projet_normal #page #menu_lang a{color:transparent;}
+
+body div#conteneur #extra{
+	margin:0;
+}
+
+body div#conteneur #contenu{
+	margin:0;
+}

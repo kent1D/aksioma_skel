@@ -7,7 +7,7 @@
 [(#REM) Menu de navigation par rubriques ]
 #INCLURE{fond=inclure/menu,env,identifiant=main}
 
-#CALENDRIER_MINI{#ENV{date},'date_debut',#URL_PAGE{agenda-zpip}}
+#CALENDRIER_MINI{#ENV{date_debut,#ENV{date}},'date_debut',#URL_PAGE{agenda-zpip}|ancre_url{contenu}}
 
 <BOUCLE_listes(ABOMAILMANS?){0,1}/>
 <p><a href="#URL_PAGE{abomailman}" class="abo_liste"><:aksioma:lien_abonnement_listes:></a></p>

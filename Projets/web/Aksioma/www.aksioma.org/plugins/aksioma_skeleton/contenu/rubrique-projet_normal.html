@@ -3,6 +3,7 @@
 #SET{logo_defaut,#LOGO_ARTICLE}
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 <div class="contenu-principal">
+	#MENU_LANG
 	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
 	<div class="cartouche">
 		[<div class="spip_logo #EDIT{logo}">(#LOGO_ARTICLE|sinon{#GET{logo_defaut}}|image_reduire{190,0})</div>]

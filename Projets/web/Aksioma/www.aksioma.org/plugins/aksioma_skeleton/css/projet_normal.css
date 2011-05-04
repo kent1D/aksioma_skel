@@ -13,6 +13,9 @@ body div#page{
 
 body div#conteneur #navigation{
 	width:70px;
+}
+
+body div#conteneur #navigation img{
 	padding-top:20px
 }
 
@@ -61,7 +64,7 @@ body #extra h3{
 
 body #extra h2{
 	padding-left:24px;
-	background:#999 url(../images/fle_droite.png) no-repeat 2px center;
+	background:#999 url(../images/fle_droite.gif) no-repeat 2px center;
 }
 
 .extra_3 p{

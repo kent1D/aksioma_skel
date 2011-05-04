@@ -3,13 +3,13 @@
 	<table summary="<:icone_calendrier:>">
 		<caption>[
 			<a
-				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'})]}|ancre_url{calendar})"
+				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'})]}|ancre_url{contenu})"
 				title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'}|affdate_mois_annee)]"
 				class="ajax"
 			>&#171;</a>][
 			(#ENV{#ENV{var_date},#ENV{date}}|affdate_mois_annee)][
 			<a
-				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'})]}|ancre_url{calendar})"
+				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'})]}|ancre_url{contenu})"
 				title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'}|affdate_mois_annee)]"
 				class="ajax"
 			>&#187;</a>]

@@ -25,8 +25,9 @@
 [(#GET{2_colonnes}|=={oui}|oui)
 <div class="extra_4">
 ]
-<BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>
-#MODELE{video,id_document=#ID_DOCUMENT,largeur=486,hauteur=364}
+<BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}>
+[<h2 class="#EDIT{titre}">(#TITRE)</h2>]
+#MODELE{video,id_document=#ID_DOCUMENT,largeur=470}
 </BOUCLE_video>
 [<div class="articles_lies">(#INCLURE{fond=inclure/articles-projet_normal,id_article,id_rubrique,ajax})</div>]
 [<h2><:aksioma:titre_portfolio:></h2>(#INCLURE{fond=inclure/documents-portfolio_projet_normal,id_rubrique,id_document,ajax})]
