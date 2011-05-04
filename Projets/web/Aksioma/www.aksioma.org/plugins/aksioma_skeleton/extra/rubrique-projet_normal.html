@@ -9,16 +9,16 @@
 <div class="extra_3">
 #MENU_LANG
 <BOUCLE_article_defaut(ARTICLES){enfants}{id_article=#ID_ARTICLE_ACCUEIL}>
-[(#INCLURE{fond=inclure/evenements-projet_normal,id_article,ajax})]
-<BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN pdf}>
-[(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique})]
-</BOUCLE_documents>
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 [<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article,id_document,ajax})]
 </BOUCLE_traduc_lang>
 </B_traduc_lang>
 [<h2><:aksioma:titre_press_corner:></h2>(#INCLURE{fond=inclure/documents-projet_normal,id_article,id_document,ajax})]
 <//B_traduc_lang>
+[(#INCLURE{fond=inclure/evenements-projet_normal,id_article,ajax})]
+<BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN pdf}{0,1}>
+[(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique})]
+</BOUCLE_documents>
 </BOUCLE_article_defaut>
 [(#INCLURE{fond=inclure/liens-projet_normal,id_rubrique})]
 </div>

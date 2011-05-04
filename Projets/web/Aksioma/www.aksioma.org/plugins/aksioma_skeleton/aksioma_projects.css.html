@@ -38,20 +38,20 @@
 </BOUCLE_rubrique>
 
 html > body.rubrique_projet_normal{
-	[background-color:(#GET{body_color});][
+	[background-color:(#GET{body_color,#000000});][
 	background-image:url((#GET{background-image}));
 	][
-	color:(#GET{text-color});]
+	color:(#GET{text-color,#cccccc});]
 }
 
 body.rubrique_projet_normal div#conteneur, body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
-	background:#GET{background-color};
+	background:#GET{background-color,#000000};
 	padding-top:0;
 }
 
-body.rubrique_projet_normal #page #conteneur{
-	[(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)width:1250px;]	
-}
+[body.rubrique_projet_normal #page #conteneur{
+	(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)width:1250px;	
+}]
 [(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)
 body.rubrique_projet_normal div#conteneur #extra{
 	width:690px;
@@ -61,21 +61,21 @@ body.rubrique_projet_normal #page #entete,body.rubrique_projet_normal #page #pie
 }
 
 body.rubrique_projet_normal #page a{
-	color:#GET{link-color};
+	color:#GET{link-color,red};
 }
 
 body.rubrique_projet_normal #page a:hover{
-	color:#GET{link-color_hover};
+	color:#GET{link-color_hover,red};
 }
 
 body.rubrique_projet_normal body #conteneur h1, body.rubrique_projet_normal #conteneur h2, body.rubrique_projet_normal h3,body.rubrique_projet_normal .surtitre,body.rubrique_projet_normal .soustitre{
-	color:#GET{title_color};
+	color:#GET{title_color,#ffffff};
 	background-color:transparent;
 	border:none;
 }
 
 body.rubrique_projet_normal strong,body.rubrique_projet_normal #conteneur h1, body.rubrique_projet_normal #conteneur h1 a{
-	color:#GET{bold_color};
+	color:#GET{bold_color,#ffffff};
 	background-color:transparent;
 }
 

@@ -1,10 +1,14 @@
 <B_sites>
-	<h2><:aksioma:info_sites:></h2>
-	<ul>
+	<div class="liste documents documents_joints">
+	<ul class="liste-items">
 	<BOUCLE_sites(SITES){id_rubrique}{par num nom_site,nom_site}>
-	<li class="#EDIT{nom_site}">
-		<a href="#URL_SITE" class="spip_out">#NOM_SITE</a>
+	<li class="item">
+		[<h2 class="#EDIT{nom_site}"><a href="(#URL_SITE)" title="#NOM_SITE">[(#NOM_SITE)]</a></h2>]
+		<div class="#EDIT{descriptif}">
+			#DESCRIPTIF
+		</div>
 	</li>
 	</BOUCLE_sites>
 	</ul>
+	</div>
 </B_sites>
