@@ -10,6 +10,7 @@ $(function() {
 			var text = '<a id="prev'+i+'" class="prev" href="#">&lt;</a>';
 			text += '<a id="next'+i+'" class="next" href="#">&gt;</a>';
 			$(this).after(text);
+			$(this).find('li').equalHeights();
 			$(this).carouFredSel({
 				auto:false,
 				items: 3,
@@ -27,6 +28,7 @@ $(function() {
 			var text = '<a id="prev'+j+'" class="prev" href="#">&lt;</a>';
 			text += '<a id="next'+j+'" class="next" href="#">&gt;</a>';
 			$(this).after(text);
+			$(this).find('li').equalHeights();
 			carousel_port = $(this).carouFredSel({
 				auto:false,
 				items: 3,
@@ -44,11 +46,11 @@ $(function() {
 			var text = '<a id="prev'+k+'" class="prev" href="#">&lt;</a>';
 			text += '<a id="next'+k+'" class="next" href="#">&gt;</a>';
 			$(this).after(text);
+			$(this).find('li').equalHeights();
 			carousel_port = $(this).carouFredSel({
 				auto:false,
 				items: 5,
 				width: 940,
-				height:400,
 				prev: "#prev"+k,
 				next: "#next"+k
 			});
@@ -63,11 +65,11 @@ $(function() {
 				var text = '<a id="prev'+l+'" class="prev" href="#">&lt;</a>';
 				text += '<a id="next'+l+'" class="next" href="#">&gt;</a>';
 				$(this).after(text);
+				$(this).find('li').equalHeights();
 				carousel_port = $(this).carouFredSel({
 					auto:false,
 					items: 1,
 					width: 468,
-					height:300,
 					prev: "#prev"+l,
 					next: "#next"+l
 				});

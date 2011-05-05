@@ -40,18 +40,28 @@
 				</a>
 			</BOUCLE_docpdf>
 			</B_docpdf>
+			<BOUCLE_docpdf_orig_lang(DOCUMENTS){id_article=#_articles_rubcolonne4:ID_ARTICLE}{extension=pdf}{0,1}>
+				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
+				[(#LOGO_DOCUMENT|image_reduire{78,0}|image_recadre{78,110}|sinon{#GET{logo_origine}})]
+				</a>
+			</BOUCLE_docpdf_orig_lang>
+			</B_docpdf_orig_lang>
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
 				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
 			</a>
+			<//B_docpdf_orig_lang>
 			<//B_docpdf>
 		</BOUCLE_trad_lang>
 		</B_trad_lang>
-			<BOUCLE_docpdf_orig(DOCUMENTS){id_article}{extension=pdf}{0,1}>
+			<BOUCLE_docpdf_orig(DOCUMENTS){id_article=#_articles_rubcolonne4:ID_ARTICLE}{extension=pdf}{0,1}>
 				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
 				[(#LOGO_DOCUMENT|image_reduire{78,0}|image_recadre{78,110}|sinon{#GET{logo_origine}})]
 				</a>
 			</BOUCLE_docpdf_orig>
 			</B_docpdf_orig>
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
+			</a>
 			<//B_docpdf_orig>
 		<//B_trad_lang>
 	</li>

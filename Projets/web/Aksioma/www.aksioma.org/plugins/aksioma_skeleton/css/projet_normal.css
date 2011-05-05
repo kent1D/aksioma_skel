@@ -49,7 +49,6 @@ body h3.spip{
 
 .headline{
 	overflow:hidden;
-	font-size:.9em;
 }
 
 #page #menu_lang a:hover{
@@ -64,7 +63,7 @@ body #extra h3{
 
 body #extra h2{
 	padding-left:24px;
-	background:#999 url(../images/fle_droite.gif) no-repeat 2px center;
+	background:#999 url(../images/fle_droite.gif) no-repeat 2px 2px;
 }
 
 .extra_3 p{
@@ -125,4 +124,8 @@ body .ps{
 
 #extra .vevent{
 	border:none;
+}
+
+#contenu .texte p {
+	padding: 0;
 }

@@ -3,7 +3,6 @@
 #SET{logo_defaut,#LOGO_ARTICLE}
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 <div class="contenu-principal">
-	#MENU_LANG
 	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
 	<div class="cartouche">
 		[<div class="spip_logo #EDIT{logo}">(#LOGO_ARTICLE|sinon{#GET{logo_defaut}}|image_reduire{190,0})</div>]
@@ -13,7 +12,10 @@
 	</div>
 
 	<div class="surlignable">
+		<BOUCLE_events(EVENEMENTS){id_article=#_article_defaut:ID_ARTICLE}>[(#GRAND_TOTAL|=={1}|oui)
+			#MODELE{evenement_vevent,id=#GET{evt},hide_titre=non,lien=non,largeur=183,hide_logo=oui}]</BOUCLE_events>
 		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|image_reduire{468,0})</div>]
+		
 		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{468,0})</div>]
 	</div>
 

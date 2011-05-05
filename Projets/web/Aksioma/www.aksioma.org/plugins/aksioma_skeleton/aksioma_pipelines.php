@@ -106,4 +106,11 @@ function aksioma_post_insertion($flux){
 	}
 	return $flux;
 }
+
+function aksioma_arbo_creer_chaine_url($flux){
+	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0')){
+		$flux['data'] = '';
+	}
+	return $flux;
+}
 ?>
