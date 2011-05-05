@@ -8,7 +8,7 @@
 		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>>&nbsp;<//B_ariane>[(#TITRE|strtolower|ucfirst)]</h1>
 	</div>
 	
-	[<div class="#EDIT{texte} chapo">(#TEXTE)</div>]
+	[<div class="#EDIT{texte} texte">(#TEXTE)</div>]
 	<BOUCLE_si_level(CONDITION){si #GET{level}|=={null}|oui}>
 		<BOUCLE_art_rub(ARTICLES){id_rubrique}{0,1}> </BOUCLE_art_rub>
 		</B_art_rub>
@@ -44,7 +44,6 @@
 <BOUCLE_si_level2(CONDITION){si #GET{level}|=={null}|non}>
 <INCLURE{fond=inclure/liste_articles_ssrubriques_rubriques,env,ajax}>
 </BOUCLE_si_level2>
-
 
 [<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 </BOUCLE_contenu_rubrique>

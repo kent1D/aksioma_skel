@@ -5,13 +5,11 @@
 			<a
 				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'})]}|ancre_url{contenu})"
 				title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{-1,'Y-m'}|affdate_mois_annee)]"
-				class="ajax"
 			>&#171;</a>][
 			(#ENV{#ENV{var_date},#ENV{date}}|affdate_mois_annee)][
 			<a
 				href="(#ENV{self}|parametre_url{#ENV{var_date},[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'})]}|ancre_url{contenu})"
 				title="[(#ENV{#ENV{var_date},#ENV{date}}|Agenda_moisdecal{1,'Y-m'}|affdate_mois_annee)]"
-				class="ajax"
 			>&#187;</a>]
 		</caption>
 		<thead>
@@ -61,6 +59,6 @@
 		</tbody>
 	</table>
 	<div class="calendar-today">
-		<a href="[(#URL_PAGE{agenda-zpip}|parametre_url{date,''})]"><:aksioma:lien_today:></a>
+		<a href="[(#URL_PAGE{agenda-zpip})]"><:aksioma:lien_today:></a>
 	</div>
 </div>
