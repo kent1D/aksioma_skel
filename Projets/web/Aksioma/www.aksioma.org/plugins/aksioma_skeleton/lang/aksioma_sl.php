@@ -44,14 +44,14 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_about_auteurs' => 'About the authors',
 	'titre_articles_auteur' => 'Other articles from this author',
 	'titre_articles_lies' => 'Povezani članki',
-	'titre_events_ongoing' => 'Aktualnih dogodkov',
+	'titre_events_ongoing' => 'Aktualni dogodki',
 	'titre_events_next' => 'Prihajajoči dogodki',
 	'titre_last_events' => 'Nedavni dogodki',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',
-	'titre_press_corner' => 'PRESS CORNER',
+	'titre_press_corner' => 'ZA MEDIJE',
 	'titre_publications' => 'PUBLICATIONS',
-	'titre_related_events' => 'POVEZANI DOGODKOV',
+	'titre_related_events' => 'POVEZANI DOGODKI',
 	
 );
 

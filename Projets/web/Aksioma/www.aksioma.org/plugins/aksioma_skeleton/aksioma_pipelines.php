@@ -14,7 +14,6 @@ function aksioma_jquery_plugins($plugins){
 		$plugins[] = "javascript/aksioma_menu.js";
 		$plugins[] = "javascript/carouFredSel-2.5.5/jquery.carouFredSel-2.5.5.js";
 	}
-
 	return $plugins;
 }
 
@@ -117,6 +116,17 @@ function aksioma_arbo_creer_chaine_url($flux){
 	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0')){
 		$flux['data'] = '';
 	}
+	return $flux;
+}
+
+/**
+ * Insertion dans le pipeline recuperer_fond (SPIP)
+ * On minifie le code source en passant par aksioma_mini_html qui est dans mes options
+ * 
+ * @param array $flux
+ */
+function aksioma_recuperer_fond($flux){
+	$flux['data']['texte'] = aksioma_mini_html($flux['data']['texte']);
 	return $flux;
 }
 ?>
