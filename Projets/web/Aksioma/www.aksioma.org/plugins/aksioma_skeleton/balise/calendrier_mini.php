@@ -20,7 +20,7 @@ function balise_CALENDRIER_MINI_dyn($id_rubrique=0, $id_article = 0, $id_mot = 0
 	// nettoyer l'url qui est passee par htmlentities pour raison de securites
 	$url = str_replace("&amp;","&",$url);
 
-	return array('formulaires/calendrier_mini', 0, 
+	return array('formulaires/calendrier_mini', 86400, 
 		array(
 			'date' => $date,
 			'id_rubrique' => $id_rubrique,

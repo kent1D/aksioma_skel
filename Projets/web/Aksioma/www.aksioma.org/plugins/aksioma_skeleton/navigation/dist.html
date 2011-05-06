@@ -5,11 +5,11 @@
 	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
 </div>
 [(#REM) Menu de navigation par rubriques ]
-#INCLURE{fond=inclure/menu,env,identifiant=main}
+#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,composition,type,identifiant=main}
 
-#CALENDRIER_MINI{#ENV{date_debut,#ENV{date}},'date_debut',#URL_PAGE{agenda-zpip}|ancre_url{contenu}}
+#CALENDRIER_MINI{#ENV{date_debut,#ENV{date}},'date_debut',#URL_PAGE{agenda}|ancre_url{contenu}}
 
 <BOUCLE_listes(ABOMAILMANS?){0,1}/>
 <p><a href="#URL_PAGE{abomailman}" class="abo_liste"><:aksioma:lien_abonnement_listes:></a></p>
 <//B_listes>
-#INCLURE{fond=inclure/navigation_extra_col1,env}
+#INCLURE{fond=inclure/navigation_extra_col1,id_article,id_rubrique,page}

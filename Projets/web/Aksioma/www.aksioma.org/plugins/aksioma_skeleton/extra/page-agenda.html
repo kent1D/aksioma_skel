@@ -8,7 +8,7 @@
 		#SET{date_fin, #DATE_DEBUT|affdate{Y-12-31 23:59:59}}
 	<B_mois>
 	<ul class="menu-liste">
-	<BOUCLE_mois(EVENEMENTS){!par date_debut}{date_debut >= #GET{date_debut}}{date_fin < #GET{date_fin}}{fusion_par_mois}>
+	<BOUCLE_mois(EVENEMENTS){!par date_debut}{date_debut >= #GET{date_debut}}{date_debut < #GET{date_fin}}{fusion_par_mois}>
 	<li class="menu-entree">
 		[(#SELF|parametre_url{date,''}|parametre_url{date_fin,''}|parametre_url{date_debut,#DATE_DEBUT|affdate{Y-m-01}}|lien_ou_expose{#DATE_DEBUT|affdate_mois_annee{},#ENV{date_debut,#ENV{date}|affdate{Y-m-01}}|=={#DATE_DEBUT|affdate{Y-m-01}}})]
 	</li>

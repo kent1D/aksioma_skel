@@ -107,6 +107,12 @@ function aksioma_post_insertion($flux){
 	return $flux;
 }
 
+/**
+ * Insertion dans le pipeline arbo_creer_chaine_url (SPIP)
+ * Ne pas prendre en compte la première rubrique dans l'URL
+ * 
+ * @param array $flux
+ */
 function aksioma_arbo_creer_chaine_url($flux){
 	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0')){
 		$flux['data'] = '';
