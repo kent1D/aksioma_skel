@@ -49,7 +49,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'titre_last_events' => 'Recent events',
 	'titre_medias' => 'MEDIAS',
 	'titre_portfolio' => 'PORTFOLIO',
-	'titre_press_corner' => 'PRESS CORNER',
+	'titre_press_corner' => 'PRESS KIT',
 	'titre_publications' => 'PUBLICATIONS',
 	'titre_related_events' => 'RELATED EVENTS',
 	
