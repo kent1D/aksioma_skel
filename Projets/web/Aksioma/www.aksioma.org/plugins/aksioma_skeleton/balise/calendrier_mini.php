@@ -22,6 +22,7 @@ function balise_CALENDRIER_MINI_dyn($id_rubrique=0, $id_article = 0, $id_mot = 0
 
 	return array('formulaires/calendrier_mini', 86400, 
 		array(
+			'date_aujd' => date('Y-m-d'),
 			'date' => $date,
 			'id_rubrique' => $id_rubrique,
 			'id_article' => $id_article,

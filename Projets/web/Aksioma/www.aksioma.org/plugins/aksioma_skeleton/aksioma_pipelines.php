@@ -17,6 +17,17 @@ function aksioma_jquery_plugins($plugins){
 	return $plugins;
 }
 
+
+/**
+ * Insertion dans le pipeline insert_head
+ * On insère les expression linguistiques en js
+ *
+ * @param $flux
+ */
+function aksioma_insert_head($flux){
+	$flux .= '<script type="text/javascript" src="'.generer_url_public("aksioma_lang.js","lang=".$GLOBALS["spip_lang"]).'"></script>';
+	return $flux;
+}
 /**
  * Pipeline styliser pour definir le fond d'un objet en fonction de sa composition
  *

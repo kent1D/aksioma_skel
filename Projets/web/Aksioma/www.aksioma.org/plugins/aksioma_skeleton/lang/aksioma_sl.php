@@ -39,6 +39,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
 	'lien_today' => 'Danes',
 
+	// M
+	'message_champ_search' => 'vpiši iskani niz',
+	
 	// T
 	'titre_about_auteur' => 'About the author',
 	'titre_about_auteurs' => 'About the authors',

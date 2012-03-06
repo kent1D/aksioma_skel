@@ -76,6 +76,22 @@ $(function() {
 			});
 		}
 	}
+	
+	var search_placeholder = function(){
+		if ($('#formulaire_recherche input.text').val() == ''){
+			$('#formulaire_recherche input.text').val(aksioma_lang.search);
+		}
+		$('#formulaire_recherche input.text').focus(function() {
+			if ($(this).val() == aksioma_lang.search)
+				$(this).val('');
+		});
+	 
+		$('#formulaire_recherche input.text').blur(function() {
+			if($(this).val() == '')
+				$(this).val(aksioma_lang.search);
+	    });
+	}
+	
 	var project_same_height = function(){
 		$('.rubrique_projet_normal #navigation,.rubrique_projet_normal #contenu').equalHeights();
 	}
@@ -86,6 +102,7 @@ $(function() {
 	});
 	carousel();
 	project_same_height();
+	search_placeholder();
 	onAjaxLoad(carousel);
 	onAjaxLoad(project_same_height);
 });

@@ -5,10 +5,10 @@
 	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
 </div>
 [(#REM) Menu de navigation par rubriques ]
-#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,composition,type,identifiant=main}
+#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,identifiant=main}
 
-#CALENDRIER_MINI{#ENV{date_debut,#ENV{date}},'date_debut',#URL_PAGE{agenda}|ancre_url{contenu}}
+#INCLURE{fond=inclure/calendrier,date_debut}
 
-#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,composition,type,identifiant=submenu_left}
+#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,identifiant=submenu_left}
 
 #INCLURE{fond=inclure/navigation_extra_col1,id_article,id_rubrique,page}

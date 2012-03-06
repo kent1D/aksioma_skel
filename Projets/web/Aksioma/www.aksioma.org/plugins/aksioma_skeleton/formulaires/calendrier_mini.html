@@ -52,7 +52,7 @@
 			{date_fin >= #GET{'borne_debut_mois'}}>[
 			(#DATE_DEBUT|Agenda_memo_full{#DATE_FIN,[(#TITRE|addslashes)],
 				#DESCRIPTIF,#LIEU,
-				#ENV{url,#ENV{self}},'',#ENV{var_date}})
+				[(#ENV{url,[(#ENV{self}|parametre_url{agenda_type,day})]})],'',#ENV{var_date}})
 			]</BOUCLE_calendrier>
 			[(#REM) le "courante" ci-dessus peut etre remplace par "debut" pour retrouver l'ancien comportement]
 			
@@ -62,6 +62,6 @@
 		</tbody>
 	</table>
 	<div class="calendar-today">
-		<a href="[(#URL_PAGE{agenda-zpip})]"><:aksioma:lien_today:></a>
+		<a href="[(#URL_PAGE{agenda-zpip}|parametre_url{agenda_type,day}|parametre_url{date_debut,#ENV{date_aujd}|affdate{Y-m-d}})]"><:aksioma:lien_today:></a>
 	</div>
 </div>
