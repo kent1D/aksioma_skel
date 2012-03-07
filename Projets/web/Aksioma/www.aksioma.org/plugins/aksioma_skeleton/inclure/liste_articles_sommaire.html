@@ -5,6 +5,7 @@
 	<ul class="liste-items events_ongoing">
 	<BOUCLE_events_ongoing(EVENEMENTS){!par date_fin}{evenement_en_cours}{pagination #ENV{pagination,2}}>
 		<li class="item hentry">
+			#SET{logo_source,''}
 			<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
 			#SET{logo_source,#LOGO_EVENEMENT}
 			</BOUCLE_event_source_logo>
@@ -30,6 +31,7 @@
 	<ul class="liste-items">
 	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
 		<li class="item hentry">
+			#SET{logo_source,''}
 			<BOUCLE_event_source_logo_next(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
 			#SET{logo_source,#LOGO_EVENEMENT}
 			</BOUCLE_event_source_logo_next>
@@ -55,6 +57,7 @@
 	<ul class="liste-items">
 	<BOUCLE_events_passes(EVENEMENTS){!par date_fin}{evenement_passe}{pagination #ENV{pagination,10}}>
 		<li class="item hentry">
+			#SET{logo_source,''}
 			<BOUCLE_event_source_logo_passe(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
 			#SET{logo_source,#LOGO_EVENEMENT}
 			</BOUCLE_event_source_logo_passe>
