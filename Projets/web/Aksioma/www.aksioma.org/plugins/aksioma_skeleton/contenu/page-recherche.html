@@ -1,11 +1,42 @@
 <div class="contenu-principal">
+	#MENU_LANG
 	[<div class="cartouche">
 		<h1 class="h1"><:resultats_recherche:></h1>
 		<p class="soustitre">&#171;&nbsp;(#RECHERCHE)&nbsp;&#187;</p>
 	</div>]
+	
+	#SET{articles_28,#ARRAY}
+	<BOUCLE_articles_28(ARTICLES) {recherche} {id_secteur = 28}{par points}{inverse}{fusion id_trad}{doublons}>
+	#SET{articles_28,#GET{articles_28}|push{#ID_TRAD}}
+	</BOUCLE_articles_28>
 
-	<BOUCLE_secteurs(ARTICLES){recherche}{fusion id_secteur}>
-		<BOUCLE_rubriques(ARTICLES){recherche}{id_secteur != 28}{fusion id_rubrique}>
+	<B_articles>
+		<div class="liste resultats articles">
+			#ANCRE_PAGINATION
+			<h2>#INFO_TITRE{rubrique,28}</h2>
+			<ul class="liste-items">
+				<BOUCLE_articles(ARTICLES) {id_article IN #GET{articles_28}}{pagination}>
+				#SET{logo_tmp,#LOGO_ARTICLE}
+				<BOUCLE_articles_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+				<li class="item">
+					[(#LOGO_ARTICLE|sinon{#GET{logo_tmp}}|image_reduire{50,0})]
+					<a href="#URL_ARTICLE">#TITRE</a>
+					#INTRODUCTION
+				</li>
+				</BOUCLE_articles_lang>
+				</B_articles_lang>
+				<li class="item">
+					[(#LOGO_ARTICLE|image_reduire{50,0})]
+					<a href="#URL_ARTICLE">#TITRE</a>
+					#INTRODUCTION
+				</li>
+				<//B_articles_lang>
+				</BOUCLE_articles>
+			</ul>
+			[<p class="pagination">(#PAGINATION)</p>]
+		</div>
+	</B_articles>
+	<BOUCLE_rubriques(ARTICLES){recherche}{id_secteur = 27}{id_rubrique !IN 55,56,58,68,69}{fusion id_rubrique}>
 		<h2>#INFO_TITRE{rubrique,#ID_RUBRIQUE}</h2>
 		<B_articles_pas_28>
 		<div class="liste resultats articles">
@@ -22,23 +53,5 @@
 			[<p class="pagination">(#PAGINATION)</p>]
 		</div>
 		</B_articles_pas_28>
-		</BOUCLE_rubriques>
-		[(#REM) Articles trouves ]
-		<B_articles>
-		<div class="liste resultats articles">
-			#ANCRE_PAGINATION
-			<h2>#INFO_TITRE{rubrique,28}</h2>
-			<ul class="liste-items">
-				<BOUCLE_articles(ARTICLES) {recherche} {id_secteur = 28}{par points}{inverse} {pagination}{doublons}>
-				<li class="item">
-					[(#LOGO_ARTICLE|image_reduire{50,0})]
-					<a href="#URL_ARTICLE">#TITRE</a>
-					#INTRODUCTION
-				</li>
-				</BOUCLE_articles>
-			</ul>
-			[<p class="pagination">(#PAGINATION)</p>]
-		</div>
-		</B_articles>
-	</BOUCLE_secteurs>
+	</BOUCLE_rubriques>
 </div>
