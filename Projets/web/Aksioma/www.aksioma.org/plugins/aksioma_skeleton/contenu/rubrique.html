@@ -7,7 +7,6 @@
 		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
 		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>>&nbsp;<//B_ariane>[(#TITRE)]</h1>
 	</div>
-	
 	[<div class="#EDIT{texte} texte">(#TEXTE)</div>]
 	<BOUCLE_si_level(CONDITION){si #GET{level}|=={null}|oui}>
 		<BOUCLE_art_rub(ARTICLES){id_rubrique}{0,1}> </BOUCLE_art_rub>
@@ -30,7 +29,7 @@
 		</B_art_branche>
 		<B_ss_rubriques>
 			<ul class="liste liste_rubriques">
-		<BOUCLE_ss_rubriques(RUBRIQUES){id_parent}>
+		<BOUCLE_ss_rubriques(RUBRIQUES){id_parent}{par num titre,titre}>
 			<li><a href="#URL_RUBRIQUE">[(#TITRE|strtolower|ucfirst)] >></a></li>
 		</BOUCLE_ss_rubriques>
 			</ul>

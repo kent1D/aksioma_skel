@@ -36,6 +36,17 @@ function aksioma_insert_head($flux){
  */
 function aksioma_styliser($flux){
 	include_spip('compositions_fonctions');
+	if ($flux['args']['fond'] == 'rubrique' AND $id_rubrique = $flux['args']['id_rubrique']) {
+		$infos_rubriques = sql_fetsel('*','spip_rubriques','id_rubrique='.intval($id_rubrique));
+		if(($infos_rubriques['id_secteur'] == '27') && ($infos_rubriques['texte'] == '')){
+			$rubrique_enfant = sql_getfetsel('id_rubrique','spip_rubriques','id_parent='.intval($id_rubrique),'titre','',1);
+			if($rubrique_enfant){
+				$url_redirect = generer_url_entite($rubrique_enfant,'rubrique');
+				include_spip('inc/headers');
+				redirige_par_entete($url_redirect,'','301');
+			}
+		}
+	}
 	if (compositions_styliser_auto()){
 		$contexte = isset($flux['args']['contexte'])?$flux['args']['contexte']:$GLOBALS['contexte'];
 		if (preg_match(',(^|/)(navigation|extra)/([^/]*)$,i',$flux['args']['fond'],$regs)
@@ -116,6 +127,21 @@ function aksioma_post_insertion($flux){
 	return $flux;
 }
 
+/**
+ * Insertion dans le pipeline formulaire_charger (SPIP)
+ * Si on est dans la rubrique des projets :
+ * On prérempli le texte avec celui de la configuration du squelette
+ */
+function aksioma_formulaire_charger($flux){
+	$config = lire_config('aksioma',array());
+	if(($flux['args']['form'] == 'editer_rubrique') 
+		&& ($flux['args']['args'][0] == 'oui') 
+		&& ($flux['args']['args'][1] == $config['rubrique_projets'])
+		&& ($flux['data']['texte'] == '')){
+			$flux['data']['texte'] = $config['texte_defaut_projet'];
+	}
+	return $flux;	
+}
 /**
  * Insertion dans le pipeline arbo_creer_chaine_url (SPIP)
  * Ne pas prendre en compte la première rubrique dans l'URL

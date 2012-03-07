@@ -19,7 +19,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// L
 	'label_background_color' => 'Background color of the content area',
-	'label_banner_luhan' => 'Article for the images of the Mac Luhan banner',
+	'label_banner_luhan' => 'Article for the images of the MacLuhan banner',
+	'label_banner_luhan_timeout' => 'Time between the images in MacLuhan banner (in ms)',
+	'label_banner_main_timeout' => 'Time between the images in the main banner (in ms)',
 	'label_body_color' => 'Background color of the page',
 	'label_bold_color' => 'Bold color',
 	'label_composition_projet' => 'Default composition for a project',
@@ -36,6 +38,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_title_color' => 'Title color',
 	'label_titre_contenu_colonne_4' => 'Title of the content in the fourth column',
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
+	'legend_banners' => 'The banners',
+	'legend_projects' => 'The projects',
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
 	'lien_today' => 'Today',
 	

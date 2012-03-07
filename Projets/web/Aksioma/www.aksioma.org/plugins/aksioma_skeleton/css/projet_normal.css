@@ -38,6 +38,7 @@ body h3.spip{
 	width:183px;
 	float: left;
 	margin-left: 10px;
+	padding-bottom:10px;
 }
 
 #page div#conteneur #extra .extra_4{
@@ -73,17 +74,20 @@ body #extra h2{
 	overflow:auto;
 	margin:10px 0;
 }
-.documents_portfolio li,.articles_lies li{
+.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li,.documents_portfolio li,.articles_lies li{
 	list-style-type:none;
 	padding:0;
 	float:left;
-	margin:4px;
+	padding:3px;
+	margin:3px;
 	position:relative;
 	font-size:.85em;
+	border:none;
 }
 
-.documents_portfolio  li:hover,.articles_lies li:hover,.articles_lies li.on{
-	margin:1px;
+.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li:hover,.documents_portfolio  li:hover,.articles_lies li:hover,.articles_lies li.on{
+	margin:3px;
+	padding:0px;
 	border:3px solid #ccc;
 }
 
