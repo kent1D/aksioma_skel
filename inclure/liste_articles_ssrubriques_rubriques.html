@@ -1,6 +1,6 @@
 <B_sous_rubriques>
 <div class="rubriques">
-	<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent} {par num titre, titre}>
+	<BOUCLE_sous_rubriques(RUBRIQUES) {id_parent=#ENV{id_rubrique}} {par num titre, titre}>
 		<h2 class="#EDIT{titre}">&nbsp;&gt;&gt;&nbsp;[(#TITRE|strtolower|ucfirst)]</h2>
 		<B_articles_orig>
 			<div class="liste articles">

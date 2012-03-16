@@ -11,8 +11,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'evenement_voir' => 'Glej',
 
 	// I
-	'info_back' => 'BACK',
-	'info_home' => 'HOME',
+	'info_back' => 'NAZAJ',
+	'info_home' => 'DOMOV',
 	'info_more' => 'MORE',
 	'info_site_auteur' => 'Website',
 	'info_sites' => 'MORE',
