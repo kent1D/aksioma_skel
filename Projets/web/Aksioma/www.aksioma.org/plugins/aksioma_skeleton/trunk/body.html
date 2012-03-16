@@ -1,0 +1,29 @@
+[(#ENV{composition}|?{#SET{compo,#ENV{composition}},#SET{compo,xxx}})]
+<div id="page">
+	<div id="entete">
+		[(#CHEMIN{inclure/entete_#GET{composition}}|oui)
+		<INCLURE{fond=inclure/entete_#GET{composition},env}>]
+		[(#CHEMIN{inclure/entete_#GET{composition}}|non)
+		<INCLURE{fond=inclure/entete,env}>]
+	</div>
+	<div id="nav">
+		<INCLURE{fond=inclure/barre-nav,env}>
+	</div>
+	
+	<div id="conteneur">
+		<div id="navigation">
+			<INCLURE{fond=navigation/#ENV{type},env}>
+		</div>
+			
+		<div id="contenu">
+			<INCLURE{fond=contenu/#ENV{type},env}>
+			<div id="pied">
+				<INCLURE{fond=inclure/pied,env}>
+			</div>
+		</div>
+		
+		<div id="extra">
+			<INCLURE{fond=extra/#ENV{type},env}>
+		</div>
+	</div>
+</div>

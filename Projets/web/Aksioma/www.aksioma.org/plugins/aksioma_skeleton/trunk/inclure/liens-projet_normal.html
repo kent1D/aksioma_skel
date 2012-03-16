@@ -1,0 +1,15 @@
+<B_sites>
+	<div class="liste sites sites_lies">
+	<ul class="liste-items">
+	<BOUCLE_sites(SITES){id_rubrique}{par num nom_site,nom_site}>
+	<li class="item">
+		[<h2 class="#EDIT{nom_site}"><a href="(#URL_SITE)" class="spip_out" title="#NOM_SITE">[(#NOM_SITE)]</a></h2>]
+		[(#LOGO_SITE|image_reduire{183,0})]
+		<div class="#EDIT{descriptif}">
+			[(#DESCRIPTIF)]
+		</div>
+	</li>
+	</BOUCLE_sites>
+	</ul>
+	</div>
+</B_sites>
