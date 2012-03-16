@@ -46,7 +46,7 @@
 	#INCLURE{fond=inclure/menu,env,identifiant=social}
 	<B_auteur>
 	<div class="info_auteurs surlignable">
-	<h3 class="pas_surlignable">[(#GRAND_TOTAL|singulier_ou_pluriel{<:aksioma:titre_about_auteur:>,<:aksioma:titre_about_auteurs:>}|strtoupper)]</h3>
+	<h3 class="pas_surlignable">[(#GRAND_TOTAL|singulier_ou_pluriel{aksioma:titre_about_auteur,aksioma:titre_about_auteurs}|strtoupper)]</h3>
 	<BOUCLE_auteur(AUTEURS){id_article}>
 	<div class="info_auteur">
 		[<p class="#EDIT{nom}"><strong>(#NOM)</strong></p>]

@@ -38,7 +38,7 @@ function aksioma_styliser($flux){
 	include_spip('compositions_fonctions');
 	if ($flux['args']['fond'] == 'rubrique' AND $id_rubrique = $flux['args']['id_rubrique']) {
 		$infos_rubriques = sql_fetsel('*','spip_rubriques','id_rubrique='.intval($id_rubrique));
-		if(($infos_rubriques['id_secteur'] == '27') && ($infos_rubriques['texte'] == '')){
+		if(($infos_rubriques['id_parent'] == '27') && ($infos_rubriques['texte'] == '')){
 			$rubrique_enfant = sql_getfetsel('id_rubrique','spip_rubriques','id_parent='.intval($id_rubrique),'titre','',1);
 			if($rubrique_enfant){
 				$url_redirect = generer_url_entite($rubrique_enfant,'rubrique');
@@ -149,8 +149,10 @@ function aksioma_formulaire_charger($flux){
  * @param array $flux
  */
 function aksioma_arbo_creer_chaine_url($flux){
-	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0')){
-		$flux['data'] = '';
+	
+	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0') && ($flux['objet']['id_objet'] == '28')){
+		spip_log($flux,'test');
+	//	$flux['data'] = '';
 	}
 	return $flux;
 }

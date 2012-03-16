@@ -35,17 +35,16 @@ body h3.spip{
 	width:auto;
 }
 #page div#conteneur #extra .extra_3{
-	width:183px;
+	width:32%;
 	float: left;
-	margin-left: 10px;
-	padding-bottom:10px;
+	margin-left: 1%;
+	padding-bottom:1%;
 }
 
 #page div#conteneur #extra .extra_4{
 	float: left;
-	margin-left: 10px;
-	padding: 0px 10px 10px;
-	width: 465px;
+	margin: 1%;
+	width: 65%;
 }
 
 .headline{

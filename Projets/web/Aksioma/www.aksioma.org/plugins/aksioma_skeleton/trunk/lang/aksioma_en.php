@@ -31,6 +31,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_contenu_colonne_medias' => 'Root section of the media content',
 	'label_link_color' => 'Color of the links',
 	'label_link_hover_color' => 'Color of the links (hovering)',
+	'label_projet_main_event_mot' => 'Keywords for the main events',
 	'label_rubrique_projet' => 'Projects section',
 	'label_rubrique_project_space' => 'Project Space section',
 	'label_text_color' => 'Color of the text',

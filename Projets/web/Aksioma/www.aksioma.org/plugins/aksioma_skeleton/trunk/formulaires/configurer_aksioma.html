@@ -11,6 +11,7 @@
 			#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
 				[(#SAISIE{secteur,rubrique_project_space,
+					recursif=oui,
 					label=<:aksioma:label_rubrique_project_space:>})]
 				[(#SAISIE{secteur,contenu_colonne_1,
 					label=<:aksioma:label_contenu_colonne_1:>,
@@ -42,9 +43,11 @@
 						[(#SAISIE{composition,composition_projet,
 							label=<:aksioma:label_composition_projet:>,
 							type=rubrique})]
-						[(#SAISIE{textarea, texte_defaut_projet,
+						[(#SAISIE{textarea,texte_defaut_projet,
 							label=<:aksioma:label_texte_defaut_projet:>,
 							class=multilang})]
+						[(#SAISIE{mot,projet_main_event_mot,
+							label=<:aksioma:label_projet_main_event_mot:>})]
 					</ul>
 				</li>
 				<li class="fieldset">
