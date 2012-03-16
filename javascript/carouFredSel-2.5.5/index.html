@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1" />
+		<meta name="author" content="caroufredsel.frebsite.nl" />
+		<meta name="robots" content="index,follow" />
+
+		<meta name="description" content="carouFredSel: an infinite, circular jQuery carousel" />
+		<meta name="keywords" content="caroufredsel, infinite, circular, jquery, carousel" />
+
+		<title>carouFredSel: an infinite, circular jQuery carousel</title>
+
+		<script type="text/javascript" language="javascript" src="jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="jquery.carouFredSel-2.5.5-packed.js"></script>
+		<script type="text/javascript" language="javascript">
+			$(function() {
+				$('ul#basic_config').carouFredSel();
+				$('ul#user_interaction').carouFredSel({
+					auto: false,
+					prev: "#prev",
+					next: "#next"
+				});
+			});
+		</script>
+		
+		<style type="text/css" media="all">
+			html, body {
+				padding: 0;
+				margin: 0;
+				height: 100%;
+			}
+			body, div, p {
+				font-family: Arial, Helvetica, Verdana;
+				color: white;
+			}
+			h1 {
+				font-size: 60px;
+			}
+			a, a:link, a:active, a:visited {
+				color: white;
+				text-decoration: underline;
+			}
+			a:hover {
+				color: #999;
+			}
+			#wrapper {
+				background-color: black;
+				width: 600px;
+				margin: auto;
+				min-height: 100%;
+			}
+			#content {
+				padding: 50px;
+			}
+	
+			.list_carousel {
+				margin: 50px 0 0 60px;
+			}
+			.list_carousel ul {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: block;
+			}
+			.list_carousel li {
+				font-size: 40px;
+				color: #666;
+				text-align: center;
+				background-color: #f0f0f0;
+				border: 5px solid #ccc;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				margin: 6px;
+				display: block;
+				float: left;
+			}
+			.clearfix {
+				float: none;
+				clear: both;
+			}
+			#prev {
+				margin-left: 10px;
+			}
+			#next {
+				float: right;
+				margin-right: 90px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="content">
+				<h1><a href="http://caroufredsel.frebsite.nl">carouFredSel</a></h1>
+				<p>This is a demo page, for more examples, the complete documentation, tips &amp; tricks, a support-forum and even a configuration robot, visit <a href="http://caroufredsel.frebsite.nl">caroufredsel.frebsite.nl</a></p>
+				<br />
+				<div class="list_carousel">
+					<ul id="basic_config">
+						<li>c</li>
+						<li>a</li>
+						<li>r</li>
+						<li>o</li>
+						<li>u</li>
+						<li>F</li>
+						<li>r</li>
+						<li>e</li>
+						<li>d</li>
+						<li>S</li>
+						<li>e</li>
+						<li>l</li>
+						<li> </li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				
+				<div class="list_carousel">
+					<ul id="user_interaction">
+						<li>c</li>
+						<li>a</li>
+						<li>r</li>
+						<li>o</li>
+						<li>u</li>
+						<li>F</li>
+						<li>r</li>
+						<li>e</li>
+						<li>d</li>
+						<li>S</li>
+						<li>e</li>
+						<li>l</li>
+						<li> </li>
+					</ul>
+					<div class="clearfix"></div>
+					<a id="prev" href="#">&lt;</a>
+					<a id="next" href="#">&gt;</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

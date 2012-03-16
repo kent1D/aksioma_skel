@@ -1,0 +1,21 @@
+[(#REM)
+
+	Si un seul évènement, il est affiché dans la page en dessous du sous-titre,
+	donc il ne sert à rien de le mettre ici
+]
+
+<B_events>
+[(#GRAND_TOTAL|>{1}|oui)
+#ANCRE_PAGINATION
+<h2><:aksioma:titre_related_events:></h2>
+<ul class="liste liste-items evenements">]
+<BOUCLE_events(EVENEMENTS){id_article}{!par date_debut}{pagination 2}>
+[(#GRAND_TOTAL|>{1}|oui)
+<li class="item">
+	#MODELE{evenement_vevent,lien=non,largeur=183,hide_logo=oui}
+</li>]
+</BOUCLE_events>
+[(#GRAND_TOTAL|>{1}|oui)
+</ul>
+[<p class="pagination">(#PAGINATION)</p>]]
+</B_events>
