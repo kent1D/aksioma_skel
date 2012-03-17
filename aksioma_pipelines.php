@@ -142,18 +142,3 @@ function aksioma_formulaire_charger($flux){
 	}
 	return $flux;	
 }
-/**
- * Insertion dans le pipeline arbo_creer_chaine_url (SPIP)
- * Ne pas prendre en compte la première rubrique dans l'URL
- * 
- * @param array $flux
- */
-function aksioma_arbo_creer_chaine_url($flux){
-	
-	if(($flux['objet']['type'] == 'rubrique') && ($flux['objet']['parent'] == '0') && ($flux['objet']['id_objet'] == '28')){
-		spip_log($flux,'test');
-	//	$flux['data'] = '';
-	}
-	return $flux;
-}
-?>

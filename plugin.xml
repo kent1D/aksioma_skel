@@ -7,7 +7,7 @@
 	</nom>
 	<auteur>kent1 (kent1@arscenic.info)</auteur>
 	<licence>&#169; 2010-2012 - GNU/GPL</licence>
-	<version>0.2.0</version>
+	<version>0.3.0</version>
 	<icon>images/aksioma-58.png</icon>
 	<etat>stable</etat>
 	<description>
@@ -35,10 +35,6 @@
 	</pipeline>
 	<pipeline>
 		<nom>formulaire_charger</nom>
-		<inclure>aksioma_pipelines.php</inclure>
-	</pipeline>
-	<pipeline>
-		<nom>arbo_creer_chaine_url</nom>
 		<inclure>aksioma_pipelines.php</inclure>
 	</pipeline>
 	<pipeline>
