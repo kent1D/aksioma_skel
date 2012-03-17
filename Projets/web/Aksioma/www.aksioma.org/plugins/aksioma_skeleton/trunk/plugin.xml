@@ -57,7 +57,8 @@
 	</bouton>
 	<categorie>squelette</categorie>
 	<necessite id='SPIP' version='[2.1.2;]' />
-	<necessite id='Z' version='[1.7.17;]' />
+	<necessite id='Zcore' version='[2.0.0-dev;]' />
+	<necessite id='Zpip' version='[2.0.5-dev;]' />
 	<necessite id='saisies' version='[1.8.11;]' />
 	<necessite id='agenda' version='[3.0.2;]' />
 	<necessite id='compositions' version='[3.0.2;]' />
