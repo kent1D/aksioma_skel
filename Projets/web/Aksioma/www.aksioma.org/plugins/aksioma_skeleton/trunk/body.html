@@ -12,18 +12,16 @@
 	
 	<div id="conteneur">
 		<div id="navigation">
-			<INCLURE{fond=extra1/#ENV{type},env}>
+			<INCLURE{fond=extra1/#ENV{type-page},env}>
 		</div>
-			
 		<div id="contenu">
-			<INCLURE{fond=content/#ENV{type},env}>
+			<INCLURE{fond=content/#ENV{type-page},env} />
 			<div id="pied">
 				<INCLURE{fond=inclure/pied,env}>
 			</div>
 		</div>
-		
 		<div id="extra">
-			<INCLURE{fond=extra2/#ENV{type},env}>
+			<INCLURE{fond=extra2/#ENV{type-page},env}>
 		</div>
 	</div>
 </div>
