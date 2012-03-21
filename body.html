@@ -1,4 +1,5 @@
 [(#ENV{composition}|?{#SET{compo,#ENV{composition}},#SET{compo,xxx}})]
+<body class="page_#ENV{type,page}[ #ENV{type,page}_(#ENV{composition,''})]">
 <div id="page">
 	<div id="entete">
 		[(#CHEMIN{inclure/entete_#GET{composition}}|oui)
@@ -25,3 +26,4 @@
 		</div>
 	</div>
 </div>
+</body>

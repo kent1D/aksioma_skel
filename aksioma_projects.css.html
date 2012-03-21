@@ -11,7 +11,7 @@
 	c'est du text/html !
 	<style>
 ]
-#CACHE{0,cache-client}
+#CACHE{3600*100,cache-client}
 #HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
 #HTTP_HEADER{Vary: Accept-Encoding}
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
@@ -49,7 +49,7 @@ body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#
 }
 
 body.rubrique_projet_normal div#conteneur #contenu{
-	padding:0 10px;
+	padding:2%;
 }
 
 body.rubrique_projet_normal div#conteneur #contenu .spip_documents_center{
@@ -60,19 +60,78 @@ body.rubrique_projet_normal div#conteneur #contenu .spip_documents_center{
 }]
 [(#GET{nb_articles}|>{0}|ou{#GET{video}|=={oui}}|oui)
 body.rubrique_projet_normal #page div#conteneur #extra{
-	width:53%;
+	width:52%;
+}
+
+body.rubrique_projet_normal #page div#conteneur #extra .extra_3{
+	width:28%;
+}
+
+body.rubrique_projet_normal #page div#conteneur #extra .extra_4{
+	width:63%;
 }
 
 body.rubrique_projet_normal #page div#conteneur #contenu{
-	width:40%;
+	width:39%;
 }
 
 body.rubrique_projet_normal div#conteneur #navigation{
 	width:5%;
+	margin:0;
 }
 
 body.rubrique_projet_normal div#conteneur #contenu{
 	width:35%;
+}
+
+/************************************************************************************
+smaller than 1024
+*************************************************************************************/
+@media screen and (max-width: 1024px) {
+	body.rubrique_projet_normal #page div#conteneur #extra .extra_3,
+	body.rubrique_projet_normal #page div#conteneur #extra .extra_4{
+		width:96%;
+		float:none;
+		overflow:auto;
+		clear:both;
+	}
+	
+	body.rubrique_projet_normal #page div#conteneur #extra .extra_3 > div{
+		width:49%;
+		float:left;
+	}
+	
+	#page .brochures img.spip_logos{width:inherit;height:inherit;}
+}
+
+
+/************************************************************************************
+smaller than 800
+*************************************************************************************/
+@media screen and (max-width: 800px) {
+	body.rubrique_projet_normal #page  div#conteneur #contenu{
+		width:87%
+	}
+	body.rubrique_projet_normal div#conteneur #navigation{
+		margin:0;
+		width:7%;
+	}
+	body.rubrique_projet_normal #page  div#conteneur #extra {
+    	width: 91%;
+    	display:block;
+    	float:left;
+    	margin-left:7%;
+	}
+
+}
+
+
+/************************************************************************************
+smaller than 480
+*************************************************************************************/
+@media screen and (max-width: 480px) {
+
+
 }]
 body.rubrique_projet_normal #page #entete,body.rubrique_projet_normal #page #pied{
 	display:none;
