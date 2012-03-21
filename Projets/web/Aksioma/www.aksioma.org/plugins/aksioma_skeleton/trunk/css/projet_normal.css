@@ -2,21 +2,31 @@ body div#page{
 	width:100%;
 }
 
+.spip_logo .spip_logos{max-width:40%;height:auto;}
+
+.texte .spip_documents_left img,
+.texte .spip_documents_right img{
+	max-width:40%;height:auto;
+}
 #page #conteneur{
-	width:800px;
-	margin:10px auto 10px auto;
+	width:62%;
+	position:relative;
+	margin:10px auto;
 }
 
 #page #conteneur #contenu{
-	width:468px;
+	width:60%;
 }
 
 body div#conteneur #navigation{
-	width:70px;
+	width:7%;
+	padding:2% 0;
 }
 
 body div#conteneur #navigation img{
-	padding-top:20px
+	padding-top:10px;
+	width:100%;
+	height:auto;
 }
 
 body #conteneur .cartouche .spip_logos{
@@ -31,20 +41,20 @@ body h3.spip{
 #page hr.spip{
 	margin:.5em 0;
 }
-#page div#conteneur #extra{
-	width:auto;
+body div#conteneur #extra{
+	width:27%;
 }
 #page div#conteneur #extra .extra_3{
-	width:32%;
-	float: left;
-	margin-left: 1%;
-	padding-bottom:1%;
+	width:96%;
+	padding:2%;
+	float:left;
 }
 
 #page div#conteneur #extra .extra_4{
 	float: left;
-	margin: 1%;
-	width: 65%;
+	padding: 2%;
+	width: 63%;
+	float:left;
 }
 
 .headline{
@@ -66,14 +76,13 @@ body #extra h2{
 	background:#999 url(../images/fle_droite.gif) no-repeat 2px 2px;
 }
 
-.extra_3 p{
-	font-size:.8em;
-}
 .documents_portfolio,.articles_lies ul {
 	overflow:auto;
 	margin:10px 0;
 }
-.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li,.documents_portfolio li,.articles_lies li{
+.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li,
+.documents_portfolio li,
+.articles_lies li{
 	list-style-type:none;
 	padding:0;
 	float:left;
@@ -84,7 +93,10 @@ body #extra h2{
 	border:none;
 }
 
-.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li:hover,.documents_portfolio  li:hover,.articles_lies li:hover,.articles_lies li.on{
+.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li:hover,
+.documents_portfolio  li:hover,
+.articles_lies li:hover,
+.articles_lies li.on{
 	margin:3px;
 	padding:0px;
 	border:3px solid #ccc;
@@ -131,4 +143,45 @@ body .ps{
 
 #contenu .texte p {
 	padding: 0;
+}
+
+.spip_documents_center img,
+.document_portfolio img,
+.brochures img.spip_logos{width:100%;height:auto;}
+
+.spip_documents_center{width:100%;display:block;}
+
+
+/************************************************************************************
+smaller than 1024
+*************************************************************************************/
+@media screen and (max-width: 1024px) {
+	#page #conteneur{
+		width:90%;
+	}
+}
+
+
+/************************************************************************************
+smaller than 800
+*************************************************************************************/
+@media screen and (max-width: 800px) {
+	#page #conteneur #contenu{
+		width:87%
+	}
+	body div#conteneur #extra {
+    	width: 91%;
+    	display:block;
+    	float:right;
+	}
+
+}
+
+
+/************************************************************************************
+smaller than 480
+*************************************************************************************/
+@media screen and (max-width: 480px) {
+
+
 }
