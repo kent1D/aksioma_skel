@@ -44,12 +44,12 @@
 	<bouton id='aksioma' parent='configuration'>
 		<icone>images/aksioma-24.png</icone>
 		<titre>aksioma:cfg_titre</titre>
-		<url>cfg&cfg=aksioma</url>
+		<url>cfg&amp;cfg=aksioma</url>
 	</bouton>
 	<bouton id='aksioma2' parent='bando_squelette'>
 		<icone>images/aksioma-16.png</icone>
 		<titre>aksioma:cfg_titre</titre>
-		<url>cfg&cfg=aksioma</url>
+		<url>cfg&amp;cfg=aksioma</url>
 	</bouton>
 	<categorie>squelette</categorie>
 	<necessite id='SPIP' version='[2.1.2;]' />
