@@ -30,5 +30,5 @@
 	<necessite nom="compositions" compatibilite="[3.0.2;[" />
 	<necessite nom="calendriermini" compatibilite="[0.5.0;[" />
 
-	<menu nom="aksioma2" titre="aksioma:cfg_titre" parent="menu_squelette" icone="images/aksioma-16.png" action="cfg&amp;cfg=aksioma" />
+	<menu nom="configurer_aksioma" titre="aksioma:cfg_titre" parent="menu_squelette" icone="images/aksioma-16.png" />
 </paquet>
