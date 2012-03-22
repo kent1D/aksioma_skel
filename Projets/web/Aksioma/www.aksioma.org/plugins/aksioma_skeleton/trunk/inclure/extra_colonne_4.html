@@ -7,11 +7,11 @@
 	<div class="exergue_media">
 	<BOUCLE_articles_rubcolonne4_media(ARTICLES){branche}{par hasard}{0,1}>
 	<BOUCLE_videos(DOCUMENTS){id_article}{par hasard}{extension IN dist_vimeo,dist_youtu}{0,1}>
-	#MODELE{video,id_document=#ID_DOCUMENT,largeur=100%}
+	#MODELE{video,id_document=#ID_DOCUMENT,largeur=100%,height=300px}
 	</BOUCLE_videos>
 	<BOUCLE_images(DOCUMENTS){id_article}{extension IN jpg,png,gif}{0,1}>
 	</BOUCLE_images>
-	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,largeur=100%})]
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500})]
 	</B_images>
 	<BOUCLE_autre_article(BOUCLE_articles_rubcolonne4_media)></BOUCLE_autre_article>
 	<//B_images>

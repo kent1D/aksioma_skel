@@ -4,9 +4,15 @@ body div#page{
 
 .spip_logo .spip_logos{max-width:40%;height:auto;}
 
+.texte .spip_documents_left,
+.texte .spip_documents_right{
+	max-width:40%;
+	height:auto;
+}
 .texte .spip_documents_left img,
 .texte .spip_documents_right img{
-	max-width:40%;height:auto;
+	max-width:100%;
+	height:auto;
 }
 #page #conteneur{
 	width:62%;
