@@ -29,6 +29,8 @@
 	<necessite nom="agenda" compatibilite="[3.0.2;[" />
 	<necessite nom="compositions" compatibilite="[3.0.2;[" />
 	<necessite nom="calendriermini" compatibilite="[0.5.0;[" />
+	<necessite nom="abomailmans" compatibilite="[1.0.1;[" />
+	<necessite nom="sjcycle" compatibilite="[2.0.2;[" />
 
 	<menu nom="configurer_aksioma" titre="aksioma:cfg_titre" parent="menu_squelette" icone="images/aksioma-16.png" />
 </paquet>
