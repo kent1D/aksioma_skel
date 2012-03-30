@@ -31,13 +31,14 @@
 </BOUCLE_documents>
 </BOUCLE_article_defaut>
 [(#INCLURE{fond=inclure/liens-projet_normal,id_rubrique})]
+[(#INCLURE{fond=inclure/liens-projet_lies,id_article=#ID_ARTICLE_ACCUEIL,lang})]
 </div>
 [(#GET{2_colonnes}|=={oui}|oui)
 <div class="extra_4">
 ]
 <BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}>
 [<h2 class="#EDIT{titre}">(#TITRE)</h2>]
-#MODELE{video,id_document=#ID_DOCUMENT,largeur=470}
+#MODELE{video,id_document=#ID_DOCUMENT,largeur=100%,hauteur=350}
 </BOUCLE_video>
 [<div class="articles_lies">(#INCLURE{fond=inclure/articles-projet_normal,id_article,id_rubrique,ajax}|trim)</div>]
 [<h2><:aksioma:titre_portfolio:></h2>(#INCLURE{fond=inclure/documents-portfolio_projet_normal,id_rubrique,id_document,ajax})]

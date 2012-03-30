@@ -37,7 +37,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_titre_contenu_colonne_4' => 'Title of the content in the fourth column',
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
+	'lien_autres_brochures' => 'DRUGE BROŠURE',
 	'lien_today' => 'Danes',
+	'linked_projects' => 'POVEZANI PROJEKTI',
 
 	// M
 	'message_champ_search' => 'vpiši iskani niz',

@@ -1,16 +1,30 @@
 <div class="accueil">
-	#SET{docs,#ARRAY}
-	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>=1280}>
-	#SET{docs,#GET{docs}|push{#ID_DOCUMENT}}
+	<script type="text/javascript">
+	$(document).ready(function() {
+		$("#dsjcycle_top").cycle({
+			fx:		"#ENV{fx,#CONFIG{sjcycle/fx}}",
+			timeout:	"#CONFIG{aksioma/banner_main_timeout,15000}",
+			speed:		"#ENV{speed,#CONFIG{sjcycle/speed}}",
+			sync:		"#CONFIG{sjcycle/sync}",
+			pause:		"#CONFIG{sjcycle/pause}",
+			cleartype: 1,
+			containerResize: 0
+		}).css({'position':'static'}).fadeIn();
+	});
+	</script>
+	[(#LOGO_SITE_SPIP|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position}, #CONFIG{sjcycle/img_background}})]
+	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_top" style='width:100%;'>
+	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>=1280}{par hasard}{0,3}>
+	<div>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">
+		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position}, #CONFIG{sjcycle/img_background}})]})]
+		[(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center}
+				|image_masque{[(#CHEMIN{images/logo_aksioma_right.png})],mode=normal,right=5px,vertical-align=center})]})]
+		[(#GET{fichier}|inserer_attribut{style,'display:block;'})]
+		</a>
+	</div>
 	</BOUCLE_documents_larges>
-	[(#SET{docs,[(#GET{docs}|implode{'|'})]})]
-	#MODELE{sjcycle_top,id=entete_gauche,docs=#GET{docs},width=1280,height=150,timeout=#CONFIG{aksioma/banner_main_timeout,15000},redirection=#URL_SITE_SPIP}
+	</div>
+	</B_documents_larges>
 	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
 </div>
-<div class="accueil_bis">
-#SET{docs_luhan,#ARRAY}
-<BOUCLE_documents_luhan(DOCUMENTS){extension IN jpg,png}{id_article=#CONFIG{aksioma/banner_luhan}}>
-#SET{docs_luhan,#GET{docs_luhan}|push{#ID_DOCUMENT}}
-</BOUCLE_documents_luhan>
-[(#SET{docs_luhan,[(#GET{docs_luhan}|implode{'|'})]})]
-#MODELE{sjcycle_top,id=entete_droite,docs=#GET{docs_luhan},width=396,height=100,timeout=#CONFIG{aksioma/banner_luhan_timeout,15000},no_logo=oui,redirection=#URL_ARTICLE{#CONFIG{aksioma/banner_luhan}}}</div>

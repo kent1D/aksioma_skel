@@ -30,6 +30,9 @@
 					<div class="#EDIT{descriptif}">
 					#DESCRIPTIF
 					</div>
+					<BOUCLE_projet_brochure(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
+					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
+					</BOUCLE_projet_brochure>
 				</div>
 			</BOUCLE_docpdf>
 			</B_docpdf>
@@ -58,6 +61,9 @@
 					<div class="#EDIT{descriptif}">
 					#DESCRIPTIF
 					</div>
+					<BOUCLE_projet_brochure_orig(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
+					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
+					</BOUCLE_projet_brochure_orig>
 				</div>
 			</BOUCLE_docpdf_orig>
 			</B_docpdf_orig>
@@ -98,6 +104,9 @@
 					<div class="#EDIT{descriptif}">
 					#DESCRIPTIF
 					</div>
+					<BOUCLE_projet_brochure_lang_rub(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
+					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
+					</BOUCLE_projet_brochure_lang_rub>
 				</div>
 			</BOUCLE_docpdf_rub>
 			</B_docpdf_rub>
@@ -126,6 +135,9 @@
 					<div class="#EDIT{descriptif}">
 					#DESCRIPTIF
 					</div>
+					<BOUCLE_projet_brochure_lang_rub_defaut(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
+					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
+					</BOUCLE_projet_brochure_lang_rub_defaut>
 				</div>
 			</BOUCLE_docpdf_orig_rub>
 			</B_docpdf_orig_rub>

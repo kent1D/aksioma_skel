@@ -1,27 +1,19 @@
 <div class="extra-right">
 #INCLURE{fond=inclure/menu,identifiant=social}
-<B_colonne4_media>
-<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
-<BOUCLE_colonne4_media(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_medias,#ARRAY}}{tout}>
 <B_articles_rubcolonne4_media>
+	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
 	<div class="exergue_media">
-	<BOUCLE_articles_rubcolonne4_media(ARTICLES){branche}{par hasard}{0,1}>
-	<BOUCLE_videos(DOCUMENTS){id_article}{par hasard}{extension IN dist_vimeo,dist_youtu}{0,1}>
-	#MODELE{video,id_document=#ID_DOCUMENT,largeur=100%,height=300px}
-	</BOUCLE_videos>
-	<BOUCLE_images(DOCUMENTS){id_article}{extension IN jpg,png,gif}{0,1}>
-	</BOUCLE_images>
-	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500})]
-	</B_images>
-	<BOUCLE_autre_article(BOUCLE_articles_rubcolonne4_media)></BOUCLE_autre_article>
-	<//B_images>
-	<//B_videos>
+	<BOUCLE_articles_rubcolonne4_media(ARTICLES spip_documents_liens documents){branche #CONFIG{aksioma/contenu_colonne_medias}}
+	{documents.extension IN dist_vimeo,dist_youtu,jpg,png,gif}
+	{par hasard}{0,1}>
+	[(#EXTENSION|in_array{#ARRAY{0,dist_vimeo,1,dist_youtu}}|oui)
+	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
+	[(#EXTENSION|in_array{#ARRAY{0,dist_vimeo,1,dist_youtu}}|non)
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
 	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE">#TITRE</a></p>
 	</BOUCLE_articles_rubcolonne4_media>
 	</div>
 </B_articles_rubcolonne4_media>
-</BOUCLE_colonne4_media>
-</B_colonne4_media>
 
 <B_colonne4>
 <h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>}|corriger_typo)]</h3>

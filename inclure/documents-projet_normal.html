@@ -7,11 +7,15 @@
 	<ul class="liste-items">
 		<BOUCLE_documents_joints(DOCUMENTS) {id_article?}{id_rubrique?} {extension !IN gif,jpg,png,dist_vimeo,dist_youtu} {vu=non}{par num titre, date}>
 		<li class="item">
-			[(#ENV{id_article}|non)[<h2 class="#EDIT{titre}"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:info_document:>})]</a></h2>]]
-			[(#ENV{id_article}|oui)[<p class="#EDIT{titre}" style="display:block"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#LOGO_DOCUMENT|extraire_attribut{src}|match{IMG}|?{'',[(#LOGO_DOCUMENT|image_reduire{16,0})]})]#VIGNETTE [(#LOGO_DOCUMENT|extraire_attribut{src}|match{IMG}|?{[(#LOGO_DOCUMENT|image_reduire{0,16})],[(#TITRE|sinon{<:info_document:>})]})]</a></p>]]
+			[(#ENV{id_article}|non)[<h2 class="#EDIT{titre}"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#TITRE|sinon{<:medias:info_document:>})]</a></h2>]]
+			[(#ENV{id_article}|oui)[<p class="#EDIT{titre}" style="display:block"><a href="(#URL_DOCUMENT)" title="<:bouton_telecharger:>" type="#MIME_TYPE">[(#LOGO_DOCUMENT|extraire_attribut{src}|match{IMG}|?{'',[(#LOGO_DOCUMENT|image_reduire{16,0})]})]#VIGNETTE [(#LOGO_DOCUMENT|extraire_attribut{src}|match{IMG}|?{[(#LOGO_DOCUMENT|image_reduire{0,16})],[(#TITRE|sinon{<:medias:info_document:>})]})]</a></p>]]
 			[(#ENV{id_article}|non)[<a href="[(#URL_DOCUMENT)]" title="<:bouton_telecharger:>" type="#MIME_TYPE">(#LOGO_DOCUMENT|extraire_attribut{src}|match{IMG}|?{[(#LOGO_DOCUMENT|image_reduire{183,0})],''})</a>]]
 			<div class="#EDIT{descriptif}">
 			#DESCRIPTIF
+			<BOUCLE_articles_brochure(ARTICLES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_rubrique IN #CONFIG{aksioma/rubrique_brochures,#ARRAY}}{0,1}>
+			<p><a href="#URL_DOCUMENT">#SOUSTITRE</a></p>
+			<p><a href="#URL_RUBRIQUE"><:aksioma:lien_autres_brochures:></a></p>
+			</BOUCLE_articles_brochure>
 			</div>
 		</li>
 		</BOUCLE_documents_joints>

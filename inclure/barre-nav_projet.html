@@ -1,0 +1,14 @@
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+<div id="nav_projet">
+	#FORMULAIRE_RECHERCHE
+	<div class="precedent_suivant">
+	<BOUCLE_projet_prev(RUBRIQUES){precedent}{id_parent=#ID_PARENT}{par num titre}{!par date}>
+	<a href="#URL_RUBRIQUE" class="prev" title="[(#INFO_TITRE{article,#ID_ARTICLE_ACCUEIL}|attribut_html)]"><:aksioma:lien_prev_project:></a>
+	</BOUCLE_projet_prev>
+	
+	<BOUCLE_projet_next(RUBRIQUES){suivant}{id_parent=#ID_PARENT}{par num titre}{!par date}>
+	<a href="#URL_RUBRIQUE" class="prev" title="[(#INFO_TITRE{article,#ID_ARTICLE_ACCUEIL}|attribut_html)]"><:aksioma:lien_next_project:></a>
+	</BOUCLE_projet_next>
+	</div>
+</div>
+</BOUCLE_rubrique>
