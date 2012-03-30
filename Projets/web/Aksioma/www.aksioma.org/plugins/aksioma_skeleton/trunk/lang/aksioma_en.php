@@ -34,6 +34,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_projet_main_event_mot' => 'Keywords for the main events',
 	'label_rubrique_projet' => 'Projects section',
 	'label_rubrique_project_space' => 'Project Space section',
+	'label_rubrique_brochures' => 'Brochures section',
 	'label_text_color' => 'Color of the text',
 	'label_texte_defaut_projet' => 'Default text of a project section',
 	'label_title_color' => 'Title color',
@@ -42,7 +43,12 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'legend_banners' => 'The banners',
 	'legend_projects' => 'The projects',
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
+	'lien_autres_brochures' => 'Other brochures',
+	'lien_next_project' => 'Next project',
+	'lien_prev_project' => 'Previous project',
+	'lien_projet_brochure' => '>> Project website',
 	'lien_today' => 'Today',
+	'linked_projects' => 'RELATED PROJECTS',
 	
 	// M
 	'message_champ_search' => 'search aksioma.org',

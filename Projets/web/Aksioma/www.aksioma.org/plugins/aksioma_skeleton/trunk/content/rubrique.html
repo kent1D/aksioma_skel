@@ -14,15 +14,13 @@
 		<B_art_branche>
 		<div class="menu">
 		<ul class="liste_images">
-		<BOUCLE_art_branche(ARTICLES){branche}>
-		<BOUCLE_documents_larges(DOCUMENTS){id_article}{extension IN jpg,png}{largeur>=468}{par hasard}{0,1}>
+		<BOUCLE_art_branche(ARTICLES spip_documents_liens documents){branche}{documents.extension IN jpg,png}{documents.largeur>=468}>
 		<li>
 			<a href="#_art_branche:URL_ARTICLE"[ title="(#_art_branche:TITRE|attribut_html)"]>
-				[(#URL_DOCUMENT|image_passe_partout{468,300}|image_alpha{0}
+				[(#URL_DOCUMENT|image_passe_partout{600,300}|image_alpha{0}
                       |image_recadre{468,300}|inserer_attribut{style,"display:block;"})]
 			</a>
 		</li>
-		</BOUCLE_documents_larges>
 		</BOUCLE_art_branche>
 		</ul>
 		</div>

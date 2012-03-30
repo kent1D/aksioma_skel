@@ -17,9 +17,10 @@
 <BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
 #SET{body_color,#BODY_COLOR|sinon{#000000}}
 #SET{background-color,#BACKGROUND_COLOR|sinon{#000000}}
+#SET{background-color_dec,#BACKGROUND_COLOR|sinon{#000000}|_couleur_hex_to_dec}
 #SET{text-color,#TEXT_COLOR|sinon{#cccccc}}
-#SET{link-color,#LINK_COLOR|sinon{red}}
-#SET{link-color_hover,#LINK_HOVER_COLOR|sinon{red}}
+#SET{link-color,#LINK_COLOR|sinon{#FF0000}}
+#SET{link-color_hover,#LINK_HOVER_COLOR|sinon{#FF0000}}
 #SET{bold_color,#BOLD_COLOR|sinon{#ffffff}}
 #SET{background-image,#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}|match{rubon0}|?{'',#LOGO_RUBRIQUE_NORMAL|extraire_attribut{src}}}
 #SET{title_color,#TITLE_COLOR|sinon{#GET{bold_color}}}
@@ -39,10 +40,17 @@
 html > body.rubrique_projet_normal{
 	[background-color:(#GET{body_color,#000000});][
 	background-image:url((#GET{background-image}));
-	][
-	color:(#GET{text-color,#cccccc});]
+	][color:(#GET{text-color,#cccccc});]
 }
 
+body #nav_projet{
+	background:rgb([(#GET{background-color_dec}|table_valeur{red})],[(#GET{background-color_dec}|table_valeur{green})],[(#GET{background-color_dec}|table_valeur{blue})]);
+	background:rgba([(#GET{background-color_dec}|table_valeur{red})],[(#GET{background-color_dec}|table_valeur{green})],[(#GET{background-color_dec}|table_valeur{blue})],.9);
+}
+
+body.rubrique_projet_normal #page #nav_projet a{
+	color:#GET{text-color,#cccccc};
+}
 body.rubrique_projet_normal div#conteneur > div,body.rubrique_projet_normal div#conteneur #contenu > *, body.rubrique_projet_normal div#conteneur .notes{
 	background:#GET{background-color,#000000};
 	padding-top:0;
@@ -145,13 +153,13 @@ body.rubrique_projet_normal #page a:hover{
 	color:#GET{link-color_hover,red};
 }
 
-body.rubrique_projet_normal body #conteneur h1, body.rubrique_projet_normal #conteneur h2, body.rubrique_projet_normal h3,body.rubrique_projet_normal .surtitre,body.rubrique_projet_normal .soustitre{
+body.rubrique_projet_normal body #conteneur h1, body.rubrique_projet_normal #conteneur h1, body.rubrique_projet_normal #conteneur h1 a,body.rubrique_projet_normal #conteneur h2, body.rubrique_projet_normal h3,body.rubrique_projet_normal .surtitre,body.rubrique_projet_normal .soustitre{
 	color:#GET{title_color,#ffffff};
 	background-color:transparent;
 	border:none;
 }
 
-body.rubrique_projet_normal strong,body.rubrique_projet_normal #conteneur h1, body.rubrique_projet_normal #conteneur h1 a{
+body.rubrique_projet_normal strong{
 	color:#GET{bold_color,#ffffff};
 	background-color:transparent;
 }

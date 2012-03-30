@@ -8,7 +8,10 @@
 		<INCLURE{fond=inclure/entete,env}>]
 	</div>
 	<div id="nav">
-		<INCLURE{fond=inclure/barre-nav,env}>
+		[(#ENV{type-page}|=={rubrique}|et{#ENV{composition}|=={projet_normal}}|oui)
+		<INCLURE{fond=inclure/barre-nav_projet,env}>]
+		[(#ENV{type-page}|=={rubrique}|et{#ENV{composition}|=={projet_normal}}|non)
+		<INCLURE{fond=inclure/barre-nav,env}>]
 	</div>
 	
 	<div id="conteneur">

@@ -1,6 +1,6 @@
 [(#SET{id_diapo,	   [(#ENV{id_diapo, 		 #ENV{id}})]})]
 [(#SET{img_width,      [(#ENV{width,     		 #CONFIG{sjcycle/img_width}})]})]
-[(#SET{img_height,     [(#ENV{height,    		 #CONFIG{sjcycle/img_height}})]})]
+[(#SET{img_height,     [(#ENV{height,150})]})]
 [(#SET{img_position,   [(#ENV{position,  		 #CONFIG{sjcycle/img_position}})]})]
 [(#SET{img_background, [(#ENV{background,		 #CONFIG{sjcycle/img_background}})]})]
 [(#SET{div_background, [(#ENV{border_color,		 #CONFIG{sjcycle/div_background}})]})]
@@ -25,12 +25,14 @@
 			pause:		"#CONFIG{sjcycle/pause}",
 			cleartype: 1,
 			containerResize: 0
-		});
+		}).css({'position':'static'}).fadeIn();
 	});
 	</script>
-
-	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_#GET{id_diapo}" style='[float:(#ENV{align}|match{left|right});margin:[(#GET{div_margin})]px;]width:100%;height:150px;[height:(#GET{div_height}|>{0}|oui)px;][background:(#GET{div_background})]'>
-	<BOUCLE_img(DOCUMENTS){extension IN jpg,png,gif}{id_document==^((#ENV{docs}|replace{',',|}|sinon{.*}))$}>
+	[(#LOGO_SITE_SPIP|image_passe_partout{#GET{img_width},#GET{img_height}}|image_recadre{#GET{img_width},#GET{img_height},#GET{img_position},#GET{img_background}})]
+	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_#GET{id_diapo}" style='width:100%;[background:(#GET{div_background})]'>
+	
+	<BOUCLE_img(DOCUMENTS){id_document IN #ENV{docs}|explode{'|'}}{tout}>
+	<div>
 		[(#ENV{redirection}|et{#GET{box}|!={ok}}|oui)<a href="#ENV{redirection}" style="display:block;padding:0px;margin:0px;">]
 		[(#SET{fichier,[(#FICHIER|image_passe_partout{#GET{img_width},#GET{img_height}}|image_recadre{#GET{img_width},#GET{img_height},#GET{img_position},#GET{img_background}})]})]
 		[(#GET{img_background}|=={'transparent'}|oui)
@@ -42,6 +44,7 @@
 		]
 		[(#GET{fichier}|inserer_attribut{style,'display:block;'})]
 		[(#ENV{redirection}|et{#GET{box}|!={ok}}|oui)</a>]
+	</div>
 	</BOUCLE_img>
 	</div>
 </B_img>

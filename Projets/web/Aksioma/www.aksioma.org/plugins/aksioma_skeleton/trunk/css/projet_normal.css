@@ -4,6 +4,23 @@ body div#page{
 
 .spip_logo .spip_logos{max-width:40%;height:auto;}
 
+#nav_projet{
+	width:100%;
+	overflow:auto;
+	padding:5px 0;
+}
+
+#nav_projet .formulaire_recherche{
+	width:15em;
+	float:left;
+	margin:0 5px;
+}
+
+#nav_projet .precedent_suivant{
+	float:right;
+	margin:0 5px;
+}
+
 .texte .spip_documents_left,
 .texte .spip_documents_right{
 	max-width:40%;
@@ -86,26 +103,26 @@ body #extra h2{
 	overflow:auto;
 	margin:10px 0;
 }
-.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li,
+
 .documents_portfolio li,
 .articles_lies li{
 	list-style-type:none;
-	padding:0;
 	float:left;
-	padding:3px;
 	margin:3px;
 	position:relative;
 	font-size:.85em;
 	border:none;
+	border:3px solid #000;
 }
 
-.rubrique_projet_normal #extra .documents_portfolio .caroufredsel_wrapper ul li:hover,
+.articles_lies li{
+	border:2% solid #000;
+	margin:1%;	
+}
 .documents_portfolio  li:hover,
 .articles_lies li:hover,
 .articles_lies li.on{
-	margin:3px;
-	padding:0px;
-	border:3px solid #ccc;
+	border-color:#ccc;
 }
 
 .documents_portfolio li a,.articles_lies li a{
@@ -120,17 +137,11 @@ body #extra h2{
 }
 
 .articles_lies li{
-	width:143px;
-	padding:2px;
+	width:27%;
 }
-.documents_portfolio .caroufredsel_wrapper li{
-	width:85px;
-	height:85px;
-	margin:4px;
-}
-
-.documents_portfolio .caroufredsel_wrapper li:hover{
-	margin:0px;
+.articles_lies li img{
+	width:100%;
+	height:auto;
 }
 .document_portfolio{
 	text-align:center;
