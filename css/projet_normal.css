@@ -94,9 +94,9 @@ body #extra h3{
 	font-size:.9em;
 }
 
-body #extra h2{
+body #extra h2, body .projets_lies li{
 	padding-left:24px;
-	background:#999 url(../images/fle_droite.gif) no-repeat 2px 2px;
+	background:transparent url(../images/fle_droite.gif) no-repeat 2px 2px;
 }
 
 .documents_portfolio,.articles_lies ul {
