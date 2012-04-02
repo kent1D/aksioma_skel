@@ -29,6 +29,13 @@
 <BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN doc,docx,pdf}{0,1}>
 [(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique,class=brochures})]
 </BOUCLE_documents>
+<B_images_nb>
+<div>
+<BOUCLE_images_nb(DOCUMENTS){id_article}{vu=non}{extension IN jpg,png,gif}{'<br/><br />'}>
+[(#FICHIER|image_reduire{183,0})]
+</BOUCLE_images_nb>
+</div>
+</B_images_nb>
 </BOUCLE_article_defaut>
 [(#INCLURE{fond=inclure/liens-projet_normal,id_rubrique})]
 [(#INCLURE{fond=inclure/liens-projet_lies,id_article=#ID_ARTICLE_ACCUEIL,lang})]
