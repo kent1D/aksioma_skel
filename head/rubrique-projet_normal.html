@@ -18,5 +18,5 @@
 <link rel="alternate" type="application/rss+xml" title="<:syndiquer_rubrique:>" href="[(#URL_PAGE{backend}|parametre_url{id_rubrique,#ID_RUBRIQUE})]" />
 [(#COMPOSITION|=={projet_normal}|oui)
 [<link rel="stylesheet" href="(#CSS{css/projet_normal.css})" type="text/css" />]
-[<link rel="stylesheet" href="(#URL_PAGE{aksioma_projects.css}|parametre_url{id_rubrique,#ID_RUBRIQUE}|parametre_url{maj,#MAJ}|url_absolue)" type="text/css" />]]
+[<link rel="stylesheet" href="(#PRODUIRE{fond=aksioma_projects.css,id_rubrique=#ID_RUBRIQUE,maj=#MAJ})" type="text/css" />]]
 </BOUCLE_rubrique_head>

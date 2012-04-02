@@ -2,9 +2,9 @@
 <body class="page_#ENV{type,page}[ #ENV{type,page}_(#ENV{composition,''})]">
 <div id="page">
 	<div id="entete">
-		[(#CHEMIN{inclure/entete_#GET{composition}}|oui)
-		<INCLURE{fond=inclure/entete_#GET{composition},env}>]
-		[(#CHEMIN{inclure/entete_#GET{composition}}|non)
+		[(#CHEMIN{inclure/entete_#GET{compo}.html}|oui)
+		<INCLURE{fond=inclure/entete_#GET{compo},env}>]
+		[(#CHEMIN{inclure/entete_#GET{compo}.html}|non)
 		<INCLURE{fond=inclure/entete,env}>]
 	</div>
 	<div id="nav">
