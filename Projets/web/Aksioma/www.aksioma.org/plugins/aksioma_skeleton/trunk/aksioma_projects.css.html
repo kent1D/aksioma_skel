@@ -26,7 +26,7 @@
 #SET{title_color,#TITLE_COLOR|sinon{#GET{bold_color}}}
 <BOUCLE_articles(ARTICLES){enfants}{origine_traduction}{1,3}> </BOUCLE_articles>
 #SET{nb_articles,#GRAND_TOTAL}</B_articles>
-<BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>
+<BOUCLE_video(DOCUMENTS){id_rubrique}{extension=html}{media=video}{0,1}>
 #SET{video,oui}
 </BOUCLE_video>
 </B_video>
