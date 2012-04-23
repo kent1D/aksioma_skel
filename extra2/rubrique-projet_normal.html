@@ -6,7 +6,7 @@
 ]
 <BOUCLE_articles_nb(ARTICLES){origine_traduction}{enfants}{1,2}>#SET{2_colonnes,oui}</BOUCLE_articles_nb>
 </B_articles_nb>
-<BOUCLE_video_nb(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}{0,1}>#SET{2_colonnes,oui}</BOUCLE_video_nb>
+<BOUCLE_video_nb(DOCUMENTS){id_rubrique}{media=video}{extension=html}{0,1}>#SET{2_colonnes,oui}</BOUCLE_video_nb>
 </B_video_nb>
 <BOUCLE_portfolio_nb(DOCUMENTS){id_rubrique}{mode=document}{extension IN jpg,png,gif}{0,1}>#SET{2_colonnes,oui}</BOUCLE_portfolio_nb>
 <//B_video_nb>
@@ -16,7 +16,7 @@
 <BOUCLE_article_defaut(ARTICLES){enfants}{id_article=#ID_ARTICLE_ACCUEIL}>
 [(#REM) Affichage des documents]
 <BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-<BOUCLE_doc_traduc_lang(DOCUMENTS){id_article}{extension !IN gif,jpg,png,dist_vimeo,dist_youtu} {vu=non}{0,1}> </BOUCLE_doc_traduc_lang>
+<BOUCLE_doc_traduc_lang(DOCUMENTS){id_article}{extension !IN gif,jpg,png}{media!=video}{vu=non}{0,1}> </BOUCLE_doc_traduc_lang>
 [(#INCLURE{fond=inclure/documents-projet_normal,id_article,class=press,titre=<:aksioma:titre_press_corner:>,ajax})]
 </B_doc_traduc_lang>
 [(#INCLURE{fond=inclure/documents-projet_normal,id_article=#ID_TRAD,class=press,titre=<:aksioma:titre_press_corner:>,ajax})]
@@ -31,7 +31,7 @@
 </BOUCLE_documents>
 <B_images_nb>
 <div>
-<BOUCLE_images_nb(DOCUMENTS){id_article}{vu=non}{extension IN jpg,png,gif}{'<br/><br />'}>
+<BOUCLE_images_nb(DOCUMENTS){id_article}{mode=document}{vu=non}{extension IN jpg,png,gif}{'<br/><br />'}>
 [(#FICHIER|image_reduire{183,0})]
 </BOUCLE_images_nb>
 </div>
@@ -43,9 +43,9 @@
 [(#GET{2_colonnes}|=={oui}|oui)
 <div class="extra_4">
 ]
-<BOUCLE_video(DOCUMENTS){id_rubrique}{extension IN dist_vimeo,dist_youtu}>
+<BOUCLE_video(DOCUMENTS){id_rubrique}{extension=html}>
 [<h2 class="#EDIT{titre}">(#TITRE)</h2>]
-#MODELE{video,id_document=#ID_DOCUMENT,largeur=100%,hauteur=350}
+#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,hauteur=350}
 </BOUCLE_video>
 [<div class="articles_lies">(#INCLURE{fond=inclure/articles-projet_normal,id_article,id_rubrique,ajax}|trim)</div>]
 [<h2><:aksioma:titre_portfolio:></h2>(#INCLURE{fond=inclure/documents-portfolio_projet_normal,id_rubrique,id_document,ajax})]

@@ -45,8 +45,8 @@ $(function() {
 			$(this).find('li').width((size-paddings-borders)/3);
 			var prev = $(this).parent().find('.prev');
 			var next = $(this).parent().find('.next');
-			$(this).find('li img.spip_logos').css({'width':'100%','height':'auto'});
 			$(this).find('li').equalHeights();
+			$(this).find('li img.spip_logos').css({'width':'100%','height':'auto'});
 			$(this).carouFredSel({
 				auto:false,
 				items: 3,
@@ -124,6 +124,15 @@ $(function() {
 	    });
 	}
 	
+	var oembed_size = function(){
+		$('.texte iframe,.extra_4 iframe, .ps iframe,.extra-right iframe').each(function(){
+			var height = $(this).height();
+			var width = $(this).width();
+			var parent_width= $(this).parent().width();
+			var ratio = parent_width/width;
+			$(this).width('100%').height(height*ratio);
+		});
+	}
 	var project_same_height = function(){
 		$('.rubrique_projet_normal #navigation,.rubrique_projet_normal #contenu').height('auto').equalHeights();
 	}
@@ -135,9 +144,12 @@ $(function() {
 	carousel();
 	project_same_height();
 	search_placeholder();
+	oembed_size();
 	onAjaxLoad(carousel);
 	onAjaxLoad(project_same_height);
+	onAjaxLoad(oembed_size);
 	$(window).resize(function(){
+		oembed_size();
 		project_same_height();
 		carousel();
 	});
