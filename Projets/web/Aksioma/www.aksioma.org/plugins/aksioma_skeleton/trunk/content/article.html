@@ -30,10 +30,10 @@ et pourquoi pas ajax
 ][(#PETITION|oui)<INCLURE{fond=inclure/petition}{id_article}{env}{ajax}>]
 
 [<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
-
+[(#PARAMETRES_FORUM|oui)
 [(#REM) Forum de l'article ]
 <a href="#forum" name="forum" id="forum"></a>
 <INCLURE{fond=inclure/forum}{id_article} />
 [<p class="repondre"><a href="(#PARAMETRES_FORUM|url_reponse_forum)" rel="noindex nofollow"><:repondre_article:></a></p>]
-
+]
 </BOUCLE_contenu_article>
