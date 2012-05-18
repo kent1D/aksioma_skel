@@ -8,9 +8,9 @@
 <div class="contenu-principal contenu-agenda">
 #MENU_LANG
 
-<BOUCLE_si_jour(CONDITION){si #ENV{agenda_type}|=={day}|oui}>
+<BOUCLE_si_jour(CONDITION){si #ENV{agenda_type,day}|=={day}|oui}>
 <B_ev_day>
-	[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)] : (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements})</h1>]
+	[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)]: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements}|lcfirst)</h1>]
 	<ul class="liste liste-items evenements">
 	<BOUCLE_ev_day(EVENEMENTS){!evenement_passe #ENV{date_debut,#ENV{date_debut}|affdate{Y-m-d 00:00:00}}}{!evenement_a_venir #ENV{date_debut,#ENV{date_debut}|affdate{Y-m-d 00:00:00}}|agenda_jourdecal{1,'Y-m-d H:i:00'}}{!par date_debut}{doublons}>
 		<li class="item">
@@ -23,12 +23,12 @@
 </BOUCLE_si_jour>
 
 <B_ev>
-	[(#ENV{agenda_type}|=={day}|oui)
+	[(#ENV{agenda_type,day}|=={day}|oui)
 		[(#SET{mois,[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)]})]
-		[<h1>&nbsp;<:aksioma:titre_autres_events_in{mois=#GET{mois}}:>: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements})</h1>]
+		[<h1>&nbsp;<:aksioma:titre_autres_events_in{mois=#GET{mois}}:>: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements}|lcfirst)</h1>]
 	]
-	[(#ENV{agenda_type}|=={day}|non)
-		[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)] : (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements})</h1>]
+	[(#ENV{agenda_type,day}|=={day}|non)
+		[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)]: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements}|lcfirst)</h1>]
 	]
 	<ul class="liste liste-items evenements">
 	<BOUCLE_ev(EVENEMENTS){!evenement_passe #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}}{!evenement_a_venir #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}|agenda_moisdecal{1,'Y-m-d H:i:00'}}{!par date_debut}{doublons}>
@@ -38,11 +38,7 @@
 	</BOUCLE_ev>
 	</ul>
 </B_ev>
-[(#ENV{agenda_type}|=={day}|oui)
-	[(#SET{mois,[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)]})]
-	<h1>&nbsp;<:aksioma:titre_autres_events_in{mois=#GET{mois}}:>: <:agenda:info_aucun_evenement:></h1>
-]
-[(#ENV{agenda_type}|=={day}|non)
+[(#ENV{agenda_type,day}|=={day}|non)
 	<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)] : <:agenda:info_aucun_evenement:></h1>
 ]
 <//B_ev>
