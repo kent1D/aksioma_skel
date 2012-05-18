@@ -136,12 +136,27 @@ $(function() {
 	var project_same_height = function(){
 		$('.rubrique_projet_normal #navigation,.rubrique_projet_normal #contenu').height('auto').equalHeights();
 	}
+	var agenda_colonne = function(){
+		$('.page_agenda .extra-left ul').not($('.extra-left .on').parents('ul')).each(function(){
+			$(this).hide();
+			$(this).prev('h3').wrapInner('<a class="agenda_hidden" href="#" />');
+			$(this).prev('h3').find('a').click(function(){
+				if($(this).parent().next('ul').is(':visible')){
+					$(this).parent().next('ul').slideUp('slow');
+				}else{
+					$(this).parent().next('ul').slideDown('slow');
+				}
+				return false;
+			});
+		});
+	}
 	$(document).ready(function() {
 		$('a[rel="external"],a.spip_out').click(function(){
 			$(this).attr('target','_blank');
 		});
 	});
 	carousel();
+	agenda_colonne();
 	project_same_height();
 	search_placeholder();
 	oembed_size();
