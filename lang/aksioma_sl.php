@@ -38,6 +38,8 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_titre_contenu_colonne_medias' => 'Title of the media bloc',
 	'lien_abonnement_listes' => 'newsletter [Sign up]',
 	'lien_autres_brochures' => 'DRUGE BROŠURE',
+	'lien_next_project' => 'Naslednji projekt',
+	'lien_prev_project' => 'Prejšnji projekt',
 	'lien_today' => 'Danes',
 	'linked_projects' => 'POVEZANI PROJEKTI',
 
@@ -45,9 +47,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'message_champ_search' => 'vpiši iskani niz',
 	
 	// T
-	'titre_about_auteur' => 'About the author',
-	'titre_about_auteurs' => 'About the authors',
-	'titre_articles_auteur' => 'Other articles from this author',
+	'titre_about_auteur' => 'O avtorju',
+	'titre_about_auteurs' => 'O avtorjih',
+	'titre_articles_auteur' => 'Drugi članki tega avtorja',
 	'titre_articles_lies' => 'Povezani članki',
 	'titre_events_ongoing' => 'Aktualni dogodki',
 	'titre_events_next' => 'Prihajajoči dogodki',
