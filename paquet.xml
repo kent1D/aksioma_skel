@@ -1,7 +1,7 @@
 <paquet
 	prefix="aksioma"
 	categorie="squelette"
-	version="0.4.1"
+	version="0.5.0"
 	etat="stable"
 	compatibilite="[3.0.0-dev;3.0.*]"
 	logo="images/aksioma-58.png"
