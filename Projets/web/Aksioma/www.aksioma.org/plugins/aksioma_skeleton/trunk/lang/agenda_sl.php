@@ -97,7 +97,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 // M
 'mois_precedent' => 'prejšnji mesec',
-'mois_suivant' => '<NEW>mois suivant',
+'mois_suivant' => 'naslednji mesec',
 
 // N
 'nb_mots_clefs' => '<NEW>@nb@ mots-clés',
