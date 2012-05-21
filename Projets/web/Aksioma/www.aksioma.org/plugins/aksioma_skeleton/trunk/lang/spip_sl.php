@@ -107,10 +107,15 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'date_fmt_heures_minutes_court' => '@h@:@m@',
 'date_fmt_jour' => '@nomjour@, @jour@',
 'date_fmt_jour_heure' => '@jour@, ob @heure@',
+'date_fmt_jour_heure_debut_fin' => '<NEW>le @jour@ de @heure_debut@ à @heure_fin@',
+'date_fmt_jour_heure_debut_fin_abbr' => '<NEW>le @dtstart@@jour@ de @heure_debut@@dtabbr@ à @dtstart@@heure_fin@@dtend@',
 'date_fmt_jour_mois' => '@jourmois@',
 'date_fmt_jour_mois_annee' => '@jourmois@ @annee@',
 'date_fmt_mois_annee' => '@nommois@ @annee@',
-'date_fmt_nomjour_date' => '@nomjour@, @date@',
+'date_fmt_nomjour' => '@nomjour@, @date@',
+'date_fmt_nomjour_date' => '@nomjour@ @date@',
+'date_fmt_periode' => 'Od @date_debut@ do @date_fin@',
+'date_fmt_periode_abbr' => 'Od @dtart@@date_debut@@dtabbr@ do @dtend@@date_fin@@dtabbr@',
 'date_fmt_periode_from' => 'Od',
 'date_fmt_periode_to' => 'do',
 'date_heures' => 'ur',
@@ -199,13 +204,13 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'date_saison_2' => 'pomlad',
 'date_saison_3' => 'poletje',
 'date_saison_4' => 'jesen',
-'date_secondes' => '<NEW>secondes',
+'date_secondes' => 'sekunde',
 'date_semaines' => 'tednov',
-'date_un_mois' => '<NEW>mois',
-'date_une_heure' => '<NEW>heure',
-'date_une_minute' => '<NEW>minute',
-'date_une_seconde' => '<NEW>seconde',
-'date_une_semaine' => '<NEW>semaine',
+'date_un_mois' => 'mesec',
+'date_une_heure' => 'čas',
+'date_une_minute' => 'minuto',
+'date_une_seconde' => 'sekundo',
+'date_une_semaine' => 'teden',
 'dirs_commencer' => 'da lahko začnete namestitev',
 'dirs_preliminaire' => 'Kod uvod: <b>Nastavitev dovoljenj</b>',
 'dirs_probleme_droits' => '<MODIF>Problem pri dostopnih dovoljenjih',
@@ -630,7 +635,9 @@ et vous reconnecter au site.
 		toujours dans les articles.',
 'texte_erreur_visiteur' => '<NEW>Vous avez tenté d\'accéder à l\'espace privé avec un login qui ne le permet pas.',
 'texte_inc_auth_1' => '<NEW>Vous êtes identifié sous le
+
 		login <b>@auth_login@</b>, mais celui-ci n\'existe pas/plus dans la base.
+
 		Essayez de vous',
 'texte_inc_auth_2' => '<NEW>reconnecter',
 'texte_inc_auth_3' => '<NEW>, après avoir éventuellement quitté puis
@@ -717,7 +724,7 @@ et vous reconnecter au site.
 'zxml_valeur_attribut' => '<NEW>valeur de l\'attribut',
 'zxml_vide_balise' => '<NEW>balise vide',
 'zxml_vu' => '<NEW>vu auparavant',
-'zz_timestamp_nepastraduire' => '2012-05-15 11:47:05'
+'zz_timestamp_nepastraduire' => '2012-05-21 12:46:59'
 
 );
 
