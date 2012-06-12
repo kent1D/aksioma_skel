@@ -114,8 +114,8 @@ function aksioma_post_insertion($flux){
 		if($config['composition_projet']){
 			include_spip('action/editer_article');
 			include_spip('action/editer_rubrique');
-			$id_article = insert_article($flux['args']['id_objet']);
-			$err = articles_set($id_article,array('titre' => _request('titre',_T('item_nouvel_article')),'chapo'=>'=rub'.$flux['args']['id_objet']));
+			$id_article = article_inserer($flux['args']['id_objet']);
+			$err = article_modifier($id_article,array('titre' => _request('titre',_T('item_nouvel_article')),'chapo'=>'=rub'.$flux['args']['id_objet']));
 			if(trim(_request('texte')) == ''){
 				$texte_rubrique = $config['texte_defaut_projet'];
 			}else{
