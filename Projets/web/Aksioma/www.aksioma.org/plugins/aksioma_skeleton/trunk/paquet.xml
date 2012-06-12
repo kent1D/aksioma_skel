@@ -1,12 +1,6 @@
-<paquet
-	prefix="aksioma"
-	categorie="squelette"
-	version="0.5.0"
-	etat="stable"
-	compatibilite="[3.0.0-dev;3.0.*]"
-	logo="images/aksioma-58.png"
-	documentation="http://svn.aires-de-confluxence.info/trac/"
->	
+<paquet prefix="aksioma" categorie="squelette" version="0.5.0"
+	etat="stable" compatibilite="[3.0.0-dev;3.0.*]" logo="images/aksioma-58.png"
+	documentation="http://svn.aires-de-confluxence.info/trac/">
 
 	<nom>Squelette Aksioma</nom>
 	<!-- Squelette pour le site Aksioma -->
@@ -33,5 +27,6 @@
 	<necessite nom="sjcycle" compatibilite="[2.0.2;[" />
 	<necessite nom="oembed" compatibilite="[0.9.7;[" />
 
-	<menu nom="configurer_aksioma" titre="aksioma:cfg_titre" parent="menu_squelette" icone="images/aksioma-16.png" />
+	<menu nom="configurer_aksioma" titre="aksioma:cfg_titre" parent="menu_squelette"
+		icone="images/aksioma-16.png" />
 </paquet>
