@@ -1,6 +1,5 @@
 <BOUCLE_contenu_rubrique(RUBRIQUES){id_rubrique}>
 <div class="contenu-principal contenu-brochures">
-	#MENU_LANG
 	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
 	<div class="cartouche">
 		<h1 class="h1 #EDIT{titre}"><BOUCLE_ariane(HIERARCHIE){id_rubrique}{id_rubrique != #ID_SECTEUR}><span class="sep">&nbsp;>> </span><a href="#URL_RUBRIQUE">[(#TITRE|mb_strtolower|ucfirst)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>> <//B_ariane>[(#TITRE|mb_strtolower|ucfirst)]</h1>
