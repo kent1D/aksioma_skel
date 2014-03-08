@@ -43,7 +43,7 @@ function aksioma_styliser($flux){
 			if($rubrique_enfant){
 				$url_redirect = generer_url_entite($rubrique_enfant,'rubrique');
 				include_spip('inc/headers');
-				redirige_par_entete($url_redirect,'','301');
+				redirige_par_entete(url_absolue($url_redirect),'','301');
 			}
 		}
 	}
