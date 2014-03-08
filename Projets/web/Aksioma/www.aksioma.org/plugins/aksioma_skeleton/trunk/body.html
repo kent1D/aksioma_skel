@@ -3,9 +3,9 @@
 <div id="page">
 	<div id="entete">
 		[(#CHEMIN{inclure/entete_#GET{compo}.html}|oui)
-		<INCLURE{fond=inclure/entete_#GET{compo},env}>]
+		<INCLURE{fond=inclure/entete_#GET{compo},id_article}>]
 		[(#CHEMIN{inclure/entete_#GET{compo}.html}|non)
-		<INCLURE{fond=inclure/entete,env}>]
+		<INCLURE{fond=inclure/entete,id_article}>]
 	</div>
 	<div id="nav">
 		[(#ENV{type-page}|=={rubrique}|et{#ENV{composition}|=={projet_normal}}|oui)

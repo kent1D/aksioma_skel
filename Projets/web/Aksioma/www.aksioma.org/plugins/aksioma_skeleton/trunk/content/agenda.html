@@ -1,13 +1,4 @@
-[(#REM)
-
-  Squelette
-  (c) 2009 xxx
-  Distribue sous licence GPL
-
-]
 <div class="contenu-principal contenu-agenda">
-#MENU_LANG
-
 <BOUCLE_si_jour(CONDITION){si #ENV{agenda_type,day}|=={day}|oui}>
 <B_ev_day>
 	[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)]: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements}|lcfirst)</h1>]
@@ -21,7 +12,6 @@
 <h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)] : <:agenda:info_aucun_evenement:></h1>
 <//B_ev_day>
 </BOUCLE_si_jour>
-
 <B_ev>
 	[(#ENV{agenda_type,day}|=={day}|oui)
 		[(#SET{mois,[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)]})]
