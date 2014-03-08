@@ -60,10 +60,10 @@
 		<ul class="spip">
 		<BOUCLE_articles_auteur(ARTICLES){id_auteur}{origine_traduction}{id_article != #GET{article_orig}}{!par date}{pagination 3}>
 		<BOUCLE_articles_auteur_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		<li><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></li>
 		</BOUCLE_articles_auteur_lang>
 		</B_articles_auteur_lang>
-		<li><a href="#URL_ARTICLE">#TITRE</a></li>
+		<li><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></li>
 		<//B_articles_auteur_lang>
 		</BOUCLE_articles_auteur>
 		</ul>

@@ -36,14 +36,15 @@
 				</div>
 			</BOUCLE_docpdf>
 			</B_docpdf>
+			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo}">
-				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
 					[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]
 				</a>
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h4 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h4>
+				<h4 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h4>
 			</div>
 			<//B_docpdf>
 		</BOUCLE_trad_lang>
@@ -67,14 +68,18 @@
 				</div>
 			</BOUCLE_docpdf_orig>
 			</B_docpdf_orig>
+			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo}">
-			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
 				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]
 			</a>
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
+				<div class="#EDIT{texte}">
+					#TEXTE
+				</div>
 			</div>
 			<//B_docpdf_orig>
 		<//B_trad_lang>
@@ -110,14 +115,16 @@
 				</div>
 			</BOUCLE_docpdf_rub>
 			</B_docpdf_rub>
+			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
-					[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
-				</a>
+				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
+				<div class="#EDIT{texte}">
+					#TEXTE
+				</div>
 			</div>
 			<//B_docpdf_rub>
 		</BOUCLE_trad_lang_rub>
@@ -141,14 +148,16 @@
 				</div>
 			</BOUCLE_docpdf_orig_rub>
 			</B_docpdf_orig_rub>
+			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
-					[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
-				</a>
+				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
+				<div class="#EDIT{texte}">
+					#TEXTE
+				</div>
 			</div>
 			<//B_docpdf_orig_rub>
 		<//B_trad_lang_rub>

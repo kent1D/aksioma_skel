@@ -1,19 +1,30 @@
 <div class="extra-right">
 #INCLURE{fond=inclure/menu,identifiant=social}
-<B_articles_rubcolonne4_media>
+<B_article_rubcolonne4_media>
 	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
 	<div class="exergue_media">
-	<BOUCLE_articles_rubcolonne4_media(ARTICLES spip_documents_liens documents){branche #CONFIG{aksioma/contenu_colonne_medias}}
-	{documents.extension IN html,jpg,png,gif}{media IN video,image}
-	{par hasard}{0,1}>
+	<BOUCLE_article_rubcolonne4_media(ARTICLES spip_documents_liens documents){id_article=#CONFIG{aksioma/article_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
 	[(#EXTENSION|=={html}|oui)
 	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
 	[(#EXTENSION|=={html}|non)
 	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
-	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE">#TITRE</a></p>
+	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
+	</BOUCLE_article_rubcolonne4_media>
+	</div>
+</B_article_rubcolonne4_media>
+<B_articles_rubcolonne4_media>
+	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
+	<div class="exergue_media">
+	<BOUCLE_articles_rubcolonne4_media(ARTICLES spip_documents_liens documents){branche #CONFIG{aksioma/contenu_colonne_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
+	[(#EXTENSION|=={html}|oui)
+	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
+	[(#EXTENSION|=={html}|non)
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
+	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
 	</BOUCLE_articles_rubcolonne4_media>
 	</div>
 </B_articles_rubcolonne4_media>
+<//B_article_rubcolonne4_media>
 
 <B_colonne4>
 <h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>}|corriger_typo)]</h3>
@@ -38,7 +49,7 @@
 				</a>
 			</BOUCLE_docpdf_orig_lang>
 			</B_docpdf_orig_lang>
-			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
 				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
 			</a>
 			<//B_docpdf_orig_lang>
@@ -51,7 +62,7 @@
 				</a>
 			</BOUCLE_docpdf_orig>
 			</B_docpdf_orig>
-			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"> 
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
 				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
 			</a>
 			<//B_docpdf_orig>

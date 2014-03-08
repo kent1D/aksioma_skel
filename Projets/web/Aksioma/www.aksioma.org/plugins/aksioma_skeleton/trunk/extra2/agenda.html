@@ -1,22 +1,59 @@
 <div class="extra-left">
+	#SET{annees,#ARRAY}
+	<BOUCLE_annees_vraies_db(EVENEMENTS){!par date_debut}{fusion_par_annee date_debut}>
+	#SET{annees,#GET{annees}|push{#DATE_DEBUT|affdate{Y}}}
+	</BOUCLE_annees_vraies_db>
+	<BOUCLE_annees_vraies_df(EVENEMENTS){!par date_fin}{fusion_par_annee date_fin}>
+	[(#DATE_FIN|affdate{Y}|in_array{#GET{annees}}|non)
+		#SET{annees,#GET{annees}|push{#DATE_FIN|affdate{Y}}}
+	]
+	</BOUCLE_annees_vraies_df>
+	</BOUCLE_annees_vraies_db>
 	<B_annees>
 	<div>
-	<BOUCLE_annees(EVENEMENTS){!par date_debut}{fusion_par_annee date_debut}>
-		<h3>[(#DATE_DEBUT|affdate{Y})]</h3>
-		#SET{date_debut, #DATE_DEBUT|affdate{Y-01-01}}
-		#SET{date_fin, #DATE_DEBUT|affdate{Y-12-31 23:59:59}}
+	<BOUCLE_annees(DATA){source table,#GET{annees}}{!par valeur}>
+	#SET{mois_en_cours,12}
+	<h3>[(#VALEUR)]</h3>
+		#SET{date_debut, #VALEUR|concat{-01-01}}
+		#SET{date_fin, #VALEUR|concat{-12-31 23:59:59}}
+		#SET{annee,#VALEUR}
+		#SET{mois,#ARRAY}
+	<BOUCLE_mois_df(EVENEMENTS){!par date_fin}{date_fin >= #GET{date_debut}}{fusion_par_mois date_fin}>
+	[(#DATE_FIN|affdate{Y}|=={#GET{annee}}|oui)
+		#SET{mois,#GET{mois}|push{#DATE_FIN|affdate{Y-m-01}}}]
+	</BOUCLE_mois_df>
+	<BOUCLE_mois_db(EVENEMENTS){!par date_debut}{date_debut >= #GET{date_debut}}{fusion_par_mois date_debut}>
+	[(#DATE_FIN|affdate{Y-m-01}|in_array{#GET{mois}}|et{#DATE_DEBUT|affdate{Y}|=={#GET{annee}}}|non)
+	#SET{mois,#GET{mois}|push{#DATE_DEBUT|affdate{Y-m-01}}}]
+	</BOUCLE_mois_db>
 	<B_mois>
 	<ul class="menu-liste">
-	<BOUCLE_mois(EVENEMENTS){!par date_fin}{date_debut >= #GET{date_debut}}{date_debut < #GET{date_fin}}{fusion_par_mois date_fin}>
+	<BOUCLE_mois(DATA){source table,#GET{mois}}{!par valeur}>
+	<BOUCLE_si_annee(CONDITION){si #VALEUR|affdate{Y}|=={#GET{annee}}|oui}>
+	#SET{diff,#GET{mois_en_cours}|moins{#VALEUR|affdate{m}}}
+	<BOUCLE_diff(CONDITION){si #GET{diff}|>{1}}>
+	#SET{valeur,#_si_annee:VALEUR|affdate{Y}|concat{-}|concat{#_si_annee:VALEUR|affdate{m}|plus{1}|str_pad{2,0,#EVAL{STR_PAD_LEFT}}}|concat{-01}}
+	<BOUCLE_mois_df_vide(EVENEMENTS){!par date_fin}{date_debut < #GET{valeur}}{date_fin >=#GET{valeur}}{0,1}>
 	<li class="menu-entree">
-		[(#SELF|parametre_url{date,''}|parametre_url{date_fin,''}|parametre_url{agenda_type,mois}|parametre_url{date_debut,#DATE_FIN|affdate{Y-m-01}}|lien_ou_expose{#DATE_FIN|affdate_mois_annee{},#ENV{date_debut,#ENV{date}}|affdate{Y-m-01}|=={#DATE_FIN|affdate{Y-m-01}}})]
+		[(#SELF|parametre_url{date,''}|parametre_url{date_fin,''}|parametre_url{agenda_type,mois}|parametre_url{date_debut,#GET{valeur}}|lien_ou_expose{#GET{valeur}|affdate_mois_annee{},#ENV{date_debut,#ENV{date}}|affdate{Y-m-01}|=={#GET{valeur}}})]
 	</li>
+	</BOUCLE_mois_df_vide>
+	#SET{diff,#GET{diff}|moins{1}}
+	<BOUCLE_subdifff(BOUCLE_diff) />
+	</BOUCLE_diff>
+	#SET{mois_en_cours,#VALEUR|affdate{m}}
+	<li class="menu-entree">
+		[(#SELF|parametre_url{date,''}|parametre_url{date_fin,''}|parametre_url{agenda_type,mois}|parametre_url{date_debut,#VALEUR}|lien_ou_expose{#VALEUR|affdate_mois_annee{},#ENV{date_debut,#ENV{date}}|affdate{Y-m-01}|=={#VALEUR}})]
+	</li>
+	</BOUCLE_si_annee>
 	</BOUCLE_mois>
 	</ul>
 	</B_mois>
+	</B_mois_df>
 	</BOUCLE_annees>
 	</div>
 	</B_annees>
+	<//B_annees>
 </div>
 
 [(#INCLURE{fond=inclure/extra_colonne_4})]

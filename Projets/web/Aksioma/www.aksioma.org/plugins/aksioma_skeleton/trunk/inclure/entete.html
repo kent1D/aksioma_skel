@@ -13,11 +13,26 @@
 	});
 	</script>
 	[(#LOGO_SITE_SPIP|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position}, #CONFIG{sjcycle/img_background}})]
+	<B_documents_larges_article_banner>
+	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_top" style='width:100%;'>
+	<BOUCLE_documents_larges_article_banner(DOCUMENTS){id_article = 765}{extension IN jpg,png}{largeur>=1280}{par hasard}{0,3}>
+	<div>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">
+		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})]
+		[(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center}
+				|image_masque{[(#CHEMIN{images/logo_aksioma_right.png})],mode=normal,right=5px,vertical-align=center})]})]
+		[(#GET{fichier}|inserer_attribut{style,'display:block;'})]
+		</a>
+	</div>
+	</BOUCLE_documents_larges_article_banner>
+	</div>
+	</B_documents_larges_article_banner>
+	<B_documents_larges>
 	<div class="#CONFIG{sjcycle/div_class}" id="dsjcycle_top" style='width:100%;'>
 	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>=1280}{par hasard}{0,3}>
 	<div>
 		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">
-		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position}, #CONFIG{sjcycle/img_background}})]})]
+		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})]
 		[(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center}
 				|image_masque{[(#CHEMIN{images/logo_aksioma_right.png})],mode=normal,right=5px,vertical-align=center})]})]
 		[(#GET{fichier}|inserer_attribut{style,'display:block;'})]
@@ -26,5 +41,6 @@
 	</BOUCLE_documents_larges>
 	</div>
 	</B_documents_larges>
+	<//B_documents_larges_article_banner>
 	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
 </div>
