@@ -1,0 +1,45 @@
+[(#REM)
+	Cette page génère le contenu d'un article
+	pour un flux RSS, appelé depuis backend.html
+
+]<BOUCLE_un_event(EVENEMENTS){id_evenement} {statut?}>
+	<item[ xml:lang="(#LANG)"]>
+	#SET{logo_source,''}
+		<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
+		#SET{logo_source,#LOGO_EVENEMENT}
+		</BOUCLE_event_source_logo>
+		[(#SET{logo,[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]})]
+		<title>[(#TITRE|supprimer_tags|texte_backend)]</title>
+		<link>[(#URL_ARTICLE|url_absolue)]</link>
+		[<guid isPermaLink="true">(#URL_ARTICLE|url_absolue)</guid>]
+		[<pubDate>(#MAJ|date_iso)</pubDate>]
+		[<dc:date>(#MAJ|date_iso)</dc:date>]
+		<dc:format>text/html</dc:format>
+		[<dc:language>(#LANG)</dc:language>]
+		[<dc:creator>(#LESAUTEURS|supprimer_tags|texte_backend)</dc:creator>]
+		<ical:dtstart>[(#DATE_DEBUT|date_ical)]</ical:dtstart>
+		[(#DATE_DEBUT|=={#DATE_FIN}|non)
+		<ical:dtend>[(#DATE_FIN|date_ical)]</ical:dtend>]
+		<ical:location>[(#LIEU|supprimer_tags|texte_backend)]
+		[(#ADRESSE|supprimer_tags|texte_backend)]</ical:location>
+
+[(#REM)
+	Le bloc qui suit diffuse les mots-cles a la mode RSS
+
+]<BOUCLE_mots_rss(MOTS){id_evenement}>
+		[<dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_mots_rss>
+
+		<description>[(#DESCRIPTIF|texte_backend)]</description>
+
+[(#REM)
+	Le bloc qui suit diffuse l'adresse des documents associes aux articles ;
+	ajouter par ex. {extension=mp3} pour limiter a un certain type de document.
+]		<BOUCLE_documents(DOCUMENTS){id_evenement}{mode=document}{doublons}>[
+		<enclosure url="(#URL_DOCUMENT|url_absolue|unique)"[ length="(#TAILLE)"][ type="(#MIME_TYPE)"] />]
+		</BOUCLE_documents>
+		</B_documents>[
+		<enclosure url="(#GET{logo}|extraire_attribut{src}|url_absolue|unique)"[ length="(#GET{logo}|extraire_attribut{src}|filesize)"] />]
+		<//B_documents>
+
+	</item>
+</BOUCLE_un_event>

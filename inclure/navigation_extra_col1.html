@@ -12,7 +12,7 @@
 			[(#LOGO_ARTICLE|image_reduire{183,0}|sinon{#GET{logo_origine}})]
 			</div>
 			<p class="#EDIT{surtitre}">#SURTITRE</p>
-			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h3>
+			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h3>
 			<p class="#EDIT{soustitre}">#SOUSTITRE</p>
 			[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
 		</BOUCLE_trad_lang>
@@ -21,7 +21,7 @@
 			[(#LOGO_ARTICLE|image_reduire{183,0})]
 			</div>
 			<p class="#EDIT{surtitre}">#SURTITRE</p>
-			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h3>
+			<h3 class="#EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h3>
 			<p class="#EDIT{soustitre}">#SOUSTITRE</p>
 			[<div class="#EDIT{introduction} introduction entry-content">(#INTRODUCTION)</div>]
 		<//B_trad_lang>

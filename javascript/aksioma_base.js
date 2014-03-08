@@ -1,4 +1,11 @@
 $(function() {
+	var cycle_resize = function(){
+		$('#conteneur .dsjcycle').each(function(){
+			var height = $(this).find('img:visible').eq(0).height();
+			$(this).css({'height':height})
+			
+		});
+	}
 	var carousel = function(){
 		var j = 0;
 		$('.documents_portfolio ul.liste').each(function(){
@@ -36,6 +43,7 @@ $(function() {
 				$(this).unwrap();
 				$('#prev'+i+',#next'+i).detach();
 			}
+			$(this).find('li').css({'height':'auto'})
 			var text = '<a id="prev'+i+'" class="prev" href="#">&lt;</a>';
 			text += '<a id="next'+i+'" class="next" href="#">&gt;</a>';
 			$(this).after(text);
@@ -118,14 +126,14 @@ $(function() {
 				$(this).val('');
 		});
 	 
-		$('#formulaire_recherche input.text').blur(function() {
+	$('#formulaire_recherche input.text').blur(function() {
 			if($(this).val() == '')
 				$(this).val(aksioma_lang.search);
-	    });
+		});
 	}
 	
 	var oembed_size = function(){
-		$('.texte iframe,.extra_4 iframe, .ps iframe,.extra-right iframe').each(function(){
+		$('.texte iframe,.introduction iframe,.extra_4 iframe, .ps iframe,.extra-right iframe').each(function(){
 			var height = $(this).height();
 			var width = $(this).width();
 			var parent_width= $(this).parent().width();
@@ -155,9 +163,14 @@ $(function() {
 			$(this).attr('target','_blank');
 		});
 	});
+	$(window).load(function(){
+		project_same_height();
+		carousel();
+		cycle_resize();
+	})
 	carousel();
+	cycle_resize();
 	agenda_colonne();
-	project_same_height();
 	search_placeholder();
 	oembed_size();
 	onAjaxLoad(carousel);
@@ -167,5 +180,6 @@ $(function() {
 		oembed_size();
 		project_same_height();
 		carousel();
+		cycle_resize();
 	});
 });

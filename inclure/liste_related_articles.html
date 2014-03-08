@@ -15,12 +15,12 @@
 		<BOUCLE_articles_montres(ARTICLES){id_article IN #GET{art_lies}}{pagination 5}>
 			<BOUCLE_articles_montres_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 			<li>
-			<a href="[(#URL_ARTICLE)]">#TITRE</a>
+			<a href="[(#URL_ARTICLE)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a>
 			</li>
 			</BOUCLE_articles_montres_lang>
 			</B_articles_montres_lang>
 			<li>
-			<a href="[(#URL_ARTICLE)]">#TITRE</a>
+			<a href="[(#URL_ARTICLE)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a>
 			</li>
 			<//B_articles_montres_lang>
 		</BOUCLE_articles_montres>
