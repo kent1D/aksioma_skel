@@ -1,30 +1,28 @@
 <div class="extra-left">
-<BOUCLE_colonne3(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_3,#ARRAY}}{tout}>
-<B_articles_rubcolonne3>
-	<h3 class="#_colonne3:EDIT{titre}">#_colonne3:TITRE</h3>
-	<ul class="liste">
-	<BOUCLE_articles_rubcolonne3(ARTICLES){origine_traduction}{branche}{par num titre,titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{78,0})]})]
-	<li>
-		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-		<div class="logo #EDIT{logo} resize-78">
-		[(#LOGO_ARTICLE|image_reduire{78,0}|sinon{#GET{logo_origine}})]
-		</div>
-		<p class="#EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
-		<p class="#EDIT{soustitre}">#SOUSTITRE</p>
-		</BOUCLE_trad_lang>
-		</B_trad_lang>
-		<div class="logo #EDIT{logo} resize-78"> 
-		[(#LOGO_ARTICLE|image_reduire{78,0})]
-		</div>
-		<p class="#EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
-		<p class="#EDIT{soustitre}">#SOUSTITRE</p>
-		<//B_trad_lang>
-	</li>
-	</BOUCLE_articles_rubcolonne3>
+<B_events_next>
+	#ANCRE_PAGINATION
+	<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h1>
+	<ul class="liste-items">
+	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
+		<li class="item hentry">#SET{logo_source,''}
+			<BOUCLE_event_source_logo_next(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>#SET{logo_source,#LOGO_EVENEMENT}</BOUCLE_event_source_logo_next>
+			<BOUCLE_article_event_next(ARTICLES){id_article=#ID_ARTICLE}>#SET{url_article,#URL_ARTICLE}
+			[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]</BOUCLE_article_event_next>
+			<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+			</div>
+			<div class="entry">
+				<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
+				[<p class="date">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,#HORAIRE,'hcal annee'})</p>]
+				[<div class="description  #EDIT{descriptif}">(#DESCRIPTIF)</div>]
+				[<p class="lieu"><span class="location #EDIT{lieu}">(#LIEU|PtoBR)</span>[<br /><span class="adresse #EDIT{adresse}">(#ADRESSE|PtoBR)</span>]</p>]
+			</div>
+		</li>
+	</BOUCLE_events_next>
 	</ul>
-</B_articles_rubcolonne3>
-</BOUCLE_colonne3>
+	[<p class="pagination">(#PAGINATION{page})</p>]
+</B_events_next>
+
 <BOUCLE_projects_spaces(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/rubrique_project_space}}>
 <a href="#URL_RUBRIQUE">[(#LOGO_RUBRIQUE|image_reduire{183,0}|sinon{#TITRE})]</a>
 <br /><br />
