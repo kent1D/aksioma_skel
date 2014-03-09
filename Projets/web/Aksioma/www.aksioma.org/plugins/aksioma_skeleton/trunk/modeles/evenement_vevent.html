@@ -4,8 +4,8 @@
 #SET{logo_source,#LOGO_EVENEMENT}
 </BOUCLE_event_source_logo>
 [(#ENV{hide_logo}|non)
-<div class="spip_logos #EDIT{logo} resize-#ENV{largeur,183}">
-[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]
+<div class="logo_evenement #EDIT{logo} resize-#ENV{largeur,250}">
+[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,250},#ENV{hauteur,0}})]
 </div>]
 [(#ENV{hide_titre}|non)<h3 class="summary #EDIT{titre}">#TITRE</h3>]
 [(#INSCRIPTION|?{' ',''})<p class="inscrits">#NB_INSCRITS[/(#PLACES) ]<:agenda:inscrits:></p>]
