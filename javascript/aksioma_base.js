@@ -70,6 +70,7 @@ $(function() {
 		var k = 0;
 		$('.rubrique_brochures #contenu ul.liste').each(function(){
 			k++;
+			var nb_items = 5;
 			if($(this).parent().is('.caroufredsel_wrapper')){
 				$(this).unwrap();
 				$('#prev'+k+',#next'+k).detach();
@@ -79,17 +80,23 @@ $(function() {
 			$(this).after(text);
 			$(this).find('li').height('auto');
 			var size = $(this).parent().innerWidth()-($('#prev'+k).outerWidth())-($('#next'+k).outerWidth());
-			var paddings = (parseInt($(this).find('li').eq(0).css('padding-left'))+parseInt($(this).find('li').eq(0).css('padding-right')))*5;
+			var paddings = (parseInt($(this).find('li').eq(0).css('padding-left'))+parseInt($(this).find('li').eq(0).css('padding-right')))*nb_items;
 			var prev = $(this).parent().find('.prev');
 			var next = $(this).parent().find('.next');
-			$(this).find('li').width((size-paddings)/5);
+			if(((size-paddings)/nb_items) < 100){
+				nb_items = 3;
+				var paddings = (parseInt($(this).find('li').eq(0).css('padding-left'))+parseInt($(this).find('li').eq(0).css('padding-right')))*nb_items;
+			}
+			$(this).find('li').width((size-paddings)/nb_items);
 			$(this).find('li').equalHeights();
-			var height = ($(this).find('li').eq(0).outerHeight());
-			prev.css('top',(height/2)-(prev.height()/2));
-			next.css('top',(height/2)-(next.height()/2));
+			var height = $(this).find('li').eq(0).outerHeight();
+			var arrow_height = (((height/2)-(prev.height()/2) > 250) ? 250 : ((height/2)-(prev.height()/2)));
+			prev.css('top',arrow_height);
+			next.css('top',arrow_height);
 			carousel_port = $(this).carouFredSel({
 				auto:false,
 				width:size,
+				items:nb_items,
 				prev: "#prev"+k,
 				next: "#next"+k
 			});
@@ -133,7 +140,7 @@ $(function() {
 	}
 	
 	var oembed_size = function(){
-		$('.texte iframe,.introduction iframe,.extra_4 iframe, .ps iframe,.extra-right iframe').each(function(){
+		$('.texte iframe,.entry iframe,.introduction iframe,.extra_4 iframe, .ps iframe,.extra-right iframe').each(function(){
 			var height = $(this).height();
 			var width = $(this).width();
 			var parent_width= $(this).parent().width();
