@@ -1,7 +1,6 @@
 <div class="extra-right">
-#INCLURE{fond=inclure/menu,identifiant=social}
 <B_article_rubcolonne4_media>
-	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
+	[<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">(#CONFIG{aksioma/titre_contenu_colonne_medias}|trim)</h3>]
 	<div class="exergue_media">
 	<BOUCLE_article_rubcolonne4_media(ARTICLES spip_documents_liens documents){id_article=#CONFIG{aksioma/article_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
 	[(#EXTENSION|=={html}|oui)
@@ -27,10 +26,11 @@
 <//B_article_rubcolonne4_media>
 
 <B_colonne4>
-<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">[(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>}|corriger_typo)]</h3>
+<div class="publications">
+<h1 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">&nbsp;>> [(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>}|corriger_typo)]</h1>
 <BOUCLE_colonne4(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/contenu_colonne_4,#ARRAY}}{tout}>
 <B_articles_rubcolonne4>
-	<h4 class="#_colonne4:EDIT{titre}"><a href="#URL_RUBRIQUE">#_colonne4:TITRE</a></h4>
+	<h2 class="#_colonne4:EDIT{titre}"><a href="#URL_RUBRIQUE">#_colonne4:TITRE</a></h2>
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{branche}{!par num titre}{par titre}{tout}>
@@ -73,4 +73,6 @@
 	</div>
 </B_articles_rubcolonne4>
 </BOUCLE_colonne4>
+</div>
+</B_colonne4>
 </div>

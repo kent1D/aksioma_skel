@@ -29,36 +29,6 @@
 	</ul>
 	[<p class="pagination">(#PAGINATION{page})</p>]
 	</B_events_ongoing>
-	
-	<B_events_next>
-	#ANCRE_PAGINATION
-	<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h1>
-	<ul class="liste-items">
-	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
-		<li class="item hentry">
-			#SET{logo_source,''}
-			<BOUCLE_event_source_logo_next(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
-			#SET{logo_source,#LOGO_EVENEMENT}
-			</BOUCLE_event_source_logo_next>
-			<BOUCLE_article_event_next(ARTICLES){id_article=#ID_ARTICLE}>
-			#SET{url_article,#URL_ARTICLE}
-			[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
-			</BOUCLE_article_event_next>
-			<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
-			<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
-			</div>
-			<div class="entry">
-				<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
-				[<p class="date">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,#HORAIRE,'hcal annee'})</p>]
-				[<div class="description  #EDIT{descriptif}">(#DESCRIPTIF)</div>]
-				[<p class="lieu"><span class="location #EDIT{lieu}">(#LIEU|PtoBR)</span>[<br /><span class="adresse #EDIT{adresse}">(#ADRESSE|PtoBR)</span>]</p>]
-				[(#ENV{lien}|!={non}|oui)<p class="url"><:aksioma:evenement_voir:> <a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></p>]
-			</div>
-		</li>
-	</BOUCLE_events_next>
-	</ul>
-	[<p class="pagination">(#PAGINATION{page})</p>]
-	</B_events_next>
 	</BOUCLE_si_pagination_passee>
 	<B_events_passes>
 	#ANCRE_PAGINATION

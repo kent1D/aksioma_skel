@@ -1,33 +1,26 @@
 <div class="accueil">
-	<BOUCLE_art(ARTICLES){id_article}>
-	#MENU_LANG
-	</BOUCLE_art>
-	</B_art>
-	#MENU_LANG
-	<//B_art>
-	<B_documents_larges_article_banner>
+	<BOUCLE_art(ARTICLES){id_article}>#MENU_LANG</BOUCLE_art></B_art>#MENU_LANG<//B_art>
 	<BOUCLE_documents_larges_article_banner(DOCUMENTS){id_article = 765}{extension IN jpg,png}{largeur>=1280}{!par num titre}{0,1}>
 	<div>
-		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">
-		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})]
-		[(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})]
-		[(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})]
-		</a>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[
+			(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
+			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})][
+			(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})
+		]</a>
 	</div>
 	</BOUCLE_documents_larges_article_banner>
 	</B_documents_larges_article_banner>
 	<B_documents_larges>
 	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>=1280}{par hasard}{0,1}>
 	<div>
-		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">
-		[(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})]
-		[(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})]
-		[(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})]
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[
+			(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
+			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})][
+			(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})]
 		</a>
 	</div>
 	</BOUCLE_documents_larges>
-	</B_documents_larges>
-	<//B_documents_larges_article_banner>
-	[<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>]
-	#INCLURE{fond=inclure/menu,identifiant=social}
+	<//B_documents_larges_article_banner>[
+	<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>
+	]#INCLURE{fond=inclure/menu,identifiant=social}
 </div>
