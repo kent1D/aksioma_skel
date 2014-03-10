@@ -1,6 +1,6 @@
 <div class="extra-left">
 <B_events_next>
-	#ANCRE_PAGINATION
+	<div id="[(#ANCRE_PAGINATION|extraire_attribut{id})]">
 	<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h1>
 	<ul class="liste-items">
 	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
@@ -21,8 +21,8 @@
 	</BOUCLE_events_next>
 	</ul>
 	[<p class="pagination">(#PAGINATION{page})</p>]
+	</div>
 </B_events_next>
-
 <BOUCLE_projects_spaces(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/rubrique_project_space}}>
 <a href="#URL_RUBRIQUE">[(#LOGO_RUBRIQUE|image_reduire{183,0}|sinon{#TITRE})]</a>
 <br /><br />

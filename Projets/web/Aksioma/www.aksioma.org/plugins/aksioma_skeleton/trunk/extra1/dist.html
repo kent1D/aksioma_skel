@@ -1,13 +1,10 @@
 #FORMULAIRE_RECHERCHE
-
 <div class="links_home">
 	<a href="javascript:history.go(-1)" class="link_back"><:aksioma:info_back:></a>
 	<a href="#URL_SITE_SPIP" class="link_home"><:aksioma:info_home:></a>
 </div>
 [(#REM) Menu de navigation par rubriques ]
-#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,type,composition,identifiant=main}
-
-#INCLURE{fond=inclure/calendrier,date_debut}
-
+[(#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,type,composition,identifiant=main})]
+[(#INCLURE{fond=inclure/calendrier,date_debut})]
 [(#INCLURE{fond=inclure/menu,id_article,id_rubrique,page,type,composition,identifiant=submenu_left})]
-#INCLURE{fond=inclure/navigation_extra_col1,id_article,id_rubrique,page}
+[(#INCLURE{fond=inclure/navigation_extra_col1,id_article,id_rubrique,page})]

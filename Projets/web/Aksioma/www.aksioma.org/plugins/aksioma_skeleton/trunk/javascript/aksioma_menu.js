@@ -6,19 +6,14 @@
 
 (function($){
 	$(document).ready(function(){
-
-		/*
-		 * Menu depliant de navigation
-		 */
-		$('#navigation .menu-liste li:not(.on) ul').hide();
+		$('#navigation .menu-liste li:not(.on) ul').addClass('nav-hidden');
 		function menu_aksioma() {
 			$('#navigation .menu-liste li a').not('.do').addClass('do').hover(function(){
-				var me=$(this);
-				var time=400;
+				var me=$(this),
+				time=400;
 				// un temps plus long pour refermer !
-				if (me.parent().find('>ul').is(':visible')) {
+				if (me.parent().find('>ul').is(':visible') && me.parent().find('>ul').height() > 0)
 					time=1000;
-				}
 
 				me.addClass('hop');
 				setTimeout(function(){
@@ -29,19 +24,14 @@
 						if (!parent.is('.on')) {
 							// fermer les ul
 							var ul = parent.find('>ul');
-							if (ul.is(':visible')) {
-								ul.find('li:not(.ouverte) ul').hide();
-								ul.slideUp('fast');
+							if (ul.is(':visible') && ul.height() > 0) {
+								ul.find('li:not(.ouverte) ul').addClass('nav-hidden');
+								ul.addClass('nav-hidden');
 							// ou ouvrir le premier
-							} else {
-								// selon la config de documentations
-								// il faut peut etre charger en ajax le contenu
-								// de la navigation, uniquement pour les ul
-								// de premier niveau.
-								if (ul.size()) {
-									ul.slideDown('fast');
-								}
-							}
+							} else if (ul.size())
+									ul.removeClass('nav-hidden');
+							else
+								console.log('pas de size?'+ul.size());
 						}
 					}
 				}, time);
