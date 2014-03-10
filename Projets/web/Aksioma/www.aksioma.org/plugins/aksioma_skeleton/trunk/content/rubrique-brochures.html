@@ -8,7 +8,7 @@
 
 <BOUCLE_colonne4(RUBRIQUES){id_parent}{tout}>
 <B_articles_rubcolonne4>
-	<h4 class="#_colonne4:EDIT{titre}">#_colonne4:TITRE</h4>
+	<h2 class="#_colonne4:EDIT{titre}">#_colonne4:TITRE</h2>
 	[<div class="chapo #EDIT{texte}">(#TEXTE)</div>]
 	<div class="menu">
 	<ul class="liste">
@@ -19,16 +19,16 @@
 			<BOUCLE_docpdf(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_trad_lang:EDIT{soustitre}">(#_trad_lang:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
+					<a href="#URL_DOCUMENT"[ title="(#_trad_lang:TITRE|attribut_html)"]>
 					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
 					</a>
 				</div>
 				<div class="exergue_pdf">
 					<p class="surtitre #_trad_lang:EDIT{surtitre}">#_trad_lang:SURTITRE</p>
-					<h4 class="h4 #_trad_lang:EDIT{titre}"><a href="#_trad_lang:URL_ARTICLE">#_trad_lang:TITRE</a></h4>
-					<div class="#EDIT{descriptif}">
-					#DESCRIPTIF
-					</div>
+					<h3 class="h3 #_trad_lang:EDIT{titre}"><a href="#_trad_lang:URL_ARTICLE">#_trad_lang:TITRE</a></h3>
+					[<div class="#EDIT{descriptif}">
+						(#DESCRIPTIF)
+					</div>]
 					<BOUCLE_projet_brochure(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
 					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
 					</BOUCLE_projet_brochure>
@@ -43,7 +43,7 @@
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h4 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h4>
+				<h3 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h3>
 			</div>
 			<//B_docpdf>
 		</BOUCLE_trad_lang>
@@ -51,16 +51,16 @@
 			<BOUCLE_docpdf_orig(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_articles_rubcolonne4:EDIT{soustitre}">(#_articles_rubcolonne4:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette}">
-				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
-				[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
+				<a href="#URL_DOCUMENT"[ title="(#_articles_rubcolonne4:TITRE|attribut_html)"]>
+					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_articles_rubcolonne4:TITRE|attribut_html)]})]
 				</a>
 				</div>
 				<div class="exergue_pdf">
 					<p class="surtitre #_articles_rubcolonne4:EDIT{surtitre}">#_articles_rubcolonne4:SURTITRE</p>
-					<h4 class="h4 #_articles_rubcolonne4:EDIT{titre}">#_articles_rubcolonne4:TITRE</h4>
-					<div class="#EDIT{descriptif}">
-					#DESCRIPTIF
-					</div>
+					<h3 class="h4 #_articles_rubcolonne4:EDIT{titre}">#_articles_rubcolonne4:TITRE</h3>
+					[<div class="#EDIT{descriptif}">
+						(#DESCRIPTIF)
+					</div>]
 					<BOUCLE_projet_brochure_orig(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
 					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
 					</BOUCLE_projet_brochure_orig>
@@ -70,15 +70,15 @@
 			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo}">
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
-				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]
+				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{alt,[(#TITRE|attribut_html)]})]
 			</a>
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
-				<div class="#EDIT{texte}">
-					#TEXTE
-				</div>
+				<h3 class="h4 #EDIT{titre}">#TITRE</h3>
+				[<div class="#EDIT{texte}">
+					(#TEXTE)
+				</div>]
 			</div>
 			<//B_docpdf_orig>
 		<//B_trad_lang>
@@ -98,16 +98,16 @@
 			<BOUCLE_docpdf_rub(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_trad_lang_rub:EDIT{soustitre}">(#_trad_lang_rub:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
-					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
+					<a href="#URL_DOCUMENT"[ title="(#_trad_lang_rub:TITRE|attribut_html)"]>
+					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_trad_lang_rub:TITRE|attribut_html)]})]
 					</a>
 				</div>
 				<div class="exergue_pdf">
 					<p class="surtitre #_trad_lang_rub:EDIT{surtitre}">#_trad_lang_rub:SURTITRE</p>
-					<h4 class="h4 #_trad_lang_rub:EDIT{titre}">#_trad_lang_rub:TITRE</h4>
-					<div class="#EDIT{descriptif}">
-					#DESCRIPTIF
-					</div>
+					<h2 class="h4 #_trad_lang_rub:EDIT{titre}">#_trad_lang_rub:TITRE</h2>
+					[<div class="#EDIT{descriptif}">
+						(#DESCRIPTIF)
+					</div>]
 					<BOUCLE_projet_brochure_lang_rub(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
 					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
 					</BOUCLE_projet_brochure_lang_rub>
@@ -120,10 +120,10 @@
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
-				<div class="#EDIT{texte}">
-					#TEXTE
-				</div>
+				<h2 class="h4 #EDIT{titre}">#TITRE</h2>
+				[<div class="#EDIT{texte}">
+					(#TEXTE)
+				</div>]
 			</div>
 			<//B_docpdf_rub>
 		</BOUCLE_trad_lang_rub>
@@ -137,10 +137,10 @@
 				</div>
 				<div class="exergue_pdf">
 					<p class="surtitre #_articles_rubbrochures_rub:EDIT{soustitre}">#_articles_rubbrochures_rub:SURTITRE</p>
-					<h4 class="h4 #_articles_rubbrochures_rub:EDIT{titre}">#_articles_rubbrochures_rub:TITRE</h4>
-					<div class="#EDIT{descriptif}">
-					#DESCRIPTIF
-					</div>
+					<h2 class="h4 #_articles_rubbrochures_rub:EDIT{titre}">#_articles_rubbrochures_rub:TITRE</h2>
+					[<div class="#EDIT{descriptif}">
+						(#DESCRIPTIF)
+					</div>]
 					<BOUCLE_projet_brochure_lang_rub_defaut(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
 					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
 					</BOUCLE_projet_brochure_lang_rub_defaut>
@@ -153,10 +153,10 @@
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h4 class="h4 #EDIT{titre}">#TITRE</h4>
-				<div class="#EDIT{texte}">
-					#TEXTE
-				</div>
+				<h2 class="h4 #EDIT{titre}">#TITRE</h2>
+				[<div class="#EDIT{texte}">
+					(#TEXTE)
+				</div>]
 			</div>
 			<//B_docpdf_orig_rub>
 		<//B_trad_lang_rub>
