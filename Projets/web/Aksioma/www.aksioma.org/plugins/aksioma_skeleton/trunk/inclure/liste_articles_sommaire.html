@@ -2,7 +2,7 @@
 	<BOUCLE_si_pagination_passee(CONDITION){si #ENV{debut_events_passes}|>{1}|non}>
 	<B_events_ongoing>
 	<div[ id="(#ANCRE_PAGINATION|extraire_attribut{id})"]>
-		<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_ongoing:></h1>
+		<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_ongoing:></h2>
 		<ul class="liste-items events_ongoing">
 		<BOUCLE_events_ongoing(EVENEMENTS){!par date_fin}{evenement_en_cours}{pagination #ENV{pagination,2}}>
 			<li class="item hentry">
@@ -15,7 +15,7 @@
 				[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
 				</BOUCLE_article_event>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
@@ -33,7 +33,7 @@
 	</BOUCLE_si_pagination_passee>
 	<B_events_passes>
 	<div[ id="(#ANCRE_PAGINATION|extraire_attribut{id})"]>
-		<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_last_events:></h1>
+		<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_last_events:></h2>
 		[(#ENV{debut_events_passes}|>{1}|oui)
 		[<p class="pagination">(#PAGINATION{page})</p>]]
 		<ul class="liste-items">
@@ -45,7 +45,7 @@
 				[(#SET{url_article,#URL_ARTICLE})][(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
 				</BOUCLE_article_event_passe>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
