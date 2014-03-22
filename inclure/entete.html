@@ -4,8 +4,8 @@
 	<div>
 		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[
 			(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
-			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})][
-			(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})
+			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP|extraire_attribut{src})],mode=normal,left=10px,vertical-align=center}|inserer_attribut{alt," "})]})][
+			(#GET{fichier})
 		]</a>
 	</div>
 	</BOUCLE_documents_larges_article_banner>
@@ -15,9 +15,9 @@
 	<div>
 		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[
 			(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
-			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP**|get_spip_doc)],mode=normal,left=10px,vertical-align=center})]})][
-			(#GET{fichier}|inserer_attribut{style,'display:block;'}|inserer_attribut{alt,Banner})]
-		</a>
+			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP|extraire_attribut{src})],mode=normal,left=10px,vertical-align=center}|inserer_attribut{alt," "})]})][
+			(#GET{fichier})
+		]</a>
 	</div>
 	</BOUCLE_documents_larges>
 	<//B_documents_larges_article_banner>[

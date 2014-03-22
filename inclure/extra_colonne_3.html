@@ -1,7 +1,34 @@
 <div class="extra-left">
+<BOUCLE_rub_aksioma(CONDITION){si #ENV{id_rubrique}|=={30}}>
+<B_events_aksioma>
+<div id="[(#ANCRE_PAGINATION|extraire_attribut{id})]">
+	<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h2>
+	<ul class="liste-items">
+	<BOUCLE_events_aksioma(EVENEMENTS){lieu LIKE %Aksioma %}{!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
+		<li class="item hentry">[(#SET{logo_source,''})]
+			<BOUCLE_event_source_logo_next_aksioma(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>#SET{logo_source,#LOGO_EVENEMENT}</BOUCLE_event_source_logo_next_aksioma>
+			<BOUCLE_article_event_next_aksioma(ARTICLES){id_article=#ID_ARTICLE}>#SET{url_article,#URL_ARTICLE}
+			[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]</BOUCLE_article_event_next_aksioma>
+			<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+			</div>
+			<div class="entry">
+				<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
+				[<p class="date">(#DATE_DEBUT|affdate_debut_fin{#DATE_FIN,#HORAIRE,'hcal annee'})</p>]
+				[<div class="description  #EDIT{descriptif}">(#DESCRIPTIF)</div>]
+				[<p class="lieu"><span class="location #EDIT{lieu}">(#LIEU|PtoBR)</span>[<br /><span class="adresse #EDIT{adresse}">(#ADRESSE|PtoBR)</span>]</p>]
+			</div>
+		</li>
+	</BOUCLE_events_aksioma>
+	</ul>
+	[<p class="pagination">(#PAGINATION{page})</p>]
+	</div>
+</B_events_aksioma>
+</BOUCLE_rub_aksioma>
+</B_rub_aksioma>
 <B_events_next>
 	<div id="[(#ANCRE_PAGINATION|extraire_attribut{id})]">
-	<h1 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h1>
+	<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h2>
 	<ul class="liste-items">
 	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
 		<li class="item hentry">#SET{logo_source,''}
@@ -23,8 +50,14 @@
 	[<p class="pagination">(#PAGINATION{page})</p>]
 	</div>
 </B_events_next>
+<//B_rub_aksioma>
 <BOUCLE_projects_spaces(RUBRIQUES){id_rubrique IN #CONFIG{aksioma/rubrique_project_space}}>
-<a href="#URL_RUBRIQUE">[(#LOGO_RUBRIQUE|image_reduire{183,0}|sinon{#TITRE})]</a>
-<br /><br />
+[<a href="#URL_RUBRIQUE">(#LOGO_RUBRIQUE|image_reduire{183,0}|sinon{#TITRE})</a>
+<br /><br />]
 </BOUCLE_projects_spaces>
+<BOUCLE_rubrique(RUBRIQUES){id_rubrique}>
+<div class="infos_sup">
+[(#INFOS_SUP|image_reduire{300})]
+</div>
+</BOUCLE_rubrique>
 </div>

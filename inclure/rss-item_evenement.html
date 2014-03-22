@@ -2,7 +2,7 @@
 	Cette page génère le contenu d'un article
 	pour un flux RSS, appelé depuis backend.html
 
-]<BOUCLE_un_event(EVENEMENTS){id_evenement} {statut?}>
+]<BOUCLE_un_event(EVENEMENTS){id_evenement} {statut?}{tout}>
 	<item[ xml:lang="(#LANG)"]>
 	#SET{logo_source,''}
 		<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
