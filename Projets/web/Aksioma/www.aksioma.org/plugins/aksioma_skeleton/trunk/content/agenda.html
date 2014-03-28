@@ -9,7 +9,7 @@
 		</li>
 	</BOUCLE_ev_day>
 </B_ev_day>
-<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)] : <:agenda:info_aucun_evenement:></h1>
+<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate)]: <:agenda:info_aucun_evenement|lcfirst:></h1>
 <//B_ev_day>
 </BOUCLE_si_jour>
 <B_ev>
@@ -21,7 +21,7 @@
 		[<h1>&nbsp;[(#ENV{date_debut,#ENV{date}}|affdate_mois_annee)]: (#TOTAL_BOUCLE|singulier_ou_pluriel{agenda:info_un_evenement,agenda:info_nombre_evenements}|lcfirst)</h1>]
 	]
 	<ul class="liste liste-items evenements">
-	<BOUCLE_ev(EVENEMENTS){!evenement_passe #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}}{!evenement_a_venir #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}|agenda_moisdecal{1,'Y-m-d H:i:00'}}{!par date_debut}{doublons}>
+	<BOUCLE_ev(EVENEMENTS){!evenement_passe #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}}{!evenement_a_venir #ENV{date_debut,#ENV{date}}|affdate{Y-m-01 00:00:00}|agenda_moisdecal{1,'Y-m-d 00:00:00'}|agenda_dateplus{-1}}{!par date_debut}{doublons}>
 		<li class="item">
 			#MODELE{evenement_vevent}
 		</li>
