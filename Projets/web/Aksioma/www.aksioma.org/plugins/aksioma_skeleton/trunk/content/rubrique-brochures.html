@@ -19,7 +19,7 @@
 			<BOUCLE_docpdf(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_trad_lang:EDIT{soustitre}">(#_trad_lang:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#_trad_lang:TITRE|attribut_html)"]>
+					<a href="#URL_DOCUMENT"[ title="(#_trad_lang:TITRE|attribut_html)"] class="spip_out">
 					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
 					</a>
 				</div>
@@ -37,7 +37,7 @@
 			</B_docpdf>
 			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo}">
-				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
+				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>
 					[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]
 				</a>
 			</div>
@@ -51,7 +51,7 @@
 			<BOUCLE_docpdf_orig(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_articles_rubcolonne4:EDIT{soustitre}">(#_articles_rubcolonne4:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette}">
-				<a href="#URL_DOCUMENT"[ title="(#_articles_rubcolonne4:TITRE|attribut_html)"]>
+				<a href="#URL_DOCUMENT"[ title="(#_articles_rubcolonne4:TITRE|attribut_html)"] class="spip_out">
 					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_articles_rubcolonne4:TITRE|attribut_html)]})]
 				</a>
 				</div>
@@ -98,7 +98,7 @@
 			<BOUCLE_docpdf_rub(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_trad_lang_rub:EDIT{soustitre}">(#_trad_lang_rub:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#_trad_lang_rub:TITRE|attribut_html)"]>
+					<a href="#URL_DOCUMENT"[ title="(#_trad_lang_rub:TITRE|attribut_html)"] class="spip_out">
 					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_trad_lang_rub:TITRE|attribut_html)]})]
 					</a>
 				</div>
@@ -131,7 +131,7 @@
 			<BOUCLE_docpdf_orig_rub(DOCUMENTS){id_article}{extension=pdf}{0,1}>
 				[<p class="soustitre #_articles_rubbrochures_rub:EDIT{soustitre}">(#_articles_rubbrochures_rub:SOUSTITRE)</p>]
 				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"]>
+					<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"] class="spip_out">
 					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
 					</a>
 				</div>
