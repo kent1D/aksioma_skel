@@ -1,13 +1,17 @@
-<paquet prefix="aksioma" categorie="squelette" version="0.5.0"
-	etat="stable" compatibilite="[3.0.0-dev;3.0.*]" logo="images/aksioma-58.png"
-	documentation="http://svn.aires-de-confluxence.info/trac/">
+<paquet 
+	prefix="aksioma" 
+	categorie="squelette" 
+	version="0.6.0"
+	etat="stable"
+	compatibilite="[3.0.0-dev;3.0.*]"
+	logo="images/aksioma-58.png">
 
 	<nom>Squelette Aksioma</nom>
 	<!-- Squelette pour le site Aksioma -->
 
 	<auteur lien="http://www.kent1.info">kent1</auteur>
 
-	<copyright>2010-2012</copyright>
+	<copyright>2010-2014</copyright>
 
 	<licence lien="http://www.gnu.org/licenses/gpl-3.0.html">GPL 3</licence>
 
