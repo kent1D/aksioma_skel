@@ -4,7 +4,7 @@
 	<div[ id="(#ANCRE_PAGINATION|extraire_attribut{id})"]>
 		<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_ongoing:></h2>
 		<ul class="liste-items events_ongoing">
-		<BOUCLE_events_ongoing(EVENEMENTS){!par date_fin}{evenement_en_cours}{pagination #ENV{pagination,2}}>
+		<BOUCLE_events_ongoing(EVENEMENTS){!par date_debut}{evenement_en_cours}{pagination #ENV{pagination,2}}>
 			<li class="item hentry">
 				#SET{logo_source,''}
 				<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>

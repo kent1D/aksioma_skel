@@ -30,7 +30,7 @@
 	<div id="[(#ANCRE_PAGINATION|extraire_attribut{id})]">
 	<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h2>
 	<ul class="liste-items">
-	<BOUCLE_events_next(EVENEMENTS){!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
+	<BOUCLE_events_next(EVENEMENTS){par date_debut}{evenement_a_venir}{pagination #ENV{pagination,5}}>
 		<li class="item hentry">#SET{logo_source,''}
 			<BOUCLE_event_source_logo_next(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>#SET{logo_source,#LOGO_EVENEMENT}</BOUCLE_event_source_logo_next>
 			<BOUCLE_article_event_next(ARTICLES){id_article=#ID_ARTICLE}>#SET{url_article,#URL_ARTICLE}
