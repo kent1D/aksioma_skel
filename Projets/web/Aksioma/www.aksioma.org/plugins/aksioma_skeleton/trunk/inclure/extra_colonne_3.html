@@ -1,10 +1,11 @@
+#CACHE{60*60*2}
 <div class="extra-left">
 <BOUCLE_rub_aksioma(CONDITION){si #ENV{id_rubrique}|=={30}}>
 <B_events_aksioma>
 <div id="[(#ANCRE_PAGINATION|extraire_attribut{id})]">
 	<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_next:></h2>
 	<ul class="liste-items">
-	<BOUCLE_events_aksioma(EVENEMENTS){lieu LIKE %Aksioma %}{!par date_fin}{evenement_a_venir}{pagination #ENV{pagination,5}}>
+	<BOUCLE_events_aksioma(EVENEMENTS){lieu LIKE %Aksioma %}{!par date_fin}{!evenement_en_cours}{evenement_a_venir}{pagination #ENV{pagination,5}}>
 		<li class="item hentry">[(#SET{logo_source,''})]
 			<BOUCLE_event_source_logo_next_aksioma(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>#SET{logo_source,#LOGO_EVENEMENT}</BOUCLE_event_source_logo_next_aksioma>
 			<BOUCLE_article_event_next_aksioma(ARTICLES){id_article=#ID_ARTICLE}>#SET{url_article,#URL_ARTICLE}
