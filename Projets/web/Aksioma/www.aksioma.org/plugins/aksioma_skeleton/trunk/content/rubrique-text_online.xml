@@ -1,0 +1,5 @@
+<composition>
+	<nom>Online text secion</nom>
+	<description>Online text secion</description>
+	<branche type="article" composition="text_online" />
+</composition>
