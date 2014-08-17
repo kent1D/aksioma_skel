@@ -13,6 +13,9 @@
 				<BOUCLE_article_event(ARTICLES){id_article=#ID_ARTICLE}>
 				#SET{url_article,#URL_ARTICLE}
 				[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
+				<BOUCLE_article_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
+				#SET{url_article,#URL_ARTICLE}
+				</BOUCLE_article_trad>
 				</BOUCLE_article_event>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
 				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
@@ -43,6 +46,9 @@
 				</BOUCLE_event_source_logo_passe>
 				<BOUCLE_article_event_passe(ARTICLES){id_article=#ID_ARTICLE}>
 				[(#SET{url_article,#URL_ARTICLE})][(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
+				<BOUCLE_article_event_passe_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
+				#SET{url_article,#URL_ARTICLE}
+				</BOUCLE_article_event_passe_trad>
 				</BOUCLE_article_event_passe>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
 				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
