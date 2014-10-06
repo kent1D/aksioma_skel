@@ -18,11 +18,19 @@ version="1.0"[ encoding="(#CHARSET)"]?>
 	xmlns:mrss="http://www.rssboard.org/media-rss"
 >
 
+<BOUCLE_last_art(ARTICLES){!par maj}{0,1}>
+#SET{last_maj,#MAJ}
+</BOUCLE_last_art>
+<BOUCLE_last_event(EVENEMENTS){!par maj}{0,1}>
+[(#MAJ|>{#GET{lastmaj}}|oui)
+[(#SET{last_maj,#MAJ})]]
+</BOUCLE_last_event>
 <channel[ xml:lang="(#LANG)"]>
 	<title>[(#NOM_SITE_SPIP|textebrut|texte_backend)]</title>
 	<link>#URL_SITE_SPIP/</link>
 	[<description>(#DESCRIPTIF_SITE_SPIP|supprimer_tags|texte_backend)</description>]
 	<language>#LANG</language>
+	[<lastBuildDate>(#GET{last_maj}|date_822)</lastBuildDate>]
 	<generator>SPIP - www.spip.net</generator>
 	<atom:link href="[(#SELF|url_absolue)]" rel="self" type="application/rss+xml" />
 
