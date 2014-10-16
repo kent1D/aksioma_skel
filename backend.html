@@ -42,11 +42,11 @@ version="1.0"[ encoding="(#CHARSET)"]?>
 		[<width>(#LOGO_SITE_SPIP|image_reduire{144,400}|extraire_attribut{width})</width>]
 	</image>
 ]
-<BOUCLE_10events(EVENEMENTS){lang ?}{branche ?}{id_mot ?}{id_auteur ?}{par date_fin}{inverse}{0,10}{unique}>
+<BOUCLE_10events(EVENEMENTS){branche ?}{id_mot ?}{id_auteur ?}{!par date_fin}{0,30}{unique}>
 <INCLURE{fond=inclure/rss-item_evenement,id_evenement} />
 </BOUCLE_10events>
 </B_10events>
-<BOUCLE_10recents(ARTICLES) {lang ?}{branche ?}{id_mot ?}{id_auteur ?} {par date}{inverse}{0,10}{unique}>
+<BOUCLE_10recents(ARTICLES) {lang ?}{branche ?}{id_mot ?}{id_auteur ?} {par date}{inverse}{0,30}{unique}>
 <INCLURE{fond=inclure/rss-item,id_article} />
 </BOUCLE_10recents>
 

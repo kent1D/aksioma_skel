@@ -10,8 +10,16 @@
 		</BOUCLE_event_source_logo>
 		[(#SET{logo,[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]})]
 		<title>[(#TITRE|supprimer_tags|texte_backend)]</title>
-		<link>[(#URL_ARTICLE|url_absolue)]</link>
-		[<guid isPermaLink="true">(#URL_ARTICLE|url_absolue)</guid>]
+		<BOUCLE_articles(ARTICLES){id_article}>
+		<BOUCLE_article_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
+		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})]</link>
+		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})</guid>]
+		</BOUCLE_article_lang>
+		</B_article_lang>
+		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})]</link>
+		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})</guid>]
+		<//B_article_lang>
+		</BOUCLE_articles>
 		[<pubDate>(#MAJ|date_iso)</pubDate>]
 		[<dc:date>(#MAJ|date_iso)</dc:date>]
 		<dc:format>text/html</dc:format>
