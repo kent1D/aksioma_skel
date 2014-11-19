@@ -77,7 +77,7 @@
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h3 class="h4 #EDIT{titre}">#TITRE</h3>
 				[<div class="#EDIT{texte}">
-					(#TEXTE)
+					(#DESCRIPTIF)
 				</div>]
 			</div>
 			<//B_docpdf_orig>
@@ -116,13 +116,13 @@
 			</B_docpdf_rub>
 			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]</a>
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h2 class="h4 #EDIT{titre}">#TITRE</h2>
-				[<div class="#EDIT{texte}">
-					(#TEXTE)
+				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
+				[<div class="#EDIT{introduction}">
+					(#INTRODUCTION)
 				</div>]
 			</div>
 			<//B_docpdf_rub>
@@ -149,13 +149,13 @@
 			</B_docpdf_orig_rub>
 			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]</a>
 			</div>
 			<div class="exergue_pdf">
 				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h2 class="h4 #EDIT{titre}">#TITRE</h2>
-				[<div class="#EDIT{texte}">
-					(#TEXTE)
+				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
+				[<div class="#EDIT{introduction}">
+					(#INTRODUCTION)
 				</div>]
 			</div>
 			<//B_docpdf_orig_rub>
