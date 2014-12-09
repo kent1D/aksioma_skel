@@ -34,38 +34,17 @@
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{branche}{!par num titre}{par titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{78,0})]})]
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{156,0})]})]
 	<li>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-			<BOUCLE_docpdf(DOCUMENTS){id_article}{extension=pdf}{0,1}>
-				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"] class="spip_out">
-				[(#LOGO_DOCUMENT|image_reduire{78,0}|image_recadre{78,110}|sinon{#GET{logo_origine}})]
-				</a>
-			</BOUCLE_docpdf>
-			</B_docpdf>
-			<BOUCLE_docpdf_orig_lang(DOCUMENTS){id_article=#_articles_rubcolonne4:ID_ARTICLE}{extension=pdf}{0,1}>
-				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"] class="spip_out">
-				[(#LOGO_DOCUMENT|image_reduire{78,0}|image_recadre{78,110}|sinon{#GET{logo_origine}})]
-				</a>
-			</BOUCLE_docpdf_orig_lang>
-			</B_docpdf_orig_lang>
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
-				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
+				[(#LOGO_ARTICLE|image_reduire{156,0}|image_recadre{156,220})]
 			</a>
-			<//B_docpdf_orig_lang>
-			<//B_docpdf>
 		</BOUCLE_trad_lang>
 		</B_trad_lang>
-			<BOUCLE_docpdf_orig(DOCUMENTS){id_article=#_articles_rubcolonne4:ID_ARTICLE}{extension=pdf}{0,1}>
-				<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"] class="spip_out">
-				[(#LOGO_DOCUMENT|image_reduire{78,0}|image_recadre{78,110}|sinon{#GET{logo_origine}})]
-				</a>
-			</BOUCLE_docpdf_orig>
-			</B_docpdf_orig>
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
-				[(#LOGO_ARTICLE|image_reduire{78,0}|image_recadre{78,110})]
+				[(#LOGO_ARTICLE|image_reduire{156,0}|image_recadre{156,220})]
 			</a>
-			<//B_docpdf_orig>
 		<//B_trad_lang>
 	</li>
 	</BOUCLE_articles_rubcolonne4>
