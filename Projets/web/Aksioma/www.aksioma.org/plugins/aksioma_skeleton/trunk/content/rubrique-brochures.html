@@ -13,74 +13,35 @@
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{id_rubrique}{!par num titre}{par titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]})]
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]})]
 	<li>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-			<BOUCLE_docpdf(DOCUMENTS){id_article}{extension=pdf}{0,1}>
-				[<p class="soustitre #_trad_lang:EDIT{soustitre}">(#_trad_lang:SOUSTITRE)</p>]
-				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#_trad_lang:TITRE|attribut_html)"] class="spip_out">
-					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
-					</a>
-				</div>
-				<div class="exergue_pdf">
-					<p class="surtitre #_trad_lang:EDIT{surtitre}">#_trad_lang:SURTITRE</p>
-					<h3 class="h3 #_trad_lang:EDIT{titre}"><a href="#_trad_lang:URL_ARTICLE">#_trad_lang:TITRE</a></h3>
-					[<div class="#EDIT{descriptif}">
-						(#DESCRIPTIF)
-					</div>]
-					<BOUCLE_projet_brochure(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
-					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
-					</BOUCLE_projet_brochure>
-				</div>
-			</BOUCLE_docpdf>
-			</B_docpdf>
-			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo}">
 				<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>
-					[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258})]
+					[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568})]
 				</a>
 			</div>
+			<br />
 			<div class="exergue_pdf">
-				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h3 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></h3>
-			</div>
-			<//B_docpdf>
-		</BOUCLE_trad_lang>
-		</B_trad_lang>
-			<BOUCLE_docpdf_orig(DOCUMENTS){id_article}{extension=pdf}{0,1}>
-				[<p class="soustitre #_articles_rubcolonne4:EDIT{soustitre}">(#_articles_rubcolonne4:SOUSTITRE)</p>]
-				<div class="#EDIT{vignette}">
-				<a href="#URL_DOCUMENT"[ title="(#_articles_rubcolonne4:TITRE|attribut_html)"] class="spip_out">
-					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_articles_rubcolonne4:TITRE|attribut_html)]})]
-				</a>
-				</div>
-				<div class="exergue_pdf">
-					<p class="surtitre #_articles_rubcolonne4:EDIT{surtitre}">#_articles_rubcolonne4:SURTITRE</p>
-					<h3 class="h4 #_articles_rubcolonne4:EDIT{titre}">#_articles_rubcolonne4:TITRE</h3>
-					[<div class="#EDIT{descriptif}">
-						(#DESCRIPTIF)
-					</div>]
-					<BOUCLE_projet_brochure_orig(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
-					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
-					</BOUCLE_projet_brochure_orig>
-				</div>
-			</BOUCLE_docpdf_orig>
-			</B_docpdf_orig>
-			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
-			<div class="#EDIT{logo}">
-			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
-				[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{alt,[(#TITRE|attribut_html)]})]
-			</a>
-			</div>
-			<div class="exergue_pdf">
-				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
-				<h3 class="h4 #EDIT{titre}">#TITRE</h3>
+				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
 				[<div class="#EDIT{texte}">
-					(#DESCRIPTIF)
+					(#INTRODUCTION)
 				</div>]
 			</div>
-			<//B_docpdf_orig>
+		</BOUCLE_trad_lang>
+		</B_trad_lang>
+			<div class="#EDIT{logo}">
+			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
+				[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{alt,[(#TITRE|attribut_html)]})]
+			</a>
+			</div>
+			<br />
+			<div class="exergue_pdf">
+				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
+				[<div class="#EDIT{texte}">
+					(#INTRODUCTION)
+				</div>]
+			</div>
 		<//B_trad_lang>
 	</li>
 	</BOUCLE_articles_rubcolonne4>
@@ -92,73 +53,31 @@
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubbrochures_rub(ARTICLES){origine_traduction}{id_rubrique}{!par num titre}{par titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]})]
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]})]
 	<li>
 		<BOUCLE_trad_lang_rub(ARTICLES){traduction}{lang=#ENV{lang}}>
-			<BOUCLE_docpdf_rub(DOCUMENTS){id_article}{extension=pdf}{0,1}>
-				[<p class="soustitre #_trad_lang_rub:EDIT{soustitre}">(#_trad_lang_rub:SOUSTITRE)</p>]
-				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#_trad_lang_rub:TITRE|attribut_html)"] class="spip_out">
-					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}}|inserer_attribut{alt,[(#_trad_lang_rub:TITRE|attribut_html)]})]
-					</a>
-				</div>
-				<div class="exergue_pdf">
-					<p class="surtitre #_trad_lang_rub:EDIT{surtitre}">#_trad_lang_rub:SURTITRE</p>
-					<h2 class="h4 #_trad_lang_rub:EDIT{titre}">#_trad_lang_rub:TITRE</h2>
-					[<div class="#EDIT{descriptif}">
-						(#DESCRIPTIF)
-					</div>]
-					<BOUCLE_projet_brochure_lang_rub(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
-					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
-					</BOUCLE_projet_brochure_lang_rub>
-				</div>
-			</BOUCLE_docpdf_rub>
-			</B_docpdf_rub>
-			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]</a>
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
 			</div>
+			<br />
 			<div class="exergue_pdf">
-				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
 				[<div class="#EDIT{introduction}">
 					(#INTRODUCTION)
 				</div>]
 			</div>
-			<//B_docpdf_rub>
 		</BOUCLE_trad_lang_rub>
 		</B_trad_lang_rub>
-			<BOUCLE_docpdf_orig_rub(DOCUMENTS){id_article}{extension=pdf}{0,1}>
-				[<p class="soustitre #_articles_rubbrochures_rub:EDIT{soustitre}">(#_articles_rubbrochures_rub:SOUSTITRE)</p>]
-				<div class="#EDIT{vignette} resize-183">
-					<a href="#URL_DOCUMENT"[ title="(#TITRE|attribut_html)"] class="spip_out">
-					[(#LOGO_DOCUMENT|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''}|sinon{#GET{logo_origine}})]
-					</a>
-				</div>
-				<div class="exergue_pdf">
-					<p class="surtitre #_articles_rubbrochures_rub:EDIT{soustitre}">#_articles_rubbrochures_rub:SURTITRE</p>
-					<h2 class="h4 #_articles_rubbrochures_rub:EDIT{titre}">#_articles_rubbrochures_rub:TITRE</h2>
-					[<div class="#EDIT{descriptif}">
-						(#DESCRIPTIF)
-					</div>]
-					<BOUCLE_projet_brochure_lang_rub_defaut(RUBRIQUES spip_documents_liens){spip_documents_liens.id_document = #ID_DOCUMENT}{id_secteur = #CONFIG{aksioma/rubrique_projets}}{0,1}>
-					<p><a href="#URL_RUBRIQUE"><:aksioma:lien_projet_brochure:></a></p>
-					</BOUCLE_projet_brochure_lang_rub_defaut>
-				</div>
-			</BOUCLE_docpdf_orig_rub>
-			</B_docpdf_orig_rub>
-			[<p class="soustitre #EDIT{soustitre}">(#SOUSTITRE)</p>]
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{183,0}|image_recadre{183,258}|inserer_attribut{style,''})]</a>
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
 			</div>
+			<br />
 			<div class="exergue_pdf">
-				<p class="surtitre #EDIT{surtitre}">#SURTITRE</p>
 				<h2 class="h4 #EDIT{titre}"><a href="#URL_ARTICLE">#TITRE</a></h2>
 				[<div class="#EDIT{introduction}">
 					(#INTRODUCTION)
 				</div>]
 			</div>
-			<//B_docpdf_orig_rub>
 		<//B_trad_lang_rub>
 	</li>
 	</BOUCLE_articles_rubbrochures_rub>
