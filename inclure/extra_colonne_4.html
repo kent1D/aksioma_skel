@@ -1,30 +1,26 @@
 <div class="extra-right">
-<B_article_rubcolonne4_media>
-	[<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">(#CONFIG{aksioma/titre_contenu_colonne_medias}|trim)</h3>]
-	<div class="exergue_media">
-	<BOUCLE_article_rubcolonne4_media(ARTICLES spip_documents_liens documents){id_article=#CONFIG{aksioma/article_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
-	[(#EXTENSION|=={html}|oui)
-	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
-	[(#EXTENSION|=={html}|non)
-	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
-	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
-	</BOUCLE_article_rubcolonne4_media>
-	</div>
-</B_article_rubcolonne4_media>
-<B_articles_rubcolonne4_media>
-	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
-	<div class="exergue_media">
-	<BOUCLE_articles_rubcolonne4_media(ARTICLES spip_documents_liens documents){branche #CONFIG{aksioma/contenu_colonne_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
-	[(#EXTENSION|=={html}|oui)
-	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
-	[(#EXTENSION|=={html}|non)
-	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
-	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
-	</BOUCLE_articles_rubcolonne4_media>
-	</div>
-</B_articles_rubcolonne4_media>
-<//B_article_rubcolonne4_media>
+<B_banners>
 
+<div class="banners">
+	<BOUCLE_banners(ARTICLES){origine_traduction}{id_article IN #CONFIG{aksioma/articles_banners,#LISTE}}{logo}>
+	<div class="banner" id="banner_#ID_ARTICLE">
+		<BOUCLE_trad_lang_banner(ARTICLES){traduction}{lang=#ENV{lang}}>
+		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|intval|>{1}|oui)class="spip_out"]> 
+			[(#LOGO_ARTICLE|image_reduire{600,0}|inserer_attribut{style,"width:100%;height:auto"})]
+		</a>
+		</BOUCLE_trad_lang_banner>
+		
+		</B_trad_lang_banner>
+		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|intval|>{1}|oui)class="spip_out"]> 
+			[(#LOGO_ARTICLE|image_reduire{600,0}|inserer_attribut{style,"width:100%;height:auto"})]
+		</a>
+		<//B_trad_lang_banner>
+		
+	</div>
+	</BOUCLE_banners>
+</div>
+
+</B_banners>
 <B_colonne4>
 <div class="publications">
 <h1 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_4}">&nbsp;>> [(#CONFIG{aksioma/titre_contenu_colonne_4,<:aksioma:titre_publications:>}|corriger_typo)]</h1>
@@ -54,4 +50,29 @@
 </BOUCLE_colonne4>
 </div>
 </B_colonne4>
+<B_article_rubcolonne4_media>
+	[<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">(#CONFIG{aksioma/titre_contenu_colonne_medias}|trim)</h3>]
+	<div class="exergue_media">
+	<BOUCLE_article_rubcolonne4_media(ARTICLES spip_documents_liens documents){id_article=#CONFIG{aksioma/article_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
+	[(#EXTENSION|=={html}|oui)
+	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
+	[(#EXTENSION|=={html}|non)
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
+	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
+	</BOUCLE_article_rubcolonne4_media>
+	</div>
+</B_article_rubcolonne4_media>
+<B_articles_rubcolonne4_media>
+	<h3 class="#EDIT_CONFIG{aksioma/titre_contenu_colonne_medias}">[(#CONFIG{aksioma/titre_contenu_colonne_medias,<:aksioma:titre_medias:>})]</h3>
+	<div class="exergue_media">
+	<BOUCLE_articles_rubcolonne4_media(ARTICLES spip_documents_liens documents){branche #CONFIG{aksioma/contenu_colonne_medias}} {documents.extension IN html,jpg,png,gif}{media IN video,image}{par hasard}{0,1}>
+	[(#EXTENSION|=={html}|oui)
+	#MODELE{emb,id_document=#ID_DOCUMENT,largeur=100%,height=300px}]
+	[(#EXTENSION|=={html}|non)
+	[(#MODELE{sjcycle,id_sjcycle=#ID_ARTICLE,background=transparent,width=500,par=hasard,limite=4})]]
+	<p><:aksioma:evenement_voir:> <a href="#URL_ARTICLE"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]>#TITRE</a></p>
+	</BOUCLE_articles_rubcolonne4_media>
+	</div>
+</B_articles_rubcolonne4_media>
+<//B_article_rubcolonne4_media>
 </div>

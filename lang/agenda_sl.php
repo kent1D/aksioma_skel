@@ -129,6 +129,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 'texte_logo_objet' => '<NEW>LOGO DE L\'EVENEMENT',
 'titre_cadre_ajouter_evenement' => '<NEW>Ajouter un événement',
 'titre_cadre_modifier_evenement' => '<NEW>Modifier un événement',
+'titre_publications' => 'PUBLIKACIJE',
 'titre_sur_l_agenda' => '<NEW>Sur l\'agenda',
 'toutes_rubriques' => '<NEW>Toutes',
 
