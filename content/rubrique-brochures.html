@@ -13,7 +13,7 @@
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubcolonne4(ARTICLES){origine_traduction}{id_rubrique}{!par num titre}{par titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]})]
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_passe_partout{400,568}|image_recadre{400,568}|inserer_attribut{style,''})]})]
 	<li>
 		<BOUCLE_trad_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 			<div class="#EDIT{logo}">
@@ -32,7 +32,7 @@
 		</B_trad_lang>
 			<div class="#EDIT{logo}">
 			<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|strlen|>{1}|oui)class="spip_out"]> 
-				[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{alt,[(#TITRE|attribut_html)]})]
+				[(#LOGO_ARTICLE|image_passe_partout{400,568}|image_recadre{400,568}|inserer_attribut{alt,[(#TITRE|attribut_html)]})]
 			</a>
 			</div>
 			<br />
@@ -53,11 +53,11 @@
 	<div class="menu">
 	<ul class="liste">
 	<BOUCLE_articles_rubbrochures_rub(ARTICLES){origine_traduction}{id_rubrique}{!par num titre}{par titre}{tout}>
-	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]})]
+	[(#SET{logo_origine,[(#LOGO_ARTICLE|image_passe_partout{400,568}|image_recadre{400,568}|inserer_attribut{style,''})]})]
 	<li>
 		<BOUCLE_trad_lang_rub(ARTICLES){traduction}{lang=#ENV{lang}}>
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_passe_partout{400,568}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
 			</div>
 			<br />
 			<div class="exergue_pdf">
@@ -69,7 +69,7 @@
 		</BOUCLE_trad_lang_rub>
 		</B_trad_lang_rub>
 			<div class="#EDIT{logo} resize-183">
-				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_reduire{400,0}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
+				<a href="#URL_ARTICLE">[(#LOGO_ARTICLE|image_passe_partout{400,568}|image_recadre{400,568}|inserer_attribut{style,''})]</a>
 			</div>
 			<br />
 			<div class="exergue_pdf">
