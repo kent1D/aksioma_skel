@@ -3,8 +3,7 @@
 	pour un flux RSS, appelé depuis backend.html
 
 ]<BOUCLE_un_event(EVENEMENTS){id_evenement} {statut?}{tout}>
-	<item[ xml:lang="(#LANG)"]>
-	#SET{logo_source,''}
+	<item[ xml:lang="(#LANG)"]>[(#SET{logo_source,''})]
 		<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
 		#SET{logo_source,#LOGO_EVENEMENT}
 		</BOUCLE_event_source_logo>
@@ -12,12 +11,12 @@
 		<title>[(#TITRE|supprimer_tags|texte_backend)]</title>
 		<BOUCLE_articles(ARTICLES){id_article}>
 		<BOUCLE_article_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
-		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})]</link>
-		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})</guid>]
+		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]}|texte_backend)]</link>
+		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]}|texte_backend)</guid>]
 		</BOUCLE_article_lang>
 		</B_article_lang>
-		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})]</link>
-		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]})</guid>]
+		<link>[(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]}|texte_backend)]</link>
+		[<guid isPermaLink="true">(#VIRTUEL|sinon{[(#URL_ARTICLE|url_absolue)]}|texte_backend)</guid>]
 		<//B_article_lang>
 		</BOUCLE_articles>
 		[<pubDate>(#MAJ|date_iso)</pubDate>]
@@ -37,17 +36,16 @@
 ]<BOUCLE_mots_rss(MOTS){id_evenement}>
 		[<dc:subject>(#TITRE|texte_backend)</dc:subject>]</BOUCLE_mots_rss>
 
-		<description>[(#DESCRIPTIF|texte_backend)]</description>
+		<description>[(#DESCRIPTIF|texte_backend)]</description>[(#REM)
 
-[(#REM)
 	Le bloc qui suit diffuse l'adresse des documents associes aux articles ;
 	ajouter par ex. {extension=mp3} pour limiter a un certain type de document.
+
 ]		<BOUCLE_documents(DOCUMENTS){id_evenement}{mode=document}{doublons}>[
-		<enclosure url="(#URL_DOCUMENT|url_absolue|unique)"[ length="(#TAILLE)"][ type="(#MIME_TYPE)"] />]
+		<enclosure url="(#URL_DOCUMENT|url_absolue|texte_backend|unique)"[ length="(#TAILLE)"][ type="(#MIME_TYPE)"] />]
 		</BOUCLE_documents>
 		</B_documents>[
-		<enclosure url="(#GET{logo}|extraire_attribut{src}|url_absolue|unique)"[ length="(#GET{logo}|extraire_attribut{src}|filesize)"] />]
+		<enclosure url="(#GET{logo}|extraire_attribut{src}|url_absolue|texte_backend|unique)"[ length="(#GET{logo}|extraire_attribut{src}|filesize)"] />]
 		<//B_documents>
-
 	</item>
 </BOUCLE_un_event>
