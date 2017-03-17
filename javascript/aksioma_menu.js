@@ -6,9 +6,9 @@
 
 (function($){
 	$(document).ready(function(){
-		$('#navigation .menu-liste li:not(.on) ul').addClass('nav-hidden');
+		$('#navigation').find('.menu-liste li:not(.on) ul').addClass('nav-hidden');
 		function menu_aksioma() {
-			$('#navigation .menu-liste li a').not('.do').addClass('do').hover(function(){
+			$('#navigation').find('.menu-liste li a').not('.do').addClass('do').hover(function(){
 				var me=$(this),
 				time=400;
 				// un temps plus long pour refermer !

@@ -42,7 +42,6 @@
 #SET{article_orig,#ID_ARTICLE}
 </BOUCLE_article_orig>
 <div class="extra-right">
-
 	<B_auteur>
 	<div class="info_auteurs surlignable">
 	<h3 class="pas_surlignable">[(#GRAND_TOTAL|singulier_ou_pluriel{aksioma:titre_about_auteur,aksioma:titre_about_auteurs}|strtoupper)]</h3>
@@ -76,7 +75,7 @@
 	<h3 class="pas_surlignable"><:info_notes|strtoupper:></h3>
 	(#NOTES)</div>]
 	
-	#INCLURE{fond=inclure/liste_related_articles,id_article,env}
+	<INCLURE{fond=inclure/liste_related_articles,id_article,env} />
 	
 </div>
 </BOUCLE_contenu_article>

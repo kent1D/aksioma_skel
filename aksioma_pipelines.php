@@ -1,5 +1,9 @@
 <?php 
 
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
+
 /**
  * Insertion dans le pipelin jquery_plugins
  * Sert à insérer des javascripts facilement dans le head
@@ -140,5 +144,5 @@ function aksioma_formulaire_charger($flux){
 		&& ($flux['data']['texte'] == '')){
 			$flux['data']['texte'] = $config['texte_defaut_projet'];
 	}
-	return $flux;	
+	return $flux;
 }

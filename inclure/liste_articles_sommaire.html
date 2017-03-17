@@ -1,3 +1,4 @@
+#CACHE{3600}
 <div class="liste articles sommaire">
 	<BOUCLE_si_pagination_passee(CONDITION){si #ENV{debut_events_passes}|>{1}|non}>
 	<B_events_ongoing>
@@ -5,20 +6,14 @@
 		<h2 class="h1">&nbsp; >> &nbsp;<:aksioma:titre_events_ongoing:></h2>
 		<ul class="liste-items events_ongoing">
 		<BOUCLE_events_ongoing(EVENEMENTS){!par date_debut}{evenement_en_cours}{pagination #ENV{pagination,2}}>
-			<li class="item hentry">
-				#SET{logo_source,''}
-				<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>
-				#SET{logo_source,#LOGO_EVENEMENT}
-				</BOUCLE_event_source_logo>
+			<li class="item hentry">[(#SET{logo_source,''})]
+				<BOUCLE_event_source_logo(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>#SET{logo_source,#LOGO_EVENEMENT}</BOUCLE_event_source_logo>
 				<BOUCLE_article_event(ARTICLES){id_article=#ID_ARTICLE}>
-				#SET{url_article,#URL_ARTICLE}
-				[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
+				[(#SET{url_article,#URL_ARTICLE})][(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
 				<BOUCLE_article_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
-				#SET{url_article,#URL_ARTICLE}
-				</BOUCLE_article_trad>
-				</BOUCLE_article_event>
-				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+				[(#SET{url_article,#URL_ARTICLE})]</BOUCLE_article_trad></BOUCLE_article_event>
+				<div class="logo #EDIT{logo} resize-#ENV{width_logo,275}">
+					<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
@@ -42,16 +37,14 @@
 		<ul class="liste-items">
 		<BOUCLE_events_passes(EVENEMENTS){!par date_fin}{evenement_passe}{pagination #ENV{pagination,10}}>
 			<li class="item hentry">[(#SET{logo_source,''})]
-				<BOUCLE_event_source_logo_passe(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>[(#SET{logo_source,#LOGO_EVENEMENT})]
-				</BOUCLE_event_source_logo_passe>
+				<BOUCLE_event_source_logo_passe(EVENEMENTS){id_evenement=#ID_EVENEMENT_SOURCE}>[(#SET{logo_source,#LOGO_EVENEMENT})]</BOUCLE_event_source_logo_passe>
 				<BOUCLE_article_event_passe(ARTICLES){id_article=#ID_ARTICLE}>
 				[(#SET{url_article,#URL_ARTICLE})][(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]
 				<BOUCLE_article_event_passe_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
 				#SET{url_article,#URL_ARTICLE}
-				</BOUCLE_article_event_passe_trad>
-				</BOUCLE_article_event_passe>
-				<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,183},#ENV{hauteur,0}})]</a>
+				</BOUCLE_article_event_passe_trad></BOUCLE_article_event_passe>
+				<div class="logo #EDIT{logo} resize-#ENV{width_logo,275}">
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>

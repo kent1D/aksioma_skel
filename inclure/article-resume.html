@@ -9,10 +9,10 @@
 <li class="item hentry">
 	<div class="logo #EDIT{logo} resize-#ENV{width_logo,183}">
 		[(#ENV{force_logo_orig}|non)
-		[(#LOGO_ARTICLE_NORMAL|sinon{#ENV**{logo_original}}|sinon{#LOGO_RUBRIQUE}|image_reduire{#ENV{width_logo,183},0})]
+		[(#LOGO_ARTICLE_NORMAL|sinon{#ENV**{logo_original}}|sinon{#LOGO_RUBRIQUE}|image_reduire{#ENV{width_logo,275},0})]
 		]
 		[(#ENV{force_logo_orig}|oui)
-		[(#ENV**{logo_original}|sinon{#LOGO_RUBRIQUE}|image_reduire{#ENV{width_logo,183},0})]
+		[(#ENV**{logo_original}|sinon{#LOGO_RUBRIQUE}|image_reduire{#ENV{width_logo,275},0})]
 		]
 	</div>
 	<div class="entry">

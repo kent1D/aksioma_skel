@@ -13,20 +13,20 @@
 
 	<div class="surlignable">
 		<BOUCLE_main_events(EVENEMENTS){id_article=#_article_defaut:ID_ARTICLE}{id_mot=#CONFIG{aksioma/projet_main_event_mot}}>
-			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=183,hide_logo=oui}
+			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=275,hide_logo=oui}
 		</BOUCLE_main_events>
 		</B_main_events>
 		<BOUCLE_events(EVENEMENTS){id_article=#_article_defaut:ID_ARTICLE}>[(#GRAND_TOTAL|=={1}|oui)
-			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=183,hide_logo=oui}]
+			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=275,hide_logo=oui}]
 		</BOUCLE_events>
 		<//B_main_events>
-		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|image_reduire{600,0})</div>]
+		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|image_reduire{800,0})</div>]
 		
-		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{600,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{800,0})</div>]
 	</div>
 
 	[<div class="ps">
-		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{500,0})</div>
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{800,0})</div>
 	</div>]
 	
 	[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
@@ -36,7 +36,7 @@
 <div class="contenu-principal">
 	[<div class="headline #_contenu_rubrique:EDIT{texte}">(#_contenu_rubrique:TEXTE)</div>]
 	<div class="cartouche">
-		[(#LOGO_ARTICLE|image_reduire{190,0})]
+		[(#LOGO_ARTICLE|image_reduire{275,0})]
 		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
@@ -44,21 +44,21 @@
 
 	<div class="surlignable">
 		<BOUCLE_main_events_defaut(EVENEMENTS){id_article}{id_mot=#CONFIG{aksioma/projet_main_event_mot}}>
-			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=183,hide_logo=oui}
+			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=275,hide_logo=oui}
 		</BOUCLE_main_events_defaut>
 		</B_main_events_defaut>
 		<BOUCLE_events_defaut(EVENEMENTS){id_article}>[(#GRAND_TOTAL|=={1}|oui)
-			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=183,hide_logo=oui}]
+			#MODELE{evenement_vevent,id=#ID_EVENEMENT,hide_titre=non,lien=non,mots=non,largeur=275,hide_logo=oui}]
 		</BOUCLE_events_defaut>
 		<//B_main_events_defaut>
-		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|image_reduire{600,0})</div>]
-		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{600,0})</div>]
+		[<div class="#EDIT{descriptif} chapo">(#DESCRIPTIF|image_reduire{800,0})</div>]
+		[<div class="#EDIT{texte} texte">(#TEXTE|image_reduire{800,0})</div>]
 	</div>
 
 	[<p class="#EDIT{hyperlien} hyperlien"><:voir_en_ligne:> : <a href="(#URL_SITE)" class="spip_out">[(#NOM_SITE|sinon{[(#URL_SITE|couper{80})]})]</a></p>]
 
 	[<div class="ps">
-		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{600,0})</div>
+		<div class="#EDIT{ps} surlignable">(#PS|image_reduire{800,0})</div>
 	</div>]
 	
 	[<div class="notes surlignable"><h2 class="h2 pas_surlignable"><:info_notes:></h2>(#NOTES)</div>]
@@ -69,7 +69,7 @@
 <div class="contenu-principal">
 	#MENU_LANG
 	<div class="cartouche">
-		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
+		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{300,300})]})]
 		<h1 class="h1 #EDIT{titre}">#TITRE</h1>
 	</div>
 
@@ -81,7 +81,7 @@
 <INCLURE{fond=inclure/liste_articles_ssrubriques_rubriques,env,ajax}>
 
 [(#REM) Gestion du portfolio et des documents ]
-[(#INCLURE{fond=inclure/documents}{id_rubrique})]	
+<INCLURE{fond=inclure/documents,id_rubrique} />
 
 [<div class="notes"><h2 class="h2"><:info_notes:></h2>(#NOTES)</div>]
 <//B_article_defaut>

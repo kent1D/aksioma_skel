@@ -5,34 +5,27 @@
 	<BOUCLE_documents_larges_article_banner_lang(ARTICLES){traduction}{lang=#ENV{lang}}{0,1}>
 	<BOUCLE_documents_larges_article_banner_doc(DOCUMENTS){id_article}{extension IN jpg,png}{largeur>=1280}{!par num titre}{0,1}>
 	<div>
-		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]</a>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#FICHIER|image_passe_partout{1440,168}|image_recadre{1440,168,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}}|inserer_attribut{alt,"Banner Aksioma"})]</a>
 	</div>
-	</BOUCLE_documents_larges_article_banner_doc>
-	</B_documents_larges_article_banner_doc>
+	</BOUCLE_documents_larges_article_banner_doc></B_documents_larges_article_banner_doc>
 	<div>
-		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]</a>
-	</div>
-	<//B_documents_larges_article_banner_doc>
-	</BOUCLE_documents_larges_article_banner_lang>
-	</B_documents_larges_article_banner_lang>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#FICHIER|image_passe_partout{1440,168}|image_recadre{1440,168,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}}|inserer_attribut{alt,"Banner Aksioma"})]</a>
+	</div><//B_documents_larges_article_banner_doc>
+	</BOUCLE_documents_larges_article_banner_lang></B_documents_larges_article_banner_lang>
 	<div>
-		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#_documents_larges_article_banner:FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]</a>
+		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[(#_documents_larges_article_banner:FICHIER|image_passe_partout{1440,168}|image_recadre{1440,168,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}}|inserer_attribut{alt,"Banner Aksioma"})]</a>
 	</div>
-	<//B_documents_larges_article_banner_lang>
-	</BOUCLE_art_banner>
-	</BOUCLE_documents_larges_article_banner>
-	</B_documents_larges_article_banner>
-	<B_documents_larges>
+	<//B_documents_larges_article_banner_lang></BOUCLE_art_banner></BOUCLE_documents_larges_article_banner></B_documents_larges_article_banner>
 	<BOUCLE_documents_larges(DOCUMENTS){extension IN jpg,png}{largeur>=1280}{par hasard}{0,1}>
 	<div>
 		<a href="#URL_SITE_SPIP" style="display:block;padding:0px;margin:0px;">[
-			(#SET{fichier,[(#FICHIER|image_passe_partout{1280,150}|image_recadre{1280,150,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
-			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP|extraire_attribut{src})],mode=normal,left=10px,vertical-align=center}|inserer_attribut{alt," "})]})][
+			(#SET{fichier,[(#FICHIER|image_passe_partout{1440,168}|image_recadre{1440,168,#CONFIG{sjcycle/img_position},#CONFIG{sjcycle/img_background}})]})][
+			(#SET{fichier,[(#GET{fichier}|image_masque{[(#LOGO_SITE_SPIP|extraire_attribut{src})],mode=normal,left=10px,vertical-align=center}|inserer_attribut{alt,"Banner Aksioma"})]})][
 			(#GET{fichier})
 		]</a>
 	</div>
 	</BOUCLE_documents_larges>
 	<//B_documents_larges_article_banner>[
 	<div id='slogan_site_spip'>(#SLOGAN_SITE_SPIP|PtoBR)</div>
-	]#INCLURE{fond=inclure/menu,identifiant=social}
+	]<INCLURE{fond=inclure/menu,identifiant=social} />
 </div>

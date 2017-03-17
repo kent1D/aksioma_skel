@@ -1,5 +1,7 @@
 <?php
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
 $GLOBALS['forcer_lang'] = true;
 
@@ -11,4 +13,4 @@ $table_des_traitements['SOUSTITRE'][]= 'typo(%s)';
 $GLOBALS['spip_matrice']['_couleur_dec_to_hex'] = 'filtres/images_lib.php';
 $GLOBALS['spip_matrice']['_couleur_hex_to_dec'] = 'filtres/images_lib.php';
 
-?>
+$GLOBALS['quota_cache'] = "100";

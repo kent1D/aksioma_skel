@@ -60,28 +60,28 @@
 	[(#REM) Affichage des documents]
 	<BOUCLE_traduc_lang(ARTICLES){traduction}{lang=#ENV{lang}}>
 	<BOUCLE_doc_traduc_lang(DOCUMENTS){id_article}{extension !IN gif,jpg,png}{media!=video}{vu=non}{0,1}> </BOUCLE_doc_traduc_lang>
-	[(#INCLURE{fond=inclure/documents-projet_normal,id_article,class=press,titre=<:aksioma:titre_press_corner:>,ajax})]
+	<INCLURE{fond=inclure/documents-projet_normal,id_article,class=press,titre=<:aksioma:titre_press_corner:>,ajax} />
 	</B_doc_traduc_lang>
-	[(#INCLURE{fond=inclure/documents-projet_normal,id_article=#ID_TRAD,class=press,titre=<:aksioma:titre_press_corner:>,ajax})]
+	<INCLURE{fond=inclure/documents-projet_normal,id_article=#ID_TRAD,class=press,titre=<:aksioma:titre_press_corner:>,ajax} />
 	<//B_doc_traduc_lang>
 	</BOUCLE_traduc_lang>
 	</B_traduc_lang>
-	[(#INCLURE{fond=inclure/documents-projet_normal,id_article,class=press,titre=<:aksioma:titre_press_corner:>,ajax})]
+	<INCLURE{fond=inclure/documents-projet_normal,id_article,class=press,titre=<:aksioma:titre_press_corner:>,ajax} />
 	<//B_traduc_lang>
-	[(#INCLURE{fond=inclure/evenements-projet_normal,id_article,ajax})]
+	<INCLURE{fond=inclure/evenements-projet_normal,id_article,ajax} />
 	<BOUCLE_documents(DOCUMENTS){id_rubrique}{extension IN doc,docx,pdf}{0,1}>
-	[(#INCLURE{fond=inclure/documents-projet_normal,id_rubrique,class=brochures})]
+	<INCLURE{fond=inclure/documents-projet_normal,id_rubrique,class=brochures} />
 	</BOUCLE_documents>
 	<B_images_nb>
 	<div>
 	<BOUCLE_images_nb(DOCUMENTS){id_article}{mode=document}{vu=non}{extension IN jpg,png,gif}{'<br/><br />'}>
-	[(#FICHIER|image_reduire{183,0})]
+	[(#FICHIER|image_reduire{275,0})]
 	</BOUCLE_images_nb>
 	</div>
 	</B_images_nb>
 	</BOUCLE_article_defaut>
-	[(#INCLURE{fond=inclure/liens-projet_normal,id_rubrique})]
-	[(#INCLURE{fond=inclure/liens-projet_lies,id_article=#ID_ARTICLE_ACCUEIL,lang})]
+	<INCLURE{fond=inclure/liens-projet_normal,id_rubrique} />
+	<INCLURE{fond=inclure/liens-projet_lies,id_article=#ID_ARTICLE_ACCUEIL,lang} />
 </div>
 </BOUCLE_si_colonne_1>
 [(#REM)
@@ -98,5 +98,4 @@
 	</div>
 	</BOUCLE_si_colonne_2>
 </BOUCLE_rubrique>
-
 #FILTRE{trim}

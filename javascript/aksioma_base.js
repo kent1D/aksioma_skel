@@ -3,7 +3,7 @@ $(function() {
 		agenda = ($('.page_agenda').size() > 0),
 		projet = ($('.rubrique_projet_normal').size > 0);
 	var cycle_resize = function(){
-		$('#conteneur .dsjcycle').each(function(){
+		$('#conteneur').find('.dsjcycle').each(function(){
 			var height = $(this).find('img:visible').eq(0).height();
 			$(this).css({'height':height})
 			
@@ -11,7 +11,7 @@ $(function() {
 	}
 	var carousel = function(){
 		var j = 0;
-		$('.documents_portfolio ul.liste').each(function(){
+		$('.documents_portfolio').find('ul.liste').each(function(){
 			j++;
 			if($(this).parent().is('.caroufredsel_wrapper')){
 				$(this).unwrap();
@@ -76,7 +76,7 @@ $(function() {
 				next.css('top',(height/2)-(next.height()/2));
 		});
 		var k = 0;
-		$('.rubrique_brochures #contenu ul.liste').each(function(){
+		$('.rubrique_brochures ul.liste').each(function(){
 			k++;
 			var nb_items = 5;
 			if($(this).parent().is('.caroufredsel_wrapper')){
@@ -112,8 +112,8 @@ $(function() {
 			$(this).find('li img.spip_logos').css({'width':'100%','height':'auto'});
 		});
 		var l = 0;
-		if($('.page_rubrique #contenu ul.liste_images li').size() > 0){
-			$('.page_rubrique #contenu ul.liste_images').each(function(){
+		if($('.page_rubrique  ul.liste_images li').size() > 0){
+			$('.page_rubrique ul.liste_images').each(function(){
 				l++;
 				if($(this).parent().is('.caroufredsel_wrapper')){
 					$(this).unwrap();
@@ -133,7 +133,7 @@ $(function() {
 		}
 	}
 	var search_placeholder = function(){
-		var input_search = $('#formulaire_recherche input.text');
+		var input_search = $('#formulaire_recherche').find('input.text');
 		if (input_search.val() == ''){
 			input_search.val(aksioma_lang.search);
 		}

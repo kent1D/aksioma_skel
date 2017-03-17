@@ -2,7 +2,7 @@
 <div class="contenu-principal">
 	#SET{level,null}
 	<div class="cartouche">
-		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{200,200})]})]
+		[(#LOGO_RUBRIQUE_NORMAL|match{IMG/rubon0}|?{'',[(#LOGO_RUBRIQUE_NORMAL|image_reduire{300,300})]})]
 		<h1 class="h1 #EDIT{titre}"><B_ariane><span class="sep">&nbsp;>> </span><BOUCLE_ariane(HIERARCHIE){id_rubrique!=#ID_SECTEUR}{'<span class="sep">&nbsp;>> </span>'}><a href="#URL_RUBRIQUE">[(#TITRE)]</a></BOUCLE_ariane>#SET{level,#TOTAL_BOUCLE}&nbsp;/&nbsp;</B_ariane>&nbsp;>>&nbsp;<//B_ariane>[(#TITRE)]</h1>
 	</div>
 	[<div class="#EDIT{texte} texte">(#TEXTE)</div>]
@@ -15,7 +15,7 @@
 		<BOUCLE_art_branche(ARTICLES spip_documents_liens documents){branche}{documents.extension IN jpg,png}{documents.largeur>=468}>
 		<li>
 			<a href="#_art_branche:URL_ARTICLE"[ title="(#_art_branche:TITRE|attribut_html)"]>
-				[(#URL_DOCUMENT|image_passe_partout{600,300}|image_alpha{0}
+				[(#URL_DOCUMENT|image_passe_partout{800,400}|image_alpha{0}
 					|image_recadre{468,300}|inserer_attribut{style,"display:block;"})]
 			</a>
 		</li>
