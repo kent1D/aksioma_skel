@@ -2,11 +2,13 @@
 <B_banners>
 
 <div class="banners">
-	<BOUCLE_banners(ARTICLES){origine_traduction}{id_article IN #CONFIG{aksioma/articles_banners,#LISTE}}{logo}>
+	<BOUCLE_banners(ARTICLES){origine_traduction}{id_article IN #CONFIG{aksioma/articles_banners,#LISTE}}{logo}{par num titre}>
 	<div class="banner" id="banner_#ID_ARTICLE">
 		<BOUCLE_trad_lang_banner(ARTICLES){traduction}{lang=#ENV{lang}}>
 		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|intval|>{1}|oui)class="spip_out"]> 
-			[(#LOGO_ARTICLE|image_reduire{650,0}|inserer_attribut{style,"width:100%;height:auto"})]
+			[(#LOGO_ARTICLE|match{'\.gif'}|?{
+				[(#LOGO_ARTICLE|inserer_attribut{style,"width:100%;height:auto"})],
+				[(#LOGO_ARTICLE|image_reduire{650,0}|inserer_attribut{style,"width:100%;height:auto"})]})]
 		</a>
 		</BOUCLE_trad_lang_banner>
 		
