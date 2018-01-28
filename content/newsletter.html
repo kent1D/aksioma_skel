@@ -1,5 +1,17 @@
 <div class="contenu-principal">
+	<BOUCLE_page_newsletter(ARTICLES){page=newsletter}{lang}>
+	<div class="cartouche">
+		[<p class="#EDIT{surtitre} surtitre">(#SURTITRE)</p>]
+		<h1 class="h1 #EDIT{titre}">&nbsp;>> [(#TITRE)]</h1>
+		[<p class="#EDIT{soustitre} soustitre">(#SOUSTITRE)</p>]
+	</div>
+	<div class="texte">
+	#TEXTE
+	</div>
+	</BOUCLE_page_newsletter>
+	</B_page_newsletter>
 	<div class="formulaire_abomailman ajax">
 		#FORMULAIRE_ABOMAILMAN
 	</div>
+	<//B_page_newsletter>
 </div>
