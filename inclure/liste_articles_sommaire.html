@@ -13,7 +13,11 @@
 				<BOUCLE_article_trad(ARTICLES){traduction}{lang=#ENV{lang}}>
 				[(#SET{url_article,#URL_ARTICLE})]</BOUCLE_article_trad></BOUCLE_article_event>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,275}">
-					<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]</a>
+					<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#SET{logo,[(#LOGO_EVENEMENT|sinon{[(#GET{logo_source})]}|sinon{#LOGO_ARTICLE})]})]
+						[(#GET{logo}|match{'\.gif'}|?{
+						[(#GET{logo}|inserer_attribut{style,"width:100%;height:auto"}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})],
+						[(#GET{logo}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]})]
+					</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
@@ -44,7 +48,11 @@
 				#SET{url_article,#URL_ARTICLE}
 				</BOUCLE_article_event_passe_trad></BOUCLE_article_event_passe>
 				<div class="logo #EDIT{logo} resize-#ENV{width_logo,275}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]</a>
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]" title="[(#TITRE|attribut_html|couper{80})]">[(#SET{logo,[(#LOGO_EVENEMENT|sinon{[(#GET{logo_source})]}|sinon{#LOGO_ARTICLE})]})]
+					[(#GET{logo}|match{'\.gif'}|?{
+						[(#GET{logo}|inserer_attribut{style,"width:100%;height:auto"}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})],
+						[(#GET{logo}|image_reduire{#ENV{largeur,275},#ENV{hauteur,0}}|inserer_attribut{alt,[Logo: (#TITRE|attribut_html)]})]})]
+				</a>
 				</div>
 				<div class="entry">
 					<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
