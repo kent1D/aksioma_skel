@@ -13,8 +13,10 @@
 		</BOUCLE_trad_lang_banner>
 		
 		</B_trad_lang_banner>
-		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|intval|>{1}|oui)class="spip_out"]> 
-			[(#LOGO_ARTICLE|image_reduire{650,0}|inserer_attribut{style,"width:100%;height:auto"})]
+		<a href="#URL_ARTICLE" title="[(#TITRE|attribut_html)]"[(#VIRTUEL|intval|>{1}|oui)class="spip_out"]>
+			[(#LOGO_ARTICLE|match{'\.gif'}|?{
+				[(#LOGO_ARTICLE|inserer_attribut{style,"width:100%;height:auto"})],
+				[(#LOGO_ARTICLE|image_reduire{650,0}|inserer_attribut{style,"width:100%;height:auto"})]})]
 		</a>
 		<//B_trad_lang_banner>
 	</div>

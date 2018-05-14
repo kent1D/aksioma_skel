@@ -37,7 +37,11 @@
 			<BOUCLE_article_event_next(ARTICLES){id_article=#ID_ARTICLE}>#SET{url_article,#URL_ARTICLE}
 			[(#VIRTUEL|strlen|>{1}|oui)#SET{spip_out,oui}]</BOUCLE_article_event_next>
 			<div class="logo #EDIT{logo} resize-#ENV{width_logo,300}">
-				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#LOGO_EVENEMENT|sinon{#GET{logo_source}}|sinon{#LOGO_ARTICLE}|image_reduire{#ENV{largeur,300},#ENV{hauteur,0}})]</a>
+				<a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">[(#SET{logo,[(#LOGO_EVENEMENT|sinon{[(#GET{logo_source})]}|sinon{#LOGO_ARTICLE})]})]
+				[(#GET{logo}|match{'\.gif'}|?{
+					[(#GET{logo}|inserer_attribut{style,"width:100%;height:auto"})],
+					[(#GET{logo}|image_reduire{#ENV{largeur,300},#ENV{hauteur,0}})]})]
+				</a>
 			</div>
 			<div class="entry">
 				<h3 class="h3 entry-title summary #EDIT{titre}"><a href="#GET{url_article}" class="[(#GET{spip_out}|=={oui}|?{spip_out,spip_in})]">#TITRE</a></h3>
